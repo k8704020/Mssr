@@ -3,10 +3,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>說明文件</title>
     <script src="../js/select_thing.js" type="text/javascript"></script>
-    <script src="../js/set_bookstore_action_log.js" type="text/javascript"></script>
     <script src="<? echo $_GET['id'];?>.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="../css/btn.css">
-    
+    <link rel="stylesheet" href="../css/btn.css">z
 	<style>
 			@keyframes myfirst
 			{
@@ -367,8 +365,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		window.parent.helper.innerHTML="";
 		
 	}
-	makeRequest('<? echo $_GET['id'];?>.html')
-	window.parent.set_action_bookstore_log(window.parent.user_id,'e5',window.parent.action_on);
+	makeRequest('<? echo $_GET['id'];?>.html');
+	//window.parent.set_action_bookstore_log(window.parent.user_id,'e5',window.parent.action_on);
 
 	</script>
     

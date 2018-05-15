@@ -587,7 +587,7 @@ var book_id = '<?php echo trim($book_sid);?>';
 					user_permission:'<? echo $permission;?>'
 			}).success(function (data)
 			{   
-				console.log(data);
+				//console.log(data);
 				if(data[0]!="{")
 				{
 					cover("資料庫好像有點問題呢，請再試試看",2,function(){main();});
@@ -619,7 +619,7 @@ var book_id = '<?php echo trim($book_sid);?>';
                     }
 
 
-                    console.log(data_array);
+                    //console.log(data_array);
 					
 					rec_draw_score=data_array["rec_draw_score"];
 					chick_pic();

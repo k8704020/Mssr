@@ -347,8 +347,6 @@
 		var forumBtn="<a id='forumBtn' style='' >聊書</a>";
 		var cancel="<a id='cancelBtn' style='position:absolute;right:-15px; top:-15px; cursor:pointer;'><img src='./img/cancel.png'  /></a>"
 
-		console.log(name);
-		console.log(id);
 
 		//有聊書權限則也顯示聊書按鈕
 		if(window.parent.parent.forum_flag == "y"){

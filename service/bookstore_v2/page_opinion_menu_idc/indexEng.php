@@ -145,7 +145,7 @@
     <img src="./img/pagge_1.png" style="position:absolute; left:695px; top: 379px; width: 295px; height: 74px;" border="0">
 	<a id="popopo" onClick="goooooooo()" style="position:absolute; left:708px; top: 82px; display:none;" ></a>
 	<!-- 說明-->
-    <a class=" btn_help" onClick="open_helper(9)" style="position:absolute; top:0px; left:896px; cursor:pointer;"><span class="number_bar" style="position:absolute;left:6px;top:45px;font-size:14px;">Guide</span></a>
+    <a class=" btn_help" onClick="open_helper(9)" style="position:absolute; top:0px; left:896px; cursor:pointer;"><span class="number_bar" style="position:absolute;left:6px;top:45px;font-size:14px;"></span></a>
 	<div id="helper" style="position:absolute; top:-8px; left:-8px; width:1040px; height:480px; display:none; overflow:hidden;"></div>
 
 	<script>
