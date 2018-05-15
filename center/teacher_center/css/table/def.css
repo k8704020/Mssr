@@ -1,0 +1,135 @@
+/*
+-------------------------------------------------------
+table
+-------------------------------------------------------
+    .table_style0
+    .table_style1
+    .table_style2
+    .table_style3
+*/
+
+    /* 表格樣式 */
+    .table_style0{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        position:relative;
+        color: #333;
+        border-collapse:collapse;
+        border: 0px solid #fff;
+        
+        line-height:35px;
+    }
+    .table_style0 td{
+        border-top: 0px solid #c0c0c0;
+        border-right: 0px solid #fff;
+        border-left: 0px solid #fff;
+        border-bottom: 0px solid #c0c0c0;
+    }
+    .table_style0 .b_line{
+        border-top: 1px solid #3571d4;
+    }
+    .table_style0 .gr_dashed{
+        border-bottom: 1px dashed #c0c0c0;
+    }
+
+    .table_style1{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        position:relative;
+        color: #4e4e4e;
+        border-collapse:collapse;
+        border: 0px solid #fff;
+        border-bottom: 1px solid #c0c0c0;
+    }
+    .table_style1 td{
+        border-top: 0px solid #c0c0c0;
+        border-right: 0px solid #fff;
+        border-left: 0px solid #fff;
+        border-bottom: 1px solid #c0c0c0;
+    }
+
+    .table_style2{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        position:relative;
+        color: #4e4e4e;
+        border-collapse:collapse;
+        border: 1px solid #c0c0c0;
+        border-bottom: 1px solid #c0c0c0;
+    }
+    .table_style2 td{
+        border-top: 0px solid #c0c0c0;
+        border-right: 0px solid #fff;
+        border-left: 0px solid #fff;
+        border-bottom: 0px solid #c0c0c0;
+    }
+
+    .table_style3{
+        border-collapse:collapse;
+    }
+
+    .table_style3 tr:nth-child(odd){ 
+    	background-color:#F7F8F8;
+    }
+
+    .table_style3 tr:nth-child(even){
+    	background-color:#CEE8E9;
+    }
+
+    /*.table_style3 tr:first-child td{		
+        text-align:center;
+
+        font-family:"微軟正黑體","標楷體","新細明體";
+        font-weight:bold;
+
+        color:#ffffff;
+        background-color:#B2D4DD;
+        border:1px solid #ffffff;
+    }*/
+
+    .table_style3 tr:first-child th{		
+        text-align:center;
+
+        font-family:"微軟正黑體","標楷體","新細明體";
+        font-weight:bold;
+
+        color:#ffffff;
+        background-color:#B2D4DD;
+        border:1px solid #ffffff;
+    }
+
+    .table_style3 td{	
+        padding:5px;
+
+        font-family:Arial;
+        
+        color:#8e4408;
+        border:1px solid #ffffff;	
+    }
+    
+
+     .table_style4{
+        border-collapse:collapse;
+    }
+
+
+    .table_style4 tr:first-child th{        
+        text-align:center;
+
+        font-family:"微軟正黑體","標楷體","新細明體";
+        font-weight:bold;
+    
+        color:#ffffff;
+        background-color:#B2D4DD;
+        border:1px solid #ffffff;
+    }
+
+    .table_style4 td{   
+        padding:5px;
+        text-align:center;
+        line-height: 1.5;
+        font-family:Arial;
+        
+        color:#8e4408;
+        border:1px solid #ffffff;   
+    }

@@ -1,0 +1,113 @@
+/*
+-------------------------------------------------------
+結構
+-------------------------------------------------------
+主結構    
+    #container  容器區塊 
+    #header     標題區塊
+    #content    內容區塊
+    #footer     註腳區塊
+
+外部主結構
+    無
+
+主結構結構單元    
+    container.css   
+    header.css
+    content.css
+    footer.css
+
+外部結構單元
+    ../../../../css/structure/content.css
+*/
+
+/*
+-------------------------------------------------------
+主結構結構單元
+-------------------------------------------------------
+*/    
+    @import url('container.css');   
+    @import url('header.css');
+    @import url('content.css');
+    @import url('footer.css');
+
+/*
+-------------------------------------------------------
+外部結構單元
+-------------------------------------------------------
+引用
+    mod_cont    模組內容表格
+    mod_cont_1  模組內容表格,樣式1
+    mod_cont_2  模組內容表格,樣式2
+*/
+    @import url('../../../../css/structure/content.css');
+
+/*
+-------------------------------------------------------
+主結構
+-------------------------------------------------------
+*/
+    /* body區塊 */
+    body{
+        margin:0;
+        padding:0;
+        background-color:#fff;
+
+        text-align: justify;
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        color: #333;
+    }
+
+    /* 容器區塊 */
+    #container{
+        position:relative;
+
+        margin-top:0px;
+
+        width:100%;
+        border:0px solid #f00;
+        background-color:#fff;
+    }
+
+    /* 標題區塊 */
+    #header{
+        position:relative;
+        top:0;
+        left:0;
+        
+        width:99.9%;
+        height:50px;
+
+        border:1px solid #ccc;
+        background-color:#e1e1e1;
+    }
+
+    /* 內容區塊 */
+    #content{
+        position:relative;
+        margin:10px auto;
+
+        width:1000px;
+
+        border:0px solid #f00;
+        background-color:#fff;
+    }
+
+    /* 註腳區塊 */
+    #footer{
+        position:relative;
+        margin:0 auto;
+
+        width:1000px;
+
+        border:0px solid #ccc;
+        border-top:1px solid #ccc;
+        background-color:#fff;
+    }
+
+/*
+-------------------------------------------------------
+外部主結構
+-------------------------------------------------------
+*/

@@ -1,0 +1,109 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../code.css" media="screen" />
+    <script type="text/javascript" src="../code.js"></script>
+
+    <style>
+        /*
+        //-------------------------------------------------------
+        //分頁列css定義,覆蓋預設
+        //-------------------------------------------------------
+        //結構
+        //-------------------------------------------------------
+        //page_container (span 元素)        容器物件
+        //  page_tbl (table 元素)           分頁列表格
+        //      page_tr (tr 元素)           分頁列表格列
+        //          page_info (td 元素)     資訊欄位
+        //          page_first (td 元素)    第一頁
+        //          page_prev (td 元素)     上一頁
+        //          page_next (td 元素)     下一頁
+        //          page_last (td 元素)     最末頁
+        //          page_normal (td 元素)   一般,非現在
+        //          page_current (td 元素)  現在
+        //          page_hover (td 元素)    滑鼠移入
+        //-------------------------------------------------------
+        */
+            .page_container{
+                border:0px solid #f00;
+                display:inline-block;
+                padding:0px;
+            }
+            .page_tbl{
+                font-size:10pt;
+                border:0px solid #0f0;
+            }
+            .page_tbl td{
+                padding:5px 10px;
+                border:1px solid #e1e1e1;
+            }
+
+            .page_tbl td.page_info,
+            .page_tbl td.page_first,
+            .page_tbl td.page_prev,
+            .page_tbl td.page_next,
+            .page_tbl td.page_last,
+            .page_tbl td.page_normal{
+                background-color:#fff;
+                color:#333;
+            }
+
+            .page_tbl td.page_current{
+                border:1px solid #999;
+                background-color:#ffcc66;
+                color:#fff;
+            }
+
+            .page_tbl td.page_hover{
+                background-color:#ffcc66;
+                color:#fff;
+            }
+    </style>
+</Head>
+
+<Body>
+
+<span id="page1"></span>
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+
+    //分頁列
+    var cid      ="page1";  //容器id
+    var numrow   =39;       //共39筆
+    var psize    =5;        //單頁5筆
+    var pnos     =8;        //共分8頁
+    var pinx     =5;        //目前所在頁,第5頁
+    var sinx     =21;       //目前所在頁,值域起始值,第21筆
+    var einx     =25;       //目前所在頁,值域終止值,第25筆
+    var list_size=3;        //分頁列顯示筆數,3
+    var url_args ={};       //連結資訊
+    url_args1 ={
+        'pinx_name' :'pinx',
+        'psize_name':'psize',
+        'page_name' :'query.php'
+    }
+
+    url_args2 ={
+        'pinx_name' :'pinx',
+        'psize_name':'psize',
+        'page_name' :'query.php',
+        'page_args' :{
+            'arg1':'參數1',
+            'arg2':'參數2'
+        }
+    }
+
+    window.onload=function(){
+        var opage=pages(cid,numrow,psize,pnos,pinx,sinx,einx,list_size,url_args1);
+        //alert(opage.tbl.rows[0].cells.length);
+    }
+</script>
+
+</Body>
+</Html>

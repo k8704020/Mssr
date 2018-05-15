@@ -1,0 +1,139 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../code.css" media="screen" />
+    <script type="text/javascript" src="../code.js"></script>
+    <style>
+        /* 查詢表單列css定義 */
+        .qform_sbtn,.qform_abtn,.qform_rbtn{
+            border:0px solid #e1e1e1;
+            padding:2px;
+            margin:0px 1px;
+            background:#ffcc66;
+        }
+        .qform_sbtn_over,.qform_abtn_over,.qform_rbtn_over{
+            border:0px solid #e1e1e1;
+            padding:2px;
+            margin:0px 1px;
+            background:#ff9966;
+        }
+    </style>
+</Head>
+
+<Body>
+
+<!-- 查詢表單列1 -->
+<span id="qform1"></span><br/>
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//範例
+//-------------------------------------------------------
+
+    //設定
+    var configs={
+        'type1':{
+            'text'      :'文字方塊',
+            'type'      :'text',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :'',
+            'className' :'qform_text'
+        },
+        'type2':{
+            'text'      :'下拉選單',
+            'type'      :'select',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_select'
+        },
+        'type3':{
+            'text'      :'圈選方塊',
+            'type'      :'radio',
+            'name'      :'name',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_radio'
+        },
+        'type4':{
+            'text'      :'核取方塊',
+            'type'      :'checkbox',
+            'name'      :'name[]',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_checkbox'
+        }
+    };
+
+    var o_qform=qform(id='qform1',configs);
+    var o_qform_form   =o_qform.qform_form;
+    var o_qform_tbl    =o_qform.qform_tbl;
+    var o_qform_type   =o_qform.qform_type;
+    var o_qform_sbtn   =o_qform.qform_sbtn;
+    var o_qform_abtn   =o_qform.qform_abtn;
+    var o_qform_rbtn   =o_qform.qform_rbtn;
+    var o_qform_tbl_mtd=o_qform.qform_tbl_mtd;
+
+    o_qform_form.action="bend.php";
+    o_qform_form.method="POST";
+
+    o_qform_sbtn.onclick=function(){
+        o_qform_form.submit();
+    }
+    o_qform_sbtn.onmouseover=function(){
+        this.style.cursor="pointer";
+        this.className="qform_sbtn_over";
+    }
+    o_qform_sbtn.onmouseout=function(){
+        this.style.cursor="";
+        this.className="qform_sbtn";
+    }
+
+    o_qform_abtn.onclick=function(){
+        var key=o_qform_type.options[0].value;
+        o_qform_tbl_mtd.innerHTML="";
+        o_qform_form.submit();
+    }
+    o_qform_abtn.onmouseover=function(){
+        this.style.cursor="pointer";
+        this.className="qform_abtn_over";
+    }
+    o_qform_abtn.onmouseout=function(){
+        this.style.cursor="";
+        this.className="qform_abtn";
+    }
+
+    o_qform_rbtn.onclick=function(){
+        var inx=o_qform_type.selectedIndex;
+        var key=o_qform_type.options[inx].value;
+        o_qform_tbl_mtd.innerHTML="";
+        o_qform_type.options[inx].selected=true;
+        o_qform._createElement(o_qform_tbl_mtd,key);
+    }
+    o_qform_rbtn.onmouseover=function(){
+        this.style.cursor="pointer";
+        this.className="qform_rbtn_over";
+    }
+    o_qform_rbtn.onmouseout=function(){
+        this.style.cursor="";
+        this.className="qform_rbtn";
+    }
+</script>
+
+</Body>
+</Html>
+

@@ -1,0 +1,226 @@
+/*
+-------------------------------------------------------
+content.css
+-------------------------------------------------------
+*/
+
+/*
+-------------------------------------------------------
+其他
+-------------------------------------------------------
+*/
+
+    /* 模組內容表格 */
+    .mod_cont{
+        border-collapse:collapse;
+    }
+    .mod_cont .tl{
+        width:8px;
+        height:8px;
+        background:url('img/content/mod_cont/tl.jpg') no-repeat;
+    }
+    .mod_cont .top{
+        background:url('img/content/mod_cont/top.jpg') repeat-x;
+    }
+    .mod_cont .tr{
+        width:8px;
+        height:8px;
+        background:url('img/content/mod_cont/tr.jpg') no-repeat;
+    }
+    .mod_cont .bl{
+        width:8px;
+        height:8px;
+        background:url('img/content/mod_cont/bl.jpg') no-repeat;
+    }
+    .mod_cont .bottom{
+        background:url('img/content/mod_cont/bottom.jpg') repeat-x;
+    }
+    .mod_cont .br{
+        width:8px;
+        height:8px;
+        background:url('img/content/mod_cont/br.jpg') no-repeat;
+    }
+    .mod_cont .cont{
+        background:url('img/content/mod_cont/cont.jpg') repeat;
+        border-left:1px solid #e1e1e1;
+        border-right:1px solid #e1e1e1;
+        padding:10px;
+    }
+
+    /* 模組內容表格,樣式1 */
+    .mod_cont_1{
+        border-collapse:collapse;
+    }
+    .mod_cont_1 .top_l{
+        width:17px;
+        height:41px;
+        background:url('img/content/mod_cont_1/top_l.jpg') no-repeat;
+    }
+    .mod_cont_1 .top_c{
+        position:relative;
+        height:41px;
+        background:url('img/content/mod_cont_1/top_c.jpg') repeat-x;
+    }
+    .mod_cont_1 .top_r{
+        width:16px;
+        height:41px;
+        background:url('img/content/mod_cont_1/top_r.jpg') no-repeat;
+    }
+
+    .mod_cont_1 .middle_l{
+        width:17px;
+        background:url('img/content/mod_cont_1/middle_l.jpg') repeat-y;
+    }
+    .mod_cont_1 .middle_c{
+        position:relative;
+        background:#f6f6f8;
+    }
+    .mod_cont_1 .middle_r{
+        width:17px;
+        background:url('img/content/mod_cont_1/middle_r.jpg') repeat-y;
+    }
+
+    .mod_cont_1 .bottom_l{
+        width:17px;
+        height:20px;
+        background:url('img/content/mod_cont_1/bottom_l.jpg') no-repeat;
+    }
+    .mod_cont_1 .bottom_c{
+        position:relative;
+        background:url('img/content/mod_cont_1/bottom_c.jpg') repeat-x;
+    }
+    .mod_cont_1 .bottom_r{
+        width:16px;
+        height:20px;
+        background:url('img/content/mod_cont_1/bottom_r.jpg') no-repeat;
+    }
+
+    .mod_cont_1 div.title{
+        position:relative;
+        border:0px solid #f00;
+        height:41px;
+    }
+    .mod_cont_1 img.title_left{
+        position:absolute;
+        top:10px;left:0px;
+    }
+    .mod_cont_1 img.title_right{
+        position:absolute;
+        top:10px;right:0px;
+    }
+    .mod_cont_1 span.title_left{
+        display:block;
+        position:absolute;
+        top:10px;left:0px;
+    }
+    .mod_cont_1 span.title_right{
+        display:block;
+        position:absolute;
+        top:10px;right:0px;
+    }
+
+    .mod_cont_1 div.footer{
+        position:relative;
+        border:0px solid #f00;
+        height:20px;
+    }
+    .mod_cont_1 span.footer_left{
+        position:absolute;
+        display:block;
+        border:0px solid #f00;
+        top:-5px;left:0px;
+    }
+    .mod_cont_1 span.footer_right{
+        position:absolute;
+        display:block;
+        border:0px solid #f00;
+        top:-5px;right:0px;
+    }
+
+    /* 模組內容表格,樣式2 */
+    .mod_cont_2{
+        border-collapse:collapse;
+    }
+    .mod_cont_2 .top_l{
+        width:17px;
+        height:42px;
+        background:url('img/content/mod_cont_2/top_l.jpg') no-repeat;
+    }
+    .mod_cont_2 .top_c{
+        position:relative;
+        height:42px;
+        background:url('img/content/mod_cont_2/top_c.jpg') repeat-x;
+    }
+    .mod_cont_2 .top_r{
+        width:20px;
+        height:42px;
+        background:url('img/content/mod_cont_2/top_r.jpg') no-repeat;
+    }
+
+    .mod_cont_2 .middle_l{
+        width:17px;
+        background:url('img/content/mod_cont_2/middle_l.jpg') repeat-y;
+    }
+    .mod_cont_2 .middle_c{
+        position:relative;
+        background:#ffffff;
+    }
+    .mod_cont_2 .middle_r{
+        width:20px;
+        background:url('img/content/mod_cont_2/middle_r.jpg') repeat-y;
+    }
+
+    .mod_cont_2 .bottom_l{
+        width:17px;
+        height:17px;
+        background:url('img/content/mod_cont_2/bottom_l.jpg') no-repeat;
+    }
+    .mod_cont_2 .bottom_c{
+        position:relative;
+        background:url('img/content/mod_cont_2/bottom_c.jpg') repeat-x;
+    }
+    .mod_cont_2 .bottom_r{
+        width:20px;
+        height:17px;
+        background:url('img/content/mod_cont_2/bottom_r.jpg') no-repeat;
+    }
+
+    .mod_cont_2 div.title{
+        position:relative;
+        border:0px solid #f00;
+        height:41px;
+    }
+    .mod_cont_2 img.title_left{
+        position:absolute;
+        top:10px;left:0px;
+    }
+    .mod_cont_2 img.title_right{
+        position:absolute;
+        top:10px;right:0px;
+    }
+    .mod_cont_2 span.title_left{
+        position:absolute;
+        top:10px;left:0px;
+    }
+    .mod_cont_2 span.title_right{
+        position:absolute;
+        top:10px;right:0px;
+    }
+
+    .mod_cont_2 div.footer{
+        position:relative;
+        border:0px solid #f00;
+        height:20px;
+    }
+    .mod_cont_2 span.footer_left{
+        position:absolute;
+        display:block;
+        border:0px solid #f00;
+        top:-5px;left:0px;
+    }
+    .mod_cont_2 span.footer_right{
+        position:absolute;
+        display:block;
+        border:0px solid #f00;
+        top:-5px;right:0px;
+    }

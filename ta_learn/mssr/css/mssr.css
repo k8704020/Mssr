@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*------------------------------------上方導航列-----------------------------------------------------------*/
+#top-navigation-wrap{
+	background:#87CDDC;
+}
+
+/*------------------------------------導航列右側(至頂連接)-----------------------------------------------------*/
+
+#top-show li a:hover{
+	color:#FDFBE3;
+	background:#757F7C;	
+}
+
+#top-show li ul{
+	background:#595F5D;
+}
+
+#top-show li ul li a{
+	background:#3E3A39;
+	color:#fff;		
+}
+
+
+/*-------------------------------------logo及統計細項區----------------------------------------------------*/
+.logo{
+	color:#87CDDC;
+}
+
+.logo_min{
+	color:#757F7C;	
+}
+
+/*全年級 or 該班級資料統計*/
+#show-message{
+	height:80px;
+	color:#437C85;
+	border:1px solid #87CDDC;
+	letter-spacing:1px;	
+}
+
+#message-tab li a{
+	color:#000;
+	background:#CEE8E9; 
+	border: 1px solid #B2D4DD;
+}
+
+.message-info {	
+	color:#FF0202; 
+	border-right:1px solid #B2D4DD; 
+	border-left:1px solid #B2D4DD; 
+	border-bottom:1px solid #B2D4DD; 
+	background:#F7F8F8;
+}
+
+#mid-nav li a{
+	color:#fff;
+	background:#87CDDC;		
+}
+
+#mid-nav li a:hover{    /* 注意顏色*/
+	color:#FDFBE3;
+	background:#437C85;
+}
+
+#mid-nav li ul{	
+	background:#437C85;
+	color:#222;	
+}
+
+#mid-nav li ul li a{
+	background:#437C85;
+	color:#fff;	
+}
+#mid-nav li ul li a:hover{
+	color:#437C85;
+	background:#87CDDC;
+}
+
+.tabs li {
+	background:#EFEFEF;
+}
+
+.tabs li a {
+	color:#000;
+}
+
+.tabs li a:hover{
+	color:#757F7C;
+}
+	
+.tabs li.active{
+	color:#757F7C;
+	background:#FFF;
+	border:1px solid #87CDDC;
+	border-bottom:2px solid #FFF;
+}
+
+/*------------------------------------------內容部分-區塊顯示-TABLE-----------------------------------------------*/
+#wrap2{	
+	height:100%;
+	background:#fff;
+	border:1px solid #87CDDC;
+}
+
+.content{
+	border:1px solid #ffffff;
+}
+
+.content_title{
+	color:#87CDDC;
+}
+
+.content tr:nth-child(odd){ 
+	background-color:#F7F8F8;
+}
+
+.content tr:nth-child(even){
+	background-color:#CEE8E9;
+}
+
+.content tr:first-child td{
+	font-size:18px;
+	color:#ffffff;
+	background-color:#B2D4DD;
+	border:1px solid #ffffff;
+}
+
+.content td{
+	color:#8e4408;
+	border:1px solid #ffffff;	
+}
+
+/*------------------------------------------版權顯示----------------------------------------------------*/
+#copyright{
+	color:#000;
+}

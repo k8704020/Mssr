@@ -1,0 +1,76 @@
+/*
+-------------------------------------------------------
+default
+-------------------------------------------------------
+
+*/
+    /* 標題 h1,h2,h3 */
+    h1,h2,h3{
+        font-family: Helvetica,Verdana,"LiHei Pro","新細明體",sans-serif;
+        margin:0;
+        padding:0;
+    }
+    h1{
+        font-size  : 12pt;
+        font-weight: 300;
+        color      : #333;
+        border:0px solid #ccc;
+    }
+    h2{
+        font-size  : 10pt;
+        font-weight: 300;
+        color      : #333;
+        border:0px solid #ccc;
+    }
+    h3{
+        font-size  : 9pt;
+        font-weight: 300;
+        color      : #333;
+        border:0px solid #ccc;
+    }
+
+    /* 連結 link */
+    a:link,a:visited{
+        font-size:10pt;
+        font-weight:normal;
+        text-decoration:none;
+        color:#4e4e4e;
+    }
+    a:hover,a:active{
+        font-weight:normal;
+        text-decoration:underline;
+        color:#3571d4;
+    }
+
+    /* 表單 */
+    form{
+        margin:0px;
+    }
+
+    /* textarea */
+    .txta_1{
+        resize:none;
+        border:1px solid #f1f1f1;
+        width:99%;
+    }
+    .txta_2{
+        resize:none;
+        border:1px solid #f1f1f1;
+    }
+    .txta_3{
+        resize:none;
+    }
+
+    /* 外框虛線 */
+    html, body, div, span, object, iframe, h1, h2, h3, 
+    h4, h5, h6, p, pre, a, abbr, em, font, img,
+    strong, sub, sup, ol, ul, li, form, table, 
+    tbody, tr, th, td { 
+        outline:0; 
+    }
+
+    /* 自動換行,註:需搭配width屬性使用,才會有效果 */
+    .auto_wrap{
+        word-break: break-all;
+        word-wrap: break-word;
+    }

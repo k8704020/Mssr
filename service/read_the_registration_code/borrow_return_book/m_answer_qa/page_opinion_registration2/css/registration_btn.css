@@ -1,0 +1,101 @@
+.btn_1{
+	position:absolute;
+	width:161px;
+	height:76px;
+	background: url('../img/btn_list_1.png') 0 -15px;
+}
+.btn_1:hover {
+    background: url('../img/btn_list_1.png') 0 -106px;
+}
+
+.btn_2{
+	position:absolute;
+	width:172px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -161px -15px;
+}
+.btn_2:hover {
+    background: url('../img/btn_list_1.png') -161px -106px;
+}
+
+.btn_3{
+	position:absolute;
+	width:161px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -333px -15px;
+}
+.btn_3:hover {
+    background: url('../img/btn_list_1.png') -333px -106px;
+}
+.btn_4{
+	position:absolute;
+	width:172px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -494px -15px;
+}
+.btn_4:hover {
+    background: url('../img/btn_list_1.png') -494px -106px;
+}
+.btn_5{
+	position:absolute;
+	width:197px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -666px -15px;
+}
+.btn_5:hover {
+    background: url('../img/btn_list_1.png') -666px -106px;
+}
+.btn_6{
+	position:absolute;
+	width:197px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -863px -15px;
+}
+.btn_6:hover {
+    background: url('../img/btn_list_1.png') -863px -106px;
+}
+.btn_7{
+	position:absolute;
+	width:162px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -1060px -15px;
+}
+.btn_7:hover {
+    background: url('../img/btn_list_1.png') -1060px -106px;
+}
+.btn_8{
+	position:absolute;
+	width:167px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -1222px -15px;
+}
+.btn_8:hover {
+    background: url('../img/btn_list_1.png') -1222px -106px;
+}
+.btn_9{
+	position:absolute;
+	width:254px;
+	height:76px;
+	background: url('../img/btn_list_1.png') -1389px -15px;
+}
+.btn_9:hover {
+    background: url('../img/btn_list_1.png') -1389px -106px;
+}
+.btn_10{
+	position:absolute;
+	width:284px;
+	height:91px;
+	background: url('../img/btn_list_1.png') -1643px 0;
+}
+.btn_10:hover {
+    background: url('../img/btn_list_1.png') -1643px -91px;
+}
+.btn_11{
+	position:absolute;
+	width:284px;
+	height:91px;
+	background: url('../img/btn_list_1.png') -1927px 0;
+}
+.btn_11:hover {
+    background: url('../img/btn_list_1.png') -1927px -91px;
+}

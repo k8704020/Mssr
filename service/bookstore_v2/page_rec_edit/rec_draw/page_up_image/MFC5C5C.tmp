@@ -1,0 +1,429 @@
+<?php
+//-------------------------------------------------------
+//版本編號 2.0
+//明日星球,書店
+//(內頁)  //主頁面 or 內頁
+//-------------------------------------------------------
+
+    //---------------------------------------------------
+    //設定與引用
+    //---------------------------------------------------
+
+        //SESSION
+        @session_start();
+
+        //啟用BUFFER
+        @ob_start();
+
+        //外掛設定檔
+        require_once(str_repeat("../",5).'config/config.php');
+
+        //外掛函式檔
+        $funcs=array(
+                    APP_ROOT.'inc/code'
+                    );
+        func_load($funcs,true);
+
+        //清除並停用BUFFER
+        @ob_end_clean();
+
+    //---------------------------------------------------
+    //有無維護
+    //---------------------------------------------------
+
+    //---------------------------------------------------
+    //有無登入
+    //---------------------------------------------------
+
+    //---------------------------------------------------
+    //重複登入
+    //---------------------------------------------------
+
+    //---------------------------------------------------
+    //SESSION
+    //---------------------------------------------------
+
+    //---------------------------------------------------
+    //權限,與判斷
+    //---------------------------------------------------
+
+    //---------------------------------------------------
+    //接收,設定參數
+    //---------------------------------------------------
+//$_GET['book_sid']='mbc1209320140616022036701';
+
+
+        //SESSION
+		$user_id    =(isset($_SESSION['uid']))?(int)$_SESSION['uid']:'0';
+		$permission =(isset($_SESSION['permission']))?trim($_SESSION['permission']):'0';
+
+        //GET
+        $book_sid   =(isset($_GET['book_sid']))?trim($_GET['book_sid']):'';
+
+    //---------------------------------------------------
+    //檢驗參數
+    //---------------------------------------------------
+
+		if($permission =='0'||$user_id=='0' || $book_sid=='') die("喔喔 你非法進入喔 可能是沒有權限進入或是尚未登入");
+
+	//---------------------------------------------------
+	//SQL
+	//---------------------------------------------------
+
+    //---------------------------------------------------
+    //資料,設定
+    //---------------------------------------------------
+
+        //網頁標題
+        $title="明日星球,書店";
+
+        //已上傳圖片設置
+        $upload_cno_limit=3;
+        $upload_cno=0;
+
+        $root=str_repeat("../",5)."info/user";
+        $path="{$root}/{$user_id}/book/{$book_sid}/draw/bimg";
+
+        for($i=1;$i<=$upload_cno_limit;$i++){
+            $img_path="{$path}/upload_".$i.".jpg";
+            if(file_exists($img_path)){
+                $upload_cno++;
+            }
+        }
+?>
+<!DOCTYPE HTML>
+<Html>
+<Head>
+    <Title><?php echo $title;?></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=<?php echo Charset;?>">
+    <meta http-equiv="Content-Language" content="<?php echo Content_Language;?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo meta_keywords($key='mssr');?>
+    <?php echo meta_description($key='mssr');?>
+    <?php echo bing_analysis($allow=true);?>
+    <?php echo robots($allow=true);?>
+
+    <!-- 通用 -->
+    <link rel="stylesheet" type="text/css" href="../../../../../inc/code.css" media="all" />
+
+    <!-- 專屬 -->
+    <link rel="stylesheet" href="css/code.css">
+
+    <style>
+		.bar_1
+		{
+			text-align:center;
+			border:1px solid;
+			
+			box-shadow: -2px -2px 2px #995;
+			font-size:28px;
+			width:600px;
+			height:120px;
+		
+			position: absolute;
+			top:340px;
+			left:80px;
+			transition: 0.5s;
+		}
+		.bar_2
+		{
+			text-align:center;
+			border:1px solid;
+			color:#AAA;
+			
+			box-shadow: 4px 4px 2px #440;
+			font-size:20px;
+			text-shadow:#666
+			width:600px;
+			height:120px;
+		
+			position: absolute;
+			top:340px;
+			left:80px;
+			transition: 0.5s;
+		}
+		.bar_2_s
+		{
+			text-align:center;
+			border:4px solid #0AF;
+			color:#AAA;
+			
+			box-shadow: 4px 4px 2px #440;
+			font-size:20px;
+			text-shadow:#666
+			width:600px;
+			height:120px;
+		
+			position: absolute;
+			top:340px;
+			left:80px;
+			transition: 0.5s;
+		}
+    </style>
+</head>
+
+<body>
+	<!--==================================================
+    html內容
+    ====================================================== -->
+<!-- 3張選擇圖示 -->
+<div style="position:absolute; width:110px; height:70px; top:27px; left:41px;" class="bar_2_s"><?PHP if(file_exists("{$path}/upload_1.jpg")){?><img src = "<?PHP echo "{$path}/upload_1.jpg";?>" style="position:absolute; width:110px; height:70px; top:0px; left:0px;"><?PHP }else{?>尚未上傳...<?PHP } ?></div>
+<div style="position:absolute; width:110px; height:70px; top:120px; left:41px;"class="bar_2"><?PHP if(file_exists("{$path}/upload_2.jpg")){?><img src = "<?PHP echo "{$path}/upload_2.jpg";?>" style="position:absolute; width:110px; height:70px; top:0px; left:0px;"><?PHP }else{?>尚未上傳...<?PHP } ?></div>
+<div style="position:absolute; width:110px; height:70px; top:213px; left:41px;"class="bar_2"><?PHP if(file_exists("{$path}/upload_3.jpg")){?><img src = "<?PHP echo "{$path}/upload_3.jpg";?>" style="position:absolute; width:110px; height:70px; top:0px; left:0px;"><?PHP }else{?>尚未上傳...<?PHP } ?></div>
+<!-- 大圖示 -->
+<div style="background-color:#3C6; position:absolute; width:500px; height:300px; top:27px; left:175px;"class="bar_2"><img style=" position:absolute; position:absolute; width:500px; height:300px; top:0px; left:0px;">
+	<?PHP if(file_exists("{$path}/upload_1.jpg")){?><img src = "<?PHP echo "{$path}/upload_1.jpg";?>" style="position:absolute; width:500px; height:300px; top:0px; left:0px;"><?PHP }else{?>尚未上傳...<?PHP } ?>
+</div>
+
+    <form name="Form1" id="Form1" action="" method="post" enctype="multipart/form-data" onsubmit="return false">
+    <table cellpadding="0" cellspacing="0" border="0" width="700px" height="400px" style="position:relative;background-color:#fff;border:0px solid #fff; display:none; " rules=''/>
+        <tr>
+            <td width="200px" height="400px" style="position:relative;border-right:1px solid #ebebeb; ">
+
+                <!-- 預覽區塊 -->
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="position:absolute;left:0;top:25px;"/>
+                    <tr>
+                        <td height="70px" align='center' valign='top'>
+                            預覽區域字眼告知(CSS OR 圖片)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="150px" align='center'>
+                            <div class='holder' id='holder_result'>
+                                <img width='200px' height='150px' id="result_image" class='img_container' title='result_image'/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- 控制區塊 -->
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" valign="bottom" style="position:absolute;left:0px;bottom:50px;"/>
+                    <tr><td align='center'>
+                            <div style="position:relative;top:-15px;">選擇圖片序號：
+                                <span style="position:relative;margin-left:5px;"><input type="radio" name="file_no" value="1" checked>
+                                    <span style="position:relative;top:2px;left:2px;">1</span>
+                                </span>
+                                <span style="position:relative;margin-left:5px;"><input type="radio" name="file_no" value="2">
+                                    <span style="position:relative;top:2px;left:2px;">2</span>
+                                </span>
+                                <span style="position:relative;margin-left:5px;"><input type="radio" name="file_no" value="3">
+                                    <span style="position:relative;top:2px;left:2px;">3</span>
+                                </span>
+                            </div>
+                            <span id="BtnU" class='btn btn-success'>上傳</span>
+                            <input id="file" name="file" type="file" class="form_text" style='width:68px;position:relative;top:4px;'/>
+                            <input type="hidden" id="book_sid" name="book_sid" value="<?php echo addslashes($book_sid);?>">
+                    </td></tr>
+                </table>
+
+            </td>
+			
+            <!-- 已上傳之圖片 -->
+            <td width="500px" height="400px" align='center' style="position:relative;" valign="middle">
+                <?php $has_img=false;?>
+                <?php for($i=1;$i<=$upload_cno_limit;$i++):?>
+                    <?php
+                        $img_path="{$path}/upload_".$i.".jpg";
+                        if(file_exists($img_path)):
+                            $has_img=true;
+                    ?>
+                        <img id='view_img' src="<?php echo $img_path;?>" width="495px" height="330px" border="0" alt="圖片"
+                        style="width:495px;height:330px;"/>
+                        <div style='position:relative;height:60px;top:10px;'>
+                            <span><input type="button" id="BtnR" name="BtnR" value="重新整理" class="form_text" style="float:left;position:relative;left:5px;" onclick="location.reload();void(0);"></span>
+                            <span><input type="button" id="Btn_prev" name="Btn_prev" value="上一張" class="form_text"></span>
+                            編號：<span id='img_no' no="<?php echo $i;?>"><?php echo $i;?></span>&nbsp;/&nbsp;共&nbsp;<?php echo $upload_cno;?>&nbsp;張圖片
+                            <span><input type="button" id="Btn_next" name="Btn_next" value="下一張" class="form_text"></span>
+                        </div>
+                        <?php break;?>
+                    <?php endif;?>
+                <?php endfor;?>
+
+                <!-- 無任何圖片 -->
+                <?php if(!$has_img):;?>
+                    <img id='view_img' src="img/noimg.gif" width="300px" height="200px" border="0" alt="圖片"
+                    style="width:300px;height:200px;"/>
+                <?php endif;?>
+            </td>
+        </tr>
+    </table>
+    </form>
+
+<!-- 拖曳區塊 (隱藏) -->
+<div class='holder' id="holder" style='display:none;'>
+    <div id='holder_helper'>
+        <h2 id="holder_helper_title">請拖曳圖片至此!</h2>
+    </div>
+    <img id="source_image" class='img_container' title='source_image' alt='source_image'/>
+</div>
+
+<script type="text/javascript" src="../../../../../lib/jquery/basic/code.js"></script>
+<script type="text/javascript" src="../../../../../lib/jquery/ui/code.js"></script>
+<script type="text/javascript" src="../../../../../lib/js/string/code.js"></script>
+<script type="text/javascript" src="../../../../../lib/js/array/code.js"></script>
+<script type="text/javascript" src="../../../../../lib/js/fso/code.js"></script>
+<script type="text/javascript" src="../../../../../inc/code.js"></script>
+<script type="text/javascript" src="inc/code.js"></script>
+<script type="text/javascript">
+//-------------------------------------------------------
+//初始化
+//-------------------------------------------------------
+
+    var console_out     =document.getElementById('console_out');
+    var oholder_result  =document.getElementById('holder_result');
+    var oForm1          =document.getElementById("Form1");      //表單
+    var ofile           =document.getElementById('file');       //檔案,按鈕
+    var oBtnU           =document.getElementById("BtnU");       //上傳,按鈕
+
+    var oview_img       =document.getElementById('view_img');   //顯示的圖片
+    var oimg_no         =document.getElementById('img_no');     //目前顯示的圖片編號
+    var oBtn_prev       =document.getElementById('Btn_prev');   //上一張
+    var oBtn_next       =document.getElementById('Btn_next');   //下一張
+
+    //綁定壓縮比例
+    var quality         =parseInt(7);
+    var output_format   ="jpg";
+
+    var arry_img=[];
+    var arry_img_obj=[];
+    <?php
+        for($i=1;$i<=$upload_cno_limit;$i++):
+            $img_path="{$path}/upload_".$i.".jpg";
+            if(file_exists($img_path)):
+    ?>
+                arry_img_obj[<?php echo $i;?>]=new Image();
+                arry_img_obj[<?php echo $i;?>].src="<?php echo $path?>"+"/upload_"+<?php echo $i;?>+".jpg";
+                arry_img.push(<?php echo $i;?>);
+    <?php
+            endif;
+        endfor;
+    ?>
+    //----------------------------------------------------
+    //事件
+    //----------------------------------------------------
+
+        try{
+            oBtn_prev.onclick=function(){
+            //上一張
+                var img_no=parseInt(oimg_no.getAttribute('no'));
+                for(key in arry_img){
+                    if(arry_img[key]===img_no){
+                        if(parseInt(key)===0){
+                            img_no=arry_img[parseInt(arry_img.length)-1];
+                        }else{
+                            img_no=arry_img[parseInt(key)-parseInt(1)];
+                        }
+                        break;
+                    }
+                }
+                oview_img.src=arry_img_obj[img_no].src;
+                oimg_no.setAttribute('no',img_no);
+                oimg_no.innerHTML=img_no;
+            }
+
+            oBtn_next.onclick=function(){
+            //下一張
+                var img_no=parseInt(oimg_no.getAttribute('no'));
+                for(key in arry_img){
+                    if(arry_img[key]===img_no){
+                        img_no=arry_img[parseInt(key)+parseInt(1)];
+                        break;
+                    }
+                }
+                if(in_array(img_no,arry_img)){
+                    oview_img.src=arry_img_obj[img_no].src;
+                    oimg_no.setAttribute('no',img_no);
+                    oimg_no.innerHTML=img_no;
+                }else{
+                    oview_img.src=arry_img_obj[arry_img[0]].src;
+                    oimg_no.setAttribute('no',arry_img[0]);
+                    oimg_no.innerHTML=arry_img[0];
+                }
+            }
+        }catch(e){
+        }
+
+        oBtnU.onclick=function(){
+        //上傳
+
+            var arry_type=[
+                'jpg',
+                'jpeg'
+            ]
+
+            var file=trim(ofile.value);
+            var info=pathinfo(file);
+            var filename =info['filename'];
+            var extension=info['extension'];
+
+            if(trim(file)==''){
+                alert('請選擇欲上傳的圖片!');
+                return false;
+            }
+
+            if(!in_array(extension.toLowerCase(),arry_type,false)){
+                alert('請選擇圖片檔案!');
+                return false;
+            }
+
+            if(confirm('你確定要上傳並覆蓋原圖嗎?')){
+                oForm1.action="uploadA.php";
+                oForm1.submit();
+            }else{
+                return false;
+            }
+        }
+
+    $(function() {
+    //---------------------------------------------------
+    //按鈕事件處理
+    //---------------------------------------------------
+
+        ofile.onchange=function(e){
+            e.preventDefault();
+            var file = this.files[0];
+            reader = new FileReader();
+            reader.onload = function(event) {
+                var oimg = document.getElementById("source_image");
+                    oimg.src = event.target.result;
+                    oimg.onload = function(){
+                        //進行縮圖
+                        encode();
+                    }
+            };
+            if(file.type==="image/png"){
+                output_format="png";
+            }
+            reader.readAsDataURL(file);
+            return true;
+        }
+    });
+
+    //---------------------------------------------------
+    //壓縮事件處理
+    //---------------------------------------------------
+
+        function encode(){
+            var source_image=document.getElementById('source_image');
+            var result_image=document.getElementById('result_image');
+            if (source_image.src==="") {
+                alert("請選擇欲上傳的圖片!");
+                return false;
+            }
+
+            //清空, 重新匯出
+            result_image.src='';
+            result_image.src=jic.compress(source_image,quality,output_format).src;
+
+            result_image.onload = function(){
+                var image_width =$(result_image).width(),
+                image_height    =$(result_image).height();
+                result_image.style.width  ="195px";
+                result_image.style.height ="150px";
+                result_image.style.display="block";
+            }
+        }
+
+</script>
+</body>
+</html>

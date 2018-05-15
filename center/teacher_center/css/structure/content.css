@@ -1,0 +1,420 @@
+/*
+-------------------------------------------------------
+content.css
+-------------------------------------------------------
+內容區塊(上半部)
+內容區塊(下半部)
+教師中心類別
+教師資料列表類別
+覆蓋
+*/
+
+/*
+-------------------------------------------------------
+內容區塊(上半部)
+-------------------------------------------------------
+*/
+
+    #content_top{
+        position:relative;
+
+        margin:0px auto;
+
+        width:100%;
+
+        border:0px solid #f00;
+    }
+    
+    /* logo大圖 */
+    #logo{
+        position:relative;
+        margin:15px 0px 0px 20px;
+
+        width:400px;
+        height:50px;
+
+        font-family:"微軟正黑體","標楷體","新細明體";	
+        font-size:40px;
+        font-weight:700;	
+        display:inline-block;
+        color:#87CDDC;
+
+        border:0px solid #f00;
+    }
+    
+    /* logo小圖 */
+    #logo_min{
+        position:relative;
+
+        font-family:"微軟正黑體","標楷體","新細明體";
+        font-size:20px;	
+        color:#757F7C;	
+
+        border:0px solid #f00;
+    }
+    
+/*
+-------------------------------------------------------
+內容區塊(下半部)
+-------------------------------------------------------
+*/
+
+    #content_bottom{
+        position:relative;
+
+        margin:0px auto;
+
+        width:100%;
+
+        border:0px solid #f00;
+    }
+
+    /* 導覽列 */
+    #navbar{
+        margin:0;
+        padding:0px 0px 10px;
+        
+        width:600px;
+        height:20px;
+        
+        font-size:16px;
+        font-family:"微軟正黑體","標楷體","新細明體";  
+
+        letter-spacing:1px;
+        border:0px solid #f00;
+    }
+
+    /* 導覽列 ul部分 */
+    #navbar_ul{
+        display:block;
+        padding:0;
+    }
+
+    #navbar_ul li{
+        float:left;
+        list-style:none;
+    }
+
+    #navbar_ul li a{
+        font-size:12pt;
+        -webkit-border-radius:3px 3px 0 0;
+        border-radius:3px 3px 0 0;
+        border:none;	
+        margin:18px 8px 0 0;
+        padding:5px 7px 5px 7px;
+        color:#fff;
+        background:#87CDDC;		
+    }
+
+    #navbar_ul li a:hover{
+        border-radius:3px 3px 0 0;
+        padding:5px 7px 5px 7px;
+        color:#FDFBE3;
+        background:#437C85;
+    }
+
+    #navbar_ul li ul{	
+        display:none;
+        margin:0;	
+        position:absolute;
+        padding:2px 0 0 0;		
+        -webkit-border-radius:0 0 3px 3px;
+        border-radius:0 0 3px 3px;
+        z-index:100;
+        background:#437C85;
+        color:#222;	
+    }
+
+    #navbar_ul li ul li{
+        width:100%;
+    }
+
+    #navbar_ul li ul li a{
+        border:none;
+        line-height:25px;
+        margin:0;
+        padding:0 0 0 6px;	
+        font-size:14px;
+        background:#437C85;
+        color:#fff;	
+    }
+
+    #navbar_ul li ul li a:hover{
+        color:#437C85;
+        background:#87CDDC;
+    }
+
+    #navbar_ul li:hover > ul.child{
+        display:block;
+        width:120px;
+    }
+
+    .navbar_ul_font {
+        font-size:12pt;
+        font-family:"微軟正黑體","標楷體","新細明體";  		
+    }
+
+    /* 班級快速查詢 */
+    #q_form_class_code{
+        position:relative;
+        float:right;
+        left:0px;
+        margin:0;
+        top:-10px;
+        padding:0px 0px 10px;
+        
+        width:150px;
+        height:20px;
+        
+        font-size:16px;
+        font-family:"微軟正黑體","標楷體","新細明體";  
+
+        letter-spacing:1px;
+        border:0px solid #f00;
+    }
+
+    /* 班級快速查詢 ul部分 */
+    #q_form_class_code_ul{
+        position:relative;
+        float:right;
+        display:block;
+        padding:0;
+    }
+
+    #q_form_class_code_ul li{
+        position:relative;
+        float:left;
+        list-style:none;
+    }
+
+    #q_form_class_code_ul li a{
+        font-size:12pt;
+        -webkit-border-radius:3px 3px 0 0;
+        border-radius:3px 3px 0 0;
+        border:none;	
+        margin:18px 8px 0 0;
+        padding:5px 7px 5px 7px;
+        color:#fff;
+        background:#87CDDC;		
+    }
+
+    #q_form_class_code_ul li a:hover{
+        border-radius:3px 3px 0 0;
+        padding:5px 7px 5px 7px;
+        color:#FDFBE3;
+        background:#437C85;
+    }
+
+    #q_form_class_code_ul li ul{	
+        display:none;
+        margin:0;	
+        position:absolute;
+        padding:2px 0 0 0;		
+        -webkit-border-radius:0 0 3px 3px;
+        border-radius:0 0 3px 3px;
+        z-index:100;
+        background:#437C85;
+        color:#222;	
+    }
+
+    #q_form_class_code_ul li ul li{
+        width:100%;
+    }
+
+    #q_form_class_code_ul li ul li a{
+        border:none;
+        line-height:25px;
+        margin:0;
+        padding:0 0 0 6px;	
+        font-size:14px;
+        background:#437C85;
+        color:#fff;	
+    }
+
+    #q_form_class_code_ul li ul li a:hover{
+        color:#437C85;
+        background:#87CDDC;
+    }
+
+    #q_form_class_code_ul li:hover > ul.child{
+        display:block;
+        width:120px;
+    }
+
+    .q_form_class_code_ul_font {
+        font-size:12pt;
+        font-family:"微軟正黑體","標楷體","新細明體";  		
+    }
+
+    /* 快速切換區塊 */
+    #fast_area{
+        position:absolute;
+        display:none;
+        
+        width:15px;
+        z-index:998;
+        
+        /*background-image:url(img/container/bg.gif);*/
+        background-color:#efefef;
+
+        border:0px solid #f00;
+
+        cursor: pointer;
+    }
+    /* 快速切換內容區塊 */
+    #fast_content{
+        position:absolute;
+        display:none;
+        width:120px;
+        z-index:999;
+
+        /*background-image:url(img/container/bg.gif);*/
+        background-color:#efefef;
+
+        border:0px solid #f00;        
+    }
+
+    /* 切換身份區塊, 切換班級區塊 */
+    #choose_identity, #choose_class_code{
+        position:relative;
+        display:none;
+    }
+
+/*
+-------------------------------------------------------
+教師中心類別
+-------------------------------------------------------
+*/
+    /* 中心首頁主表格 */
+    #teacher_center_div{
+        position:relative;
+        margin:0 auto;
+
+        width:935px;
+
+        left:0px;
+        top:10px;
+        margin-bottom:0px;
+
+        border:0px solid #f00;
+    }
+
+    /* 權限列表圖 */
+    #sys_list{
+        position:relative;
+
+        width:60px;
+        height:56px;;
+        margin-top:5px;
+        left:5px;
+        
+        background:#fff url('img/content/sys_list.jpg') no-repeat;
+    }   
+
+/*
+-------------------------------------------------------
+教師資料列表類別
+-------------------------------------------------------
+*/
+
+    /* 列表首頁主表格 */
+    .teacher_datalist_tbl{
+        position:relative;
+        width:950px;
+        margin-top:0px;
+    }
+    #teacher_datalist_tbl{
+        position:relative;
+        width:950px;
+        margin-top:20px;
+    }
+
+    /* 教師中心路徑選單 */
+    #teacher_center_path{
+        padding:0px;
+
+        width:300px;
+        border:0px solid #f00;
+    }
+    #teacher_center_path_cont{
+        font-size:9pt;
+        color:#333;
+    }
+    #teacher_center_path_cont .menu_cont{
+        padding:5px;
+        background:#fff;
+        border:0px solid #f00;
+        background-image:url(img/container/bg.gif);
+    }
+    #teacher_center_path_cont .menu_dot{
+        height:5px;
+        background:#fff url('img/content/dot.jpg') repeat-x;
+    }
+    #teacher_center_path_cont a:link,#teacher_center_path_cont a:visited{
+        text-decoration:none;
+    }
+    #teacher_center_path_cont a:hover,#teacher_center_path_cont a:active{
+
+    }
+
+    /* 模組資料表格外框樣式 */
+    .mod_data_tbl_outline{
+        border-radius:5px; 
+        letter-spacing:1px;
+
+        border:1px solid #87CDDC;       
+    }
+
+    /* 模組資料表格樣式 */
+    .mod_data_tbl{
+        border-collapse:collapse;
+        border:0px solid #f1f1f1;
+    }
+    .mod_data_tbl tr.header td{
+        border-top:0px solid #fff;
+        border-bottom:1px solid #e5dede;
+    }
+    .mod_data_tbl tr td{
+        height:22px;
+        border-bottom:1px dashed #e5dede;
+    }
+
+/*
+-------------------------------------------------------
+覆蓋
+-------------------------------------------------------
+*/
+
+    /* 分頁列,覆蓋預設 */
+    .page_container{
+        border:0px solid #f00;
+        display:inline-block;
+        padding:0px;
+    }
+    .page_tbl{
+        font-size:10pt;
+        border:0px solid #0f0;
+    }
+    .page_tbl td{
+        padding:5px 10px;
+    }
+
+    .page_tbl td.page_info,
+    .page_tbl td.page_first,
+    .page_tbl td.page_prev,
+    .page_tbl td.page_next,
+    .page_tbl td.page_last,
+    .page_tbl td.page_normal{
+        background-color:#fff;
+        color:#8e4408;
+    }
+
+    .page_tbl td.page_current{
+        background-color:#87CDDC;
+        color:#fff;
+    }
+
+    .page_tbl td.page_hover{
+        background-color:#87CDDC;
+        color:#fff;
+    }

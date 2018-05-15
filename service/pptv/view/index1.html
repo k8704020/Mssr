@@ -1,0 +1,41 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="index.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<div id="main" >
+    <div id="left">    
+    <audio id="mp3">
+        <source src="mp3/<?php echo $question;?>.mp3">
+    </audio>
+        <button id="btn" onClick="play()" type="button"></button>
+        <p>  點選圖片進行回答</p>
+        <p id="pro">
+			<?php echo $school;?>
+			<?php echo "<br>";?>
+			<?php echo $grade."年".$class_name."班";?>
+			<?php echo "<br>";?>
+			<?php echo $nickname?>
+		</p>
+    </div>
+    <form action="index.php" method="POST" id="right" style="background-image:url(jpg/<?php echo $question+6;?>.jpg);">
+        <button type="button" id="a" class="opt" onClick="go(1,<?php echo $question;?>)"></button>
+        <button type="button" id="b" class="opt" onClick="go(2,<?php echo $question;?>)"></button>
+        <button type="button" id="c" class="opt" onClick="go(3,<?php echo $question;?>)"></button>
+        <button type="button" id="d" class="opt" onClick="go(4,<?php echo $question;?>)"></button>
+        <input type="hidden" name="answer" value="0"/>
+        <input type="hidden" name="question" value="<?php echo $question;?>"/>
+        <input type="hidden" name="first_question" value="<?php echo $first_question;?>"/>
+        <input type="hidden" name="latest_question" value="<?php echo $latest_question;?>"/>
+        <input type="hidden" name="low_level" value="<?php echo $low_level;?>"/>
+        <input type="hidden" name="high_level" value="<?php echo $high_level;?>"/>
+        <input type="hidden" name="score" value="<?php echo $score;?>"/>
+    </form>
+	<?php if($_COOKIE["identity"]!='S') echo "<a id=\"man\" href=\"mange.php\">檢視班級成績</a>"; ?>
+	<p id="qu"><?php question_number($question);?></p>
+</div>
+</body>
+<script type="text/javascript" src="pptv_js.js"></script>
+</html>

@@ -1,0 +1,53 @@
+ 
+*{ 
+	font-family: 微軟正黑體;
+	/* font-size: 14px; */
+	/* outline: #fac solid 1px; */
+	margin: 0 auto;
+
+	
+ }
+
+#content{
+	width: 900px;
+	border: dashed 1px #aaa;
+	margin: 0 auto;
+}
+
+
+
+ .qa_div{
+ 	margin:15px;
+
+ }
+ .language_options input[type=radio] + label,.bopomofo_options input[type=radio] + label,
+ .major_topic_options input[type="checkbox"] + label,.sub_topic_options input[type="checkbox"] + label,
+ .minor_topic_options input[type="checkbox"] + label{
+ 	display: inline-block;
+ 	letter-spacing: 3.5px;
+ 	font-size: 14px;
+
+ }
+
+
+ h1{
+ 	font-size: 40px;
+ 	text-align: center;
+ }
+
+ span{
+	text-align: left;
+	font-size: 14px;
+	letter-spacing: 3.5px;
+	line-height: 1.5;
+	
+ }
+ .star{
+ 	color: #f00;
+ }
+
+
+ #submit{
+ 	margin: 0 auto;
+ }
+

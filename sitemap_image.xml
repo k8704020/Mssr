@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>http://www.cot.org.tw</loc>
+        <image:image>
+        <image:loc>http://www.cot.org.tw/mssr/service/img/sto_01.png</image:loc>
+        <image:title>明日星球, 明日書店, 明日閱讀 國立中央大學 版權所有</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>http://www.cot.org.tw/mssr/service/forum/view/index.php</loc>
+        <image:image>
+            <image:loc>http://www.cot.org.tw/mssr/service/forum/img/logo.png</image:loc>
+            <image:title>明日星球, 明日書店, 明日閱讀, 明日聊書 國立中央大學 版權所有</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>http://www.cot.org.tw/mssr/service/forum/view/article.php</loc>
+        <image:image>
+            <image:loc>http://www.cot.org.tw/mssr/service/forum/img/logo.png</image:loc>
+            <image:title>明日星球, 明日書店, 明日閱讀, 明日聊書 國立中央大學 版權所有</image:title>
+        </image:image>
+    </url>
+</urlset> 

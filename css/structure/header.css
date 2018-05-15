@@ -1,0 +1,41 @@
+/*
+-------------------------------------------------------
+header.css
+-------------------------------------------------------
+*/
+    /* 首頁logo */
+    #logo{
+        position:absolute;
+        top:0px;
+        left:0px;
+
+        width:227px;
+        height:102px;
+        border:0px solid #f00;
+        background:url('img/header/logo.jpg') no-repeat;
+    }
+
+    /* 標題選單列 */
+    #header_menu{
+        position:absolute;
+        top:5px;
+        right:18px;
+
+        border:0px solid #f00;
+    }
+
+    /* 標題頁籤列 */
+    #header_tab{
+        position:absolute;
+
+        bottom:1px;
+        right:18px;
+
+        border:0px solid #fff;
+    }
+    #header_tab img{
+        float:left;
+        margin:0px;
+        display:block;
+    }
+

@@ -1,0 +1,21 @@
+/*-------------------------------------------------------*/
+/*分頁工具列   
+/*-------------------------------------------------------*/
+#list_table{
+    font-size:10pt;
+    margin-top:5px;
+    border:1px solid #ffffff;
+}
+#list_table #page_range,#list_range{
+    font-size:10pt;    
+    text-align:center;
+}
+#list_table span{
+    margin:3px 3px;
+}
+#list_table span a{
+    font-size:10pt;        
+}
+#list_table #page_jump,#page_size{
+    color:#ff0000; 
+}

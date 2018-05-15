@@ -1,0 +1,162 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+    <style>
+        .qform_container{
+            border:1px solid #f00;
+            display:inline-block;
+            padding:0px;
+        }
+        .qform_form{
+            margin:0px;
+        }
+        .qform_tbl{
+            font-size:10pt;
+            border:0px solid #0f0;
+        }
+        .qform_tbl td{
+            padding:5px 10px;
+        }
+        .qform_tbl_ltd,
+        .qform_tbl_mtd,
+        .qform_tbl_rtd{
+
+        }
+        .qform_type{
+            border:1px solid #e1e1e1;
+            padding:2px;
+        }
+        .qform_sbtn,.qform_abtn{
+            border:1px solid #e1e1e1;
+            padding:2px;
+        }
+        .qform_text{
+            border:1px solid #e1e1e1;
+            padding:3px;
+        }
+        .qform_select{
+            border:1px solid #e1e1e1;
+            padding:2px;
+        }
+    </style>
+</Head>
+
+<Body>
+
+<span id="qform1"></span>
+
+<!--
+<span id="qform1" class="qform_container">
+    <form id="qform1_form" class="qform_form">
+        <table id="qform1_tbl" class="qform_tbl" border="0">
+            <tr>
+                <td id="qform1_tbl_ltd" class="qform_tbl_ltd">
+                    <select id="qform1_type" class="qform_type">
+                        <option value="type1">文字方塊
+                        <option value="type2">下拉選單
+                        <option value="type3">圈選方塊
+                        <option value="type4">核取方塊
+                    </select>
+                </td>
+                <td id="qform1_tbl_mtd" class="qform_tbl_mtd">
+                    <input type="text" value="" class="qform_text">
+                    <select class="qform_select">
+                        <option>項目1
+                        <option>項目2
+                        <option>項目3
+                    </select>
+                </td>
+                <td id="qform1_tbl_rtd" class="qform_tbl_rtd">
+                    <input type="button" id="qform1_sbtn" class="qform_sbtn" value="查詢">
+                    <input type="button" id="qform1_abtn" class="qform_abtn" value="不分">
+                </td>
+            </tr>
+        </table>
+    </form>
+</span>
+-->
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//範例
+//-------------------------------------------------------
+
+    //容器
+    var o_qform =document.getElementById("qform1");
+    var qform_id=o_qform.id;
+    o_qform.className="qform_container";
+
+    //表單
+    var o_qform_form=document.createElement("FORM");
+    o_qform_form.className="qform_form";
+    o_qform_form.id=qform_id+"_form";
+
+    //表格
+    var o_qform_tbl =document.createElement("TABLE");
+    o_qform_tbl.className="qform_tbl";
+    o_qform_tbl.id=qform_id+"_tbl";
+
+    //列
+    var otr=o_qform_tbl.insertRow(-1);
+
+    //欄位
+    var o_qform_tbl_ltd=otr.insertCell(-1);
+    o_qform_tbl_ltd.className="qform_tbl_ltd";
+    o_qform_tbl_ltd.id=qform_id+"_tbl_ltd";
+
+    var o_qform_tbl_mtd=otr.insertCell(-1);
+    o_qform_tbl_mtd.className="qform_tbl_mtd";
+    o_qform_tbl_mtd.id=qform_id+"_tbl_mtd";
+
+    var o_qform_tbl_rtd=otr.insertCell(-1);
+    o_qform_tbl_rtd.className="qform_tbl_rtd";
+    o_qform_tbl_rtd.id=qform_id+"_tbl_rtd";
+
+    //總類,下拉
+    var qform_types={
+        'type1':'文字方塊',
+        'type2':'下拉選單',
+        'type3':'圈選方塊',
+        'type4':'核取方塊'
+    };
+    var o_qform_type=document.createElement("SELECT");
+    o_qform_type.className="qform_type";
+    o_qform_type.id=qform_id+"_type";
+    for(var key in qform_types){
+        var val=key;
+        var txt=qform_types[key];
+        var o_opt=document.createElement("OPTION");
+        o_opt.value=val;
+        o_opt.text =txt;
+        o_qform_type.options.add(o_opt);
+    }
+    o_qform_tbl_ltd.appendChild(o_qform_type);
+
+    //按鈕,查詢
+    var o_qform_sbtn=document.createElement("INPUT");
+    o_qform_sbtn.className="qform_sbtn";
+    o_qform_sbtn.id   =qform_id+"_sbtn";
+    o_qform_sbtn.type ="button";
+    o_qform_sbtn.value="查詢";
+    o_qform_tbl_rtd.appendChild(o_qform_sbtn);
+
+    //按鈕,不分
+    var o_qform_abtn=document.createElement("INPUT");
+    o_qform_abtn.className="qform_abtn";
+    o_qform_abtn.id   =qform_id+"_abtn";
+    o_qform_abtn.type ="button";
+    o_qform_abtn.value="不分";
+    o_qform_tbl_rtd.appendChild(o_qform_abtn);
+
+    //附加表格到表單
+    o_qform_form.appendChild(o_qform_tbl);
+
+    //附加表單到容器
+    o_qform.appendChild(o_qform_form);
+</script>
+
+</Body>
+</Html>
+

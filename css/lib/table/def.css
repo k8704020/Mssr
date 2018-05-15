@@ -1,0 +1,59 @@
+/*
+-------------------------------------------------------
+table
+-------------------------------------------------------
+
+    .table_style1
+    .table_style2
+    .table_style3
+    .table_style4
+*/
+
+    /* 表格樣式 */
+    .table_style1{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        border:1px solid #c0c0c0;
+    }
+    .table_style1 td{
+        border-top: 1px solid #c0c0c0;
+        border-right: 1px solid #c0c0c0;
+        border-left: 1px solid #c0c0c0;
+        border-bottom: 1px solid #c0c0c0;
+    }
+
+    .table_style2{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        border-collapse:collapse;
+        border: 1px solid #c0c0c0;
+    }
+    .table_style2 td{
+        border-top: 1px solid #c0c0c0;
+        border-right: 1px solid #c0c0c0;
+        border-left: 1px solid #c0c0c0;
+        border-bottom: 1px solid #c0c0c0;
+    }
+
+    .table_style3{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        border-collapse:collapse;
+        border: 1px solid #c0c0c0;
+    }
+    .table_style3 td{
+        border-top: 1px solid #c0c0c0;
+        border-right: 0px solid #fff;
+        border-left: 0px solid #fff;
+        border-bottom: 1px solid #c0c0c0;
+    }
+
+    .table_style4{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        border-collapse:collapse;
+        border: 1px dashed #c0c0c0;
+    }
+    .table_style4 td{
+        border: 1px dashed #c0c0c0;
+    }

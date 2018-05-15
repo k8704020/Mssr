@@ -1,0 +1,176 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../code.css" media="screen" />
+    <script type="text/javascript" src="../code.js"></script>
+</Head>
+
+<Body>
+
+<!-- 查詢表單列1 -->
+<span id="qform1"></span><p/>
+
+<!-- 查詢表單列2 -->
+<span id="qform2"></span><p/>
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//範例
+//-------------------------------------------------------
+
+    //---------------------------------------------------
+    //查詢表單列1
+    //---------------------------------------------------
+    var configs_1={
+        'type1':{
+            'text'      :'文字方塊',
+            'type'      :'text',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :'',
+            'className' :'qform_text'
+        },
+        'type2':{
+            'text'      :'下拉選單',
+            'type'      :'select',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_select'
+        },
+        'type3':{
+            'text'      :'圈選方塊',
+            'type'      :'radio',
+            'name'      :'name',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_radio'
+        },
+        'type4':{
+            'text'      :'核取方塊',
+            'type'      :'checkbox',
+            'name'      :'name[]',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_checkbox'
+        }
+    };
+
+    var o_qform1=qform(id='qform1',configs_1);
+    var o_qform1_form   =o_qform1.qform_form;
+    var o_qform1_type   =o_qform1.qform_type;
+    var o_qform1_sbtn   =o_qform1.qform_sbtn;
+    var o_qform1_abtn   =o_qform1.qform_abtn;
+    var o_qform1_rbtn   =o_qform1.qform_rbtn;
+    var o_qform1_tbl_mtd=o_qform1.qform_tbl_mtd;
+
+    o_qform1_form.action="bend.php";
+    o_qform1_form.method="POST";
+
+    o_qform1_sbtn.onclick=function(){
+        o_qform1_form.submit();
+    }
+    o_qform1_abtn.onclick=function(){
+        var key=o_qform1_type.options[0].value;
+        o_qform1_tbl_mtd.innerHTML="";
+        o_qform1_form.submit();
+    }
+    o_qform1_rbtn.onclick=function(){
+        var inx=o_qform1_type.selectedIndex;
+        var key=o_qform1_type.options[inx].value;
+        o_qform1_tbl_mtd.innerHTML="";
+        o_qform1_type.options[inx].selected=true;
+        o_qform1._createElement(o_qform1_tbl_mtd,key);
+    }
+
+    //---------------------------------------------------
+    //查詢表單列2
+    //---------------------------------------------------
+    var configs_2={
+        'type1':{
+            'text'      :'姓名',
+            'type'      :'text',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :'',
+            'className' :'qform_text'
+        },
+        'type2':{
+            'text'      :'學歷',
+            'type'      :'select',
+            'id'        :'edu',
+            'name'      :'edu',
+            'vals'      :{
+                '0':'小學',
+                '1':'中學',
+                '2':'高中'
+            },
+            'className' :'qform_select'
+        },
+        'type3':{
+            'text'      :'性別',
+            'type'      :'radio',
+            'name'      :'gender',
+            'vals'      :{
+                'male'  :'男',
+                'female':'女'
+            },
+            'className' :'qform_radio'
+        },
+        'type4':{
+            'text'      :'興趣',
+            'type'      :'checkbox',
+            'name'      :'habit[]',
+            'vals'      :{
+                '1':'打球',
+                '2':'上網',
+                '3':'睡覺'
+            },
+            'className' :'qform_checkbox'
+        }
+    };
+
+    var o_qform2=qform(id='qform2',configs_2);
+    var o_qform2_form   =o_qform2.qform_form;
+    var o_qform2_type   =o_qform2.qform_type;
+    var o_qform2_sbtn   =o_qform2.qform_sbtn;
+    var o_qform2_abtn   =o_qform2.qform_abtn;
+    var o_qform2_rbtn   =o_qform2.qform_rbtn;
+    var o_qform2_tbl_mtd=o_qform2.qform_tbl_mtd;
+
+    o_qform2_form.action="bend.php";
+    o_qform2_form.method="POST";
+
+    o_qform2_sbtn.onclick=function(){
+        o_qform2_form.submit();
+    }
+    o_qform2_abtn.onclick=function(){
+        var key=o_qform2_type.options[0].value;
+        o_qform2_tbl_mtd.innerHTML="";
+        o_qform2_form.submit();
+    }
+    o_qform2_rbtn.onclick=function(){
+        var inx=o_qform2_type.selectedIndex;
+        var key=o_qform2_type.options[inx].value;
+        o_qform2_tbl_mtd.innerHTML="";
+        o_qform2_type.options[inx].selected=true;
+        o_qform2._createElement(o_qform2_tbl_mtd,key);
+    }
+</script>
+
+</Body>
+</Html>
+

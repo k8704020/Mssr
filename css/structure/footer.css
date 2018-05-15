@@ -1,0 +1,21 @@
+/*
+-------------------------------------------------------
+footer.css
+-------------------------------------------------------
+*/
+
+    #footbar{
+        position:absolute;
+        right:10px;
+        top:10px;
+        border:0px solid #f00;
+        text-align:right;
+    }
+    #footbar a:link,#footbar a:visited{
+        color:#ef841c;
+        text-decoration:none;
+    }
+    #footbar a:hover,#footbar a:active{
+        color:#ec6c01;
+        text-decoration:underline;
+    }

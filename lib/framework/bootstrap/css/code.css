@@ -1,0 +1,20 @@
+/*
+-------------------------------------------------------
+檔案: code.css
+用途: 通用性CSS定義
+日期: 2015年3月2日
+日期: 2015年3月2日
+作者: mssr_team@cl_ncu
+-------------------------------------------------------
+通用類別
+    fixed               IE10,Windows Phone OS V8修正
+
+本端類別
+    bootstrap.min       bootstrap 結構,結構單元
+*/
+    /* 通用類別 */
+    @import url('fixed.css');
+
+    /* 本端類別 */
+    @import url('bootstrap.min.css');
+

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE>
+<html>
+<header>
+</header>
+<body>
+    <table style="border: 5px double rgb(109, 2, 107);"
+                align="center" cellpadding="5" cellspacing="5" rules="all">
+    <tr>
+        <th>題目</th><th>正確</th><th>時間</th>
+    </tr>
+        <?php while($row = mysql_fetch_row($sql) ): ?>
+    <tr>
+        <td><?php echo $row[2]; ?></td>
+        <td><?php echo $row[3] == 1? 'true' : 'false'; ?></td>
+		<td><?php echo $row[4]; ?></td>
+    </tr>
+    <?php endwhile; ?>
+    <tr><td colspan="3"><a align="center" href="mange.php">回學生列表</a></td></tr>
+	</table>
+</body>
+</html>

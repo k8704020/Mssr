@@ -1,0 +1,389 @@
+@charset "utf-8";
+/* CSS Document */
+body{			
+	width:90%;				
+	background-position:center; 	
+	font-family:微軟正黑體, "Times New Roman", Times, serif;
+	line-height:1.4em;
+	font-size:16px;
+	margin:0px auto; 
+
+	
+}
+
+
+/*---------------------------navbar-top-----------------------------*/
+.navbar-top{
+	position: fixed;
+	height:50px;
+	width:90%;
+	font-size:12px;
+	background-position:center;
+	display:inline;
+	z-index: 2;
+}
+
+/*-------------------------root-------------------------------*/
+.root{			
+	position:absolute;		
+	top:55px;					
+	width:90%; 	 
+}
+
+/*---------------------------group_header------------------------------------*/
+.group_header{			
+	position:absolute;		
+	top:100px;					
+	width:90%;  
+	border:1px solid #CCC;
+	height:200px;
+	background-image:url('../image/book4.png');
+}
+
+.group_image{			
+	position:absolute;		
+	top:0px;					
+	width:25%;  
+	
+	padding:15px;
+}
+.group_info1{			
+	position:absolute;		
+	top:15px;	
+	left:13%;
+	width:30%;  
+	padding:15px;
+	height:170px;
+	background:#FFF;
+	opacity:0.95;
+    filter:alpha(opacity=95);
+	border-radius:10px;
+}
+.group_info2{			
+	position:absolute;		
+	top:15px;	
+	left:55%;
+	width:40%;  
+	padding:15px;
+	height:170px;
+	background:#FFF;
+	opacity:0.95;
+    filter:alpha(opacity=95);
+	border-radius:10px;
+}
+/*---------------------------group_header------------------------------------*/
+.book_header{			
+	position:absolute;		
+	top:100px;					
+	width:90%;  
+	border:1px solid #CCC;
+	height:200px;
+	background-image:url('../image/book_header6.jpg');
+	
+}
+
+/*-----------------------------tab_bar-------------------------------------*/
+.tab_bar{			
+	position:absolute;		
+	top:320px;					
+	width:90%; 
+	height:50px;
+	
+}
+
+/*------------------------content-------------------------------------*/
+.content{			
+	position:absolute;		
+	top:370px;					
+	width:90%;
+	
+	
+}
+
+/*------------------------left_content-------------------------------------*/
+.left_content{			
+	position:relative;		
+	top:5px; 
+	width:75%; 
+	padding:10px;
+	border-right:1px solid #CCC;
+	
+	
+}
+
+.sub_function{			
+	position:relative;		
+	top:5px; 
+	pandding:10px;
+	width:75%; 
+	
+	
+}
+
+.aside{
+	position:absolute;		
+	top:10px;		
+	left:79%;		
+	width:20%; 
+	
+}
+
+/*------------------------left_content-------------------------------------*/
+.group_index_image{			
+	position:relative;		
+	width:100%; 
+	border:1px solid #ccc;
+	height:200px;
+	
+}
+.group_index{			
+	position:relative;		
+	width:100%; 
+	margin-top:50px; 
+	clear:both; 
+	
+}
+
+
+
+
+
+/*-------------------------------table----------------------------*/
+table{}
+th, td{}
+th{					
+	text-transform:uppercase;						
+	font-size:100%;		
+	color:#FFF;		
+	letter-spacing:0.1em;	
+	background-color:#4682B4;	
+	border-bottom:4px solid #3328F4;	
+	border-top:4px solid #3328F4;
+}
+
+
+/*-----------------------------------------------發文的輸入框-----------------------------------------------------------*/
+#mssr_article_input_boxmssr_article_input_box{				
+	position:relative;								
+	width:900px; 
+	height:500px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+}
+
+
+#mssr_article_input_box_1_F{
+	position:relative;								
+	width:600px; 
+	height:400px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+	font-size:20px;
+}
+#mssr_article_input_box_1_NF{
+	position:relative;								
+	width:600px; 
+	height:400px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+	font-size:20px;
+}
+#mssr_article_input_box_3{
+	position:relative;								
+	width:600px; 
+	height:400px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+	font-size:20px;
+}
+#mssr_article_input_box_4{
+	position:relative;								
+	width:750px; 
+	height:400px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+	font-size:16px;
+}
+#mssr_article_input_box_5{
+	position:relative;								
+	width:600px; 
+	height:500px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+	font-size:16px;
+}
+
+#mssr_article_input_box_F{				
+	position:relative;								
+	width:900px; 
+	height:500px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+}
+#mssr_article_input_box_NF{				
+	position:relative;								
+	width:900px; 
+	height:500px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+}
+#mssr_input_box_pic{			position:absolute;		top:0px; 	left:90;}
+#mssr_input_box_name{			position:absolute;		top:10px;	text-align:center;	}
+#mssr_input_box_title{			position:absolute;		top:80px; 	left:10px; }
+#mssr_input_box_content_text{		position:absolute;		top:130px; 	left:10px; }
+#scaffolding_step4_content{			position:absolute;		top:160px; 	left:10px; }
+
+#mssr_input_box_scaffolding_radio{		position:absolute;		top:80px; 	left:75px;}
+#mssr_input_box_scaffolding_NF_radio{	position:absolute;		top:80px; 	left:75px;}
+#scaffolding_fiction{					position:absolute;		top:100px; 	left:75px;}
+#scaffolding_nonfiction{				position:absolute;		top:100px; 	left:75px;}
+#select_input_type{				position:relative;		top:30px;		width: 300px;}
+.mssr_input_box_radio{			position:relative;		top:60px;		display:block;}
+.mssr_input_box_radio_text{ 	position:relative;		top:40px;		left:20px;			width: 300px;}
+#mssr_input_box_submit{			position:absolute;		top:90%;		left:90%;}
+
+#input_leave{		position:absolute;		left:95%;} 
+
+#mssr_input_img_1{		position:absolute;		top:80px; 	left:40px;  width:35px;	height:35px}
+#mssr_input_img_2{		position:absolute;		top:135px; 	left:40px; 	width:35px;	height:35px}
+#mssr_input_img_3{		position:absolute;		top:190px; 	left:40px;	width:35px;	height:35px}
+#mssr_input_img_4{		position:absolute;		top:80px; 	left:410px; width:35px;	height:35px}
+#mssr_input_img_5{		position:absolute;		top:120px; 	left:410px; width:35px;	height:35px}
+/*----------------------------------------發文選擇書籍block ui-----------------------------------------------------*/
+#mssr_select_book_box{
+	position:relative;								
+	width:750px; 
+	height:450px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+}
+#mssr_select_book_box_leave{position:absolute;		left:95%;} 
+#mssr_select_book_box_skip{position:absolute;		top:90%;	left:75%}
+#mssr_select_book_box_next{position:absolute;		top:90%;	left:85%}
+#mssr_select_book_box_next-last{position:absolute;		top:90%;	left:5%}
+
+
+/*----------------------------------------邀請書籍block ui-----------------------------------------------------*/
+#invite_box{
+	position:relative;								
+	width:700px; 
+	height:440px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+}
+#invite_box_leave{		position:absolute;		left:95%;} 
+#invite_box_submit{position:absolute;		top:90%;	left:90%}
+/*----------------------------------------聯屬好友block ui-----------------------------------------------------*/
+#create_forum_friend_box{
+	position:relative;								
+	width:700px; 
+	height:400px;
+	padding:20px;
+	background-color:#FFFFFF;
+	border: 1px outset #CCC;
+}
+#joint_box_leave{			position:absolute;		left:95%;				} 
+#joint_box_check_all{		position:absolute;		top:20%;		left:5%;} 
+#joint_box_submit{			position:absolute;		top:90%;		left:90%}
+
+/*================================================主頁面-index=======================================================*/
+.index_course{		position:absolute;		top:210px;					width:60%; 	height:1120px;}
+#index_info{		display:block;			margin:2px;			 		width:98%;	height:80px; background-color:#E0FFFF;}
+#index_info_pic{	position:relative;		top:2px; 	left:1%;		width:12%; 	height:70px;}
+#index_info_name{	position:relative;		top:-60px; 	left:15%;		width:90%; 	height:90px;}
+#index_info_time{	position:relative;		top:-110px; left:75%;		width:200px;height:90px;}
+#index_user_name{	position:relative; 		top:-75px; left:38%;}
+
+
+figure{			float:left;	}
+figcaption{			text-align:center;}
+
+/*-----------------------------------------------分頁----------------------------------------------------------------*/
+.table_page{	position:absolute;		top:355px; 	width:90%; height:50px; margin:0px auto; 
+background-color:#C2DDFE; border:5px solid #FFF;
+}
+.index_table_page{position:absolute;		top:155px; 	width:60%; height:50px; 
+background-color:#C2DDFE; border:5px solid #FFF;
+}
+/*-----------------------------------------------figure----------------------------------------------------------------*/
+.figure_book{		margin:5px 5px;	width:18%; height:150px;		padding:10px;	text-align:center;}
+.figure_book img{	width:80px; height:70px;}
+.figcaption_book{	text-align:center;}
+
+.figure_people{		margin:5px 5px;	width:15%; height:90px;		padding:5px;	text-align:center;}
+.figure_people img{	width:65px; height:55px;}
+.figcaption_people{	text-align:center;}
+
+/*===============================================REPLY頁=============================================================*/
+/*-----------------------------------------------REPLY頁-發文的訊息---------------------------------------------------*/
+#mssr_reply_box_frame{			position:relative;		width:100%; 	height:190px;}
+#mssr_reply_box_pic{			position:absolute;		top:20px; 	left:2px;	width:90px; height:90px;}
+#mssr_article_box_select_book{	position:absolute;		top:25px; 	left:15%;}
+#mssr_reply_box_name{			position:absolute;		top:120px; 	left:2px;	width:90px; height:20px;}
+#mssr_reply_box_title{			position:absolute;		top:8px; left:15%;	width:84%;	height:20px;	}
+#mssr_reply_box_content{		position:absolute;		top:55px; left:15%;	width:84%; 	height:100px;	overflow-x:hidden;	overflow-y:auto;}
+#mssr_reply_box_time{			position:absolute;		top:160px; left:75%;	width:30%;	height:10px;}
+#mssr_reply_box_likepic{		position:absolute;		top:160px; left:15%;	width:30px; height:25px;}
+#mssr_reply_box_likecnt{		position:absolute;		top:160px; left:20%;	width:20px; height:25px;}
+#mssr_reply_box_replypic{		position:absolute;		top:160px; left:35%;	width:30px; height:25px;}
+#mssr_reply_box_replycnt{		position:absolute;		top:160px; left:40%;	width:20px; height:25px;}
+#mssr_reply_box_reportpic{		position:absolute;		top:160px; left:25%;	width:30px; height:25px;}
+#mssr_reply_box_reportcnt{		position:absolute;		top:160px; left:30%;	width:20px; height:25px;}		
+#mssr_reply_box_back{			position:absolute;		top:0px;   width:100px; height:25px;}	
+/*-----------------------------------------------REPLY頁-回復的訊息---------------------------------------------------*/
+#mssr_comment_box_frame{		position:relative;		top:5px; 	left:95px;	width:85%; 	height:180px;		display:block;		margin:0px 0px;}
+#mssr_comment_box_pic{			position:absolute;		top:10px; 	left:2px;	width:90px; height:90px;}
+#mssr_comment_box_select_book{	position:absolute;		top:2px; 	left:17%;}
+#mssr_comment_box_name{			position:absolute;		top:100px; 	left:2px;	width:90px; height:20px;}
+#mssr_comment_box_content{		position:absolute;		top:35px; left:17%;	width:80%; 	height:100px;	overflow-x:hidden;	overflow-y:auto;}
+#mssr_comment_box_time{			position:absolute;		top:140px; left:70%;	width:35%;	height:10px;}
+#mssr_comment_box_likepic{		position:absolute;		top:140px; left:20%;	width:30px; height:25px;}
+#mssr_comment_box_likecnt{		position:absolute;		top:145px; left:25%;	width:30px; height:25px;}
+#mssr_comment_box_deletepic{	position:absolute;		top:145px; left:40%;	width:26px; height:22px;}
+#mssr_comment_box_reportpic{	position:absolute;		top:145px; left:42%;	width:30px; height:25px;}
+#mssr_comment_box_reportcnt{	position:absolute;		top:145px; left:50%;	width:30px; height:25px;}
+/*-----------------------------------------------REPLY頁-回復留言的輸入框----------------------------------------------*/
+#mssr_comment_input_frame{		position:relative;		top:15px; 	left:95px;	width:85%; 	height:350px;		margin:0px 0px;}
+#mssr_comment_input_pic{		position:absolute;		top:20px; 	left:2px;	width:90px; height:90px;}
+#mssr_comment_input_select_book{ position:absolute;		top:5px; 	left:95px;	}
+#mssr_comment_input_select_book_text{	position:absolute;		top:10px; 	left:170px;	}
+#mssr_comment_input_select_book_name{	position:absolute;		top:10px; 	left:270px;	}
+#scaffolding_reply_text{	position:absolute;		top:40px; 	left:100px;	}
+#mssr_comment_input_name{		position:absolute;		top:100px; 	left:2px;	width:90px; height:20px;}
+#mssr_comment_input_content{	position:absolute;		top:110px; left:95px;	width:78%; 	height:200px;}
+
+#mssr_comment_input_submit{		position:absolute;		top:315px; 	left:90%; 	}	
+
+
+/*===============================================REPLY頁=============================================================*/
+/*-----------------------------------------------REPLY頁-發文的訊息---------------------------------------------------*/
+#mssr_reply_box_frame{		background-color:#F8F8FF;	border:1px solid #CCC;	border-radius:10px;}
+#mssr_reply_box_pic{}
+#mssr_reply_box_name{		color:#000000;		font-size:15px;}
+#mssr_reply_box_title{color:#000000;		font-size:15px;}
+#mssr_reply_box_content{	border:1px solid #CCC;}
+#mssr_reply_box_time{font-size:12px;}
+#mssr_reply_box_likepic{}
+#mssr_reply_box_likecnt{font-size:15px;}
+#mssr_reply_box_replypic{}
+#mssr_reply_box_replycnt{font-size:15px;}	
+/*-----------------------------------------------REPLY頁-回復的訊息---------------------------------------------------*/
+#mssr_comment_box_frame{	background-color:#F8F8FF;	border:1px solid #CCC;	border-radius:10px;}
+#mssr_comment_box_pic{}
+#mssr_comment_box_name{		color:#000000;		font-size:15px;		}
+#mssr_comment_box_content{	border:1px solid #CCC;}
+#mssr_comment_box_time{font-size:12px;}
+#mssr_comment_box_likepic{}
+#mssr_comment_box_likecnt{font-size:15px;}
+/*-----------------------------------------------REPLY頁-回復留言的輸入框----------------------------------------------*/
+#mssr_comment_input_frame{	background-color:#F0F8FF;	border:1px solid #CCC;	}
+#mssr_comment_input_pic{}
+#mssr_comment_input_name{	color:#000000;		font-size:15px;				}
+#mssr_comment_input_submit{}

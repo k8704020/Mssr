@@ -1,0 +1,67 @@
+/*
+//-------------------------------------------------------
+//查詢表單列css定義
+//-------------------------------------------------------
+//結構
+//-------------------------------------------------------
+//qform_container (span 元素)               容器物件
+//    qform_form (form 元素)                表單物件
+//        qform_tbl (table 元素)            表單列表格
+//
+//            qform_tbl_ltd (td 元素)       表單列表格.左區塊欄位
+//                qform_type(select 元素)   總類,下拉
+//
+//            qform_tbl_mtd (td 元素)       表單列表格.中區塊欄位
+//                qform_text                文字方塊
+//                qform_select              下拉選單
+//                qform_radio               圈選方塊
+//                qform_checkbox            核取方塊
+//
+//            qform_tbl_rtd (td 元素)       表單列表格.右區塊欄位
+//                qform_abtn(button 元素)   查詢,按鈕
+//                qform_sbtn(button 元素)   不分,按鈕
+//                qform_rbtn(button 元素)   重設,按鈕
+//-------------------------------------------------------
+*/
+    .qform_container{
+        border:0px solid #f00;
+        display:inline-block;
+        padding:0px;
+    }
+    .qform_form{
+        margin:0px;
+    }
+    .qform_tbl{
+        font-size:10pt;
+        border:0px solid #0f0;
+    }
+    .qform_tbl td{
+        padding:0px 2px;
+    }
+    .qform_tbl_ltd,
+    .qform_tbl_mtd,
+    .qform_tbl_rtd{
+
+    }
+    .qform_type{
+        border:1px solid #e1e1e1;
+        padding:2px;
+    }
+    .qform_sbtn,.qform_abtn,.qform_rbtn{
+        border:1px solid #e1e1e1;
+        padding:2px;
+    }
+    .qform_text{
+        border:1px solid #e1e1e1;
+        padding:3px;
+    }
+    .qform_select{
+        border:1px solid #e1e1e1;
+        padding:2px;
+    }
+    .qform_radio{
+
+    }
+    .qform_checkbox{
+
+    }

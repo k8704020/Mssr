@@ -1,0 +1,30 @@
+/*
+-------------------------------------------------------
+footer.css
+-------------------------------------------------------
+*/
+    #footline{
+        position:relative;
+
+        margin:0 auto;
+
+        width:925px;
+        height:24px;
+        border:0px solid #f00;
+        background:#fff url('img/footer/foot_line.jpg') no-repeat;
+    }
+    #footbar{
+        position:absolute;
+        right:250px;
+        top:20px;
+        border:0px solid #f00;
+        text-align:right;
+    }
+    #footbar a:link,#footbar a:visited{
+        color:#7a7a7a;
+        text-decoration:none;
+    }
+    #footbar a:hover,#footbar a:active{
+        color:#7a7a7a;
+        text-decoration:underline;
+    }

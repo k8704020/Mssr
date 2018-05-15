@@ -1,0 +1,159 @@
+/*
+-------------------------------------------------------
+content.css
+-------------------------------------------------------
+覆蓋
+閱讀登記條碼版登入類別
+閱讀登記條碼版中心類別
+閱讀登記條碼版資料列表類別
+*/
+
+/*
+-------------------------------------------------------
+覆蓋
+-------------------------------------------------------
+*/
+
+    /* 分頁列,覆蓋預設 */
+    .page_container{
+        border:0px solid #f00;
+        display:inline-block;
+        padding:0px;
+    }
+    .page_tbl{
+        font-size:10pt;
+        border:0px solid #0f0;
+    }
+    .page_tbl td{
+        padding:5px 10px;
+    }
+
+    .page_tbl td.page_info,
+    .page_tbl td.page_first,
+    .page_tbl td.page_prev,
+    .page_tbl td.page_next,
+    .page_tbl td.page_last,
+    .page_tbl td.page_normal{
+        background-color:#fff;
+        color:#4e4e4e;
+    }
+
+    .page_tbl td.page_current{
+        background-color:#3571d4;
+        color:#fff;
+    }
+
+    .page_tbl td.page_hover{
+        background-color:#3571d4;
+        color:#fff;
+    }
+
+/*
+-------------------------------------------------------
+閱讀登記條碼版登入類別
+-------------------------------------------------------
+*/
+    /* login 表格 */
+    #login_tbl{
+        position:relative;
+        margin:0 auto;
+
+        color:#000000;
+        width:420px;
+        margin-top:100px;
+        margin-bottom:110px;
+       
+        border:1px solid #dbdbdb;
+    }
+
+    #login_tbl tr, #login_tbl td{
+        padding:4px 0;
+    }
+
+/*
+-------------------------------------------------------
+閱讀登記條碼版中心類別
+-------------------------------------------------------
+*/
+    /* 中心首頁主表格 */
+    #read_the_registration_code_center_div{
+        position:relative;
+        margin:0 auto;
+
+        width:935px;
+        margin-top:50px;
+        margin-bottom:90px;
+
+        border:0px solid #f00;
+    }
+
+    /* 權限列表圖 */
+    #sys_list{
+        position:relative;
+
+        width:60px;
+        height:56px;;
+        margin-top:5px;
+        left:5px;
+        
+        background:#fff url('img/content/sys_list.jpg') no-repeat;
+    }   
+
+    /* 修改密碼圖 */
+    #pwd_title{
+        background:#fff url('../../img/pwd_title.jpg') no-repeat;
+        background-position:center left;
+    }
+
+/*
+-------------------------------------------------------
+閱讀登記條碼版資料列表類別
+-------------------------------------------------------
+*/
+    /* 列表首頁主表格 */
+    #read_the_registration_code_datalist_tbl{
+        position:relative;
+        width:900px;
+        margin-top:20px;
+    }
+
+    /* 閱讀登記條碼版中心路徑選單 */
+    #read_the_registration_code_center_path{
+        padding:0px;
+
+        width:650px;
+        border:0px solid #f00;
+    }
+    #read_the_registration_code_center_path_cont{
+        font-size:9pt;
+        color:#333;
+    }
+    #read_the_registration_code_center_path_cont .menu_cont{
+        padding:5px;
+        background:#fff;
+        border:0px solid #f00;
+    }
+    #read_the_registration_code_center_path_cont .menu_dot{
+        height:5px;
+        background:#fff url('img/content/dot.jpg') repeat-x;
+    }
+    #read_the_registration_code_center_path_cont a:link,#read_the_registration_code_center_path_cont a:visited{
+        text-decoration:none;
+    }
+    #read_the_registration_code_center_path_cont a:hover,#read_the_registration_code_center_path_cont a:active{
+
+    }
+
+    /* 模組資料表格樣式 */
+    .mod_data_tbl{
+        border-collapse:collapse;
+        border:0px solid #f1f1f1;
+    }
+    .mod_data_tbl tr.header td{
+        border-top:0px solid #fff;
+        border-bottom:1px solid #e5dede;
+    }
+    .mod_data_tbl tr td{
+        height:22px;
+        border-bottom:1px dashed #e5dede;
+    }

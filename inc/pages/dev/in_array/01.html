@@ -1,0 +1,47 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+</Head>
+
+<Body>
+
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+
+    var arry=[1,2,3,4,5];
+    var val ='s3';
+    if(in_array(val,arry)){
+        alert('exists');
+    }else{
+        alert('non exists');
+    }
+
+    function in_array(val,array){
+    //---------------------------------------------------
+    //檢驗元素是否在陣列裡
+    //---------------------------------------------------
+    //val   值
+    //array 陣列
+    //---------------------------------------------------
+
+        flag=false;
+        for(var i=0;i<array.length;i++){
+            if(val==array[i]){
+               flag=true;
+               break;
+            }
+        }
+
+        //回傳
+        return flag;
+    }
+</script>
+
+</Body>
+</Html>

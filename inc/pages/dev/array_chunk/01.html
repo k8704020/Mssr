@@ -1,0 +1,41 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+</Head>
+
+<Body>
+
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+
+    var arry    =[1,2,3,4,5,6,7,8,9];
+    var len     =arry.length;
+    var size    =4;
+    var pnos    =Math.ceil(len/size);
+    var results =[];
+
+    var inx=0;
+    for(var i=1;i<=pnos;i++){
+        var result=[];
+        for(var j=0;j<size;j++){
+            var val=arry[inx];
+            if(val){
+                result[j]=val;
+            }
+            inx++;
+        }
+        alert(result);
+        results.push(result);
+    }
+
+    alert(results.length);
+</script>
+
+</Body>
+</Html>

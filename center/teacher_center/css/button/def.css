@@ -1,0 +1,132 @@
+/*
+-------------------------------------------------------
+button
+-------------------------------------------------------
+w*h=120*30
+    blue  .ibtn_b12030
+    gray  .ibtn_gr12030 
+
+w*h=90*30
+    blue  .ibtn_b9030
+    gray  .ibtn_gr9030
+
+w*h=60*30
+    blue  .ibtn_b6030
+    gray  .ibtn_gr6030
+
+w*h=30*20
+    blue  .ibtn_b3020
+    gray  .ibtn_gr3020
+
+*/
+    /* w*h=120*30 */
+
+        /* blue */
+        .ibtn_b12030{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#333333;
+            border:0px;
+            background:#fff url('img/b12030.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:120px;
+            height:30px;
+        }
+
+        /* gray */
+        .ibtn_gr12030{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#4e4e4e;
+            border:0px;
+            background:#fff url('img/gr12030.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:120px;
+            height:30px;
+        }
+
+    /* w*h=90*30 */
+
+        /* blue */
+        .ibtn_b9030{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#333333;
+            border:0px;
+            background:#fff url('img/b9030.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:90px;
+            height:30px;
+        }
+
+        /* gray */
+        .ibtn_gr9030{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#4e4e4e;
+            border:0px;
+            background:#fff url('img/gr9030.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:90px;
+            height:30px;
+        }
+
+    /* w*h=60*30 */
+
+        /* blue */
+        .ibtn_b6030{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#333333;
+            border:0px;
+            background:#fff url('img/b6030.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:60px;
+            height:30px;
+        }
+
+        /* gray */
+        .ibtn_gr6030{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#4e4e4e;
+            border:0px;
+            background:#fff url('img/gr6030.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:60px;
+            height:30px;
+        }
+
+    /* w*h=30*20 */
+
+        /* blue */
+        .ibtn_b3020{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#333333;
+            border:0px;
+            background:#fff url('img/b3020.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:30px;
+            height:20px;
+        }
+
+        /* gray */
+        .ibtn_gr3020{
+            border:0px solid #f00;
+            font-size:9pt;
+            color:#4e4e4e;
+            border:0px;
+            background:#fff url('img/gr3020.jpg') no-repeat;
+            text-align:center;
+            padding:0px;
+            width:30px;
+            height:20px;
+        }

@@ -1,0 +1,36 @@
+/*
+-------------------------------------------------------
+bgcolor
+-------------------------------------------------------
+背景顏色    淡->深
+
+    .bg_gray0
+    .bg_gray1
+    .bg_green0
+    .bg_brown0
+    .bg_red0
+    .bg_orange0
+    .bg_orange1
+*/
+    /* 背景顏色 */
+    .bg_gray0{
+        background-color:#dbdbdb;
+    }
+    .bg_gray1{
+        background-color:#696969;
+    }
+    .bg_green0{
+        background-color:#87CDDC;
+    }
+    .bg_brown0{
+        background-color:#F7F8F8;
+    }
+    .bg_red0{
+        background-color:#ef1d1d;
+    }
+    .bg_orange0{
+        background-color:#ef841c;
+    }
+    .bg_orange1{
+        background-color:#ec6c01;
+    }

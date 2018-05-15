@@ -1,0 +1,31 @@
+/*
+-------------------------------------------------------
+檔案: def.css
+用途: 通用性CSS定義
+日期: 2013年8月2日
+日期: 2013年8月2日
+作者: mssr_team@cl_ncu
+-------------------------------------------------------
+通用類別
+    lib/button          按鈕樣式
+    lib/font            文字樣式
+    lib/bgcolor         背景顏色
+    lib/table           表格樣式
+    lib/reset           css重置歸零
+    lib/form            表單,表單欄位樣式
+    lib/li              li項目
+    lib/fixed           修正樣式
+    lib/default         預設
+
+    plugin/bookblock    翻書特效套件
+
+本端類別
+    structure           結構,結構單元
+*/
+    /* 通用類別 */
+    @import url('lib/def.css');
+    @import url('plugin/def.css');
+
+    /* 本端類別 */
+    @import url('structure/def.css');
+

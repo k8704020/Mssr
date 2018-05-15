@@ -1,0 +1,113 @@
+/*
+-------------------------------------------------------
+header.css
+-------------------------------------------------------
+標題左方區塊
+標題右方區塊
+*/
+
+
+/*
+-------------------------------------------------------
+標題左方區塊
+-------------------------------------------------------
+*/
+
+    #header_left {
+        position:relative;
+
+        margin:0 auto 0;
+        top:5px;
+    }
+
+    #header_left li{
+        display:inline;	
+    }
+
+    #header_left a{
+        float:left;
+        font-size:18px;
+        color:#fefefe;
+        font-family:"微軟正黑體","標楷體","新細明體";
+    }
+
+/*
+-------------------------------------------------------
+標題右方區塊
+-------------------------------------------------------
+*/
+
+    #header_right{	
+        position:relative;
+        margin:5px;
+        float:right;
+
+        font-family:"微軟正黑體","標楷體","新細明體";	
+    }
+
+    #header_right li{
+        float:right;
+        position:relative;
+        list-style:none;
+    }
+
+    #header_right li a{
+        height:26px;
+        font-size:16px;
+        font-weight:bold;	
+        color:#FFF;
+        margin:0 5px 0 0;
+        padding:3px 3px 0 3px;		
+        display:block;
+    }
+
+    #header_right li a:hover{			
+        text-align:center;
+        border-radius:3px;
+        -webkit-border-radius:3px;
+    }
+
+    #header_right li ul{	
+        color:#222;
+        margin:0;
+        padding:2px 0 0 0;
+        display:none;	
+        position:absolute;
+        border-radius:3px;
+        z-index:100
+    }
+
+    #header_right li ul li{
+        width:100%;
+    }
+
+    #header_right li ul li a{	
+        border:none;
+        line-height:25px;
+        margin:0;
+        padding:0 0 0 6px;	
+        font-size:14px;
+    }
+
+    #header_right li ul li a:hover{
+
+    }
+
+    #header_right li:hover > ul.child{
+        display:block;
+        width:100px;
+    }
+
+    #header_right li a:hover{
+        color:#FDFBE3;
+        background:#757F7C;	
+    }
+
+    #header_right li ul{
+        background:#595F5D;
+    }
+
+    #header_right li ul li a{
+        background:#3E3A39;
+        color:#fff;		
+    }

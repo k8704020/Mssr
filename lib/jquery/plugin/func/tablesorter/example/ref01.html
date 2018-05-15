@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+    <script type="text/javascript" src="../../../../basic/code.js"></script>
+    <script type="text/javascript" src="../code.js"></script>
+    <link rel="stylesheet" href="" />
+</Head>
+
+<Body>
+    <table id="myTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>生日</th>
+                <th>身高</th>
+                <th>體重</th>
+                <th>三圍</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>林志玲</td>
+                <td>1974-11-29</td>
+                <td>174cm</td>
+                <td>52kg</td>
+                <td>34C、24、36</td>
+            </tr>
+            <tr>
+                <td>隋棠</td>
+                <td>1981-10-22</td>
+                <td>172cm</td>
+                <td>48kg</td>
+                <td>33B、23、34</td>
+            </tr>
+            <tr>
+                <td>白歆惠</td>
+                <td>1982-10-23</td>
+                <td>175cm</td>
+                <td>50kg</td>
+                <td>33B、23、35</td>
+            </tr>
+            <tr>
+                <td>林嘉綺</td>
+                <td>1977-09-10</td>
+                <td>180cm</td>
+                <td>56kg</td>
+                <td>34D、25、35</td>
+            </tr>
+        </tbody>
+    </table>
+</Body>
+<script type="text/javascript">
+    $(function () {
+        // widgets: ['zebra'] 這個參數，能對表格的奇偶數列作分色處理
+        $("#myTable").tablesorter({widgets: ['zebra']});
+
+    });
+</script>
+</Html>

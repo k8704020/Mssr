@@ -1,0 +1,26 @@
+/*
+-------------------------------------------------------
+default
+-------------------------------------------------------
+
+*/
+    /* 連結 link */
+    a:link,a:visited{
+        font-size:10pt;
+        font-weight:normal;
+        text-decoration:none;
+        color:#4e4e4e;
+    }
+    a:hover,a:active{
+        font-weight:normal;
+        text-decoration:none;
+        color:#3571d4;
+    }
+
+    /* 外框虛線 */
+    html, body, div, span, object, iframe, h1, h2, h3, 
+    h4, h5, h6, p, pre, a, abbr, em, font, img,
+    strong, sub, sup, ol, ul, li, form, table, 
+    tbody, tr, th, td { 
+        outline:0; 
+    }

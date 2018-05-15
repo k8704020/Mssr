@@ -1,0 +1,22 @@
+﻿<!DOCTYPE>
+<html>
+<header>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</header>
+<body>
+	<div align ="center">測驗開始倒數<span id="time">5</span>秒</div>
+</body>
+<script type="text/javascript">
+t = 5;
+function time(){
+	if(t != 0){
+		setTimeout("time();",1000);
+		t=t-1;
+		document.getElementById('time').innerHTML = t;
+	}else{
+		window.location="../index.php";
+	}
+}
+time();
+</script>
+</html>

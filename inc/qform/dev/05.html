@@ -1,0 +1,452 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+    <style>
+    /*
+    //-------------------------------------------------------
+    //查詢表單列css定義
+    //-------------------------------------------------------
+    //結構
+    //-------------------------------------------------------
+    //qform_container (span 元素)               容器物件
+    //    qform_form (form 元素)                表單物件
+    //        qform_tbl (table 元素)            表單列表格
+    //
+    //            qform_tbl_ltd (td 元素)       表單列表格.左區塊欄位
+    //                qform_type(select 元素)   總類,下拉
+    //
+    //            qform_tbl_mtd (td 元素)       表單列表格.中區塊欄位
+    //                qform_text                文字方塊
+    //                qform_select              下拉選單
+    //                qform_radio               圈選方塊
+    //                qform_checkbox            核取方塊
+    //
+    //            qform_tbl_rtd (td 元素)       表單列表格.右區塊欄位
+    //                qform_abtn(button 元素)   查詢,按鈕
+    //                qform_sbtn(button 元素)   不分,按鈕
+    //                qform_rbtn(button 元素)   重設,按鈕
+    //-------------------------------------------------------
+    */
+
+        .qform_container{
+            border:1px solid #f00;
+            display:inline-block;
+            padding:0px;
+        }
+        .qform_form{
+            margin:0px;
+        }
+        .qform_tbl{
+            font-size:10pt;
+            border:0px solid #0f0;
+        }
+        .qform_tbl td{
+            padding:5px 10px;
+        }
+        .qform_tbl_ltd,
+        .qform_tbl_mtd,
+        .qform_tbl_rtd{
+
+        }
+        .qform_type{
+            border:1px solid #e1e1e1;
+            padding:2px;
+        }
+        .qform_sbtn,.qform_abtn,.qform_rbtn{
+            border:1px solid #e1e1e1;
+            padding:2px;
+        }
+        .qform_text{
+            border:1px solid #e1e1e1;
+            padding:3px;
+        }
+        .qform_select{
+            border:1px solid #e1e1e1;
+            padding:2px;
+        }
+        .qform_radio{
+
+        }
+        .qform_checkbox{
+
+        }
+    </style>
+</Head>
+
+<Body>
+
+<!-- 查詢表單列1 -->
+<span id="qform1"></span><p/>
+
+<!--
+<span id="qform1" class="qform_container">
+    <form id="qform1_form" class="qform_form">
+        <table id="qform1_tbl" class="qform_tbl" border="0">
+            <tr>
+                <td id="qform1_tbl_ltd" class="qform_tbl_ltd">
+                    <select id="qform1_type" class="qform_type">
+                        <option value="type1">文字方塊
+                        <option value="type2">下拉選單
+                        <option value="type3">圈選方塊
+                        <option value="type4">核取方塊
+                    </select>
+                </td>
+                <td id="qform1_tbl_mtd" class="qform_tbl_mtd">
+                    <input type="text" value="" class="qform_text">
+                    <select class="qform_select">
+                        <option>項目1
+                        <option>項目2
+                        <option>項目3
+                    </select>
+                </td>
+                <td id="qform1_tbl_rtd" class="qform_tbl_rtd">
+                    <input type="button" id="qform1_sbtn" class="qform_sbtn" value="查詢">
+                    <input type="button" id="qform1_abtn" class="qform_abtn" value="不分">
+                    <input type="button" id="qform1_abtn" class="qform_rbtn" value="重設">
+                </td>
+            </tr>
+        </table>
+    </form>
+</span>
+-->
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//範例
+//-------------------------------------------------------
+
+    //設定
+    var configs={
+        'type1':{
+            'text'      :'文字方塊',
+            'type'      :'text',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :'',
+            'className' :'qform_text'
+        },
+        'type2':{
+            'text'      :'下拉選單',
+            'type'      :'select',
+            'id'        :'name',
+            'name'      :'name',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_select'
+        },
+        'type3':{
+            'text'      :'圈選方塊',
+            'type'      :'radio',
+            'name'      :'name',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_radio'
+        },
+        'type4':{
+            'text'      :'核取方塊',
+            'type'      :'checkbox',
+            'name'      :'name[]',
+            'vals'      :{
+                '值1':'文字1',
+                '值2':'文字2',
+                '值3':'文字3'
+            },
+            'className' :'qform_checkbox'
+        }
+    };
+
+    var o_qform=qform(id='qform1',configs);
+    var o_qform_form   =o_qform.qform_form;
+    var o_qform_type   =o_qform.qform_type;
+    var o_qform_sbtn   =o_qform.qform_sbtn;
+    var o_qform_abtn   =o_qform.qform_abtn;
+    var o_qform_rbtn   =o_qform.qform_rbtn;
+    var o_qform_tbl_mtd=o_qform.qform_tbl_mtd;
+
+    o_qform_form.action="bend.php";
+    o_qform_form.method="POST";
+
+    o_qform_sbtn.onclick=function(){
+        o_qform_form.submit();
+    }
+    o_qform_abtn.onclick=function(){
+        var key=o_qform_type.options[0].value;
+        o_qform_tbl_mtd.innerHTML="";
+        o_qform_form.submit();
+    }
+    o_qform_rbtn.onclick=function(){
+        var inx=o_qform_type.selectedIndex;
+        var key=o_qform_type.options[inx].value;
+        o_qform_tbl_mtd.innerHTML="";
+        o_qform_type.options[inx].selected=true;
+        o_qform._createElement(o_qform_tbl_mtd,key);
+    }
+
+    function qform(id,configs){
+    //---------------------------------------------------
+    //查詢表單列
+    //---------------------------------------------------
+    //id        容器id
+    //configs   查詢總類設定
+    //---------------------------------------------------
+    //回傳值
+    //---------------------------------------------------
+    //本函式會傳回容器物件,你可以透過下列屬性,取得各個組成
+    //元件.
+    //
+    //容器物件._createElement   _createElement()
+    //容器物件.qform_form       o_qform_form
+    //容器物件.qform_tbl        o_qform_tbl
+    //容器物件.qform_tbl_ltd    o_qform_tbl_ltd
+    //容器物件.qform_tbl_mtd    o_qform_tbl_mtd
+    //容器物件.qform_tbl_rtd    o_qform_tbl_rtd
+    //容器物件.qform_type       o_qform_type
+    //容器物件.qform_sbtn       o_qform_sbtn
+    //容器物件.qform_abtn       o_qform_abtn
+    //容器物件.qform_rbtn       o_qform_rbtn
+    //---------------------------------------------------
+
+        //容器
+        var o_qform =document.getElementById(id);
+        var qform_id=o_qform.id;
+        o_qform.className="qform_container";
+
+        //表單
+        var o_qform_form=document.createElement("FORM");
+        o_qform_form.className="qform_form";
+        o_qform_form.id=qform_id+"_form";
+
+        //表格
+        var o_qform_tbl =document.createElement("TABLE");
+        o_qform_tbl.className="qform_tbl";
+        o_qform_tbl.id=qform_id+"_tbl";
+
+        //列
+        var otr=o_qform_tbl.insertRow(-1);
+
+        //欄位
+        var o_qform_tbl_ltd=otr.insertCell(-1);
+        o_qform_tbl_ltd.className="qform_tbl_ltd";
+        o_qform_tbl_ltd.id=qform_id+"_tbl_ltd";
+
+        var o_qform_tbl_mtd=otr.insertCell(-1);
+        o_qform_tbl_mtd.className="qform_tbl_mtd";
+        o_qform_tbl_mtd.id=qform_id+"_tbl_mtd";
+
+        var o_qform_tbl_rtd=otr.insertCell(-1);
+        o_qform_tbl_rtd.className="qform_tbl_rtd";
+        o_qform_tbl_rtd.id=qform_id+"_tbl_rtd";
+
+        //總類,下拉
+        var o_qform_type=document.createElement("SELECT");
+        o_qform_type.className="qform_type";
+        o_qform_type.id=qform_id+"_type";
+        for(var type in configs){
+            var val=type;
+            var txt=configs[type]['text'];
+            var o_opt=document.createElement("OPTION");
+            o_opt.value=val;
+            o_opt.text =txt;
+            o_qform_type.options.add(o_opt);
+        }
+        o_qform_tbl_ltd.appendChild(o_qform_type);
+
+        //按鈕,查詢
+        var o_qform_sbtn=document.createElement("INPUT");
+        o_qform_sbtn.className="qform_sbtn";
+        o_qform_sbtn.id   =qform_id+"_sbtn";
+        o_qform_sbtn.type ="button";
+        o_qform_sbtn.value="查詢";
+        o_qform_tbl_rtd.appendChild(o_qform_sbtn);
+
+        //按鈕,不分
+        var o_qform_abtn=document.createElement("INPUT");
+        o_qform_abtn.className="qform_abtn";
+        o_qform_abtn.id   =qform_id+"_abtn";
+        o_qform_abtn.type ="button";
+        o_qform_abtn.value="不分";
+        o_qform_tbl_rtd.appendChild(o_qform_abtn);
+
+        //按鈕,重設
+        var o_qform_rbtn=document.createElement("INPUT");
+        o_qform_rbtn.className="qform_abtn";
+        o_qform_rbtn.id   =qform_id+"_abtn";
+        o_qform_rbtn.type ="button";
+        o_qform_rbtn.value="重設";
+        o_qform_tbl_rtd.appendChild(o_qform_rbtn);
+
+        //附加表格到表單
+        o_qform_form.appendChild(o_qform_tbl);
+
+        //附加表單到容器
+        o_qform.appendChild(o_qform_form);
+
+        //初始化
+        _createElement(o_qform_tbl_mtd,key=o_qform_type.options[0].value);
+
+        //總類,下拉,onchange事件
+        o_qform_type.onchange=function(){
+            var opt=this.options[this.selectedIndex];
+            var txt=opt.text;
+            var val=opt.value;
+            o_qform_tbl_mtd.innerHTML="";
+            _createElement(o_qform_tbl_mtd,key=val);
+        }
+
+        //回傳
+        o_qform._createElement=_createElement;
+        o_qform.qform_form   =o_qform_form;
+        o_qform.qform_tbl    =o_qform_tbl;
+        o_qform.qform_tbl_ltd=o_qform_tbl_ltd;
+        o_qform.qform_tbl_mtd=o_qform_tbl_mtd;
+        o_qform.qform_tbl_rtd=o_qform_tbl_rtd;
+        o_qform.qform_type   =o_qform_type;
+        o_qform.qform_sbtn   =o_qform_sbtn;
+        o_qform.qform_abtn   =o_qform_abtn;
+        o_qform.qform_rbtn   =o_qform_rbtn;
+        return o_qform;
+
+        //子函式
+        function _createElement(obj,key){
+
+            var config=configs[key];
+
+            switch(config['type'].toLowerCase()){
+                case 'text':
+                    obj.appendChild(_text(config));
+                    break;
+                case 'select':
+                    obj.appendChild(_select(config));
+                    break;
+                case 'radio':
+                    obj.appendChild(_radio(config));
+                    break;
+                case 'checkbox':
+                    obj.appendChild(_checkbox(config));
+                    break;
+            }
+
+            function _text(config){
+                var type     =config['type']
+                var id       =config['id']
+                var name     =config['name']
+                var vals     =config['vals']
+                var className=config['className']
+
+                var otxt=document.createElement("INPUT");
+
+                otxt.type     ="TEXT";
+                otxt.id       =id;
+                otxt.name     =name;
+                otxt.value    =vals;
+                otxt.className=className;
+
+                return otxt;
+            }
+
+            function _select(config){
+                var type     =config['type']
+                var id       =config['id']
+                var name     =config['name']
+                var vals     =config['vals']
+                var className=config['className']
+
+                var osel=document.createElement('SELECT');
+                osel.id       =id;
+                osel.name     =name;
+                osel.className=className;
+
+                for(var val in vals){
+                    var txt=vals[val];
+
+                    var opt=document.createElement("option");
+                    opt.value=val;
+                    opt.text =txt;
+                    osel.options.add(opt);
+                }
+
+                return osel;
+            }
+
+            function _radio(config){
+                var type     =config['type']
+                var name     =config['name']
+                var vals     =config['vals']
+                var className=config['className']
+
+                var ocon=document.createElement("DIV");
+
+                for(var val in vals){
+                    var txt=vals[val];
+
+                    var ord =_rd(name);
+                    ord.name=name;
+                    ord.type=type;
+                    ord.value=val;
+                    ord.className=className;
+                    var otxt=document.createTextNode(txt);
+
+                    ocon.appendChild(ord);
+                    ocon.appendChild(otxt);
+                }
+
+                return ocon;
+
+                function _rd(name){
+                    try{
+                    //FOR IE
+                        return document.createElement('<input name='+name+'>');
+                    }catch(e){
+                        return document.createElement('input');
+                    }
+                }
+            }
+
+            function _checkbox(config){
+                var type     =config['type']
+                var name     =config['name']
+                var vals     =config['vals']
+                var className=config['className']
+
+                var ocon=document.createElement("DIV");
+
+                for(var val in vals){
+                    var txt=vals[val];
+
+                    var och =_checkbox(name);
+                    och.name=name;
+                    och.type=type;
+                    och.value=val;
+                    och.className=className;
+                    var otxt=document.createTextNode(txt);
+
+                    ocon.appendChild(och);
+                    ocon.appendChild(otxt);
+                }
+
+                return ocon;
+
+                function _checkbox(name){
+                    try{
+                    //FOR IE
+                        return document.createElement('<input name='+name+'>');
+                    }catch(e){
+                        return document.createElement('input');
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+</Body>
+</Html>
+

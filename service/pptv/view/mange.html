@@ -1,0 +1,56 @@
+﻿<!DOCTYPE>
+<html>
+<header>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</header>
+<body>
+	<?php if(isset($_COOKIE["identity"]) && $_COOKIE["identity"] =='A'):?>
+	<form align="center" action="mange.php" method="POST">
+	<select name="school" onChange="this.form.submit();">
+		<?php if(isset($_POST["school"])):?>
+			<option value="<?php echo $_POST["school"]; ?>"><?php echo $_POST["school"]; ?></option>
+		<?php endif?>
+		<?php while($row = mysql_fetch_row($school) ): ?>
+			<option value="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></option>
+		<?php endwhile;?>
+	</select>
+	<select name="grade" onChange="this.form.submit();">
+		<?php if(isset($_POST["grade"])):?>
+			<option value="<?php echo $_POST["grade"]; ?>"><?php echo $_POST["grade"]; ?></option>
+		<?php endif?>
+		<?php while($row = mysql_fetch_row($grade) ): ?>
+			<option value="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></option>
+		<?php endwhile;?>
+	</select>
+	<select name="class" onChange="this.form.submit();">
+		<?php if(isset($_POST["class"])):?>
+			<option value="<?php echo $_POST["class"]; ?>"><?php echo $_POST["class"]; ?></option>
+		<?php endif?>
+		<?php while($row = mysql_fetch_row($class) ): ?>
+			<option value="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></option>
+		<?php endwhile;?>
+	</select>
+	</form>
+	<?php endif; ?>
+    <table table style="border: 5px double rgb(109, 2, 107);"
+                align="center" cellpadding="5" cellspacing="5" rules="all">
+    <tr>
+        <th>學校</th><th>年級</th><th>班級</th><th>座號</th><th>姓名</th><th>分數</th><th>初次測驗</th><th>最後測驗</th><th>詳細</th>
+    </tr>
+        <?php while($row = mysql_fetch_row($sql) ): ?>
+    <tr>
+        <td><?php echo $row[1]; ?></td>
+		<td><?php echo $row[2]; ?></td>
+        <td><?php echo $row[3]; ?></td>
+        <td><?php echo $row[4]; ?></td>
+        <td><?php echo $row[5]; ?></td>
+		<td><?php echo $row[6] > -1 ? $row[6] : '未完成'; ?></td>
+		<td><?php echo $row[7]; ?></td>
+        <td><?php echo $row[8]; ?></td>
+        <td><a href="grade.php?uid=<?php echo $row[0];?>">詳細</a></td>
+    </tr>
+    <?php endwhile; ?>
+	<tr><td colspan="9"><a align="center" href="index.php">回首頁</a></td></tr>
+    </table>
+</body>
+</html>

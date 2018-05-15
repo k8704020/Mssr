@@ -1,0 +1,99 @@
+/*
+-------------------------------------------------------
+結構
+-------------------------------------------------------
+主結構    
+    #container  容器區塊 
+    #header     標題區塊
+    #content    內容區塊
+    #footer     註腳區塊
+
+外部主結構
+    無
+
+主結構結構單元    
+    container.css   
+    header.css
+    content.css
+    footer.css
+
+外部結構單元
+    ../../../../css/structure/content.css
+*/
+
+/*
+-------------------------------------------------------
+主結構結構單元
+-------------------------------------------------------
+*/    
+    @import url('container.css');   
+    @import url('header.css');
+    @import url('content.css');
+    @import url('footer.css');
+
+/*
+-------------------------------------------------------
+外部結構單元
+-------------------------------------------------------
+引用
+    mod_cont    模組內容表格
+    mod_cont_1  模組內容表格,樣式1
+    mod_cont_2  模組內容表格,樣式2
+*/
+    @import url('../../../../css/structure/content.css');
+
+/*
+-------------------------------------------------------
+主結構
+-------------------------------------------------------
+*/
+    /* 容器區塊 */
+    #container{
+        position:relative;
+
+        margin-top:0px;
+
+        width:100%;
+        border:0px solid #f00;
+        background-color:#fff;
+    }
+
+    /* 標題區塊 */
+    #header{
+        position:relative;
+        
+        margin-top:0px;
+
+        width:100%;
+        height:94px;
+        border:0px solid #f00;        
+    }
+
+    /* 內容區塊 */
+    #content{
+        position:relative;
+
+        margin:0px auto;
+        padding:10px 0px;
+
+        width:1000px;
+
+        border:0px solid #f00;
+    }
+
+    /* 註腳區塊 */
+    #footer{
+        position:relative;
+        margin:0px auto;
+        padding:0px;
+
+        width:1000px;
+        height:50px;
+        border-top:0px solid #ee831b;
+    }
+
+/*
+-------------------------------------------------------
+外部主結構
+-------------------------------------------------------
+*/

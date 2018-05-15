@@ -1,0 +1,117 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+    <style>
+        .page_container{
+            border:0px solid #f00;
+            display:inline-block;
+            padding:0px;
+        }
+        .page_tbl{
+            font-size:10pt;
+            border:0px solid #0f0;
+        }
+        .page_tbl td{
+            padding:5px 10px;
+        }
+
+        .page_tbl td.page_info,
+        .page_tbl td.page_first,
+        .page_tbl td.page_prev,
+        .page_tbl td.page_next,
+        .page_tbl td.page_last,
+        .page_tbl td.page_normal{
+            background-color:#fff;
+            color:#333;
+        }
+
+        .page_tbl td.page_current{
+            background-color:#ffcc66;
+            color:#fff;
+        }
+
+        .page_tbl td.page_hover{
+            background-color:#ffcc66;
+            color:#fff;
+        }
+    </style>
+</Head>
+
+<Body>
+
+<span id="page1" class="page_container">
+    <table id="tbl" class="page_tbl" border="0" cellspacing="5px">
+        <tr class="page_tr">
+            <td class="page_info">第11筆~第20筆:共1633筆</td>
+            <td class="page_first">第一頁</td>
+            <td class="page_prev">上一頁</td>
+            <td class="page_normal">3</td>
+            <td class="page_normal">4</td>
+            <td class="page_current">5</td>
+            <td class="page_normal">6</td>
+            <td class="page_normal">7</td>
+            <td class="page_next">下一頁</td>
+            <td class="page_last">最末頁</td>
+        </tr>
+    </table>
+</span>
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+    var opage=document.getElementById("page1");
+    var otbl =document.getElementById("tbl");
+    var otr  =otbl.rows[0];
+    var otds =otr.cells;
+
+    for(var i=0;i<otds.length;i++){
+        var otd=otds[i];
+        var cls=otd.className || '';
+        otd.cls=cls;
+
+        switch(cls){
+            case 'page_current': //現在
+                otd.onmouseover=function(){
+                    this.style.cursor="pointer";
+                }
+                otd.onmouseout=function(){
+                    this.className=this.cls;
+                    this.style.cursor="";
+                }
+                otd.onclick=function(){
+                    alert(this.innerHTML);
+                }
+                break;
+            case 'page_info': //資訊
+                otd.onmouseover=function(){
+
+                }
+                otd.onmouseout=function(){
+
+                }
+                otd.onclick=function(){
+
+                }
+                break;
+            default: //一般
+                otd.onmouseover=function(){
+                    this.className="page_hover";
+                    this.style.cursor="pointer";
+                }
+                otd.onmouseout=function(){
+                    this.className=this.cls;
+                    this.style.cursor="";
+                }
+                otd.onclick=function(){
+                    alert(this.innerHTML);
+                }
+                break;
+        }
+    }
+</script>
+
+</Body>
+</Html>

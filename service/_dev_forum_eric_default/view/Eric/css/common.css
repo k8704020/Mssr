@@ -1,0 +1,372 @@
+
+/* 個人成就表格 */
+table.TB{	
+	border:1;
+	border-collapse:separate;
+	width:100%;
+	font-family:Microsoft JhengHei;	
+}
+table.TB .TB_head {	
+	font-size:20px;
+	color:#000000;
+	background-color:#DDDDDD;
+}
+table.TB .TB_side {	
+	background-color:#DDDDDD;
+}
+table.TB  td{	
+	padding:5px 0px;
+	color:#555;
+	text-align:center;
+	background-color:#fff;
+	font-weight: bold;
+}
+table.TB .TB_foot{	
+	padding:5px 0px;
+	text-align:center;
+	background-color:#d6d6a5;
+}
+.font-MJ{
+	font-family:Microsoft JhengHei;
+}
+.circle {
+    display: inline-block;
+    width: 100px;
+    height:100px;
+    border-radius: 50%;
+    border: 2px solid #DDDDDD;
+    padding: 0px;
+    background: #fff;
+	line-height: 100px;
+	font-size: 16px;
+	position:absolute;
+	top:30%;
+	left:13.5%;	
+}
+.inner{
+	background-image: url('../img/mission_icon/circle100.png');
+	background-size:cover;
+    background-position:center center;
+    height: 100%;
+    border-radius:50%;
+	color:black;	
+}
+.div-achieve_total{
+	float:left;
+	margin-top:1%;
+	margin-left:2%;
+	margin-right:2%;
+	margin-bottom:2%;
+	width:46%;
+}
+
+.div-mission_list{
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+/* 成就總覽之各項按鈕 */
+.achieve_type {	
+	color: black !important;
+	background-color:#FFD382 !important;
+	cursor: pointer;
+}
+.achieve_type:hover, .achieve_type:active {
+	background-color: #CCEEFF !important;
+}
+/* 推播任務之按鈕 */
+.m-button{
+	cursor: pointer;
+	background-color: #FFBB66;
+	width:86px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	margin:0px auto;
+	color:black;
+	border-style:outset ;
+	border:1 ;
+	border-color:#FFEE99 ;	
+}
+.m-button:hover, .m-button:active {
+	background-color: #FFDD55;
+}
+
+/* 進度條 */
+.ui-progressbar {
+	position: relative;
+}
+.progress-label {/*成就總覽之『各等級』項目*/
+	position: absolute;
+	left:45%;/*調整文字靠左的程度*/
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label2 {/*成就總覽之『總體個數』*/
+	position: absolute;
+	left:39%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label_1 {/*成就總覽之『各』項目*/
+	position: absolute;
+	left:30%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label_2 {/*成就總覽之『各』項目*/
+	position: absolute;
+	left:30%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label_3 {/*成就總覽之『各』項目*/
+	position: absolute;
+	left:30%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label_4 {/*成就總覽之『各』項目*/
+	position: absolute;
+	left:30%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label_5 {/*成就總覽之『各』項目*/
+	position: absolute;
+	left:30%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label_6 {/*成就總覽之『各』項目*/
+	position: absolute;
+	left:30%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.progress-label3 {/*成就頭銜*/
+	position: absolute;
+	left:39%;
+	top: 4px;
+	font-weight: bold;
+	font-family:Microsoft JhengHei;
+	font-size: 16px;
+	text-shadow: 1px 1px 0 #fff;
+}
+.mission_list {/*主任務*/
+    cursor: pointer;
+	font-size: 15px;
+	font-family:Microsoft JhengHei;
+	border-top: 1px #3E4555 solid;
+	border-bottom: 1px #191D27 solid;
+	color: #000000;
+	background-color:#FFFFFF;
+	text-decoration: none;
+	height: 35px;
+	line-height: 35px;
+	display: block;
+	padding: 10px 0px 10px 10px;
+	text-shadow: 0px 1px 1px #212631;
+	list-style-type: none;
+} 
+.mission_list:hover, .mission_list:active {
+	background-color: #AAAAAA;
+}
+.mission_list img {
+	margin-left:8px;
+	vertical-align:middle;
+}
+.mission_step{
+	text-align:left !important;
+	height:30px;
+	line-height:30px;	
+}
+.mission_step img {
+	margin-left:8px;
+	vertical-align:middle;
+	float:left;
+}
+.mission_step:hover, .mission_step:active {
+	cursor: pointer;
+	background-color: #CCEEFF !important;
+}
+
+.mission_step1{
+	text-align:left !important;
+	height:30px;
+	line-height:30px;	
+}
+.mission_step1 img {
+	margin-left:8px;
+	vertical-align:middle;
+	float:left;
+}
+.mission_step2{
+	text-align:left !important;
+	height:30px;
+	line-height:30px;	
+}
+.mission_step2 img {
+	margin-left:30px !important;
+	vertical-align:middle;
+	float:left;
+}
+.mission_step3{
+	text-align:left !important;
+	height:30px;
+	line-height:30px;	
+}
+.mission_step3 img {
+	margin-left:30px !important;
+	vertical-align:middle;
+	float:left;
+}
+/* ----------------------------------------------- */ 
+ul { /* 取消ul預設的內縮及樣式 */ 
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.drop-down-menu {
+	border: #ccc 1px solid;
+	display: inline-block;
+	font-family: Microsoft JhengHei;
+	font-size: 16px;
+	height:30px;
+	line-height:30px;	
+}
+
+ul.drop-down-menu li {
+	position: relative;
+	white-space: nowrap;
+	border-right: #ccc 1px solid;        
+}
+
+ul.drop-down-menu > li:last-child {
+	border-right: none;
+}
+
+ul.drop-down-menu > li {
+	float: left; /* 只有第一層是靠左對齊*/
+}  
+
+ ul.drop-down-menu a {
+	background-color: #fff;
+	color: #333;
+	display: block;
+	padding: 0 30px;
+	text-decoration: none;
+	line-height: 30px;
+	
+}
+ul.drop-down-menu a:hover { /* 滑鼠滑入按鈕變色*/
+	background-color: #FFFFBB;
+}
+ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單上層按鈕保持變色*/
+	background-color: #FFFFBB;
+}
+
+ul.drop-down-menu ul {
+	border: #ccc 1px solid;
+	position: absolute;
+	z-index: 99;
+	left: -1px;
+	top: 100%;
+    min-width: 180px;
+	height:auto;
+}
+
+ul.drop-down-menu ul li {
+	border-bottom: #ccc 1px solid;
+}
+
+ul.drop-down-menu ul { /*隱藏次選單*/
+	display: none;
+} 
+
+ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+	display: block;
+}
+/*頁籤*/
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.abgne_tab {
+	clear: left;
+	width: 400px;
+	margin: 10px 0;
+}
+ul.tabs {
+	width: 100%;
+	height: 32px;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+}
+ul.tabs li {
+	float: left;
+	height: 31px;
+	line-height: 31px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: -1px;	/* 讓 li 往下移來遮住 ul 的部份 border-bottom */
+	border: 1px solid #999;
+	border-left: none;
+	background: #CCEEFF;
+}
+ul.tabs li a {
+	display: block;
+	padding: 0 20px;
+	color: #000;
+	border: 1px solid #fff;
+	text-decoration: none;
+}
+ul.tabs li a:hover {
+	background: #F0F8FF;
+}
+ul.tabs li.active  {
+	background: #fff;
+	border-bottom: 1px solid#fff;
+}
+ul.tabs li.active a:hover {
+	background: #fff;
+}
+div.tab_container {
+	clear: left;
+	width: 100%;
+	border: 1px solid #999;
+	border-top: none;
+	background: #fff;
+}
+div.tab_container .tab_content {
+	padding: 20px;
+}
+div.tab_container .tab_content h2 {
+	margin: 0 0 20px;
+}

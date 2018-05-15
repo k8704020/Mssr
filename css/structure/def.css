@@ -1,0 +1,99 @@
+/*
+-------------------------------------------------------
+結構
+-------------------------------------------------------
+主結構
+    #container  容器區塊
+    #header     標題區塊
+    #navbar     導覽區塊
+    #content    內容區塊
+    #footer     註腳區塊
+
+結構單元
+    container.css
+    header.css
+    navbar.css
+    content.css
+    footer.css
+*/
+
+/*
+-------------------------------------------------------
+結構單元
+-------------------------------------------------------
+*/
+    @import url('container.css');
+    @import url('header.css');
+    @import url('navbar.css');
+    @import url('content.css');
+    @import url('footer.css');
+
+/*
+-------------------------------------------------------
+主結構
+-------------------------------------------------------
+*/
+
+    /* 容器區塊 */
+    #container{
+        position:relative;
+
+        margin:0px auto;
+        margin-top:5px;
+
+        width:1000px;
+        border:0px solid #f00;
+        background-color:#fff;
+    }
+
+    /* 標題區塊 */
+    #header{
+        position:relative;
+
+        height:103px;
+        border:0px solid #000;
+        background:#fff url('img/header/bg.jpg') repeat-x;
+    }
+
+    /* 導覽區塊 */
+    #navbar{
+        position:relative;
+
+        margin:0px auto;
+        padding:0px;
+
+        height:47px;
+        border:0px solid #f00;
+    }
+
+    /* 內容區塊 */
+    #content{
+        position:relative;
+
+        margin:0px auto;
+        padding:10px 0px;
+
+        width:972px;
+
+        border:0px solid #f00;
+        background:transparent url('img/content/bg.jpg') repeat-y;
+    }
+
+    /* 註腳區塊 */
+    #footer{
+        position:relative;
+        margin:0px auto;
+        padding:0px;
+
+        width:972px;
+        height:50px;
+        border:0px solid #f00;
+        background:transparent url('img/footer/bg.jpg') no-repeat;
+        background-position:50% 0%;
+    }
+
+
+
+
+
+

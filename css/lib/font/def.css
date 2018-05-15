@@ -1,0 +1,86 @@
+/*
+-------------------------------------------------------
+font
+-------------------------------------------------------
+文字尺寸    小->大
+    .fsize_07
+    .fsize_08
+    .fsize_09
+    .fsize_10
+    .fsize_11
+
+文字顏色    淡->深
+    .fc_red0
+    .fc_red1
+    .fc_green0
+    .fc_green1
+    .fc_blue0
+    .fc_blue1
+    .fc_black0
+    .fc_black1
+    .fc_black2
+    .fc_orange0
+    .fc_orange1
+特殊
+    .btn_disabled
+*/
+
+    /* 文字尺寸 */
+    .fsize_07{
+        font-size:7pt;
+    }
+    .fsize_08{
+        font-size:8pt;
+    }
+    .fsize_09{
+        font-size:9pt;
+    }
+    .fsize_10{
+        font-size:10pt;
+    }
+    .fsize_11{
+        font-size:11pt;
+    }
+
+    /* 文字顏色 */
+    .fc_red0{
+        color:#ff0000;
+    }
+    .fc_red1{
+        color:#f55555;
+    }
+
+    .fc_green0{
+        color:#00ff00;
+    }
+    .fc_green1{
+        color:#154D31;
+    }
+
+    .fc_blue0{
+        color:#0000ff;
+    }
+    .fc_blue1{
+        color:#03629D;
+    }
+
+    .fc_black0{
+        color:#000000;
+    }
+    .fc_black1{
+        color:#333333;
+    }
+    .fc_black2{
+        color:#999999;
+    }
+
+    .fc_orange0{
+        color:#ef841c;
+    }
+    .fc_orange1{
+        color:#ec6c01;
+    }
+
+    .btn_disabled{
+        color:#86989d;
+    }

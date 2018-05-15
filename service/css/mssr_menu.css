@@ -1,0 +1,14 @@
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	font-family: "微軟正黑體","sans-serif","黑體-繁","新細明體","Ariel";
+	line-height: 1.8;
+ 	list-style:none;
+	text-decoration:none; 
+	/* outline: 1px solid #fac; */
+	word-wrap: break-word;
+ 	word-break: break-word;
+
+
+}

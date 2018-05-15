@@ -1,0 +1,65 @@
+/*
+-------------------------------------------------------
+header.css
+-------------------------------------------------------
+*/
+    /* 標題上方 */
+    #header_top{
+        position:relative;
+        top:0px;
+        right:0px;
+
+        height:19px;
+        border:0px solid #f00;
+        background:#fff url('img/header/top_line.jpg') repeat-x;
+    }
+
+    /* 標題下方 */
+    #header_bottom{
+        position:relative;
+        top:0px;
+        right:0px;
+
+        height:75px;
+        border:0px solid #f00;
+        background:#fff url('img/header/bg.jpg') repeat-x;
+    }
+
+    /* 標題選單列容器 */
+    #header_menu_div{
+        position:relative;
+        width:900px;
+        margin:0 auto;
+
+        border:0px solid #f00;
+    }
+
+    /* 標題選單列 */
+    #header_menu{
+        position:absolute;
+        top:0px;
+        right:0px;
+
+        border:0px solid #f00;   
+    }
+
+    /* 首頁logo容器 */
+    #logo_div{
+        position:relative;
+        width:1000px;
+        margin:0 auto;
+
+        border:0px solid #f00;
+    }
+
+    /* 首頁logo */
+    #logo{
+        position:relative;
+        top:0px;
+        left:0px;
+
+        width:305px;
+        height:75px;
+        border:0px solid #f00;
+        background:url('img/header/logo.jpg') no-repeat;
+    }

@@ -1,0 +1,105 @@
+	*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	font-family: "微軟正黑體","sans-serif","黑體-繁","新細明體","Ariel";
+	line-height: 1.8;
+ 	list-style:none;
+	text-decoration:none; 
+	/* outline: 1px solid #fac; */
+	word-wrap: break-word;
+ 	word-break: break-word;
+ 	font-family: Microsoft JhengHei;
+
+
+
+}
+.clearFix{
+	clear: both;
+}
+.cover_box{
+	padding: 7px 14px;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	border-radius: 14px;
+
+	-webkit-box-shadow: #242 1px 1px 3px;
+	-moz-box-shadow: #242 1px 1px 3px;
+	box-shadow: #242 2px 1px 1px;
+
+	border: 1px solid #111;
+	font-size:24px;
+	color:#333;
+	font-weight: bold;
+
+	background: rgb(242,246,248); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(242,246,248,1) 0%, rgba(181,198,208,1) 6%, rgba(181,198,208,1) 6%, rgba(216,225,231,1) 21%, rgba(224,239,249,1) 48%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(242,246,248,1)), color-stop(6%,rgba(181,198,208,1)), color-stop(6%,rgba(181,198,208,1)), color-stop(21%,rgba(216,225,231,1)), color-stop(48%,rgba(224,239,249,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(181,198,208,1) 6%,rgba(181,198,208,1) 6%,rgba(216,225,231,1) 21%,rgba(224,239,249,1) 48%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(181,198,208,1) 6%,rgba(181,198,208,1) 6%,rgba(216,225,231,1) 21%,rgba(224,239,249,1) 48%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(181,198,208,1) 6%,rgba(181,198,208,1) 6%,rgba(216,225,231,1) 21%,rgba(224,239,249,1) 48%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(242,246,248,1) 0%,rgba(181,198,208,1) 6%,rgba(181,198,208,1) 6%,rgba(216,225,231,1) 21%,rgba(224,239,249,1) 48%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=0 ); /* IE6-9 */
+}
+#out_btn:hover {
+    background: url('../../bookstore_v2/bookstore_courtyard/img/btn_list_1.png') -600px -100px;
+}
+#out_btn{
+	position:absolute;
+	width:120px;
+	height:100px;
+	background: url('../../bookstore_v2/bookstore_courtyard/img/btn_list_1.png') -600px 0;
+}
+.box_ling{
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+
+	-webkit-box-shadow: #242 1px 1px 3px;
+	-moz-box-shadow: #242 1px 1px 3px;
+	box-shadow: #242 2px 1px 1px
+	border: 2px solid #3a8c3a;
+}
+.box_ling2{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	-webkit-box-shadow: #242 1px 1px 3px;
+	-moz-box-shadow: #242 1px 1px 3px;
+	box-shadow: #242 2px 1px 1px;
+
+	background: rgb(180,227,145); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(180,227,145,1) 9%, rgba(97,196,25,1) 15%, rgba(180,227,145,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(9%,rgba(180,227,145,1)), color-stop(15%,rgba(97,196,25,1)), color-stop(100%,rgba(180,227,145,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(180,227,145,1) 9%,rgba(97,196,25,1) 15%,rgba(180,227,145,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(180,227,145,1) 9%,rgba(97,196,25,1) 15%,rgba(180,227,145,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(180,227,145,1) 9%,rgba(97,196,25,1) 15%,rgba(180,227,145,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(180,227,145,1) 9%,rgba(97,196,25,1) 15%,rgba(180,227,145,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
+
+	border: 1px solid #020;
+}
+#borrow_page{
+	position:absolute; 
+	top:-47px; 
+	left:8px;
+}
+#name{
+	position:absolute; 
+	top:108px; 
+	left:-3px; 
+	height:128px; 
+	width:284px; 
+	text-align: right;
+	font-size: 42px;
+	font-weight: bold;
+}
+.box_ling{
+	position:absolute;
+	top:249px;
+	left:214px;
+	width:573px;
+	height:59px;
+	background-color:#aaffaa;
+}

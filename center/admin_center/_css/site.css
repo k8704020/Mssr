@@ -1,0 +1,678 @@
+﻿/*
+-------------------------------------------------------
+檔案: site.css
+用途: 管理者後台 CSS定義
+日期: 2012年8月16日
+修改: 2012年8月16日
+作者: pg_team@max-life
+備註:
+-------------------------------------------------------
+*/
+
+/*
+-------------------------------------------------------
+結構
+-------------------------------------------------------
+*/
+
+    body{
+        margin:0;
+        padding:0;
+        background-color:#fff;
+
+        text-align: justify;
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        color: #333;
+    }
+
+    #header{
+        position:relative;
+        top:0;
+        left:0;
+
+        height:50px;
+
+        border:1px solid #ccc;
+        background-color:#e1e1e1;
+    }
+    #content{
+        margin:10px auto;
+
+        width:1200px;
+
+        border:0px solid #ccc;
+        background-color:#fff;
+    }
+    #footer{
+        margin:0 auto;
+
+        width:1200px;
+
+        border:0px solid #ccc;
+        border-top:1px solid #ccc;
+        background-color:#fff;
+    }
+
+    /* 查詢區塊 */
+    div#querybar1{
+        padding:10px;
+
+        border:0px solid #ccc;
+        border-bottom:1px solid #ccc;
+        background-color:#e1e1e1;
+    }
+
+    div#querybar2{
+        padding:0;
+
+        border:0px solid #ccc;
+        border-bottom:1px solid #ccc;
+        background-color:#e1e1e1;
+    }
+
+    /* 導覽列 (#header) */
+    ul#navbar{
+        position:absolute;
+        bottom:0;
+        right:0;
+
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    ul#navbar li{
+        display:inline;
+    }
+    ul#navbar li a:link,ul#navbar li a:visited{
+        display:block;
+        float:left;
+        padding:10px 10px;
+
+        height:20px;
+        color:#fff;
+        background:#333;
+        text-decoration:none;
+    }
+    ul#navbar li a:hover{
+        color:#f00;
+        text-decoration:underline;
+    }
+
+    ul#navbar li a.current:link,
+    ul#navbar li a.current:visited,
+    ul#navbar li a.current:hover,
+    ul#navbar li a.current:active{
+        background:#333 url('navbar_on.gif') repeat;
+        color:#fff;
+    }
+
+    img#logo{
+        position:absolute;
+        left:5px;
+        top:5px;
+        border:0px;
+    }
+
+    span#title{
+        position:absolute;
+        left:50px;
+        top:10pt;
+        border:0px;
+        font-size:12pt;
+        color:#333;
+    }
+
+    /* 註腳 (#header) */
+    #footer p{
+        padding:10px 0;
+        margin:0;
+        font-size:0.8em;
+        text-align:center;
+    }
+    #footer a:link,#footer a:visited{
+        color:#333;
+        text-decoration:none;
+    }
+    #footer a:hover{
+        color:#f00;
+        text-decoration:underline;
+    }
+
+/*
+-------------------------------------------------------
+元素
+-------------------------------------------------------
+*/
+    /* 標題 h1,h2,h3 */
+    h1,h2,h3{
+        font-family: Helvetica,Verdana,"LiHei Pro","新細明體",sans-serif;
+        margin:0;
+        padding:0;
+    }
+    h1{
+        font-size  : 12pt;
+        font-weight: 300;
+        color      : #333;
+        border:0px solid #ccc;
+    }
+    h2{
+        font-size  : 10pt;
+        font-weight: 300;
+        color      : #333;
+        border:0px solid #ccc;
+    }
+    h3{
+        font-size  : 9pt;
+        font-weight: 300;
+        color      : #333;
+        border:0px solid #ccc;
+    }
+
+    /* 連結 */
+    a:link,a:visited,a:active{
+        font-size:10pt;
+        text-decoration:none;
+        color:#003300;
+    }
+    a:hover{
+        text-decoration:underline;
+        color:#f00;
+    }
+
+    /* 表格 */
+    .table_style{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        font-size: 10pt;
+        color: #333;
+    }
+    .table_style1{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        font-size: 10pt;
+        color: #333;
+    }
+    .table_style1 td{
+        padding: 2px 2px 2px 2px;
+        border-top: 1px solid silver;
+        border-right: 1px solid silver;
+        border-left: 1px solid silver;
+        border-bottom: 1px solid silver;
+    }
+
+    .table_style2{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        font-size: 10pt;
+        color: #333;
+        border-collapse:collapse;
+    }
+    .table_style2 td{
+        padding: 2px 2px 2px 2px;
+        border-top: 1px solid silver;
+        border-right: 1px solid silver;
+        border-left: 1px solid silver;
+        border-bottom: 1px solid silver;
+    }
+
+    .table_style3{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        font-size: 10pt;
+        color: #333;
+    }
+    .table_style3 td{
+        padding: 2px 2px 2px 2px;
+        border-top: 0px solid silver;
+        border-right: 0px solid silver;
+        border-left: 0px solid silver;
+        border-bottom: 1px solid silver;
+    }
+
+    /* 表單 */
+    form{
+        margin:0px;
+    }
+
+    /* textarea */
+    .txta_1{
+        resize:none;
+        border:1px solid #f1f1f1;
+        width:99%;
+    }
+    .txta_2{
+        resize:none;
+        border:1px solid #f1f1f1;
+    }
+    .txta_3{
+        resize:none;
+    }
+
+/*
+-------------------------------------------------------
+字型
+-------------------------------------------------------
+*/
+
+    .font1{
+        font-size  : 17px;
+        color      : #003366;
+    }
+    .font2{
+        font-size  : 21px;
+        color      : #ff0033;
+    }
+
+/*
+-------------------------------------------------------
+背景色
+-------------------------------------------------------
+*/
+
+    .bg_green1{
+        background-color:#66cc99;
+    }
+    .bg_gray1{
+        background-color:#ebece6;
+    }
+    .bg_gray2{
+        background-color:#e1e1e1;
+    }
+    .bg_gray3{
+        background-color:#c3c3c3;
+    }
+    .bg_gray4{
+        background-color:#f5f5f5;
+    }
+    .bg_img2{
+        background-image:url('img/bg/bg02.gif');
+    }
+
+/*
+-------------------------------------------------------
+顏色
+-------------------------------------------------------
+*/
+
+    .fc_red1{
+        color:#f00;
+    }
+    .fc_green1{
+        color:#154D31;
+    }
+    .fc_blue1{
+        color:#00f;
+    }
+    .fc_black1{
+        color:#000;
+    }
+
+
+    .fc_red2{
+        color:#D82626;
+    }
+    .fc_green2{
+        color:#154D31;
+    }
+    .fc_blue2{
+        color:#03629D;
+    }
+    .fc_black2{
+        color:#333333;
+    }
+
+/*
+-------------------------------------------------------
+其他
+-------------------------------------------------------
+*/
+
+    /* 自動換行,註:需搭配width屬性使用,才會有效果 */
+    .auto_wrap{
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    /* 圖片式按鈕 開始 */
+
+        /* w*h=120*30 */
+
+            /* red */
+            .ibtn_r12030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/r12030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            .ibtn_r12030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/r12030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            /* green */
+            .ibtn_g12030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/g12030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            .ibtn_g12030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/g12030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            /* blue */
+            .ibtn_b12030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/b12030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            .ibtn_b12030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/b12030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            /* white */
+            .ibtn_w12030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/w12030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            .ibtn_w12030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/w12030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            /* yellow */
+            .ibtn_y12030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/y12030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+            .ibtn_y12030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/y12030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:120px;
+                height:30px;
+            }
+
+        /* w*h=90*30 */
+
+            /* red */
+            .ibtn_r9030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/r9030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            .ibtn_r9030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/r9030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            /* green */
+            .ibtn_g9030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/g9030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            .ibtn_g9030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/g9030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            /* blue */
+            .ibtn_b9030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/b9030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            .ibtn_b9030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/b9030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            /* white */
+            .ibtn_w9030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/w9030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            .ibtn_w9030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/w9030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            /* yellow */
+            .ibtn_y9030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/y9030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+            .ibtn_y9030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/y9030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:90px;
+                height:30px;
+            }
+
+        /* w*h=60*30 */
+
+            /* red */
+            .ibtn_r6030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/r6030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            .ibtn_r6030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/r6030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            /* green */
+            .ibtn_g6030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/g6030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            .ibtn_g6030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/g6030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            /* blue */
+            .ibtn_b6030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/b6030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            .ibtn_b6030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/b6030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            /* white */
+            .ibtn_w6030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/w6030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            .ibtn_w6030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/w6030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            /* yellow */
+            .ibtn_y6030{
+                border:1px solid #f00;
+                font-size:9pt;
+                color:#333333;
+                border:0px;
+                background:#fff url('img/ibtn/y6030.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+            .ibtn_y6030_over{
+                font-size:9pt;
+                color:#666666;
+                border:0px;
+                background:#fff url('img/ibtn/y6030_over.jpg') no-repeat;
+                text-align:center;
+                padding:0px;
+                width:60px;
+                height:30px;
+            }
+
+    /* 圖片式按鈕 結束 */

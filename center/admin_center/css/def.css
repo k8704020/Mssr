@@ -1,0 +1,38 @@
+/*
+-------------------------------------------------------
+檔案: def.css
+用途: 通用性CSS定義
+日期: 2013年8月2日
+日期: 2013年8月2日
+作者: mssr_team@cl_ncu
+-------------------------------------------------------
+通用類別
+    lib/button  按鈕樣式
+    lib/font    文字樣式
+    lib/bgcolor 背景顏色
+    lib/table   表格樣式
+    lib/form    表單,表單欄位樣式
+    lib/li      li項目
+    lib/fixed   修正樣式
+    lib/default 預設
+
+本端類別
+    structure   結構,結構單元
+    button      按鈕樣式
+    font        文字樣式
+    bgcolor     背景顏色
+    table       表格樣式
+    default     預設
+*/
+    /* 通用類別 */
+    @import url('../../../css/lib/def.css');
+
+    /* 本端類別 */
+    @import url('structure/def.css');
+    @import url('table/def.css');
+    @import url('button/def.css');
+    @import url('font/def.css');
+    @import url('bgcolor/def.css');   
+    @import url('default/def.css');
+
+

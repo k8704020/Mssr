@@ -1,0 +1,84 @@
+/*
+-------------------------------------------------------
+font
+-------------------------------------------------------
+文字重量
+    .font-weight1
+
+文字樣式
+    .font-family1
+
+文字尺寸    小->大
+    .fsize_12
+    .fsize_13
+    .fsize_14
+    .fsize_15
+    .fsize_16
+    .fsize_17
+    .fsize_18
+
+文字顏色    淡->深
+    .fc_gray0
+    .fc_blue0
+    .fc_red0
+    .fc_white0
+    .fc_green0
+    .fc_brown0
+    .btn_disabled
+*/
+    
+    /* 文字重量 */
+    .font-weight1{
+        font-weight:bold;
+    }
+
+    /* 文字樣式 */
+    .font-family1{
+        font-family:"微軟正黑體","標楷體","新細明體"; 
+    }
+
+    /* 文字尺寸 */
+    .fsize_12{
+        font-size:12px;
+    }
+    .fsize_13{
+        font-size:13px;
+    }
+    .fsize_14{
+        font-size:14px;
+    }
+    .fsize_15{
+        font-size:15px;
+    }
+    .fsize_16{
+        font-size:16px;
+    }
+    .fsize_17{
+        font-size:17px;
+    }
+    .fsize_18{
+        font-size:18px;
+    }
+
+    /* 文字顏色 */
+    .fc_gray0{
+        color:#4e4e4e;
+    }
+    .fc_blue0{
+        color:#3571d4;
+    }
+    .fc_red0{
+        color:#ef1d1d;
+    }
+    .fc_white0{
+        color:#ffffff;
+    }
+    .fc_green0{
+        color:#437C85;
+    }
+    .fc_brown0{
+        color:#8e4408;
+    }
+    .btn_disabled{
+        color:#aaaaaa;
+    }

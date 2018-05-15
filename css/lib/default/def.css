@@ -1,0 +1,53 @@
+/*
+-------------------------------------------------------
+default
+-------------------------------------------------------
+
+*/
+
+    body{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        color: #333;
+    }
+    table{
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+    }
+
+    /* body,form */
+    body,form{
+        margin:0px;
+        padding:0px;
+    }
+
+    /* 標題 h1,h2,h3 */
+    h1,h2,h3{
+        font-family: Helvetica,Verdana,"LiHei Pro","新細明體",sans-serif;
+    }
+    h1{
+        font-size: 14pt;
+        font-weight: normal;
+        color: #333;
+    }
+    h2{
+        font-size: 12pt;
+        font-weight: normal;
+        color: #333;
+    }
+    h3{
+        font-size: 10pt;
+        font-weight: normal;
+        color: #333;
+    }
+
+    /* 連結 link */
+    a:link,a:visited{
+        font-size:9pt;
+        text-decoration:none;
+        color:#999;
+    }
+    a:hover,a:active{
+        text-decoration:none;
+        color:#666;
+    }

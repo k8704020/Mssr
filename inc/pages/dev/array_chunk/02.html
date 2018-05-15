@@ -1,0 +1,66 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+</Head>
+
+<Body>
+
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+
+    var arry =[1,2,3,4,5,6,7,8,9];
+    var arrys=array_chunk(arry,size=4);
+    alert(arrys.length);
+
+    function array_chunk(arry,size){
+    //---------------------------------------------------
+    //依長度分割陣列
+    //---------------------------------------------------
+    //arry  陣列
+    //size  長度,預設1
+    //---------------------------------------------------
+
+        //參數檢驗
+        if(!arry){
+            return [];
+        }
+        if(!size){
+            size=1;
+        }else{
+            size=parseInt(size);
+        }
+
+        //處理
+        var len     =arry.length;
+        var pnos    =Math.ceil(len/size);
+        var results =[];
+
+        var inx=0;
+        for(var i=1;i<=pnos;i++){
+            var result=[];
+            for(var j=0;j<size;j++){
+                var val=arry[inx];
+                if(val){
+                    result[j]=val;
+                }
+                inx++;
+            }
+            //alert(result);
+            results.push(result);
+        }
+
+        //alert(results.length);
+
+        //回傳
+        return results;
+    }
+</script>
+
+</Body>
+</Html>

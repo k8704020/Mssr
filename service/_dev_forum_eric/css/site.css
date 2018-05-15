@@ -1,0 +1,1028 @@
+/*
+site
+*/
+    /*
+    結構
+    */
+        body{
+        /*
+        note: bootstrap default font-size:14px
+        */
+            margin-top: 60px;
+            margin-bottom: 60px;
+            font-size: 12px;
+            color: #4e4e4e;
+            background-image:url(../img/bg.jpg);
+        }
+        .container{
+            background-color: #ffffff;
+            border: 0px solid #e9eae9;
+            border-radius: 5px;
+            box-shadow: 0px 0px 0px 0px #888888;
+        }
+        input[readonly]{
+        /*
+        note: over-ride browser's default readonly style
+        */
+            background-color: #f5f5f5 !important;
+        }
+        .mx-pre{
+            font-size: 12px;
+            background-color: #fff;
+            border: 1px solid #fff;
+        }
+        .ui-autocomplete {
+            z-index: 9999 !important;
+        }
+
+    /*
+    media
+    */
+        .media{
+            position: relative;
+            padding: 10px;
+            border: 1px solid #e7e7e7;
+            background-color: #fdfdfd;        
+        }
+
+    /*
+    scroll_to_top
+    */
+        .scroll_to_top{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 46px;
+            height: 117px;
+            background-image: url(../img/scroll_to_top.png);
+            background-color: #ffffff;
+            display: none;
+        }
+        .scroll_to_top:link {
+        }
+        .scroll_to_top:visited {
+        }
+        .scroll_to_top:hover {
+            cursor: pointer; 
+        }
+        .scroll_to_top:active {
+        }
+
+    /*
+    導覽列
+    */
+        .mx-navbar{
+            background-color: #e9e9e9;   
+            box-shadow:4px 4px 3px -3px rgba(30%,30%,30%,0.5);
+            border: 0px solid #fff;              
+            border-bottom: 0px solid #e7e7e7;
+            /*background-image:url(../img/bg.jpg);*/
+        }
+        .mx-navbar .container{
+            background-color: #e9e9e9;       
+            box-shadow: 0px 0px 0px 0px #fff;
+            border: 0px solid #fff;            
+            /*background-image:url(../img/bg.jpg);*/
+        }
+        .mx-navbar * {
+            font-size: 12px;
+        }
+        .mx-navbar-header{
+
+        }
+        .mx-navbar-brand{
+
+        }
+        .mx-navbar-logo{
+            margin-top: -10px;
+        }
+        .mx-navbar-nav{
+
+        }
+        .mx-navbar .navbar-collapse > ul > li:link {
+        }
+        .mx-navbar .navbar-collapse > ul > li:visited {
+        }
+        .mx-navbar .navbar-collapse > ul > li:hover {
+            border-bottom: 3px solid #777777;
+        }
+        .mx-navbar .navbar-collapse > ul > li:active {
+        }
+        .mx-navbar li:active {
+        }
+        .mx-navbar a:link {
+        }
+        .mx-navbar a:visited {
+        }
+        .mx-navbar a:hover {
+        }
+        .mx-navbar a:active {
+        }
+
+    /*
+    carousel
+    */
+        .carousel{
+            position: relative;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .carousel img{
+            
+        }
+
+    /*
+    index left side
+    */  
+        .index_left_side{
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .index_left_side a:link {
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .index_left_side a:visited {
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .index_left_side a:hover {
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .index_left_side a:active {
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .index_left_side span{
+            color: #c0c0c0;
+        }
+
+    /*
+    動態牆
+    */  
+        .wall{
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .wall .submedia{
+            position: relative;
+            margin-top: 25px;
+        }
+        .wall .submedia > .media-body{
+            position: relative;
+            left: 5px;
+        }
+        .wall .media-body{
+            position: relative; 
+        }
+        .wall .media-heading{
+            position: relative; 
+            margin: 5px 0px;
+            font-weight: bold;
+        }
+        .wall .submedia-heading{
+            position: relative; 
+            margin-left: 5px;
+        }
+        .wall .media-object{
+            position: relative; 
+        }
+        .wall a:link{
+            color: #4e4e4e;
+        }
+        .wall a:visited{
+            color: #4e4e4e;
+        }
+        .wall a:hover{
+            color: #4e4e4e;
+        }
+        .wall a:active{
+            color: #4e4e4e;
+        }
+
+    /*
+    right side
+    */  
+        .right_side{
+            position: relative;
+            /*word-break:break-all;*/
+        }
+        .right_side table thead{
+            border: 1px solid #e7e7e7;
+            background-color: #fdfdfd;
+            text-align: left;
+            font-weight: bold;
+        }
+        .right_side a:link{
+            color: #4e4e4e;
+        }
+        .right_side a:visited{
+            color: #4e4e4e;
+        }
+        .right_side a:hover{
+            color: #4e4e4e;
+        }
+        .right_side a:active{
+            color: #4e4e4e;
+        }
+
+    /*
+    註腳列
+    */
+        .mx-footbar{
+            font-size: 12px;
+            border: 0px;
+            background-color: #fff;
+        }
+        .mx-footbar-div{
+            border-top: 1px solid #e7e7e7;
+        }
+        .mx-footbar-ul{
+
+        }
+        .mx-footbar-li{
+            display: inline-block;
+            float: left;
+        }
+        .mx-footbar a{
+            color: #4e4e4e;
+        }
+
+    /*
+    jumbotron
+    */  
+        .jumbotron{
+            position: relative;
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;  
+            height: 225px;
+            background-image: url('../img/default/front_cover_book.jpg'); 
+            z-index: 2;
+        }
+        .jumbotron > .jumbotron_img{
+            position: absolute;
+            left: 25px;
+            bottom: -25px;
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;  
+            z-index: 2;
+        }
+        .jumbotron > .jumbotron_name{
+            position: absolute;
+            left: 200px;
+            bottom: 10px;
+            width: 500px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .jumbotron > .jumbotron_note{
+            position: absolute;
+            padding: 10px;
+            top: 10px;
+            right: 15px;
+            width: 300px;
+            height: 200px;
+            border-radius: 20px;
+            background-color: #fdfdfd;
+            border: 1px solid #e7e7e7;
+            word-break:break-all;
+        }
+        .jumbotron > .jumbotron_note > span{
+            position: relative;
+            font-size: 13px;
+            font-weight: bold;
+            color: #4e4e4e;
+        }
+        .jumbotron > .jumbotron_note > span > .jumbotron_note_title{
+            position: relative;
+            top: 10px;
+            font-size: 15px;
+            color: #ec6c01;
+        }
+        .modal_jumbotron_note{
+            padding: 10px;
+            word-break:break-all;
+        }
+        .modal_jumbotron_note > span{
+            font-size: 13px;
+            font-weight: bold;
+            color: #4e4e4e;
+        }
+        .modal_jumbotron_note > span > .jumbotron_note_title{
+            position: relative;
+            top: 5px;
+            font-size: 15px;
+            color: #ec6c01;
+            z-index: 2;
+        }
+
+    /*
+    jumbotron-xs
+    */  
+        .jumbotron-xs{
+            position: relative;
+            margin-bottom: 25px;
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;  
+            height: 110px;
+            background-image: url('../img/default/front_cover_book.jpg'); 
+            z-index: 2;
+        }
+        .jumbotron-xs > .jumbotron-xs_img{
+            position: absolute;
+            left: 25px;
+            bottom: -15px;
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;  
+            z-index: 2;
+        }
+        .jumbotron-xs > .jumbotron-xs_name{
+            position: absolute;
+            left: 150px;
+            bottom: 10px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+    /*
+    page_info
+    */
+        .page_info{
+            position: relative;
+            bottom: 32px;
+            border: 0px solid #e7e7e7;
+            width: 100%;
+            height: 40px;
+        }
+        .page_info table{            
+            border: 1px solid #e7e7e7;
+            height: 40px;
+        }
+        .page_info table td{            
+            border: 0px solid #e7e7e7;
+        }
+        .page_info span{            
+            position: relative;
+            top: 1px;
+            font-size: 14px;
+            /*font-weight: bold;*/
+            color: #474747;
+        }
+
+    /*
+    user lefe side
+    */
+        .user_lefe_side{
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .user_lefe_side #myTab li{
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .user_lefe_side .tab-pane a:link{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .user_lefe_side .tab-pane a:visited{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .user_lefe_side .tab-pane a:hover{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .user_lefe_side .tab-pane a:active{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .user_lefe_side .tab_title{
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+            height: 18px; 
+            font-size: 14px;
+            font-weight: bold;
+            color: #ef1d1d;
+        }         
+
+        .user_lefe_side_tab1{
+            position: relative;
+            margin-top: 15px;
+        }  
+        .user_lefe_side_tab1 td{
+            height: 45px; 
+        }     
+        .user_lefe_side_tab1 .second_tr{
+            background-color: #4e4e4e; 
+            color: #ffffff; 
+        }   
+        .user_lefe_side_tab1 .second_tr span{
+            position: relative;
+            top: 6px;
+        }     
+        
+        .user_lefe_side_tab2{
+            position: relative;
+            margin-top: 15px;
+        }  
+        .user_lefe_side_tab2 .thumbnail{
+            position: relative;
+            margin-bottom: 0px;
+            border: 0px solid #e7e7e7;            
+        }
+        .user_lefe_side_tab2 .thumbnail .caption{
+            width: 120px;
+            height: 85px;
+        }
+        .user_lefe_side_tab2 div{
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .user_lefe_side_tab3{
+            position: relative;
+            margin-top: 15px;
+        }  
+        .user_lefe_side_tab3 .thumbnail{
+            position: relative;
+            margin-bottom: 0px;
+            border: 0px solid #e7e7e7;            
+        }
+        .user_lefe_side_tab3 div{
+            font-size: 14px;
+            text-align: center;
+        }
+
+    /*
+    book lefe side
+    */
+        .book_lefe_side{
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .book_lefe_side #myTab li{
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .book_lefe_side div a:link {
+            text-decoration: none;
+        }
+        .book_lefe_side div a:visited {
+            text-decoration: none;
+        }
+        .book_lefe_side div a:hover {
+            text-decoration: none;
+        }
+        .book_lefe_side div a:active {
+            text-decoration: none;
+        }
+        .book_lefe_side table{
+            position: relative;
+            margin-top: 15px;
+            clear: right;
+        }    
+        .book_lefe_side td{
+            height: 45px; 
+        }    
+        .book_lefe_side .second_tr{
+            background-color: #4e4e4e; 
+            color: #ffffff; 
+        }  
+        .book_lefe_side .second_tr span{
+            position: relative;
+            top: 6px;
+        }    
+        .book_lefe_side #article a:link {
+            color: #4e4e4e;
+        }
+        .book_lefe_side #article a:visited {
+            color: #4e4e4e;
+        }
+        .book_lefe_side #article a:hover {
+            color: #4e4e4e;
+        }
+        .book_lefe_side #article a:active {
+            color: #4e4e4e;
+        }
+
+    /*
+    group lefe side
+    */
+        .group_lefe_side{
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .group_lefe_side #myTab li{
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .group_lefe_side .tab-pane table a:link{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane table a:visited{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane table a:hover{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane table a:active{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane div a:link{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane div a:visited{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane div a:hover{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab-pane div a:active{
+            color: #4e4e4e;
+            text-decoration: none;
+        }
+        .group_lefe_side .tab_title{
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+            height: 18px; 
+            font-size: 14px;
+            font-weight: bold;
+            color: #ef1d1d;
+        }         
+
+        .group_lefe_side_tab1{
+            position: relative;
+            margin-top: 15px;
+        }  
+        .group_lefe_side_tab1 td{
+            height: 45px; 
+        }     
+        .group_lefe_side_tab1 .second_tr{
+            background-color: #4e4e4e; 
+            color: #ffffff; 
+        }   
+        .group_lefe_side_tab1 .second_tr span{
+            position: relative;
+            top: 6px;
+        }     
+        
+        .group_lefe_side_tab2{
+            position: relative;
+            margin-top: 15px;
+        }  
+        .group_lefe_side_tab2 .thumbnail{
+            position: relative;
+            margin-bottom: 0px;
+            border: 0px solid #e7e7e7;       
+        }
+        .group_lefe_side_tab2 .thumbnail .caption{
+            width: 120px;
+            height: 85px;
+        }
+        .group_lefe_side_tab2 div{
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .group_lefe_side_tab3{
+            position: relative;
+            margin-top: 15px;
+        }  
+        .group_lefe_side_tab3 .thumbnail{
+            position: relative;
+            margin-bottom: 0px;
+            border: 0px solid #e7e7e7;            
+        }
+        .group_lefe_side_tab3 div{
+            font-size: 14px;
+            text-align: center;
+        }
+        .group_lefe_side_tab4 div{
+            position: relative;        
+            padding: 15px;
+        }
+
+    /*
+    view article
+    */
+        #view_article{
+        
+        }
+        #view_article .pagination{
+            position: relative;    
+            margin-bottom: -5px;
+            border: 1px solid #e7e7e7; 
+        }
+        #view_article .pagination a{
+            position: relative;    
+            border: 0px solid red;
+        }
+        #view_article .article_title{
+            position: relative;    
+            font-size: 22px;
+            font-weight: bold;
+        }
+        #view_article > .row{
+            position: relative;        
+            margin-top: 15px;
+        }
+        #view_article > .row .media{
+            position: relative;   
+            padding: 10px;
+            border-radius: 3px;
+            min-height: 200px;
+        }
+        #view_article > .row .media-object{
+            position: relative;
+            width: 80px; 
+            height: 80px;
+            z-index: 2; 
+        }
+        #view_article > .row .media-heading{
+            position: relative; 
+            top: 1px;
+            padding: 5px 0; 
+            border: 1px solid #eeeeef;
+            background-color: #eeeeef; 
+            height: 75px;
+            font-weight: bold;
+        }
+        #view_article > .row .media-heading .btn-group{
+            position: relative; 
+            top: -3px;
+            right: 2px;
+        }
+        #view_article > .row .media-heading div{
+            position: relative; 
+            top: 10px;
+            font-size: 12px;
+            color: #4e4e4e;
+        }
+        #view_article > .row .media-body{
+            position: relative; 
+            margin: 25px 0;            
+            display: block;
+            clear: left;
+            font-size: 14px;
+            color: #4e4e4e;
+        }
+
+    /*
+    add article
+    */
+        #add_article{
+            position: relative;   
+            margin-top: 15px;   
+            border-radius: 5px;
+            min-height: 350px;
+            border: 1px solid #ebebeb;
+            background-color: #fdfdfd;
+        }
+        #add_article > .row{
+            position: relative;     
+            padding: 15px;
+        }
+        #add_article > .row > div{
+            position: relative;                    
+            font-size: 14px;
+            border-bottom: 0px solid #ebebeb;
+        }
+
+    /*
+    reply article
+    */
+        #reply_article_row{
+            position: relative;   
+            margin: 0px;
+            /*margin-top: 15px;   */
+            border-radius: 5px;
+            min-height: 125px;
+            border: 1px solid #ebebeb;
+            background-color: #fdfdfd;
+        }
+        #reply_article_row .row, #reply_article_row pre{
+            position: relative;  
+            margin-top: 15px; 
+            font-size: 14px;
+        }
+        /*
+        #reply_article > .row:first-child{
+            position: relative;  
+            padding: 15px;
+        }
+        #reply_article > .row:first-child hr{
+            position: relative;  
+            top: -15px;
+        }
+        #reply_article > .row:not(:first-child){
+            position: relative;     
+            top: -40px;
+            padding: 15px 15px 0px 15px;
+        }
+        #reply_article > .row > div{
+            position: relative;                    
+            font-size: 14px;
+            border-bottom: 0px solid #ebebeb;
+        }
+        */
+
+    /*
+    btn 
+    */
+        .btn_modal_jumbotron_note{
+            position: relative;
+            top: 9px; 
+            border: 0px solid #ffffff;
+            background-color: #ffffff; 
+            color: #428bca;             
+        }
+        .btn_add_friend{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_del_article{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_edit_article{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_del_reply{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_edit_reply{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_report_article{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_like_article{
+            position: relative;
+            margin: 0 1px;         
+        }
+        .btn_book_request{
+            position: relative;
+            margin: 0 1px;         
+        }
+
+        .btn_file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn_file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+    /*
+    RWD
+    */
+        @media (min-width: 768px) and (max-width: 991px){
+            body{
+            /*
+            note: bootstrap default font-size:14px
+            */
+                font-size: 12pt;
+            }
+            .mx-navbar * {
+                font-size: 12px;
+            }
+            .jumbotron_note{
+                font-size: 12px;
+            }
+            .modal_jumbotron_note > span{
+                font-size: 13pt;
+            }
+            .modal_jumbotron_note > span > .jumbotron_note_title{
+                font-size: 15pt;
+            }
+            .user_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .user_lefe_side .tab_title{
+                font-size: 14pt;
+            }        
+            .user_lefe_side .caption{
+                font-size: 13pt;
+            }
+            .book_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .book_lefe_side .caption{
+                font-size: 13pt;
+            }
+            .group_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .group_lefe_side .tab_title{
+                font-size: 14pt;
+            }     
+            .group_lefe_side_tab2 div{
+                font-size: 14pt;
+            }
+            .group_lefe_side_tab3 div{
+                font-size: 14pt;
+            }   
+            .group_lefe_side_tab3 .caption{
+                font-size: 13pt;
+            }
+            #view_article > .row .media-heading div{
+                font-size: 10pt;
+            }  
+            #view_article > .row .media-body{
+                font-size: 14pt;
+            }      
+            #add_article > .row > div{           
+                font-size: 12pt;
+            }
+            #reply_article_row .row, #reply_article_row pre{
+                font-size: 14pt;
+            }       
+        }
+        @media (min-width: 992px) and (max-width: 1199px){
+            body{
+            /*
+            note: bootstrap default font-size:14px
+            */
+                font-size: 12pt;
+            }
+            .mx-navbar * {
+                font-size: 12px;
+            }
+            .jumbotron_note{
+                font-size: 12px;
+            }
+            .modal_jumbotron_note > span{
+                font-size: 13pt;
+            }
+            .modal_jumbotron_note > span > .jumbotron_note_title{
+                font-size: 15pt;
+            }
+            .user_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .user_lefe_side .tab_title{
+                font-size: 14pt;
+            }        
+            .user_lefe_side .caption{
+                font-size: 13pt;
+            }
+            .book_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .book_lefe_side .caption{
+                font-size: 13pt;
+            }
+            .group_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .group_lefe_side .tab_title{
+                font-size: 14pt;
+            }     
+            .group_lefe_side_tab2 div{
+                font-size: 14pt;
+            }
+            .group_lefe_side_tab3 div{
+                font-size: 14pt;
+            }   
+            .group_lefe_side_tab3 .caption{
+                font-size: 13pt;
+            }
+            #view_article > .row .media-heading div{
+                font-size: 10pt;
+            }  
+            #view_article > .row .media-body{
+                font-size: 14pt;
+            }      
+            #add_article > .row > div{           
+                font-size: 12pt;
+            }
+            #reply_article_row .row, #reply_article_row pre{
+                font-size: 14pt;
+            }       
+        }
+        @media (min-width: 1200px){
+            body{
+            /*
+            note: bootstrap default font-size:14px
+            */
+                font-size: 12pt;
+            }
+            .mx-navbar * {
+                font-size: 12px;
+            }
+            .jumbotron_note{
+                font-size: 12px;
+            }
+            .modal_jumbotron_note > span{
+                font-size: 13pt;
+            }
+            .modal_jumbotron_note > span > .jumbotron_note_title{
+                font-size: 15pt;
+            }
+            .user_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .user_lefe_side .tab_title{
+                font-size: 14pt;
+            }        
+            .user_lefe_side .caption{
+                font-size: 13pt;
+            }
+            .book_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .book_lefe_side .caption{
+                font-size: 13pt;
+            }
+            .group_lefe_side #myTab li{
+                font-size: 13pt;
+            }
+            .group_lefe_side .tab_title{
+                font-size: 14pt;
+            }     
+            .group_lefe_side_tab2 div{
+                font-size: 14pt;
+            }
+            .group_lefe_side_tab3 div{
+                font-size: 14pt;
+            }   
+            .group_lefe_side_tab3 .caption{
+                font-size: 13pt;
+            }
+            #view_article > .row .media-heading div{
+                font-size: 10pt;
+            }  
+            #view_article > .row .media-body{
+                font-size: 14pt;
+            }      
+            #add_article > .row > div{           
+                font-size: 12pt;
+            }
+            #reply_article_row .row, #reply_article_row pre{
+                font-size: 14pt;
+            }               
+        }
+		
+	/*
+    個人成就
+    */
+			#All-div {
+				margin-top:20px;
+				font-family:微軟正黑體;
+			}
+			#banner-div {
+				border:3px solid  #FFAC55;
+				width:100%;
+				height:20%;
+				text-align:center;
+
+			}
+			#list-div {
+				margin-top:5px;
+				border:3px solid #FFAC55;
+				width:20%;
+				height:80%;
+				float:left;
+			}
+			#main-div {
+				margin-top:5px;
+				border:3px solid #FFAC55;
+				width:80%;
+				height:80%;
+				float:left;
+			}
+			.achieve-button{
+				margin:5px;
+				width:100%;
+			}
+
+
+

@@ -1,0 +1,74 @@
+﻿div
+{
+    height: 358px;
+}
+#main
+{
+	background-color: #C7FF12;
+    width: 529px;
+    margin: 0px auto;
+}
+#right
+{
+    width: 439px;
+    float:right;
+    margin-right: 2px;
+}
+#left{
+	background-color: #E8DD11;
+    float: left;
+	padding: 0px 0px 0px 5px;
+    width: 82px;
+}
+#btn
+{
+    width: 82px;
+    margin: 5px 0px 0px -2px;
+    height: 40px;
+    border: 0;
+    background-image: url(../jpg/btn.png);
+}
+.opt
+{
+    width: 209px;
+    height: 155px;
+    margin: 5px;
+    display:block;
+    background-color: transparent;
+    border: 0;
+}
+#a
+{
+    float: left;
+}
+#b
+{
+    float: right;
+}
+#c
+{
+    float: left;
+}
+#d
+{
+    float: right;
+}
+#qu
+{
+	float: right;
+	margin: -10px 5px 0px 0px;
+}
+#man
+{
+	float: left;
+	margin: -10px 0px 0px 10px;
+	text-decoration: none;
+}
+#pro
+{
+	background-color: #BCA816;
+	height: 70px;
+	margin: 170 0px 0px 1px;
+	padding: 0px 0px 0px 5px;
+	width: 72px;
+}

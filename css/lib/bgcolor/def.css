@@ -1,0 +1,24 @@
+/*
+-------------------------------------------------------
+bgcolor
+-------------------------------------------------------
+背景顏色    淡->深
+
+    .bg_gray0
+    .bg_gray1
+    .bg_gray2
+    .bg_gray3
+*/
+    /* 背景顏色 */
+    .bg_gray0{
+        background-color:#f8f8f8;
+    }
+    .bg_gray1{
+        background-color:#eaeaea;
+    }
+    .bg_gray2{
+        background-color:#e1e1e1;
+    }
+    .bg_gray3{
+        background-color:#c3c3c3;
+    }

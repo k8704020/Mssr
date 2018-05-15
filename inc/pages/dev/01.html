@@ -1,0 +1,161 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+</Head>
+
+<Body>
+
+
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+//numrow       資料總筆數
+//psize        單頁筆數
+//pnos         分頁筆數
+//pinx         目前所在頁
+//sinx         目前所在頁,值域起始值
+//einx         目前所在頁,值域終止值
+//path         頁面路徑
+//list_size    換頁列顯示筆數
+
+    //var numrow      =19;            //共19筆
+    //var psize       =5;             //單頁5筆
+    //var pnos        =4;             //共分4頁,1-5,6-10,11-15,16-19
+    //var pinx        =1;             //目前所在頁,第1頁
+    //var sinx        =1;             //目前所在頁,值域起始值,第1筆
+    //var einx        =5;             //目前所在頁,值域終止值,第5筆
+    //var path        ='index.php';   //頁面路徑
+    //var list_size   =3;             //換頁列顯示筆數,3
+    //var arry_list   =[];            //換頁列資料陣列
+    //var s_sinx      =0;             //換頁列區段,值域起始值,1
+    //var s_einx      =0;             //換頁列區段,值域終止值,3
+
+    var numrow      =19;            //共19筆
+    var psize       =5;             //單頁5筆
+    var pnos        =4;             //共分4頁,1-5,6-10,11-15,16-19
+    var pinx        =4;             //目前所在頁,第4頁
+    var sinx        =16;            //目前所在頁,值域起始值,第16筆
+    var einx        =19;            //目前所在頁,值域終止值,第19筆
+    var path        ='index.php';   //頁面路徑
+    var list_size   =3;             //換頁列顯示筆數,3
+    var arry_list   =[];            //換頁列資料陣列
+    var s_sinx      =0;             //換頁列區段,值域起始值,4
+    var s_einx      =0;             //換頁列區段,值域終止值,4
+
+    //---------------------------------------------------
+    //分析
+    //---------------------------------------------------
+    //共分4頁       1,2,3,4
+    //分2區段       {1,2,3},{4}
+    //目前所在頁    1
+    //比對各區段,決定到底目前所在頁,到底在哪一區
+
+        arry_list=array_range(1,pnos);
+        arry_list=array_chunk(arry_list,list_size);
+
+        for(var i=0;i<arry_list.length;i++){
+            if(in_array(pinx,arry_list[i])){
+                var list=arry_list[i];
+                s_sinx=list[0];
+                s_einx=list[list.length-1];
+                break;
+            }
+        }
+
+        alert(s_sinx+','+s_einx);
+
+    function array_range(s,e,step){
+    //---------------------------------------------------
+    //值域數值陣列
+    //---------------------------------------------------
+    //s     起始值
+    //e     終止值
+    //step  遞增數,預設1,可以指定負整數
+    //---------------------------------------------------
+
+        if(!step){
+            step=1;
+        }else{
+            step=parseInt(step);
+        }
+
+        var arry=[];
+        while(s<=e){
+            arry.push(s);
+            s=s+step;
+        }
+
+        return arry;
+    }
+
+    function array_chunk(arry,size){
+    //---------------------------------------------------
+    //依長度分割陣列
+    //---------------------------------------------------
+    //arry  陣列
+    //size  長度,預設1
+    //---------------------------------------------------
+
+        //參數檢驗
+        if(!arry){
+            return [];
+        }
+        if(!size){
+            size=1;
+        }else{
+            size=parseInt(size);
+        }
+
+        //處理
+        var len     =arry.length;
+        var pnos    =Math.ceil(len/size);
+        var results =[];
+
+        var inx=0;
+        for(var i=1;i<=pnos;i++){
+            var result=[];
+            for(var j=0;j<size;j++){
+                var val=arry[inx];
+                if(val){
+                    result[j]=val;
+                }
+                inx++;
+            }
+            //alert(result);
+            results.push(result);
+        }
+
+        //alert(results.length);
+
+        //回傳
+        return results;
+    }
+
+    function in_array(val,array){
+    //---------------------------------------------------
+    //檢驗元素是否在陣列裡
+    //---------------------------------------------------
+    //val   值
+    //array 陣列
+    //---------------------------------------------------
+
+        flag=false;
+        for(var i=0;i<array.length;i++){
+            if(val==array[i]){
+               flag=true;
+               break;
+            }
+        }
+
+        //回傳
+        return flag;
+    }
+</script>
+
+</Body>
+</Html>

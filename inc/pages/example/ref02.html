@@ -1,0 +1,48 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="../code.css" media="screen" />
+    <script type="text/javascript" src="../code.js"></script>
+</Head>
+
+<Body>
+
+<span id="page1"></span><br/>
+<span id="page2"></span><br/>
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//頁面初始
+//-------------------------------------------------------
+
+    //分頁列
+    var numrow   =39;   //共39筆
+    var psize    =5;    //單頁5筆
+    var pnos     =8;    //共分8頁
+    var pinx     =5;    //目前所在頁,第5頁
+    var sinx     =21;   //目前所在頁,值域起始值,第21筆
+    var einx     =25;   //目前所在頁,值域終止值,第25筆
+    var list_size=3;    //分頁列顯示筆數,3
+    var url_args ={};   //連結資訊
+
+    url_args ={
+        'pinx_name' :'pinx',
+        'psize_name':'psize',
+        'page_name' :'query.php',
+        'page_args' :{
+            'arg1':'參數1',
+            'arg2':'參數2'
+        }
+    }
+
+    window.onload=function(){
+        var opage1=pages(cid='page1',numrow,psize,pnos,pinx,sinx,einx,list_size,url_args);
+        var opage2=pages(cid='page2',numrow,psize,pnos,pinx,sinx,einx,list_size,url_args);
+    }
+</script>
+
+</Body>
+</Html>

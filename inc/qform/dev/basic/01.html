@@ -1,0 +1,62 @@
+<Html>
+<Head>
+    <Title></Title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Language" content="UTF-8">
+    <style>
+        #qform_div{
+            border:1px solid #f00;
+            width:300px;
+            height:30px;
+        }
+        #qform_form{
+            margin:0px;
+        }
+        #qform_ldiv{
+            float:left;
+
+            height:100%;
+            border:1px solid #0f0;
+        }
+        #qform_rdiv{
+            float:left;
+
+            height:100%;
+            border:1px solid #00f;
+        }
+        #qform_type{
+            padding:2px;
+            height:30px;
+        }
+    </style>
+</Head>
+
+<Body>
+
+<div id="qform_div">
+<form id="qform_form">
+    <div id="qform_ldiv">
+        <select id="qform_type">
+            <option value="type1">文字方塊
+            <option value="type2">下拉選單
+            <option value="type3">圈選方塊
+            <option value="type4">核取方塊
+        </select>
+    </div>
+    <div id="qform_rdiv"></div>
+</form>
+</div>
+
+<script type="text/javascript">
+//-------------------------------------------------------
+//範例
+//-------------------------------------------------------
+    var oqform_div =document.getElementById("qform_div");
+    var oqform_ldiv=document.getElementById("qform_ldiv");
+    var oqform_rdiv=document.getElementById("qform_rdiv");
+    var oqform_type=document.getElementById("qform_type");
+
+</script>
+
+</Body>
+</Html>
