@@ -287,7 +287,7 @@
 	//初始化
 	//---------------------------------------------------
 
-	    console.log(location.href);
+	    //console.log(location.href);
         var json_book_info=<?php echo json_encode($arrys_book_info);?>;
         var ojump_bar=document.getElementById('jump_bar');
         var ojump_text=document.getElementById('jump_text');
