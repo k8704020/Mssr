@@ -466,7 +466,7 @@
 	//---------------------------------------------------
 	//初始化
 	//---------------------------------------------------
-    console.log(location.href);
+	
 	var communicaton_type = <?php echo json_encode($communicaton_type,true);?>;
 	var chick_type = "";
 	var home_id='<? echo $home_id;?>';
@@ -772,7 +772,6 @@
 			click_say();
 		}
 		window.document.getElementById("tititit").innerHTML = chick_type;
-		console.log(communicaton_type);
 		tmp_array = communicaton_type[chick_type];
 		document.getElementById("ininin").src ="";
 		window.document.getElementById("set_ramger_1").innerHTML = '<option id="dasdasdasd" disabled="disabled" >[請選擇範圍]</option>';

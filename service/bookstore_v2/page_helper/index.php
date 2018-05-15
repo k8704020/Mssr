@@ -3,8 +3,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>說明文件</title>
     <script src="../js/select_thing.js" type="text/javascript"></script>
+    <script src="../js/set_bookstore_action_log.js" type="text/javascript"></script>
     <script src="<? echo $_GET['id'];?>.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/btn.css">
+    
 	<style>
 			@keyframes myfirst
 			{
