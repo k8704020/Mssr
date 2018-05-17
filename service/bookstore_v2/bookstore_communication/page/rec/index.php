@@ -14,7 +14,7 @@
 
         //啟用BUFFER
         @ob_start();
-
+		
         //外掛設定檔
         require_once(str_repeat("../",5).'config/config.php');
 		require_once(str_repeat("../",5)."inc/get_book_info/code.php");
@@ -28,6 +28,7 @@
 
         //清除並停用BUFFER
         @ob_end_clean();
+		
 
     //---------------------------------------------------
     //有無維護
@@ -44,7 +45,7 @@
     //---------------------------------------------------
     //SESSION
     //---------------------------------------------------
-   
+    
         $conn_mssr=conn($db_type='mysql',$arry_conn_mssr);
 
     //---------------------------------------------------
@@ -59,6 +60,7 @@
         $user_id     =(isset($_SESSION['uid']))?(int)$_SESSION['uid']:die("嗯?");
         $ramge    =(isset($_GET['ramge']))?mysql_prep($_GET['ramge']):die("嗯?");
         $time   =(isset($_GET['time']))?mysql_prep($_GET['time']):die("嗯?");
+		
 		
 		$class_code   =(isset($_GET['class_code']))?mysql_prep($_GET['class_code']):die("嗯?");
 		$school_code  =(isset($_GET['school_code']))?mysql_prep($_GET['school_code']):die("嗯?");
@@ -75,7 +77,7 @@
 		$week_s = date("Y-m-d", strtotime("$getdate -".$del_day." days"));
 		//上週開始日期
 		$star_time["week"] = date('Y-m-d',strtotime("$week_s - 7 days"));
-
+		
 		
 		//============月============	
 		//本月開始日期
@@ -178,12 +180,11 @@
 			LEFT JOIN `user`.`school`
 			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_".$time."`.`school_code`
 			WHERE 1 = 1
-			AND `start_date` = '".$star_time[$time]."'
+			AND `start_date` >= '".$star_time[$time]."'
 			".$ch."
 			GROUP BY `user_id`,`book_sid`
 			ORDER BY `score` DESC";		
 	}
-	
 	
 	$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,100),$arry_conn_mssr);
 

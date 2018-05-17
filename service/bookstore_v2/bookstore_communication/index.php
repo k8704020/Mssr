@@ -705,6 +705,7 @@
 
 		var e = document.getElementById("set_ramger_1");
 		tmp_array = communicaton_type[chick_type][e.options[e.selectedIndex].value];
+		
 		e = document.getElementById("set_ramger_2");
 		e.style.color = "#000";
 		tmp_array = tmp_array[e.options[e.selectedIndex].value];
@@ -713,6 +714,7 @@
 		else
 			window.document.getElementById("set_ramger_3").style.display = "none";
 		document.getElementById("ininin").src = "./page/"+tmp_array[0]+"/index.php?ramge="+tmp_array[1]+"&time="+tmp_array[2]+"&class_code="+class_code+"&school_code="+school_code+"&grade_code="+grade_code+"&rec_type="+rec_type;
+
 	}
 	function set_ramger_1(value)
 	{

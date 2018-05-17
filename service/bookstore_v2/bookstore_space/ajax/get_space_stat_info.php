@@ -322,6 +322,7 @@ else if($array["group"] =="")
 			AND  `classroom_id` ='".$array["class"]."'
 			AND  group_sdate BETWEEN '".$start."' AND '".$end."'
 			 ";
+	
 	$retrun = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(),$arry_conn_mssr);
 
 	//讀取組員中的經驗值綜合值
@@ -474,7 +475,7 @@ else if($array["group"] =="")
 	$array_data["error"]="";
 	$array_data["echo"]="";
 	$array_data["count"]=count($retrun);
-
+	
 	echo json_encode(@$array_data,1);
 }
 //======================輸入:  學校,年級,班級,組別      輸出: 學生ID
@@ -497,8 +498,9 @@ else
 	$sql = "SELECT user_id
 			FROM  `mssr_user_group`
 			WHERE  `group_sid` =  '".$array["group"]."'
-			AND  keyin_cdate BETWEEN '".$start."' AND '".$end."';
+			AND  keyin_cdate BETWEEN '".$start."' AND '".$end."' ORDER BY user_id;
 			";
+	
 	$retrun = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(),$arry_conn_mssr);
 
 	$user_info["echo"]="此學生暫無組別喔";
@@ -643,6 +645,7 @@ else
 		}
 	}
 	$array_data = $user_info;
+	
 	echo json_encode($array_data,1);
 
 }

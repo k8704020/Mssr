@@ -322,7 +322,7 @@
 					user_permission:window.parent.user_permission,
 					user_school:window.parent.user_school
 			}).success(function (data)
-			{ console.log(data);
+			{ //console.log(data);
 				echo("AJAX:success:find_book():搜尋書籍:已讀出:"+data);
 				if(data[0]!="{")
 				{
