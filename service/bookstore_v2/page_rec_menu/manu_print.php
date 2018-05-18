@@ -297,7 +297,7 @@
     <script src="../js/select_thing.js" type="text/javascript"></script>
     <link href="../css/manu.css" rel="stylesheet" type="text/css">
 </Head>
-<body style="overflow:hidden;">
+<body>
 
 	<!--==================================================
     html內容
@@ -305,7 +305,7 @@
     
     <? if($forum_flag){?>
 	<table  width="500"  border="0" cellpadding="0" cellspacing="0">
-    <tr style="height:50px; position:fixed; top:10px;"> 
+    <tr> 
     <td class="td_line_l_t" style=" width:250px; ">書籍名稱</td>
     <td class="td_line_t"  style=" width:50px;">評星</td>
     <td class="td_line_t"  style=" width:50px;">繪圖</td>
@@ -313,23 +313,23 @@
     <td class="td_line_t"  style="width:50px;">錄音</td>
     <td class="td_line_t"  style="width:50px;">聊書</td>
     </tr>
-    </table>
+    <!-- </table>-->
 	<? }else{?>
     
     <table  width="500"  border="0" cellpadding="0" cellspacing="0">
-    <tr style="height:40px; position:fixed; top:10px"> 
+    <tr> 
     <td class="td_line_l_t" style=" width:300px; ">書籍名稱</td>
     <td class="td_line_t"  style=" width:50px;">評星</td>
     <td class="td_line_t"  style=" width:50px;">繪圖</td>
     <td class="td_line_t"  style="width:50px;">文字</td>
     <td class="td_line_t"  style="width:50px;">錄音</td>
     </tr>
-    </table>
+    <!-- </table>-->
 	<? } ?>
-    
+    <!-- 
     <div style="overflow-x:hidden;overflow-y:auto; height:240px; width:580px;position:relative; top:30px;">
 	<table  width="500"  border="0" cellpadding="0" cellspacing="0" >
-    
+   -->
   
    
     <? for($i = 0 ;$i < sizeof($array) ; $i++)
@@ -482,7 +482,7 @@
 	 } ?>
     
     </table>
-</div>
+<!-- </div>-->
 
 
     <script>

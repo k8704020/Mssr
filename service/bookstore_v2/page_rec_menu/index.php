@@ -217,7 +217,7 @@
         <a id="out" class="btn_close" onClick="out()" style="position:absolute; top::30px; left:755px; top: 400px; cursor:pointer;"></a>
       <div id="sp_help" style="position:absolute; top:236px; left:220px; color:#993300; font-size:36px; text-align:center; width: 568px; display:none;">沒有書籍可以推薦?<BR>
       可以先看書登記喔!</div>
-      <div id="iframe" style="position:absolute; top:0px; left:-60px;">aaa</div>
+      <div id="iframe" style="position:absolute; top:8px; left:-54px;">aaa</div>
       	 <!-- 改過 -->
         <a id="left_btn" class="btn_arrow_l" onClick="set_page(-1)" style="position:absolute; cursor:pointer; left:349px; top: 405px;display:none;"></a>
          <!-- 改過 -->
@@ -228,15 +228,11 @@
         <a id="rec_btn" onClick="goooooooo()" style="position:absolute; left:840px; top: 48px;  cursor:pointer;" border="0"></a>
          <!-- 改過 -->
         <a id="bookstory_btn" onClick="gobookstory()" style="position:absolute; left:900px; top: 345px; cursor:pointer;" ></a>
-
+		<!-- 推薦選單-->
     	<div style="position:absolute; top:96px; left:174px;">
-    		 <!-- 改過 -->
             <a id="rec_bar1" class="rec_bar1s" onClick="window.parent.set_action_bookstore_log(window.parent.user_id,'e38',window.parent.action_on);change_mode(1)" style="position:absolute; top:-10px; left:0px; cursor:pointer;"></a>
-             <!-- 改過 -->
             <a id="rec_bar2" class="rec_bar2" onClick="window.parent.set_action_bookstore_log(window.parent.user_id,'e39',window.parent.action_on);change_mode(2)" style="position:absolute; top:-10px; left:65px; cursor:pointer;"></a>
-             <!-- 改過 -->
             <a id="rec_bar3" class="rec_bar3" onClick="window.parent.set_action_bookstore_log(window.parent.user_id,'e40',window.parent.action_on);change_mode(3)" style="position:absolute; top:-10px; left:143px; cursor:pointer;"></a>
-             <!-- 改過 -->
             <a id="rec_bar4" class="rec_bar4" onClick="change_mode(4)" style="position:absolute; top:-10px; left:480px; cursor:pointer; display:none;"></a>
         </div>
 </div>
@@ -346,7 +342,7 @@
 			window.document.getElementById("right_btn").style.display = "none";
 			window.document.getElementById("left_btn").style.display = "none";
 			window.document.getElementById("page_text").style.display = "none";
-			window.document.getElementById("iframe").innerHTML ='<iframe src="./manu_print.php" id="IIO" frameborder="0" width="658" height="287" style="position:absolute; top:113px; left:226px; " ></iframe>';
+			window.document.getElementById("iframe").innerHTML ='<iframe src="./manu_print.php" id="IIO" frameborder="0" width="658" height="287" style="position:absolute; top:104px; left:228px; " ></iframe>';
 		}
 		else
 		{
@@ -455,7 +451,7 @@
 		{window.document.getElementById("right_btn").style.display = "block";}
 		window.document.getElementById("page_text").innerHTML = window.parent.page_list["rec"]+" / "+max_page+" 頁";
 		//改過
-		window.document.getElementById("iframe").innerHTML ='<iframe src="./manu.php?page='+window.parent.page_list["rec"]+'&uid='+window.parent.home_id+'&auth_read_opinion_limit_day='+window.parent.auth_read_opinion_limit_day+'&select_mode='+window.parent.page_list["rec_mode"]+'" frameborder="0" width="658" height="310" style="position:absolute; top:103px; left:224px; " ></iframe>';
+		window.document.getElementById("iframe").innerHTML ='<iframe src="./manu.php?page='+window.parent.page_list["rec"]+'&uid='+window.parent.home_id+'&auth_read_opinion_limit_day='+window.parent.auth_read_opinion_limit_day+'&select_mode='+window.parent.page_list["rec_mode"]+'" frameborder="0" width="658" height="310" style="position:absolute; top:103px; left:228px; " ></iframe>';
 
 	}
 	//GGGGGGGGGGGGGGGGGGGOOOOOOOOOOOOOO近推薦拉
