@@ -217,7 +217,7 @@
         <a id="out" class="btn_close" onClick="out()" style="position:absolute; top::30px; left:755px; top: 400px; cursor:pointer;"></a>
       <div id="sp_help" style="position:absolute; top:236px; left:220px; color:#993300; font-size:36px; text-align:center; width: 568px; display:none;">沒有書籍可以推薦?<BR>
       可以先看書登記喔!</div>
-      <div id="iframe" style="position:absolute; top:8px; left:-54px;">aaa</div>
+      <div id="iframe" style="position:absolute; top:8px; left:-54px;"></div>
       	 <!-- 改過 -->
         <a id="left_btn" class="btn_arrow_l" onClick="set_page(-1)" style="position:absolute; cursor:pointer; left:349px; top: 405px;display:none;"></a>
          <!-- 改過 -->
@@ -342,7 +342,7 @@
 			window.document.getElementById("right_btn").style.display = "none";
 			window.document.getElementById("left_btn").style.display = "none";
 			window.document.getElementById("page_text").style.display = "none";
-			window.document.getElementById("iframe").innerHTML ='<iframe src="./manu_print.php" id="IIO" frameborder="0" width="658" height="287" style="position:absolute; top:104px; left:228px; " ></iframe>';
+			window.document.getElementById("iframe").innerHTML ='<iframe src="./manu_print.php" id="IIO" frameborder="0" width="658" height="287" style="position:absolute; top:95px; left:216px; " ></iframe>';
 		}
 		else
 		{
@@ -451,7 +451,7 @@
 		{window.document.getElementById("right_btn").style.display = "block";}
 		window.document.getElementById("page_text").innerHTML = window.parent.page_list["rec"]+" / "+max_page+" 頁";
 		//改過
-		window.document.getElementById("iframe").innerHTML ='<iframe src="./manu.php?page='+window.parent.page_list["rec"]+'&uid='+window.parent.home_id+'&auth_read_opinion_limit_day='+window.parent.auth_read_opinion_limit_day+'&select_mode='+window.parent.page_list["rec_mode"]+'" frameborder="0" width="658" height="310" style="position:absolute; top:103px; left:228px; " ></iframe>';
+		window.document.getElementById("iframe").innerHTML ='<iframe src="./manu.php?page='+window.parent.page_list["rec"]+'&uid='+window.parent.home_id+'&auth_read_opinion_limit_day='+window.parent.auth_read_opinion_limit_day+'&select_mode='+window.parent.page_list["rec_mode"]+'" frameborder="0" width="658" height="310" style="position:absolute; top:95px; left:216px; " ></iframe>';
 
 	}
 	//GGGGGGGGGGGGGGGGGGGOOOOOOOOOOOOOO近推薦拉

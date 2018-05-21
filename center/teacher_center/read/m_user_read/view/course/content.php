@@ -226,7 +226,6 @@
                 WHERE 1=1
                 ORDER BY `sqry`.`borrow_sdate` DESC
             ";
-
     //---------------------------------------------------
     //分頁處理
     //---------------------------------------------------
@@ -444,6 +443,7 @@
                                 $rs_book_name='<span class="fc_red1">查無書名!</span>';
                                 $rs_book_author='';
                                 $rs_book_publisher='';
+								
                                 if(!empty($get_book_info)){
 
                                     //book_name         書籍名稱
@@ -480,6 +480,8 @@
                                 $rs_borrow_sid=mysql_prep($rs_borrow_sid);
                                 $get_book_read_opinion_log_info=get_book_read_opinion_log_info($conn_mssr,$rs_borrow_sid,$array_filter=array('opinion_answer'),$arry_conn_mssr);
                                 $read_num_html='';  //閱讀程度
+                                $diffcult_html='';  //難度
+                                $like_num_html='';	//喜愛
                                 if(!empty($get_book_read_opinion_log_info)){
                                     $rs_opinion_answer=$get_book_read_opinion_log_info[0]['opinion_answer'];
                                     if(unserialize($rs_opinion_answer)){

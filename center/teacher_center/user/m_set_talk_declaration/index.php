@@ -566,15 +566,21 @@
                                     }
                                 ?>
                                 <tr>
-                                    <td style="border:0px #cccccc solid;">
+                                    <td style="border:0px #cccccc solid;padding-top: 5px;">
                                         <?php echo '招呼語'.$inx.'. '.htmlspecialchars($rs_clerk_talk_html);?>
+                                        <?php if($rs_clerk_talk_html != ''):?>
+                                        <span style="float:right;">
+		                                    <input type="button" value="移除<?php echo $inx?>." class="ibtn_gr6030" onmouseover="this.style.cursor='pointer'"
+		                                    onclick="del_for_oen(<?php echo $rs_user_id;?>,'<?php echo $inx?>');void(0);">
+		                                <span>
+		                                <?php endif;?>
                                     </td>
                                 </tr>
                                 <?php endforeach?>
                             </table>
 
                             <?php if(!in_array($auth_sys_check_lv,array(99))):?>
-                                <span style="float:right;position:relative;top:15px;">
+                                <span style="float:right;position:relative;margin-top: 25%;">
                                     <input type="button" value="全部移除" class="ibtn_gr6030" onmouseover="this.style.cursor='pointer'"
                                     onclick="del(<?php echo $rs_user_id;?>,'clerk_talk');void(0);">
                                 <span>
@@ -647,6 +653,36 @@
             url+=page;
         }
 
+        if(confirm('你確定要移除嗎?')){
+            go(url,'self');
+        }else{
+            return false;
+        }
+    }
+    
+    function del_for_oen(user_id,inx){
+    //單獨移除 招呼語 
+    	
+        var url ='';
+        var page=str_repeat('../',0)+'del/delB.php';
+        var arg ={
+            'psize'     :psize,
+            'pinx'      :pinx,
+            'user_id'   :user_id,
+            'inx'		:inx
+        };
+        var _arg=[];
+        for(var key in arg){
+            _arg.push(key+"="+encodeURI(arg[key]));
+        }
+        arg=_arg.join("&");
+
+        if(arg.length!=0){
+            url+=page+"?"+arg;
+        }else{
+            url+=page;
+        }
+        
         if(confirm('你確定要移除嗎?')){
             go(url,'self');
         }else{

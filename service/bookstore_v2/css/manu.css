@@ -37,7 +37,7 @@ body{
 table {
 	table-layout: fixed;
 	word-break: break-all;
-	/*padding: 1px 4px;*/
+	padding: 1px 4px;
 	font-family:Microsoft JhengHei;
 }
 .td_line_d{

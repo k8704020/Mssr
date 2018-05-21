@@ -286,12 +286,12 @@
        		<img src="./img/shing.png"  style="position:absolute; left: 12px; top:8px;" class="lit">
         </div>
         <!-- 五顆星球體  痾痾-->
-        <a onClick="chick_star('green',1)" class="sky_boll_green_s"  style="position:absolute; left: 28px; top:32px;"></a>
-        <a onClick="chick_star('blue',1)" class="sky_boll_blue_s"  style="position:absolute; left: 128px; top:32px;"></a>
-        <a onClick="chick_star('pink',1)" class="sky_boll_pink_s"  style="position:absolute; left: 228px; top:32px;"></a>
-        <a onClick="chick_star('yellow',1)" class="sky_boll_yellow_s"  style="position:absolute; left: 328px; top:32px;"></a>
-        <a onClick="chick_star('brown',1)" class="sky_boll_brown_s"  style="position:absolute; left: 428px; top:32px;"></a>
-        <a onClick="chick_star('purple',1)" class="sky_boll_purple_s"  style="position:absolute; left: 528px; top:32px;"></a>
+        <a onClick="chick_star('green',1)" class="sky_boll_green_s"  style="position:absolute; left: 35px; top:32px;"></a>
+        <a onClick="chick_star('blue',1)" class="sky_boll_blue_s"  style="position:absolute; left: 135px; top:32px;"></a>
+        <a onClick="chick_star('pink',1)" class="sky_boll_pink_s"  style="position:absolute; left: 232px; top:32px;"></a>
+        <a onClick="chick_star('yellow',1)" class="sky_boll_yellow_s"  style="position:absolute; left: 332px; top:32px;"></a>
+        <a onClick="chick_star('brown',1)" class="sky_boll_brown_s"  style="position:absolute; left: 430px; top:32px;"></a>
+        <a onClick="chick_star('purple',1)" class="sky_boll_purple_s"  style="position:absolute; left: 530px; top:32px;"></a>
     </div>
 
 </Body>

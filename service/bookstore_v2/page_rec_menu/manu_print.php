@@ -313,7 +313,6 @@
     <td class="td_line_t"  style="width:50px;">錄音</td>
     <td class="td_line_t"  style="width:50px;">聊書</td>
     </tr>
-    <!-- </table>-->
 	<? }else{?>
     
     <table  width="500"  border="0" cellpadding="0" cellspacing="0">
@@ -324,12 +323,7 @@
     <td class="td_line_t"  style="width:50px;">文字</td>
     <td class="td_line_t"  style="width:50px;">錄音</td>
     </tr>
-    <!-- </table>-->
 	<? } ?>
-    <!-- 
-    <div style="overflow-x:hidden;overflow-y:auto; height:240px; width:580px;position:relative; top:30px;">
-	<table  width="500"  border="0" cellpadding="0" cellspacing="0" >
-   -->
   
    
     <? for($i = 0 ;$i < sizeof($array) ; $i++)
@@ -482,7 +476,6 @@
 	 } ?>
     
     </table>
-<!-- </div>-->
 
 
     <script>
