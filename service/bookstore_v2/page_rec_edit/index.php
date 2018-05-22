@@ -531,8 +531,8 @@
 			
 
 				
-			console.log(text);
-			console.log(time);
+			//console.log(text);
+			//console.log(time);
 			
 
 		}

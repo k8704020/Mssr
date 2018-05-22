@@ -223,7 +223,7 @@
 	 if(auth_rec_en_input == "yes")auth_rec_en_input=false;
 	 else auth_rec_en_input=true;
 
-     console.log(book_sid);
+
 	//---------------------------------------------------
 	//FUNCTION
 	//---------------------------------------------------
@@ -708,7 +708,7 @@
 					user_permission:'<? echo $permission;?>'
 			}).success(function (data)
 			{
-                console.log(data);
+                
 
 				if(data[0]!="{")
 				{
@@ -718,7 +718,7 @@
 				}
 
 				data_array = JSON.parse(data);
-                console.log(data_array);
+                
 
 				echo("AJAX:success:main():讀取文字資料:已讀出:"+data);
 				if(data_array["error"]!="")
