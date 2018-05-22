@@ -78,7 +78,8 @@
     //---------------------------------------------------
     //資料,設定
     //---------------------------------------------------
-
+	
+	
         //網頁標題
         $title="明日星球,閱讀登記條碼版";
 
@@ -276,7 +277,9 @@
         //透明設定
         set_opacity(oimg_return_book,60)
     }
-
+	
+	<?php if($school_code==='idc'){?>
+	//For IDC
     oimg_qa.onmouseover= function(){
     //動作
         //透明設定
@@ -288,7 +291,7 @@
         //透明設定
         set_opacity(oimg_qa,60)
     }
-
+	<?php } ?>
 
     oBtnG.onclick=function(){
     //我要還書

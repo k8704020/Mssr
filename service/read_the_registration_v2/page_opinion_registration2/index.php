@@ -555,7 +555,7 @@
 	{
 		//設定問題
 		window.document.getElementById("quest").innerHTML = (questpage+1)+"."+quest_list[questpage]["quest"]+"<BR>";
-		console.log(quest_list[questpage]["quest"]);
+		//console.log(quest_list[questpage]["quest"]);
 		//設定回答
 		window.document.getElementById("tittle").innerHTML= "&nbsp;&nbsp;&nbsp;&nbsp;回答閱讀書籍相關問題&nbsp;&nbsp;&nbsp;&nbsp;";
 		//判斷題目類型
@@ -1065,7 +1065,7 @@
 
 		}).success(function (data)
 		{
-			console.log(data);
+			//console.log(data);
 			if(data[0]!="{")
 			{
 				cover("資料庫好像有點問題呢，請再試試看<BR>或著通知系統人員 cod2",1);
@@ -1258,7 +1258,7 @@
 
 		cover("儲存中");
 		var url = "./ajax/set_opinion_registration.php";
-		console.log(window.parent.book_info[window.parent.book_choose]["book_sid"]);
+		//console.log(window.parent.book_info[window.parent.book_choose]["book_sid"]);
 		$.post(url, {
 					re_answer:JSON.stringify(re_answer),
 					quest_list:JSON.stringify(quest_list),
@@ -1328,7 +1328,7 @@
 
 	//顯示書籍資訊
 	function show_book(value)
-	{console.log(value);
+	{//console.log(value);
 		//在書店內展開離開按鈕
 		if(window.parent.tittle =="st")
 		{
@@ -1371,7 +1371,7 @@
 
             // 判斷是否有書名
             var value=window.parent.book_choose;
-            console.log(value);
+            //console.log(value);
             if(window.parent.book_info[value]["book_name"]==""){
 
             	//console.log(window.parent.book_info[value]["book_name"]);

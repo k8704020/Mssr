@@ -87,8 +87,8 @@
         if((isset($_SESSION['_read_the_registration_code']['_login']['first_borrow']))&&($_SESSION['_read_the_registration_code']['_login']['first_borrow']==='no')){
             $first_borrow='no';
         }
-
-        
+		
+		
 
     //---------------------------------------------------
     //設定參數
@@ -743,6 +743,11 @@
                 var _status=trim(respones.status);                   //處理狀態
 
                 switch(_book_code_type){
+                	case 'not_login_user_id':
+                		alert('請重新選擇學生身分!');
+                		parent.location.href='login/loginF2.php';
+                		return false;
+                	break;
                     case 'library':
                     //圖書館書籍處理
                         if(_status!=='true'){

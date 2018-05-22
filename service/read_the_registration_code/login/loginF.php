@@ -158,7 +158,7 @@
                     </td>
                     <td>
                         <div style="margin-top:20px;">
-                        <input type="password" id="user_pwd" name="user_pwd" value="" size="20" maxlength="30" tabindex="2"
+                        <input type="password" id="user_pwd" name="user_pwd" value="" size="20" maxlength="30" tabindex="2" 
                         class="form_pass" style="width:150px;">
                         </div>
                     </td>
@@ -237,7 +237,50 @@
         //駐點
         ouser_uid.focus();
     }
+	
+	//鍵盤事件
+	ouser_pwd.onkeypress = function () {
+	  if (event.keyCode == 13) {   // 13 為 Enter 的鍵盤碼
+         FormLoginSubmit();
+     }
+	}
+	//滑鼠點選事件
+	oBtnS.onclick = function(){
+		FormLoginSubmit();
+	}
+	
+	
+	function FormLoginSubmit ()
+	{
+		//登入
+	    var user_uid=trim(ouser_uid.value);
+        var user_pwd=trim(ouser_pwd.value);
 
+        var arry_err=[];
+        if(user_uid==''){
+            arry_err.push('請在帳號裡輸入值!');
+        }
+        if(user_pwd==''){
+            arry_err.push('請在密碼裡輸入值!');
+        }
+
+        if(arry_err.length!=0){
+            alert(arry_err.join(nl))
+            return false;
+        }else{
+            oForm1.action='loginA.php';
+            oForm1.submit();
+        }	
+	}
+	
+	
+	/*
+	ouser_pwd.onkeypress = function () {
+	  if (event.keyCode == 13) {   // 13 為 enter 的鍵盤碼
+         alert("enter");
+     }
+	}
+	
     oBtnS.onclick=function(){
     //登入
         var user_uid=trim(ouser_uid.value);
@@ -259,7 +302,7 @@
             oForm1.submit();
         }
     }
-
+	*/
     oBtnR.onclick=function(){
     //重填
         oForm1.reset();

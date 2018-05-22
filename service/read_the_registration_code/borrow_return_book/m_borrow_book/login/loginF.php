@@ -326,8 +326,7 @@
 
     var ocard_number=document.getElementById('card_number');
     var oimg_qa=document.getElementById('img_qa');
-
-
+	
     window.onload=function(){
 
         //首頁logo
@@ -353,19 +352,20 @@
         //透明設定
         set_opacity(oimg_return_book,60)
     }
-
+	<?php if($school_code==='idc'){?>
+	// For IDC
     oimg_qa.onmouseover= function(){
     //動作
         //透明設定
         set_opacity(oimg_qa,100)
     }
-
+	
     oimg_qa.onmouseout= function(){
     //動作
         //透明設定
         set_opacity(oimg_qa,60)
     }
-
+	<?php } ?>
     oBtnS.onclick=function(){
     //登入
         var card_number=trim(ocard_number.value);
