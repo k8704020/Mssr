@@ -127,10 +127,12 @@
     //---------------------------------------------------
     //user_id   使用者主索引
     //del_flag  移除類型
+    //del_inx	移除編號
 
         $get_chk=array(
             'user_id ',
-            'del_flag'
+            'del_flag',
+            'del_inx'
         );
         $get_chk=array_map("trim",$get_chk);
         foreach($get_chk as $get){
@@ -144,10 +146,12 @@
     //---------------------------------------------------
     //user_id   使用者主索引
     //del_flag  移除類型
+    //del_inx	移除編號
 
         //GET
-        $user_id =trim($_GET[trim('user_id ')]);
-        $del_flag=trim($_GET[trim('del_flag')]);
+        $user_id	=trim($_GET[trim('user_id ')]);
+        $del_flag	=trim($_GET[trim('del_flag')]);
+		$del_inx	=trim($_GET[trim('del_inx')]);
 
         //SESSION
         $sess_user_id    =(int)$sess_login_info['uid'];
@@ -168,6 +172,7 @@
     //---------------------------------------------------
     //user_id   使用者主索引
     //del_flag  移除類型
+    //del_inx	移除編號
 
         $arry_err=array();
 
@@ -184,7 +189,7 @@
            $arry_err[]='移除類型,未輸入!';
         }else{
             $del_flag=trim($del_flag);
-            if(!in_array($del_flag,array('clerk_talk','star_declaration'))){
+            if(!in_array($del_flag,array('clerk_talk_inx','clerk_talk_all','star_declaration'))){
                 $arry_err[]='移除類型,錯誤!';
             }
         }
@@ -214,47 +219,108 @@
         //-----------------------------------------------
         //user_id   使用者主索引
         //del_flag  移除類型
-
+		//del_inx	移除編號
+		
             $user_id        =(int)($user_id );
             $del_flag       =mysql_prep($del_flag);
+			$del_inx		=mysql_prep($del_inx);
+			
+        //-------------------------------------------
+        //檢核使用者主索引
+        //-------------------------------------------
 
-            //-------------------------------------------
-            //檢核使用者主索引
-            //-------------------------------------------
+            $sql="
+                SELECT
+                    `user_id`
+                FROM `mssr_user_info`
+                WHERE 1=1
+                    AND `user_id`={$user_id}
+            ";
 
-                $sql="
-                    SELECT
-                        `user_id`
-                    FROM `mssr_user_info`
-                    WHERE 1=1
-                        AND `user_id`={$user_id}
+            $arrys_result=db_result($conn_type='pdo',$conn_mssr,$sql,array(0,1),$arry_conn_mssr);
+            if(empty($arrys_result)){
+                $msg="使用者不存在, 請重新輸入!";
+                $jscript_back="
+                    <script>
+                        alert('{$msg}');
+                        history.back(-1);
+                    </script>
                 ";
-
-                $arrys_result=db_result($conn_type='pdo',$conn_mssr,$sql,array(0,1),$arry_conn_mssr);
-                if(empty($arrys_result)){
-                    $msg="使用者不存在, 請重新輸入!";
-                    $jscript_back="
-                        <script>
-                            alert('{$msg}');
-                            history.back(-1);
-                        </script>
-                    ";
-                    die($jscript_back);
-                }
+                die($jscript_back);
+            }
 
         //-----------------------------------------------
         //預設值
         //-----------------------------------------------
 
-            $user_id =(int)($user_id );
-            $del_flag=mysql_prep($del_flag);
+            $user_id	=(int)($user_id );
+            $del_flag	=mysql_prep($del_flag);
+			$del_inx	=mysql_prep($del_inx);
 
         //-----------------------------------------------
         //處理
         //-----------------------------------------------
 
             switch($del_flag){
-                case 'clerk_talk':
+            	case 'clerk_talk_inx'://刪除單筆招呼語
+            		//先找使用者的星球招呼語先解碼並重新組成陣列
+                    $query_sql="
+                    SELECT
+                    	`user_id`,
+                        `clerk_talk`
+                    FROM `mssr_user_info`
+                    WHERE 1=1
+                        AND `user_id` = '$user_id'
+	                ";
+					$numrow=db_result($conn_type='pdo',$conn_mssr,$query_sql,array(0,1),$arry_conn_mssr);
+		        	$numrow=count($numrow);
+					
+					if($numrow!==0){
+		                $arrys_result=db_result($conn_type='pdo',$conn_mssr,$query_sql,array(0,1),$arry_conn_mssr);
+		            }
+					
+					
+					$del_array = array();
+					$arry_rs_clerk_talk = array();
+					foreach ($arrys_result as $key => $val) {
+						$del_array['user_id'] = $val['user_id'];
+						$arry_rs_clerk_talk=@unserialize($val['clerk_talk']);
+						foreach ($arry_rs_clerk_talk as $inx => $rs_clerk_talk) {
+							$del_array['clerk_talk_array'][$inx]=trim(gzuncompress(base64_decode($rs_clerk_talk)));
+							
+						}
+						
+					}
+					
+					//刪除單筆招呼語
+					if( isset($del_inx) ){
+						$del_array['clerk_talk_array'][$del_inx-1]='';
+					}
+					
+					
+					
+					//重新存成陣列
+					$ix= array();
+					$str_num = 0;
+					foreach ($del_array['clerk_talk_array'] as $key => $value) {
+						$str_num += strlen($value);
+						$ix[$key] = mysql_prep(base64_encode(gzcompress($value)));
+					}
+					$text = serialize($ix);
+					
+					if($str_num != 0){
+						$sql = "
+							UPDATE `mssr_user_info` SET clerk_talk =  '$text'
+							WHERE  user_id = {$user_id}
+						";
+					}else{//當招呼語都沒有文字時清空
+						$sql = "
+							UPDATE `mssr_user_info` SET clerk_talk =  ''
+							WHERE  user_id = {$user_id}
+						";
+					}
+                break;
+                case 'clerk_talk_all'://刪除全部招呼語
                     $sql="
                         # for mssr_user_info
                         UPDATE `mssr_user_info` SET
