@@ -52,22 +52,16 @@
 	//----------------------------------------------------
 	//檢查借書人資訊
 	//----------------------------------------------------
+	
 	if((!isset($_SESSION['_read_the_registration_code']['_login']))||(empty($_SESSION['_read_the_registration_code']['_login']))){
-        $page=str_repeat("../",0)."login/loginF.php";
-
-        $jscript_back="
-            <script>
-            	alert('死屁孩沒登入!');
-                parent.location.href='{$page}';
-            </script>
-        ";
-
-        die($jscript_back);
-    }else{
-        //借書人資訊
-        $_user_id    =(int)$_SESSION['_read_the_registration_code']['_login']['_user_id'];
-        $_user_name  =trim($_SESSION['_read_the_registration_code']['_login']['_user_name']);
-        $_user_number=(int)$_SESSION['_read_the_registration_code']['_login']['_user_number'];
+		$respones=json_encode(array(
+                "book_name"=>'',
+                "book_numrow"=>'',
+                "book_code_type"=>'not_login_user_id',
+                "book_code"=>'',            
+                "status"=>''
+            ));
+        die($respones);
     }
 	
 	
