@@ -132,6 +132,9 @@
 			AND '$dadad' BETWEEN `user`.`teacher`.`start` AND `user`.`teacher`.`end`";
 		$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,1),$arry_conn_mssr);
 	}
+	echo "<pre>";
+	print_r($sql);
+	echo "</pre>";
 ?>
 <!DOCTYPE HTML>
 <Html>
@@ -483,7 +486,7 @@
 	var grade_code = '<?PHP echo $result[0]["grade"]; ?>';
 
 	var welcome = new Array("open",function(){set_menu(1,0);},"歡迎光臨通訊研究所，研究數據的地方，在這裡可以獲得宇宙各星球之間的資料。","我們統計了許多資料並整合成了文件，點擊上方各類型文件來觀看!","stay");
-	//if(home_id != 65003)welcome = new Array("目前通訊所正在整修，預計2/22整修完畢。","stay");렀ऀ耹਀:렁଀䄹:儁顁쎙ͣ੧搋朁月ं惌愂挃挍攐挕攘㌝昀愂줃͠ɦ੡ᘻͤ੧ൣብ
+	//if(home_id != 65003)welcome = new Array("目前通訊所正在整修，預計2/22整修完畢。","stay");
 	var post_1 = new Array("open",function(){set_post(0);},"您選擇的是推薦熱門排行榜，這份資料可以讓你清楚的了解那些人認真做推薦書籍。","認真做推薦讓更多人給讚吧!","","close");
 	var post_2 = new Array("open",function(){set_post(0);},"您選擇的是星球熱門排行榜，這份資料可以讓你清楚的了解那些精心佈置的星球。","裝飾您的庭院獲得更多按讚數!","","close");
 	var post_3 = new Array("open",function(){set_post(0);},"您選擇的是書籍熱門排行榜，這份資料可以讓你清楚的了解那些書籍是不錯的。","找到喜歡的書籍可以馬上去借來看或是建議爸媽購買。","","close");
@@ -786,7 +789,7 @@
 			else window.document.getElementById("set_ramger_1").innerHTML = window.document.getElementById("set_ramger_1").innerHTML+'<option value="'+key+'"  style="color:#000;">'+key+'</option>';
 
 		}
-		set_ramger_1('上個月的排行');
+		set_ramger_1('這周的排行');//設定預設條件
 
 		window.document.getElementById("dasdasdasd").style.color="#c11";
 	}

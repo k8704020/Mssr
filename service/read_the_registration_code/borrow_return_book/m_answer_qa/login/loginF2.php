@@ -344,7 +344,7 @@
                     <!-- 資料列表 結束 -->
                 </td>
                 <td align="right" valign="top" width="100px">
-                    <input type="button" value="刷帳號卡登入" class="ibtn_gr9030" style="position:relative;right:5px;cursor:pointer;"
+                    <input type="button" value="刷借書證登入" class="ibtn_gr9030" style="position:relative;right:5px;cursor:pointer;"
                     onclick="location.href='login_type.php?login=loginF'">
 
                      <a href="../../../borrow_return_book/m_borrow_book/index.php">

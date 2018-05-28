@@ -342,7 +342,7 @@
 			window.document.getElementById("right_btn").style.display = "none";
 			window.document.getElementById("left_btn").style.display = "none";
 			window.document.getElementById("page_text").style.display = "none";
-			window.document.getElementById("iframe").innerHTML ='<iframe src="./manu_print.php" id="IIO" frameborder="0" width="658" height="287" style="position:absolute; top:95px; left:216px; " ></iframe>';
+			window.document.getElementById("iframe").innerHTML ='<iframe src="./manu_print.php" id="IIO" frameborder="0" width="658" height="287" style="position:absolute; top:103px; left:224px;" ></iframe>';
 		}
 		else
 		{
@@ -451,7 +451,7 @@
 		{window.document.getElementById("right_btn").style.display = "block";}
 		window.document.getElementById("page_text").innerHTML = window.parent.page_list["rec"]+" / "+max_page+" 頁";
 		//改過
-		window.document.getElementById("iframe").innerHTML ='<iframe src="./manu.php?page='+window.parent.page_list["rec"]+'&uid='+window.parent.home_id+'&auth_read_opinion_limit_day='+window.parent.auth_read_opinion_limit_day+'&select_mode='+window.parent.page_list["rec_mode"]+'" frameborder="0" width="658" height="310" style="position:absolute; top:95px; left:216px; " ></iframe>';
+		window.document.getElementById("iframe").innerHTML ='<iframe src="./manu.php?page='+window.parent.page_list["rec"]+'&uid='+window.parent.home_id+'&auth_read_opinion_limit_day='+window.parent.auth_read_opinion_limit_day+'&select_mode='+window.parent.page_list["rec_mode"]+'" frameborder="0" width="658" height="310" style="position:absolute; top:103px; left:224px; " ></iframe>';
 
 	}
 	//GGGGGGGGGGGGGGGGGGGOOOOOOOOOOOOOO近推薦拉

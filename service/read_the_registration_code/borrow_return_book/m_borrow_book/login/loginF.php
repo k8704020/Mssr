@@ -250,7 +250,7 @@
                     <!-- 資料列表 結束 -->
                 </td>
                 <td align="right" valign="top" width="100px">
-                    <input type="button" value="點選人員登入" class="ibtn_gr9030" style="position:relative;right:5px;cursor:pointer;"
+                    <input type="button" value="選擇學生登入" class="ibtn_gr9030" style="position:relative;right:5px;cursor:pointer;"
                     onclick="location.href='login_type.php?login=loginF2'">
 
                     <a href="#">

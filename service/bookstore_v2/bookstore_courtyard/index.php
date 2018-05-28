@@ -33,7 +33,31 @@
     //---------------------------------------------------
     //有無維護
     //---------------------------------------------------
-
+	//中央大學的IP才能登入通訊所
+	error_reporting (E_ERROR | E_WARNING | E_PARSE);
+	if($HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"]){
+	 $ip = $HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"];
+	}
+	elseif($HTTP_SERVER_VARS["HTTP_CLIENT_IP"]){
+	 $ip = $HTTP_SERVER_VARS["HTTP_CLIENT_IP"];
+	}
+	elseif ($HTTP_SERVER_VARS["REMOTE_ADDR"]){
+	 $ip = $HTTP_SERVER_VARS["REMOTE_ADDR"];
+	}
+	elseif (getenv("HTTP_X_FORWARDED_FOR")){
+	 $ip = getenv("HTTP_X_FORWARDED_FOR");
+	}
+	elseif (getenv("HTTP_CLIENT_IP")){
+	 $ip = getenv("HTTP_CLIENT_IP");
+	}
+	elseif (getenv("REMOTE_ADDR")){
+	 $ip = getenv("REMOTE_ADDR");
+	}
+	else{
+	 $ip = "Unknown";
+	}
+	//echo $ip;
+	
     //---------------------------------------------------
     //有無登入
     //---------------------------------------------------
@@ -675,6 +699,7 @@
         <a id="fire_pin_ling_btn" onClick="go_page('space')"  style="position:absolute; top:27px; left:815px; cursor:pointer;"></a>
         <a id="ebook_door_btn" onClick="go_ebook_door()" style="position:absolute; top:29px; left:226px;display:none;cursor:pointer;"></a>
 		 <!-- 改過 -->
+		<!-- 通訊所 中央大學才看到喔 -->
         <a id="put_btn"  onClick="go_page('communication')" style="position:absolute; top:28px; left:620px; cursor:pointer; display:none;"></a>
         <a id="trans_btn" onClick="" style="position:absolute; top:70px; left:16px;display:none;cursor:pointer; display:none;"></a>
 
@@ -795,10 +820,14 @@
 	var home_id = '<? echo $home_id;?>';
 	var user_id = '<? echo $user_id;?>';
 	var home_on = '<? echo $home_on;?>';
-
-		window.document.getElementById("communication_btn").style.display = "block";
-		window.document.getElementById("put").style.display = "block";
-		window.document.getElementById("put_btn").style.display = "block";
+	
+	//通訊所 維修
+	<?php if($ip == '140.115.135.36'):?>
+	window.document.getElementById("communication_btn").style.display = "block";
+	window.document.getElementById("put").style.display = "block";
+	window.document.getElementById("put_btn").style.display = "block";
+	<?php endif;?>
+	
 
 	var action_on = 0;
 	var clerk_talk = new Array();

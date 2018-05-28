@@ -156,11 +156,11 @@ function auth_sys_arry_report($type=''){
         //),
         //assessment    評量
         //      m_pptv                  畢保德成績查詢
-        'assessment'=>array(
-            'm_pptv'=>array(
-                'access'=>1
-            )
-        ),
+        //'assessment'=>array(
+        //    'm_pptv'=>array(
+        //        'access'=>1
+        //    )
+        //),
         //go_to_ctrl    前往老師管理
         'go_to_ctrl'=>array(
         ),

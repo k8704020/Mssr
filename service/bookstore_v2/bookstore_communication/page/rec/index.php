@@ -66,6 +66,7 @@
 		$school_code  =(isset($_GET['school_code']))?mysql_prep($_GET['school_code']):die("嗯?");
 		$grade_code   =(isset($_GET['grade_code']))?mysql_prep($_GET['grade_code']):die("嗯?");
 		$star_time = array();
+		echo "<pre>";print_r($_GET);echo '</pre>';
 		//============周============
 		$first_day = 0;
 		$getdate = date("Y-m-d");
@@ -75,10 +76,11 @@
 		$del_day = $weekday - $first_day;
 		//本週開始日期
 		$week_s = date("Y-m-d", strtotime("$getdate -".$del_day." days"));
+		$star_time["now_week"] = $week_s;
 		//上週開始日期
 		$star_time["week"] = date('Y-m-d',strtotime("$week_s - 7 days"));
 		
-		
+		echo "<pre>";print_r($week_s);echo '</pre>';
 		//============月============	
 		//本月開始日期
 		$month_s = date('Y-m-01');  
@@ -139,29 +141,30 @@
 		$ch = "";
 	}else if($ramge == "school_all")
 	{
-		$ch = "AND `mssr`.`mssr_score_rec_".$time."`.`school_code` = '".$school_code."'";
+		$ch = "AND `mssr`.`mssr_score_rec_total`.`school_code` = '".$school_code."'";
 	}else if($ramge == "school_grade")
 	{
-		$ch = "AND `mssr`.`mssr_score_rec_".$time."`.`school_code` = '".$school_code."' AND `mssr`.`mssr_score_rec_".$time."`.`grade_code` = '".$grade_code."'";
+		$ch = "AND `mssr`.`mssr_score_rec_total`.`school_code` = '".$school_code."' AND `mssr`.`mssr_score_rec_total`.`grade_code` = '".$grade_code."'";
 	}else if($ramge == "school_class")
 	{
-		$ch = "AND `mssr`.`mssr_score_rec_".$time."`.`class_code` = '".$class_code."'";
+		$ch = "AND `mssr`.`mssr_score_rec_total`.`class_code` = '".$class_code."'";
 	}
+	echo "<pre>CH:";print_r($ramge);echo "</pre>";
 	$sql = "";
 	
 	if($time == 'total')
 	{
 		$sql = "SELECT `user_id`,`name`,`class_name`,`grade_code`,`book_sid`,`school_name`,SUM(`score`) as `score`
-			FROM `mssr`.`mssr_score_rec_".$time."`
+			FROM `mssr`.`mssr_score_rec_total`
 			LEFT JOIN `user`.`member`
-			ON `mssr`.`mssr_score_rec_".$time."`.`user_id` = `user`.`member`.`uid`
+			ON `mssr`.`mssr_score_rec_total`.`user_id` = `user`.`member`.`uid`
 			LEFT JOIN `user`.`class`
-			ON `user`.`class`.`class_code` = `mssr`.`mssr_score_rec_".$time."`.`class_code`
+			ON `user`.`class`.`class_code` = `mssr`.`mssr_score_rec_total`.`class_code`
 			LEFT JOIN `user`.`class_name`
 			ON `user`.`class_name`.`classroom` = `user`.`class`.`classroom`
 			AND `user`.`class_name`.`class_category` = `user`.`class`.`class_category`
 			LEFT JOIN `user`.`school`
-			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_".$time."`.`school_code`
+			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_total`.`school_code`
 			WHERE 1 = 1
 			".$ch."
 			GROUP BY `user_id`,`book_sid`
@@ -169,28 +172,28 @@
 	}else
 	{
 		$sql = "SELECT `user_id`,`name`,`class_name`,`grade_code`,`book_sid`,`school_name`,SUM(`score`) as `score`
-			FROM `mssr`.`mssr_score_rec_".$time."`
+			FROM `mssr`.`mssr_score_rec_total`
 			LEFT JOIN `user`.`member`
-			ON `mssr`.`mssr_score_rec_".$time."`.`user_id` = `user`.`member`.`uid`
+			ON `mssr`.`mssr_score_rec_total`.`user_id` = `user`.`member`.`uid`
 			LEFT JOIN `user`.`class`
-			ON `user`.`class`.`class_code` = `mssr`.`mssr_score_rec_".$time."`.`class_code`
+			ON `user`.`class`.`class_code` = `mssr`.`mssr_score_rec_total`.`class_code`
 			LEFT JOIN `user`.`class_name`
 			ON `user`.`class_name`.`classroom` = `user`.`class`.`classroom`
 			AND `user`.`class_name`.`class_category` = `user`.`class`.`class_category`
 			LEFT JOIN `user`.`school`
-			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_".$time."`.`school_code`
+			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_total`.`school_code`
 			WHERE 1 = 1
 			AND `start_date` >= '".$star_time[$time]."'
 			".$ch."
 			GROUP BY `user_id`,`book_sid`
 			ORDER BY `score` DESC";		
 	}
-	
+	echo "<pre>CH:";print_r($star_time);echo "</pre>";
 	$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,100),$arry_conn_mssr);
 
 	foreach($result as $key => $val)
 	{
-		 
+		//echo "<pre>";print_r($val);echo "</pre>";
 		$array_select = array("book_name","book_author","book_publisher");
 		$get_book_info=get_book_info($conn='',$val['book_sid'],$array_select,$arry_conn_mssr);
 		$result[$key]["book_name"] = $get_book_info[0]['book_name'];
@@ -198,6 +201,7 @@
 		$result[$key]["book_publisher"] = $get_book_info[0]['book_publisher'];
 	}
 	
+	echo "<pre>";print_r($sql);echo "</pre>";
 	
 ?>
 <!DOCTYPE HTML>

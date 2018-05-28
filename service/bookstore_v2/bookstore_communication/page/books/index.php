@@ -63,7 +63,7 @@
 		$class_code   =(isset($_GET['class_code']))?mysql_prep($_GET['class_code']):die("嗯?");
 		$school_code  =(isset($_GET['school_code']))?mysql_prep($_GET['school_code']):die("嗯?");
 		$grade_code   =(isset($_GET['grade_code']))?mysql_prep($_GET['grade_code']):die("嗯?");
-
+		echo "<pre>";print_r($_GET);echo '</pre>';
 		$star_time = array();
 		//============周============
 		$first_day = 0;
@@ -185,6 +185,9 @@
             $arrys_book_info[$val['book_sid']]['book_note']     =htmlspecialchars(trim($get_book_info[0]['book_note']));
         }
 	}
+echo "<pre>";
+	print_r($sql);
+	echo "</pre>";
 
 //echo "<Pre>";print_r($arrys_book_info);echo "</Pre>";
 ?>

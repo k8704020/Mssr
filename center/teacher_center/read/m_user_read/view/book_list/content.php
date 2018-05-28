@@ -460,21 +460,9 @@
                             <?php if($sess_school_code==='idc'){ echo "<th width='30px' height='40px'>頁數</th>" ,"<th width='30px' height='40px'>字數</th>";}?>
                             
                             <th width="75px" height="40px">最後借閱日期</th>
-                            <!-- <td  id="about_book_isbn" width="100px" height="40px"
-                            style="
-                                text-align:center;
-                                font-family:'微軟正黑體','標楷體','新細明體';
-                                font-weight:bold;
-                                color:#ffffff;
-                                background-color:#B2D4DD;
-                                border:1px solid #ffffff;
-                            ">
-                                書籍編號
-                                <input type="button" value="展開" class="" onclick="view_change(this,this.value);" onmouseover="this.style.cursor='pointer'">
-                            </td> -->
-                            <th width="60px" height="40px">進度    </th>
-                            <th width="60px" height="40px">難度    </th>
-                            <th width="60px" height="40px">喜愛     </th>
+                            <th width="60px" height="40px">閱讀進度</th>
+                            <th width="60px" height="40px">閱讀難度</th>
+                            <th width="60px" height="40px">喜愛程度</th>
                         </tr>
                         </tr>
 

@@ -394,9 +394,9 @@
                             <th width="100px" height="40px">書籍名稱</th>
                             <th width="100px" height="40px">借閱日期</th>
                             <th width="100px" height="40px">歸還日期</th>
-                            <th width="100px" height="40px">進度    </th>
-                            <th width="100px" height="40px">難度    </th>
-                            <th width="" height="40px">喜愛         </th>
+                            <th width="100px" height="40px">閱讀進度</th>
+                            <th width="100px" height="40px">閱讀難度</th>
+                            <th width="" height="40px">喜愛程度</th>
                         </tr>
 
                         <?php foreach($arrys_result as $inx=>$arry_result) :?>
