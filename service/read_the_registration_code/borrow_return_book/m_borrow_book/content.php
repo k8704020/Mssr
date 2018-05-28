@@ -1756,9 +1756,6 @@
                 });
             },
             success     :function(respones){
-            //成功處理
-//console.log(jQuery.parseJSON(respones));
-//return false;
                 respones=jQuery.parseJSON(respones);
                 var _book_name=trim(respones.book_name);             //書本名稱
                 var _book_numrow=trim(respones.book_numrow);         //書本數量
@@ -1767,6 +1764,11 @@
                 var _status=trim(respones.status);                   //處理狀態
 
                 switch(_book_code_type){
+                	case 'not_login_user_id':
+                		alert('請重新選擇學生身分!');
+                		parent.location.href='login/loginF2.php';
+                		return false;
+                	break;
                     case 'library':
                     //圖書館書籍處理
                         if(_status!=='true'){

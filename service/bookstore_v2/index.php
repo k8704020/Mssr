@@ -237,7 +237,7 @@
     <script type="text/javascript" src="../../lib/jquery/basic/func/jquery_1.9.0.min/code.js"></script>
 	<script src="js/select_thing.js" type="text/javascript"></script>
     <script src="../../../ac/js/user_log.js"></script>
-    <script src="../js/set_bookstore_action_log.js"></script>
+    <script src="js/set_bookstore_action_log.js"></script>
 
 
     <style>
