@@ -210,23 +210,24 @@
     html內容
     ====================================================== -->
     <!-- 遮屏-->
-	<div style="position:absolute; top:0px; left:0px; width:1000px; height:480px; background-color:#000000; opacity:0.8;" onClick=""><span style="position:absolute; left:-122px; top: -3px;"></span></div>
+	<div style="position:absolute; top:0px; left:0px; width:1000px; height:500px; background-color:#000000; opacity:0.8;" onClick=""><span style="position:absolute; left:-122px; top: -3px;"></span></div>
     <img src="../img/back.png" style="position:absolute; left:20px; top: 59px;" border="0">
 	<div style="position:absolute; left:-122px; top: -3px;"><img src="./img/rec_tittle.png" style="position:absolute; left:380px; top: -14px;" border="0">
-		<!-- 改過 -->
-        <a id="out" class="btn_close" onClick="out()" style="position:absolute; top::30px; left:755px; top: 400px; cursor:pointer;"></a>
-      <div id="sp_help" style="position:absolute; top:236px; left:220px; color:#993300; font-size:36px; text-align:center; width: 568px; display:none;">沒有書籍可以推薦?<BR>
-      可以先看書登記喔!</div>
-      <div id="iframe" style="position:absolute; top:8px; left:-54px;"></div>
-      	 <!-- 改過 -->
+		<!--離開 -->
+		<a id="out" class="btn_close" onClick="out()" style="position:absolute; top::30px; left:755px; top: 400px; cursor:pointer;"></a>
+		<div id="sp_help" style="position:absolute; top:236px; left:220px; color:#993300; font-size:36px; text-align:center; width: 568px; display:none;">
+			沒有書籍可以推薦?<BR>可以先看書登記喔!
+		</div>
+		<div id="iframe" style="position:absolute; top:8px; left:-54px;"></div>
+      	<!--上一頁-->
         <a id="left_btn" class="btn_arrow_l" onClick="set_page(-1)" style="position:absolute; cursor:pointer; left:349px; top: 405px;display:none;"></a>
-         <!-- 改過 -->
+        <!--下一頁 -->
         <a id="right_btn" class="btn_arrow_r" onClick="set_page(1)" style="position:absolute; cursor:pointer; left:600px; top: 405px;display:none;"></a>
-         <!-- 改過 -->
+        <!--分頁-->
       	<div id="page_text" style="position:absolute; top:408px; left:422px; width:177px; height:47px; font-size: 36px; text-align: center; font-weight: bold; color: #406031;"></div>
-		  <!-- 改過 -->
+		<!--點擊推薦 -->
         <a id="rec_btn" onClick="goooooooo()" style="position:absolute; left:840px; top: 48px;  cursor:pointer;" border="0"></a>
-         <!-- 改過 -->
+         <!-- 說書人 -->
         <a id="bookstory_btn" onClick="gobookstory()" style="position:absolute; left:900px; top: 345px; cursor:pointer;" ></a>
 		<!-- 推薦選單-->
     	<div style="position:absolute; top:96px; left:174px;">
@@ -235,7 +236,7 @@
             <a id="rec_bar3" class="rec_bar3" onClick="window.parent.set_action_bookstore_log(window.parent.user_id,'e40',window.parent.action_on);change_mode(3)" style="position:absolute; top:-10px; left:143px; cursor:pointer;"></a>
             <a id="rec_bar4" class="rec_bar4" onClick="change_mode(4)" style="position:absolute; top:-10px; left:480px; cursor:pointer; display:none;"></a>
         </div>
-</div>
+	</div>
 	<form method="post" name="form1D" id="form1D" action='./php/content_pdf.php?user_id=<? echo $_SESSION['uid'];?>' target='選擇項目列印' onsubmit="go_point('','選擇項目列印','width=200,height=200')">
       <input id="post_books_sid" name='try' type="text" value="d" style="position:absolute; top:395px; left:356px; display:none;">
         <span id="sub_print_explanation"

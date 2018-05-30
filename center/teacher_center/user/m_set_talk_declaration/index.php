@@ -492,7 +492,7 @@
             <table id="mod_data_tbl" border="0" width="100%" cellpadding="5" cellspacing="0" style="margin-top:0px;" class="table_style1">
                 <tr align="center" valign="middle" class="bg_gray1 fc_white0">
                     <td width="75px">使用者 </td>
-                    <td width="320px">招呼語</td>
+                    <td width="390px">招呼語</td>
                     <td width="">星球宣言   </td>
                 </tr>
 
@@ -554,7 +554,7 @@
                     </td>
                     <td height="30px" align="center" valign="middle">
                         <?php if(!empty($arry_rs_clerk_talk)):?>
-                            <table align='left' cellpadding="0" cellspacing="0" border="0" width="250" rules="none"/>
+                            <table align='left' cellpadding="0" cellspacing="0" border="0" width="300" rules="none"/>
                                 <?php foreach($arry_rs_clerk_talk as $inx=>$rs_clerk_talk):?>
                                 <?php
                                     $inx=(int)$inx+1;
@@ -567,12 +567,15 @@
                                 ?>
                                 <tr>
                                     <td style="border:0px #cccccc solid;padding-top: 5px;">
+                                    	<span style="margin-top: 5px;float: left;">
                                         <?php echo '招呼語'.$inx.'. '.htmlspecialchars($rs_clerk_talk_html);?>
+                                        </span>
                                         <?php if($rs_clerk_talk_html != ''):?>
                                         <span style="float:right;">
-		                                    <input type="button" value="移除<?php echo $inx?>." class="ibtn_gr6030" onmouseover="this.style.cursor='pointer'"
-		                                    onclick="del(<?php echo $rs_user_id;?>,'clerk_talk_inx','<?php echo $inx?>');void(0);">
-		                                <span>
+		                                    <button style="border-radius: 5px" onmouseover="this.style.cursor='pointer'" onclick="del(<?php echo $rs_user_id;?>,'clerk_talk_inx','<?php echo $inx?>');void(0);">
+		                                    	移除<?php echo $inx?>招呼語
+		                                    </button>
+		                                </span>
 		                                <?php endif;?>
                                     </td>
                                 </tr>
@@ -580,10 +583,11 @@
                             </table>
 
                             <?php if(!in_array($auth_sys_check_lv,array(99))):?>
-                                <span style="float:right;position:relative;margin-top: 25%;">
-                                    <input type="button" value="全部移除" class="ibtn_gr6030" onmouseover="this.style.cursor='pointer'"
-                                    onclick="del(<?php echo $rs_user_id;?>,'clerk_talk_all');void(0);">
-                                <span>
+                                <span style="float:right;margin: 14% 0px;">
+                                    <button style="border-radius: 5px" onmouseover="this.style.cursor='pointer'" onclick="del(<?php echo $rs_user_id;?>,'clerk_talk_all');void(0);">
+                                    	移除<br>全部招呼語
+                                    </button>
+                                </span>
                             <?php endif;?>
                         <?php else:?>
                             <span class="fc_red0">尚未設定招呼語</span>
@@ -594,9 +598,9 @@
                             <?php echo htmlspecialchars($rs_star_declaration_html);?>
                             <?php if(!in_array($auth_sys_check_lv,array(99))):?>
                                 <span style="float:right;">
-                                    <input type="button" value="移除" class="ibtn_gr3020" onmouseover="this.style.cursor='pointer'"
+                                    <input type="button" value="移除星球宣言" style="border-radius: 5px" onmouseover="this.style.cursor='pointer'"
                                     onclick="del(<?php echo $rs_user_id;?>,'star_declaration');void(0);">
-                                <span>
+                                </span>
                             <?php endif;?>
                         <?php else:?>
                             <span class="fc_red0">尚未設定星球宣言</span>

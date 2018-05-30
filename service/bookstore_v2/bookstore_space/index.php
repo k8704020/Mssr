@@ -696,7 +696,7 @@
     遮罩內容
     ====================================================== -->
 <div id="cover" style="position:absolute; top:-8px; left:-8px; display:none;">
-    	<div onClick="" style="position:absolute; top:0px; left:0px; height:480px; width:1000px; cursor:wait; background-color:#000; opacity:0.7; z-index:9999;"></div>
+    	<div style="position:absolute; top:0px; left:0px; height:480px; width:960px; cursor:wait; background-color:#000; opacity:0.7; z-index:9999;"></div>
 		<table width="385"  border="0" cellspacing="0" class="cover_box" style="position:absolute; top:181px; left:318px; height:90px; text-align: center; z-index:10000;">
         	<tr>
             	<td width="385" align="center" valign="center" id="cover_text" style="">正在讀取中請稍後...
@@ -713,8 +713,8 @@
     <img src="img/sky_back.png" style="position:absolute; top:-8px; left:-8px;">
 
     <!-- 選擇內容-->
-	<div style="position:absolute; top:-38px; left:-8px; width:1000px; height:520px; overflow:hidden;">
-		<div id="star" style="position:absolute; top:0px; left:0px; width:1000px;" class="star"></div>
+	<div id="picture" style="position:absolute; top:-38px; left:-8px; width:960px; height:520px; overflow:hidden;">
+		<div id="star" style="position:absolute; top:0px; left:0px; width:960px;" class="star"></div>
 
     </div>
     <!-- 複製用 EXP BAR -->
@@ -889,6 +889,7 @@
 
 	var cover_level = 0;
 	var main_layer_x = 0;
+	var num_x = 0;
 	var SESSION_id = '<? echo $SESSION_id;?>';
 	var user_id = '<? echo $user_id;?>';
 	var user_permission = '<? echo $permission;?>';
@@ -2251,6 +2252,46 @@
 		main_layer_x = main_layer_x + value*250;
 		window.document.getElementById("star").style.left=main_layer_x+"px";
 	}
+	
+	//add 2018 05-29  桌機滑鼠拖曳 左右 
+	var picture = window.document.getElementById("picture");
+	var mouse_drag_type = 0;
+	var main_layer_x_num = window.document.getElementById("star").style.left.substr(0,-2);//原始位置
+	var mouse_drag_x = 0;
+	var layer_x = 0;
+	//滑鼠進入框架觸發偵測
+	picture.onmousemove = function (){
+		picture.onmousedown = function (){
+			mouse_drag_type = 1;
+			mouse_drag_x = event.clientX; 
+		};
+		
+		picture.onmouseup = function (){
+			mouse_drag_type = 0;
+		};
+		
+		picture.onmouseout = function (){
+			mouse_drag_type = 0;
+		};
+		
+		if(mouse_drag_type == 1){
+			MouseDrag(event.clientX);
+		}
+	};
+	
+	function MouseDrag(value)
+	{
+		
+		num_x = mouse_drag_x - value;//計算滑鼠拖曳距離
+		layer_x = layer_x - (num_x*3);//領敏度調整
+		mouse_drag_x = value;
+		
+		window.document.getElementById("star").style.left= main_layer_x_num + layer_x+"px";
+		
+	}
+	
+	
+	
 	function out(value)
 	{
 		window.location.href ="../bookstore_courtyard/index.php?uid="+value;
@@ -2259,7 +2300,21 @@
 	//=========================================================================================
 	//==============================搜尋系統====================================================\
 	//=========================================================================================
+	
+	var select_input_text = window.document.getElementById("select_input_text");
+	
 	//搜尋開始
+	
+	//鍵盤事件
+	
+	select_input_text.onkeypress = function () {
+	  if (event.keyCode == 13) {   // 13 為 Enter 的鍵盤碼
+         start_select();
+     }
+	}
+	
+	
+	
 	function start_select()
 	{
 		set_action_bookstore_log(SESSION_id,'a2',1);//action_log
@@ -2267,7 +2322,7 @@
 		var site = document.getElementById("select_main").selectedIndex;
 		var sel_value = document.getElementById("select_main").options[site].value;
 
-		window.document.getElementById("select_iframe").src = "manu.php?select="+window.document.getElementById("select_input_text").value+"&school="+sel_value;
+		window.document.getElementById("select_iframe").src = "manu.php?select="+select_input_text.value+"&school="+sel_value;
 
 		window.document.getElementById("select_page_block_2").style.display = 'block';
 	}
