@@ -194,10 +194,10 @@
                 FROM `mssr`.`mssr_black_book`
                     INNER JOIN `user`.`member` ON
                     `mssr`.`mssr_black_book`.`create_by`=`user`.`member`.`uid`
-                WHERE 1=1
+                WHERE 1=1 ORDER BY keyin_cdate DESC
             ";
             $db_results=db_result($conn_type='pdo',$conn_mssr,$sql,array(),$arry_conn_mssr);
-
+			
     //---------------------------------------------------
     //分頁處理
     //---------------------------------------------------
@@ -208,7 +208,7 @@
         $pinx  =1;                      //目前分頁索引,預設1
         $sinx  =0;                      //值域起始值
         $einx  =0;                      //值域終止值
-
+		
         if(isset($_GET['psize'])){
             $psize=(int)10;
             if($psize===0){
@@ -221,8 +221,7 @@
                 $pinx=1;
             }
         }
-
-        $numrow=count($db_results);
+		
 
         $pnos  =ceil($numrow/$psize);
         $pinx  =($pinx>$pnos)?$pnos:$pinx;
@@ -230,6 +229,11 @@
         $sinx  =(($pinx-1)*$psize);
         $einx  =(($pinx)*$psize);
         $einx  =($einx>$numrow)?$numrow:$einx;
+		
+		$sql .= " LIMIT $sinx , $psize ";
+		$db_results=db_result($conn_type='pdo',$conn_mssr,$sql,array(),$arry_conn_mssr);
+		//echo "<pre>";print_r($sql);echo "</pre>";
+		
         //echo $numrow."<br/>";
 
     //---------------------------------------------------
@@ -277,6 +281,7 @@
             );
             $sys_arg=http_build_query($sys_arg);
             $sys_url=$sys_page."?".$sys_arg;
+			
 ?>
 <!DOCTYPE HTML>
 <Html>
@@ -687,6 +692,7 @@
         <td width="100%" height="250px" align="center" valign="top">
             <table id="mod_data_tbl" border="0" width="100%" cellpadding="5" cellspacing="0" style="margin-top:10px;" class="table_style1">
                 <tr align="center" valign="middle" class="bg_gray1 fc_white0">
+                    <td width="125px">建立時間</td>
                     <td width="150px">建立人</td>
                     <td width="225px">書籍名稱</td>
                     <td width="225px">編號</td>
@@ -781,6 +787,7 @@
                             )
 
                     ";
+                    
                     $db_results=db_result($conn_type='pdo',$conn_mssr,$sql,array(),$arry_conn_mssr);
                     $rs_book_name='';
                     if(!empty($db_results)){
@@ -791,6 +798,9 @@
                     }
                 ?>
                 <tr>
+                	<td align="center" valign="middle">
+                        <?php echo htmlspecialchars($rs_keyin_cdate);?>
+                    </td>
                     <td align="center" valign="middle">
                         <?php echo htmlspecialchars($rs_name);?>
                     </td>

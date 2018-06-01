@@ -106,7 +106,7 @@
     html內容
     ====================================================== -->
     <!-- 遮屏-->
-	<div style="position:absolute; top:0px; left:0px; width:1000px; height:480px; background-color:#000000; opacity:0.8;" onClick=""></div>
+	<div style="position:absolute; top:0px; left:0px; width:960px; height:500px; background-color:#000000; opacity:0.8;" onClick=""></div>
 	<img src="./img/page_back2.png" style="position:absolute; top::30px; left:80px; top: 26px;" border="0">
     <img src="./img/booking_tittle.png" style="position:absolute; top::30px; left:380px; top: -14px;" border="0">
     <a id="out" onClick="out()" style="position:absolute; left:771px; top: 377px; cursor:pointer;"></a>

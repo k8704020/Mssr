@@ -19,21 +19,20 @@
             $type_array=array(
                 trim('熱門推薦')  =>array(
                     trim('所有玩家')=>array(
-                       	trim('總得分')=>array("rec","all","total"),
-                        trim('上學期')=>array("rec","all","semester"),
+                       	//trim('總得分')=>array("rec","all","total"),
+                        //trim('上學期')=>array("rec","all","semester"),
 						trim('上個月的排行')=>array("rec","all","month"),
 						trim('上一周的排行')=>array("rec","all","week"),
 						trim('這周的排行')=>array("rec","all","now_week")
                     ),
                     trim('自己學校所有人')=>array(
-                        trim('總得分')=>array("rec","school_all","total"),
-                        trim('上學期')=>array("rec","school_all","semester"),
+                        //trim('總得分')=>array("rec","school_all","total"),
+                        //trim('上學期')=>array("rec","school_all","semester"),
 						trim('上個月的排行')=>array("rec","school_all","month"),
 						trim('上一周的排行')=>array("rec","school_all","week")
                     ),
 					trim('自己學校同年級')=>array(
                         trim('總得分')=>array("rec","school_grade","total"),
-                        trim('上學期')=>array("rec","school_grade","semester"),
 						trim('上個月的排行')=>array("rec","school_grade","month"),
 						trim('上一周的排行')=>array("rec","school_grade","week")
                     ),

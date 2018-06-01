@@ -548,7 +548,7 @@
 	
 		.visitIcon{
 			position: relative;
-			top: 35px;
+			top: 8px;
 			left: 0px;
 			width: 300px;
 			height: 50px;
@@ -592,67 +592,54 @@
 
 
 </Head>
-<body>
-	<!--==================================================W
-    遮罩內容
-    ====================================================== -->
-	<div id="cover" style="position:absolute; top:-8px; left:-8px; ">
-    	<div onClick="" style="position:absolute; top:0px; left:0px; height:480px; width:1000px; cursor:wait; background-color:#000; opacity:0.7; z-index:9999"></div>
-        <table width="385"   border="0" cellspacing="0"  style="position:absolute; top:181px; left:318px;   text-align: center; z-index:10000;">
+<body style="margin: 0px">
+	<!--遮罩內容Start-->
+	<div id="cover">
+    	<div style="position:absolute; height:500px; width:960px; cursor:wait; background-color:#000; opacity:0.7; z-index:9999"></div>
+        <table width="385"   border="0" cellspacing="0"  style="position:absolute; top:150px; left:290px;   text-align: center; z-index:10000;">
         	<tr height="90">
-            	<td width="385" align="center" valign="center" id="cover_text" style=""class="cover_box" >正在讀取中請稍後...
-
+            	<td width="385" align="center" valign="center" id="cover_text" style=""class="cover_box" >
+            		正在讀取中請稍後...
                 </td>
             </tr>
+            <!--功能按鈕Start-->
             <tr height="40">
             	<td>
                     <div id="cover_btn_0" onClick="close_cover(2)" style="position:absolute; left:1px; width:110px; height:38px; text-align: center; z-index:10003; display:none; cursor:pointer;" class="ok_box">存檔</div>
                     <div id="cover_btn_1" onClick="close_cover(1)" style="position:absolute; left:141px; width:110px; height:38px; text-align: center; z-index:10001; display:none; cursor:pointer;" class="ok_box">確定</div>
                     <div id="cover_btn_2" onClick="close_cover(0)" style="position:absolute; left:286px; width:110px; height:38px; text-align: center; z-index:10002; display:none; cursor:pointer;" class="no_box">取消</div>
-
                  </td>
             </tr>
+            <!--功能按鈕End-->
         </table>
-
 	</div>
-	<!--==================================================
-    html內容
-    ====================================================== -->
-
-  
-	<div style="position:absolute; top:-36px; left:-10px; width:1000px; height:500px;">
-	<!-- 內頁內容 -->
-		<!-- 改過 -->
-    	<img src="./img/backgrand.png"  width="1000" style="position:absolute; top:29px; left:-35px;" border="0">
-    	<!-- 改過 -->
- 		<img src="./img/but.png"  width="1000" style="position:absolute; top:112px; left:-38px;" border="0">
- 		 <!-- 改過 -->
-    	<a id="fire_pin_ling"  style="position:absolute; top:27px; left:815px;"></a>
-    	 <!-- 改過 -->
-    	<a id="put" onClick=""  style="position:absolute; top:28px; left:620px; display:none;"></a>
-    	<a id="trans" onClick="" style="position:absolute; top:70px; left:16px; display:none;" border="0"></a>
-
+	<!--遮罩內容End-->
+  	<!-- 內頁背景內容 Start-->
+	<div style="position:absolute;width:960px;height:500px;">
+		<!--背景圖-->
+    	<img src="./img/backgrand.png"  width="960" height="480" style="position:absolute;" border="0">
+    	<!--第一層蓋圖-->
+ 		<img src="./img/but.png"  width="960" style="position:absolute;top: 85px;left: -4px" border="0">
+ 		<!--太空梭-->
+    	<a id="fire_pin_ling"  style="position:absolute;left:815px;"></a>
+    	<!--通訊所 -->
+    	<a id="put" style="position:absolute;left:620px; display:none;"></a>
+    	<!--書店車站(未完成關閉中)-->
+    	<a id="trans" onClick="" style="position:absolute;left:16px; display:none;"></a>
+		<!--書店風車(未完成關閉中) -->
     	<a id="ebook_door" onClick="go_ebook_door()" style="position:absolute; top:29px; left:226px;display:none;" border="0"></a>
-    	<!-- 改過 -->
-		<a id="home_ling" onClick=""  style=" top:20px; left:340px;"></a>
-
-
-	<!-- 圖片圖層 -->
-        <div id="linttt" style="position: absolute; top:382px; left:0px; width:1033px; height:59px; z-index:601;">
-
-           <!--  <img src="../img/the_1.png" style="position:absolute; top:-55px; left:282px;"> -->
-           <!--好友背景圖-->
+    	<!--進入書店 -->
+		<a id="home_ling" style="top: -9px;left: 353px;"></a>
+		<!--圖片圖層Start-->
+        <div id="linttt" style="position: absolute; top:355px; left:0px; width:960px; height:59px; z-index:601;">
+			<!--好友背景圖-->
             <img src="../img/UI_2t.png" style="position:absolute; top:0px;left:-20px;">
-			
-
 			<!-- 咖啡色橫bar-->
    	  	 	<div id="brownArea" ></div>
-
 			<!-- 名字 -->
           	<div id="name" style="position:absolute; top:-45px; left:0px;text-align: center; width: 345px; height: 52px;  white-space:nowrap; overflow:hidden; font-size:29px;" class="number_bar"></div>
-
        	  	<div id="coin"  style="position:absolute; top:22px; left:127px; width: 114px; height: 42px;display:none;" class="number_bar2">0</div>
-       	  	<!-- 經驗值lv-->
+       	  	<!-- 經驗值Lv-->
 	      	<div id="lv" style="position:absolute; top:-6px; left:45px; width: 82px; height: 42px;  text-align:left; font-size: 16px;" class="number_bar2"></div>
 		  	<!-- 經驗值數字-->
 	      	<div id="score_exp" style="position:absolute; top:22px; left:-15px; width: 125px; height: 42px;display:none;font-size: 16px;" class="number_bar2">0</div>
@@ -661,49 +648,51 @@
           	<img src="../img/UI_2t_cover.png" id="bar_cover1" style="position:absolute; top:9px; left:142px; width: 125px; height: 42px;">
           	<img src="../img/UI_2t_cover.png" id="bar_cover2" style="position:absolute; top:9px; left:260px; width: 125px; height: 42px;">
       	</div>
+      	<!--圖片圖層End-->
 	</div>
-
-    <!-- 好友表表 -->
-    <div id="other_ifame" style="position:absolute; left:-8px; top:0px;z-index:889;">
+	<!-- 內頁背景內容 End-->
+    <!-- 好友表表 Start-->
+    <div id="other_ifame" style="position:absolute; left:-8px; top:8px;z-index:889;"></div>
+    <!-- 好友表表 End-->
+    <!-- 物品欄框框 Start-->
+    <div id="box_bar" style="position:absolute;display:none;">
+    	<!-- 物品欄背景圖 -->
+    	<img src="../img/UI_3s.png"  style="position:absolute; top:360px;width: 960px;" border="0">
+    	<!-- 物品欄向左捲動 -->
+   		<a id="left_btn" onClick="set_page(-1)" src="./img/blue_arrow.png"  style="position:absolute; top:430px; left:19px;" border="0"></a>
+        <!-- 物品欄向右捲動 -->
+        <a id="right_btn"  onClick="set_page(1)" src="./img/blue_arrow.png"  style="position:absolute; top:430px; left:830px;" border="0" class="flipx"></a>
+		<!-- 物品欄金錢icon -->
+        <a id="coin_img" class="coin_img"  style="position:absolute; top:350px; left:8px;" border="0"></a>
+		<!--回收桶 -->
+        <a class="btn_re"  style="position:absolute; top:430px; left:890px;z-index: 257" border="0"></a>
+        <!-- 關閉物品欗 -->
+        <a id="inventory_btn_off" class="btn_c_box" onClick="set_page_close()" style="position:absolute; top:330px; left:854px;z-index: 257" ></a>
+        <!--金額數 -->
+  	  	<div id="coin_box" style="position:absolute; text-align:right; left:-30px; top:377px; width: 179px;" class="number_bar2">0</div>
+  	  	<!--物品攔頁數 -->
+        <div id="page_box" style="position:absolute; text-align:center; left:698px; top:377px; width: 179px;" class="number_bar2">0</div>
+		<!-- 物品攔物件Start -->
+    	<div id="box" style="position:absolute; top:16px; left:-3px;z-index: 2"></div>
+    	<!-- 物品攔物件End -->
     </div>
-    <!-- 物品欄框框 -->
-    <div id="box_bar" style="position:absolute; top:-8px; left:-8px; display:none;">
-    	<img src="../img/UI_3s.png"  style="position:absolute; top:337px;" border="0">
-   		<a id="left_btn" onClick="set_page(-1)" src="./img/blue_arrow.png"  style="position:absolute; top:410px; left:19px;" border="0"></a>
-
-        <a id="right_btn"  onClick="set_page(1)" src="./img/blue_arrow.png"  style="position:absolute; top:410px; left:864px;" border="0" class="flipx"></a>
-
-        <a id="coin_img" class="coin_img"  style="position:absolute; top:339px; left:8px;" border="0"></a>
-         <!-- 改過 -->
-        <a class="btn_re"  style="position:absolute; top:410px; left:910px;" border="0"></a>
-        <!-- 改過 -->
-        <a id="inventory_btn_off" class="btn_c_box" onClick="set_page_close()" style="position:absolute; top:330px; left:854px;" ></a>
-        
-        <!-- 改過 -->
-  	  	<div id="coin_box" style="position:absolute; text-align:right; left:-31px; top:355px; width: 179px;" class="number_bar2">0</div>
-  	  	<!-- 改過 -->
-        <div id="page_box" style="position:absolute; text-align:center; left:698px; top:355px; width: 179px;" class="number_bar2">0</div>
-      <!-- 箱子上物件 -->
-    	<div id="box" style="position:absolute; top:0px; left:0px;">
-    	</div>
-    </div>
-
-    <!-- 地圖上物件 -->
-	<div id="map" style="position:absolute; top:0px; left:0px; ">
-    </div>
-     <!-- 高階按鈕曾 -->
-    <div id="hight_btn" style="position:absolute; top:-36px; left:-10px; width:960px; height:500px;; z-index:887">
-    	 <!-- 改過 -->
-        <a id="home_ling_btn" onClick="go_page('home')"  style="position:absolute; top:20px; left:340px; cursor:pointer;"></a>
-        <!-- 改過 -->
-        <a id="fire_pin_ling_btn" onClick="go_page('space')"  style="position:absolute; top:27px; left:815px; cursor:pointer;"></a>
-        <a id="ebook_door_btn" onClick="go_ebook_door()" style="position:absolute; top:29px; left:226px;display:none;cursor:pointer;"></a>
-		 <!-- 改過 -->
-		<!-- 通訊所 中央大學才看到喔 -->
-        <a id="put_btn"  onClick="go_page('communication')" style="position:absolute; top:28px; left:620px; cursor:pointer; display:none;"></a>
-        <a id="trans_btn" onClick="" style="position:absolute; top:70px; left:16px;display:none;cursor:pointer; display:none;"></a>
-
-        <!-- 瀏覽率 -->
+	<!-- 物品欄框框 End-->
+    <!-- 地圖上物件Start -->
+	<div id="map" style="position:absolute; top:0px; left:0px;width: 960px;height: 500px;z-index: 1;"></div>
+	<!-- 地圖上物件End -->
+    <!-- 高階按鈕層 Start-->
+    <div id="hight_btn" style="position:absolute; width:960px; height:500px;; z-index:887">
+    	<!--進入書店 -->
+        <a id="home_ling_btn" onClick="go_page('home')"  style="position:absolute; top:-10px; left:353px; cursor:pointer;"></a>
+        <!--去宇宙 -->
+        <a id="fire_pin_ling_btn" onClick="go_page('space')"  style="position:absolute; top:0px; left:815px; cursor:pointer;"></a>
+        <!--風車(暫時關閉)-->
+        <a id="ebook_door_btn" onClick="go_ebook_door()" style="position:absolute; top:0px; left:226px;display:none;cursor:pointer;"></a>
+		<!-- 通訊所(維修中)-->
+        <a id="put_btn"  onClick="go_page('communication')" style="position:absolute; top:0px; left:620px; cursor:pointer; display:none;"></a>
+        <!--書店車站(暫時關閉)-->
+        <a id="trans_btn" onClick="" style="position:absolute; top:37px; left:16px;display:none;cursor:pointer;"></a>
+        <!-- 瀏覽率Start-->
         <div class="visitIcon" onClick="visit_bookstore_rate()" > 
             <div class="visitIconImg">
             	<img src="./img/visitIcon.png" alt="">
@@ -713,41 +702,39 @@
 				<span id="total">總累積人數:10000000</span>
 			</div>
         </div>
+        <!-- 瀏覽率End-->
     </div>
 	<!-- 好友按按 -->
-    <div id="other_ifame2" style="position:absolute; left:-8px; top:0px; z-index:989">
-    </div>
+    <div id="other_ifame2" style="position:absolute; left:-8px; top:0px; z-index:989"></div>
     <!-- 最高按鈕圖層 -->
-
-<div id="high_btm" style="position:absolute; left:-8px; top:0px; z-index:888">
-  <div id="other_store" style="position:absolute; top:290px; left:216px;display:none;">
- 
-               <!-- <img src="../img/firend_bar.png" style="position:absolute; top:-141px; left: -231px;"> -->
-                <!-- 加入喜愛的書店 -->
-               <a id="feri_friend" class="feri_friend" onClick="set_track()" style="cursor:pointer; position:absolute; top:10px; left:120px;display:none;"></a>
-                <!-- 按讚 -->
-               <a id="feri_good" class="feri_good" onClick="set_good()" style="cursor:pointer; position:absolute; top:12px; left:164px;display:none;"></a>
-                <!-- 回到自己家 -->
-               <a class="feri_home" style="cursor:pointer; position:absolute; top:-290px; left:685px;" onClick="cover('是否要回到自己家',2,function(){set_action_bookstore_log(user_id,'e37',action_on);back_home();})"></a>
-    </div>
-  	<a id="coin_imgs" class="coin_img" onClick="cover('<a style=\'color:#903;\'>葵幣:購買裝飾品的貨幣</a><BR>做推薦與販賣書籍獲得，也可由教師給予',1)" style="cursor:pointer; position:absolute; top:340px; left:115px;display:none;" border="0"></a>
-  	<a id="score_exp_img" class="score_exp_img" onClick="cover('<a style=\'color:#903;\'>經驗值:經營書店的經驗值</a><BR>越努力經營書店數值越高',1)"   style="cursor:pointer; position:absolute; top:340px; left:-11px;display:none;" border="0"></a>
-  	<a id="forum_exp_img" class="forum_exp_img" onClick="cover('<a style=\'color:#903;\'>聊書經驗值:經營聊書的經驗值</a><BR>越努力進行聊書數值越高',1)"   style="cursor:pointer; position:absolute; top:340px; left:259px;display:none;" border="0"></a>
-  	<!-- 進書店icon-->
-  	<a id="home_btn" class="btn_bst" onClick="go_page('home')"  style="position:absolute; top:328px; left:440px; cursor:pointer;"></a>
-  	<!-- 去宇宙icon -->
-  	<a id="fire_pin_btn" class="btn_nuv" onClick="go_page('space')"  style="position:absolute; top:328px; left:520px; cursor:pointer;" ></a>
-  	<!-- 通訊所icon -->
-  	<a id="communication_btn" class="btn_communication" onClick="go_page('communication')"  style="position:absolute; top:328px; left:600px; display:none; cursor:pointer;" ></a>
- 	<!-- 進商場icon -->
-  	<a id="shop_btn" class="btn_shop" onClick="go_page('shop')"  style="position:absolute; cursor:pointer; top:328px; left:686px;display:none;"></a>
-  	<!-- 物品欄icon-->
-  	<a id="box_btn" class="btn_o_box" onClick="set_box_page(0)"  style="position:absolute; cursor:pointer; top:328px; left:770px;display:none;"></a>
-  	<!-- 離開遊戲icon -->  
-  	<a id="out_btn" class="btn_outgame" onClick="go_page('menu')"  style="position:absolute; top:328px; left:850px; cursor:pointer;"></a>
-
-
-  </div>
+	<div id="high_btm" style="position:absolute; top:8px; z-index:888">
+	  <div id="other_store" style="position:absolute; top:300px; left:216px;display:none;">
+           <!-- 加入喜愛的書店 -->
+           <a id="feri_friend" class="feri_friend" onClick="set_track()" style="cursor:pointer; position:absolute; top:10px; left:120px;display:none;"></a>
+            <!-- 按讚 -->
+           <a id="feri_good" class="feri_good" onClick="set_good()" style="cursor:pointer; position:absolute; top:12px; left:164px;display:none;"></a>
+            <!-- 回到自己家 -->
+           <a class="feri_home" style="cursor:pointer; position:absolute; top:-290px; left:685px;" onClick="cover('是否要回到自己家',2,function(){set_action_bookstore_log(user_id,'e37',action_on);back_home();})"></a>
+	    </div>
+	    <!--金錢icon-->
+	  	<a id="coin_imgs" class="coin_img" onClick="cover('<a style=\'color:#903;\'>葵幣:購買裝飾品的貨幣</a><BR>做推薦與販賣書籍獲得，也可由教師給予',1)" style="cursor:pointer; position:absolute; top:340px; left:115px;display:none;" border="0"></a>
+	  	<!--書店經驗值icon-->
+	  	<a id="score_exp_img" class="score_exp_img" onClick="cover('<a style=\'color:#903;\'>經驗值:經營書店的經驗值</a><BR>越努力經營書店數值越高',1)"   style="cursor:pointer; position:absolute; top:340px; left:-11px;display:none;" border="0"></a>
+	  	<!--聊書經驗值icon(停用)-->
+	  	<!--<a id="forum_exp_img" class="forum_exp_img" onClick="cover('<a style=\'color:#903;\'>聊書經驗值:經營聊書的經驗值</a><BR>越努力進行聊書數值越高',1)"   style="cursor:pointer; position:absolute; top:340px; left:259px;display:none;" border="0"></a>-->
+	  	<!-- 進書店icon-->
+	  	<a id="home_btn" class="btn_bst" onClick="go_page('home')"  style="position:absolute; top:328px; left:440px; cursor:pointer;"></a>
+	  	<!-- 去宇宙icon -->
+	  	<a id="fire_pin_btn" class="btn_nuv" onClick="go_page('space')"  style="position:absolute; top:328px; left:520px; cursor:pointer;" ></a>
+	  	<!-- 通訊所icon -->
+	  	<a id="communication_btn" class="btn_communication" onClick="go_page('communication')"  style="position:absolute; top:328px; left:600px; display:none; cursor:pointer;" ></a>
+	 	<!-- 進商場icon -->
+	  	<a id="shop_btn" class="btn_shop" onClick="go_page('shop')"  style="position:absolute; cursor:pointer; top:328px; left:686px;display:none;"></a>
+	  	<!-- 物品欄icon-->
+	  	<a id="box_btn" class="btn_o_box" onClick="set_box_page(0)"  style="position:absolute; cursor:pointer; top:328px; left:770px;display:none;"></a>
+	  	<!-- 離開遊戲icon -->  
+	  	<a id="out_btn" class="btn_outgame" onClick="go_page('menu')"  style="position:absolute; top:328px; left:850px; cursor:pointer;"></a>
+	</div>
     <!-- 賣東西頁面 -->
     <div id="sell_item" style="position:absolute; left:-8px; top:0px; z-index:890; display:none;">
     	<div onClick="" style="position:absolute; top:0px; left:0px; height:480px; width:1000px; background-color:#000; opacity:0.7;"></div>
@@ -760,17 +747,12 @@
         <img src="./img/yes.png" onClick="sell_it()" style="position:absolute; top:282px; left:310px; cursor:pointer;" border="0">
         <img src="./img/no.png" onClick="close_sell()" style="position:absolute; top:283px; left:579px; cursor:pointer;" border="0">
     </div>
-     <!-- 說明頁面 -->
-     <!-- 改過 -->
-   		<img id="book_store_help" onClick="close_help()" src="./img/go_help.png" width="1000"style=" position: absolute; top: -8px; left: -38px; height: 497px;cursor: pointer; z-index: 9998; display: block;">
-
-<!--==================================================
-    debug內容
-    ====================================================== -->
-<div id="debug" style="position:absolute;top:480px; "></div>
+    <!-- 說明遮頻Start --> 
+   	<img id="book_store_help" onClick="close_help()" src="./img/go_help.png" width="960"style=" position: absolute; top: -4px; left: -4px; height: 500px;cursor: pointer; z-index: 9998; display: block;">
+	<!-- 說明遮頻End-->
+	<!--debug內容顯示-->
+	<div id="debug" style="position:absolute;top:480px;"></div>
 </body>
-
-
     <script>
 	//---------------------------------------------------
 	//初始化
@@ -821,11 +803,12 @@
 	var user_id = '<? echo $user_id;?>';
 	var home_on = '<? echo $home_on;?>';
 	
-	//通訊所 維修
+	
 	<?php if($ip == '140.115.135.36'):?>
-	window.document.getElementById("communication_btn").style.display = "block";
-	window.document.getElementById("put").style.display = "block";
-	window.document.getElementById("put_btn").style.display = "block";
+	//通訊所 維修
+	$('#communication_btn').show();
+	$('#put').show();
+	$('#put_btn').show();
 	<?php endif;?>
 	
 
@@ -859,18 +842,7 @@
 	//FUNCTION
 	//---------------------------------------------------
 
-	/*cover 啟用器的用法
-		 cover("這嘎");
-		 cover("這嘎",1);
-		 cover("這嘎",2,function(){echo("哈哈");});
-		*/
-		//cover 點選器
-	/*cover 啟用器的用法
-		 cover("這嘎");
-		 cover("這嘎",1);
-		 cover("這嘎",2,function(){echo("哈哈");});
-		*/
-		//cover 點選器
+	
 	function delayExecute(proc,proc2)
 	{
 		var x = 100;
@@ -904,7 +876,7 @@
 		echo("cover_level"+cover_level);
 		if(cover_level<2)
 		{
-			window.document.getElementById("cover").style.display = "none";
+			$('#cover').hide();
 			cover_click = -1;
 			cover_level = 0;
 		}
@@ -913,73 +885,83 @@
 	//cover
 	function cover(text,type,proc,proc2)
 	{
+		
+		var cover_btn_0 = $('#cover_btn_0');
+		var cover_btn_1 = $('#cover_btn_1');
+		var cover_btn_2 = $('#cover_btn_2');
 		if(type == 3 && cover_level <= 3)
 		{
-
-			window.document.getElementById("cover_btn_1").style.left = "140px";
-			window.document.getElementById("cover_btn_1").style.display = "block";
-			window.document.getElementById("cover_btn_1").className = "no_box";
-			window.document.getElementById("cover_btn_1").innerHTML = "不存檔";
-			window.document.getElementById("cover_btn_2").style.left = "270px";
-			window.document.getElementById("cover_btn_2").style.display = "block";
-			window.document.getElementById("cover_btn_2").className = "no_box";
-			window.document.getElementById("cover_btn_0").style.left = "0px";
-			window.document.getElementById("cover_btn_0").style.display = "block";
-			window.document.getElementById("cover_btn_0").className = "ok_box";
-			window.document.getElementById("cover_btn_0").innerHTML = "存檔";
+			cover_btn_0.css('left','0px');
+			cover_btn_0.show();
+			cover_btn_0.addClass('ok_box');
+			cover_btn_0.html('存檔');
+			
+			cover_btn_1.css('left','140px');
+			cover_btn_1.show();
+			cover_btn_1.addClass('no_box');
+			cover_btn_1.html('不存檔');
+			
+			cover_btn_2.css('left','270px');
+			cover_btn_2.show();
+			cover_btn_2.addClass('no_box');
+			
 			cover_level = 3;
-			window.document.getElementById("cover_text").innerHTML=text;
-			window.document.getElementById("cover").style.display = "block";
+			
+			$('#cover_text').html(text);
+			$('#cover').show();
 
 
 		}
 		else if(type == 2 && cover_level <= 2)
 		{
-			window.document.getElementById("cover_btn_1").style.left = "30px";
-			window.document.getElementById("cover_btn_1").style.display = "block";
-			window.document.getElementById("cover_btn_1").className = "ok_box";
-			window.document.getElementById("cover_btn_1").innerHTML = "確定";
-			window.document.getElementById("cover_btn_2").style.left = "240px";
-			window.document.getElementById("cover_btn_2").style.display = "block";
-			window.document.getElementById("cover_btn_2").className = "no_box";
-			window.document.getElementById("cover_btn_0").style.left = "536px";
-			window.document.getElementById("cover_btn_0").style.display = "none";
-			window.document.getElementById("cover_btn_0").className = "no_box";
+			cover_btn_0.css('left','536px');
+			cover_btn_0.hide();
+			cover_btn_0.addClass('no_box');
+			
+			cover_btn_1.css('left','30px');
+			cover_btn_1.show();
+			cover_btn_1.addClass('ok_box');
+			cover_btn_1.html('確定');
+			
+			cover_btn_2.css('left','240px');
+			cover_btn_2.show();
+			cover_btn_2.addClass('no_box');
 			cover_level = 2;
-			window.document.getElementById("cover_text").innerHTML=text;
-			window.document.getElementById("cover").style.display = "block";
+			$('#cover_text').html(text);
+			$('#cover').show();
+			
 		}
 		else if(type==1 && cover_level <= 1 )
 		{
-			window.document.getElementById("cover_btn_1").style.left = "140px";
-			window.document.getElementById("cover_btn_1").style.display = "block";
-			window.document.getElementById("cover_btn_1").className = "ok_box";
-			window.document.getElementById("cover_btn_1").innerHTML = "確定";
-			window.document.getElementById("cover_btn_2").style.left = "536px";
-			window.document.getElementById("cover_btn_2").style.display = "none";
-			window.document.getElementById("cover_btn_2").className = "no_box";
-			window.document.getElementById("cover_btn_0").style.left = "536px";
-			window.document.getElementById("cover_btn_0").style.display = "none";
-			window.document.getElementById("cover_btn_0").className = "no_box";
+			cover_btn_0.css('left','536px');
+			cover_btn_0.hide();
+			cover_btn_0.addClass('no_box');
+			cover_btn_1.css('left','140px');
+			cover_btn_1.show();
+			cover_btn_1.addClass('no_box');
+			cover_btn_1.html("確定");
+			cover_btn_2.css('left','536px');
+			cover_btn_2.hide();
+			cover_btn_2.addClass('no_box');
 			cover_level = 1;
-			window.document.getElementById("cover_text").innerHTML=text;
-			window.document.getElementById("cover").style.display = "block";
+			$('#cover_text').html(text);
+			$('#cover').show();
 		}
 		else if( cover_level <= 0)
 		{
-			window.document.getElementById("cover_btn_1").style.display = "none";
-			window.document.getElementById("cover_btn_2").style.display = "none";
-			window.document.getElementById("cover_btn_0").style.display = "none";
+			cover_btn_0.hide();
+			cover_btn_1.hide();
+			cover_btn_2.hide();
 			cover_level = 0;
 
 			if(text!=""&&text!=null)
 			{
-				window.document.getElementById("cover_text").innerHTML=text;
-				window.document.getElementById("cover").style.display = "block";
+				$('#cover_text').html(text);
+				$('#cover').show();
 			}
 			else
 			{
-				window.document.getElementById("cover").style.display = "none";
+				$('#cover').hide();
 			}
 		}
 
@@ -1166,9 +1148,13 @@
 					{
 						map_item[map_flag] = new Array();
 						map_item[map_flag]["_id"] = tmp[i];
+						if(tmp[i+1] > 920){
+							//alert('偵測到超出畫面物品 自動調整回畫面中');
+							tmp[i+1] = 920;
+						}
 						map_item[map_flag]["_x"] = tmp[i+1];
 						map_item[map_flag]["_y"] = tmp[i+2];
-
+						
 						window.document.getElementById("map").innerHTML = window.document.getElementById("map").innerHTML +'<img name="'+tmp[i]+'" id="'+map_flag+'" src="img/'+tmp[i]+'.png"  class="draggable" style=" position:absolute; top:'+tmp[i+2]+'px; opacity:1; z-index:'+tmp[i+2]+';  left:'+tmp[i+1]+'px;">';
 						map_flag++;
 					}
@@ -1200,7 +1186,7 @@
 									echo("load"+ this.id);
 								}
 					});
-
+					
 					//設定顯示按鈕
 					if(home_on=="user" && auth_coin_open != "all_no")
 					{
@@ -1342,12 +1328,13 @@
 	function draggable_map_stop()
 	{
 
-		if(home_on=="user")$(this).draggable({cancel: "img"});
+		if(home_on=="user")$(this).draggable({cancel: "img",containment: "#map",scroll: false});
 	}
 	function draggable_map()
 	{
 
 		if(home_on=="user")$(this).draggable({
+							containment: "#map",scroll: false,
 							start: function( event, ui )
 								{
 
@@ -1391,7 +1378,7 @@
 								{
 									if($(this).position().top +(this.height) <360)
 									{
-										//哈哈  沒是我好棒 ((吃土
+										
 										echo("位置移動("+map_item[this.id]["_x"]+","+map_item[this.id]["_y"]+") → ("+tempX+","+tempY+")");
 
 										map_item[this.id]["_x"]=tempX;
@@ -1487,6 +1474,10 @@
 	{
 
 		if(home_on=="user")$(this).draggable({
+							
+							containment: "#map",
+                			scroll: false,
+							
 							start: function( event, ui )
 								{
 
@@ -1851,7 +1842,7 @@
 			//window.document.getElementById("other_ifame").innerHTML = window.document.getElementById("other_ifame").innerHTML+'<iframe src="../page_msg_menu/index.php" frameborder="0" height="300" width="550" style="position:absolute; left:0px; top:0px; width: 551px; height: 117px;"></iframe>';
 
 		}
-		window.document.getElementById("other_ifame").innerHTML = window.document.getElementById("other_ifame").innerHTML+'<iframe name="page_track_menu" src="../page_track_menu/index.php" frameborder="0" height="300" width="550" style="position:absolute; left:0px; top:400px; width: 1000px; height: 80px;"></iframe>';
+		window.document.getElementById("other_ifame").innerHTML = window.document.getElementById("other_ifame").innerHTML+'<iframe name="page_track_menu" src="../page_track_menu/index.php" frameborder="0" height="300" width="550" style="position:absolute; left:0px; top:400px; width: 960px; height: 100px;"></iframe>';
 	}
 	//debug
 	function echo(text)
@@ -1891,7 +1882,7 @@
 		tmp_item = obj ;
 		window.document.getElementById("sell_item").style.display = "block";
 		window.document.getElementById("item_name").innerHTML = _item[obj.name]["name"];
-		window.document.getElementById("item_coin").innerHTML = Math.floor(_item[obj.name]["coin"])/5;
+		window.document.getElementById("item_coin").innerHTML = Math.floor(_item[obj.name]["coin"])/2;
 		window.document.getElementById("item_png").src = "./img/"+obj.name+".png";
 	}
 	function close_sell()
@@ -2170,7 +2161,7 @@
 
 
 	}
-	//打開那馬ˇ下EBOOK
+	//打開那馬下EBOOK
 	function go_ebook_door()
 	{
 		window.location="../bookstore_ebook/index4.html?id="+home_id;
@@ -2181,7 +2172,7 @@
 		;
 	}
 	 //---------------------------------------------------
-    //ONLOADㄒ
+    //ONLOAD
     //---------------------------------------------------
 
 //

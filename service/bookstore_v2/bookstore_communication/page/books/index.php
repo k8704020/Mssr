@@ -185,7 +185,7 @@
             $arrys_book_info[$val['book_sid']]['book_note']     =htmlspecialchars(trim($get_book_info[0]['book_note']));
         }
 	}
-echo "<pre>";
+	echo "<pre>";
 	print_r($sql);
 	echo "</pre>";
 

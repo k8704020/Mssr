@@ -542,7 +542,7 @@
     </div>
     <!-- 物品欄框框 -->
     <div id="box_bar" style="position:absolute; top:-8px; left:-8px; display:none;">
-    	<img src="../img/UI_3s.png"  style="position:absolute; top:337px;" border="0">
+    	<img src="../img/UI_3s.png"  style="position:absolute; top:337px;width: 960px" border="0">
    		<a id="left_btn" onClick="set_page(-1)" src="./img/blue_arrow.png"  style="position:absolute; top:410px; left:19px;" border="0"></a>
         <a id="right_btn"  onClick="set_page(1)" src="./img/blue_arrow.png"  style="position:absolute; top:410px; left:864px;" border="0" class="flipx"></a>
 		
@@ -1629,7 +1629,7 @@
 		tmp_item = obj ;
 		window.document.getElementById("sell_item").style.display = "block";
 		window.document.getElementById("item_name").innerHTML = _item[obj.name]["name"];
-		window.document.getElementById("item_coin").innerHTML = Math.floor(_item[obj.name]["coin"])/5;
+		window.document.getElementById("item_coin").innerHTML = Math.floor(_item[obj.name]["coin"])/2;
 		window.document.getElementById("item_png").src = "./img/"+obj.name+".png";
 	}
 	function close_sell()

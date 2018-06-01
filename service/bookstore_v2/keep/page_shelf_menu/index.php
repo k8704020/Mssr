@@ -192,7 +192,7 @@
     html內容
     ====================================================== -->
     <!-- 遮屏-->
-	<div id="black" style="position:absolute; top:0px; left:0px; width:1000px; height:480px; background-color:#000000; opacity:0.85; z-index:50;" onClick=""></div>
+	<div id="black" style="position:absolute; top:0px; left:0px; width:960px; height:500px; background-color:#000000; opacity:0.85; z-index:50;" onClick=""></div>
     <!-- 列表版面-->
 	<div id="page1" style="position:absolute; top:0px; left:0px;z-index:60;">
 

@@ -57,6 +57,7 @@
 		$home_id        =(isset($_GET['home_id']))?(int)$_GET['home_id']:$_SESSION['uid'];
 		if($permission =='0' || $user_id=='0') die("喔喔 你非法進入喔 可能是沒有權限進入或是尚未登入");
 
+		//匯入選項陣列
 		$communicaton_type = communicaton_type();
     //---------------------------------------------------
     //檢驗參數
@@ -132,9 +133,11 @@
 			AND '$dadad' BETWEEN `user`.`teacher`.`start` AND `user`.`teacher`.`end`";
 		$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,1),$arry_conn_mssr);
 	}
+	/*
 	echo "<pre>";
 	print_r($sql);
 	echo "</pre>";
+	 * */
 ?>
 <!DOCTYPE HTML>
 <Html>

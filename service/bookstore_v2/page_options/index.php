@@ -150,7 +150,7 @@
     html內容
     ====================================================== -->
     <!-- 遮屏-->
-	<div id="black" style="position:absolute; top:0px; left:0px; width:1000px; height:480px; background-color:#000000; opacity:0.8;" onClick=""></div>
+	<div id="black" style="position:absolute; top:0px; left:0px; width:1000px; height:500px; background-color:#000000; opacity:0.8;" onClick=""></div>
     <!-- 列表版面-->
 
 <div style="position:absolute; left: 68px; top:22px;">
