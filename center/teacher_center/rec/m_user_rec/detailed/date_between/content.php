@@ -161,7 +161,10 @@
         $get_semester_end=(isset($_GET[trim('semester_end')]))?trim($_GET[trim('semester_end')]):'';
         $view        =(isset($_GET[trim('view')]))?$_GET[trim('view')]:'';
         $abnormal    =(isset($_GET[trim('abnormal')]) && (int)$_GET[trim('abnormal')]===1)?1:0;
-
+		$anchor_height =(isset($_GET[trim('anchor_height')]))?$_GET[trim('anchor_height')]:'0';
+		
+		
+		
         //SESSION
         $filter      ='';   //查詢條件式
         $query_fields='';   //查詢欄位,顯示用
@@ -547,6 +550,7 @@
         global $get_book_sid;
         global $arry_ftp1_info;
         global $scrolltop;
+		global $get_date_filter;
         global $get_semester_start;
         global $get_semester_end;
         global $view;
@@ -1375,8 +1379,8 @@
     var get_user_id=<?php echo $get_user_id;?>;
     var get_book_sid='<?php echo trim($get_book_sid);?>';
     var get_scrolltop=<?php echo $scrolltop;?>;
-    var get_semester_start='<?php echo $get_semester_start;?>';
-    var get_semester_end ='<?php echo $get_semester_end;?>';
+    var get_semester_start = '<?php echo $get_semester_start;?>';
+    var get_semester_end = '<?php echo $get_semester_end;?>';
 
     function view_mode(obj){
         var val=obj.options[obj.options.selectedIndex].value;
@@ -1524,10 +1528,14 @@
 
         var url ='';
         var page=str_repeat('../',0)+'delA.php';
+        
         var arg ={
             'user_id' : parseInt(user_id),
             'book_sid': trim(book_sid   ),
-            'anchor'  : trim(anchor     )
+            'get_date_filter' : trim(date_filter),
+            'get_semester_start' : trim(get_semester_start),
+            'get_semester_end' : trim(get_semester_end),
+            'scrolltop':$(window.parent).scrollTop()
         };
         var _arg=[];
         for(var key in arg){
@@ -1546,6 +1554,7 @@
             go(url,'self');
         }
         else{
+        	
             return false;
         }
     }
@@ -1874,10 +1883,7 @@
     }
 
     window.onload=function(){
-        setTimeout(function(){
-            $(window.parent).scrollTop(get_scrolltop);
-            //console.log(get_scrolltop);
-        }, 500);
+    	
         for(key in json_record_info){
             var rs_user_id =json_record_info[key];
             var record_path=[{
@@ -1889,26 +1895,17 @@
         }
 
         //設定動態高度
+        
         var oIFC=parent.document.getElementById('IFC');
         var oparent_IFC=parent.parent.document.getElementById('IFC');
         var _height=parseInt($(document).height())+550;
         //console.log(_height);
         oIFC.style.height=_height+'px';
         oparent_IFC.style.height=_height+'px';
-        //var oIFC=parent.document.getElementById('IFC');
-        //var oparent_IFC=parent.parent.document.getElementById('IFC');
-        //var _height=parseInt($(document).height());
-        //
-        //if(_height<=4560){
-        //    oIFC.style.height=parseInt(_height+40)+'px';
-        //    oparent_IFC.style.height=parseInt($(document).height()+40)+'px';
-        //}else{
-        //    oIFC.style.height='5070px';
-        //    oparent_IFC.style.height='5070px';
-        //}
-
+        
+		//alert('600');
         //回到頂部
-        parent.$('html, body').scrollTop(0);
+        //parent.$('html, body').scrollTop(0);
 
         //分頁列1
         var cid         ="page1";                       //容器id
@@ -1972,10 +1969,15 @@
 
         var scrolltop=window.localStorage["scrollTop"];
         if(scrolltop!==undefined){
+        	
             $(window.parent.document).scrollTop(scrolltop);
         }
 
         all_control(1);
+        setTimeout(function(){
+            $(window.parent).scrollTop(get_scrolltop);
+            //console.log(get_scrolltop);
+        }, 500);
     }
 </script>
 
@@ -2139,7 +2141,7 @@
     }
 
     window.onload=function(){
-
+		
     }
 
 </script>

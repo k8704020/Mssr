@@ -342,7 +342,7 @@
     ====================================================== -->
     <div id="cover" style="position:absolute; top:-8px; left:-8px; display:none;">
     	<div onClick="" style="position:absolute; top:0px; left:0px; height:480px; width:1000px; cursor:wait; background-color:#000; opacity:0.7; z-index:9999"></div>
-        <table width="385"   border="0" cellspacing="0"  style="position:absolute; top:181px; left:318px;   text-align: center; z-index:10000;">
+        <table width="500"   border="0" cellspacing="0"  style="position:absolute; top:181px; left:230px;   text-align: center; z-index:10000;">
         	<tr height="90">
             	<td width="385" align="center" valign="center" id="cover_text" style=""class="cover_box" >正在讀取中請稍後...
 
@@ -431,16 +431,6 @@
 
           <select id="set_ramger_2" class="text_1" onchange="set_ramger_2();" style="width:180px;float:left; color:#F11;">
           </select>
-
-          <select id="set_ramger_3" class="text_1" onchange="set_ramger_3();" style="width:160px; display:none;">
-          	<option value="0">推薦總計</option>
-            <option value="1">文字推薦</option>
-            <option value="2">朗讀推薦</option>
-            <option value="3">繪圖推薦</option>
-            <option value="4">繪圖上傳圖-1</option>
-            <option value="5">繪圖上傳圖-2</option>
-            <option value="6">繪圖上傳圖-3</option>
-          </select>
         </div>
 
 </div>
@@ -499,12 +489,7 @@
 	//---------------------------------------------------
 	//FUNCTION
 	//---------------------------------------------------
-	/*cover 啟用器的用法
-		 cover("這嘎");
-		 cover("這嘎",1);
-		 cover("這嘎",2,function(){echo("哈哈");});
-		*/
-		//cover 點選器
+	
 	function delayExecute(proc,proc2)
 	{
 		var x = 100;
@@ -700,36 +685,32 @@
 	}
 	function set_ramger_3()
 	{
+		cover("讀取中");
 		var e = document.getElementById("set_ramger_3");
 		rec_type = 	e.options[e.selectedIndex].value;
 		document.getElementById("ininin").src = "./page/"+tmp_array[0]+"/index.php?ramge="+tmp_array[1]+"&time="+tmp_array[2]+"&class_code="+class_code+"&school_code="+school_code+"&grade_code="+grade_code+"&rec_type="+rec_type;
-
-	}
-
-	function set_ramger_2()
-	{
-
-		var e = document.getElementById("set_ramger_1");
-		tmp_array = communicaton_type[chick_type][e.options[e.selectedIndex].value];
 		
-		e = document.getElementById("set_ramger_2");
-		e.style.color = "#000";
-		tmp_array = tmp_array[e.options[e.selectedIndex].value];
-		if(chick_type == "推薦排行")
-			window.document.getElementById("set_ramger_3").style.display = "block";
-		else
-			window.document.getElementById("set_ramger_3").style.display = "none";
-		document.getElementById("ininin").src = "./page/"+tmp_array[0]+"/index.php?ramge="+tmp_array[1]+"&time="+tmp_array[2]+"&class_code="+class_code+"&school_code="+school_code+"&grade_code="+grade_code+"&rec_type="+rec_type;
-
 	}
-	function set_ramger_1(value)
+
+	function set_ramger_2(chick_type_class='')
+	{
+		var e1 = document.getElementById("set_ramger_1");
+		var e2 = document.getElementById("set_ramger_2");
+		cover("讀取"+ e1.options[e1.selectedIndex].value + "-" + e2.options[e2.selectedIndex].value +"中");
+		tmp_array = communicaton_type[chick_type][e1.options[e1.selectedIndex].value][e2.options[e2.selectedIndex].value];
+		e2.style.color = "#000";
+		document.getElementById("ininin").onload= function () {close_cover();}
+		document.getElementById("ininin").src = "./page/"+tmp_array[0]+"/index.php?ramge="+tmp_array[1]+"&time="+tmp_array[2]+"&class_code="+class_code+"&school_code="+school_code+"&grade_code="+grade_code+"&rec_type="+rec_type;
+		
+	}
+	function set_ramger_1(value,chick_type_class='')
 	{
 		var tmeop = 0;
 		var e = document.getElementById("set_ramger_1");
 		e.style.color = "#000";
 		tmp_array = communicaton_type[chick_type][e.options[e.selectedIndex].value];
 		window.document.getElementById("set_ramger_2").innerHTML = '<option disabled="disabled" id="ffsfsfsf"  style="color:#000;" selected="">[請選擇時間範圍]</option>';
-		window.document.getElementById("set_ramger_3").style.display = "none";
+		
 		document.getElementById("ininin").src ="";
 		for(key in tmp_array)
 		{
@@ -742,19 +723,18 @@
 			else
 			 window.document.getElementById("set_ramger_2").innerHTML = window.document.getElementById("set_ramger_2").innerHTML+'<option value="'+key+'"  style="color:#000;" >'+key+'</option>';
 		}
-		if(tmeop == 1 )set_ramger_2();
+		if(tmeop == 1 )set_ramger_2(chick_type_class);
 
 		window.document.getElementById("ffsfsfsf").style.color="#c11";
-
 	}
 	function menu_click(on)
 	{
 		var tmp_on = menu_page*3 + on;
-
 		if(tmp_on == 1)
 		{
 
 			chick_type = "熱門推薦";
+			chick_type_class = "rec";
 			say_array = post_1;
 			say_on = 0;
 			set_menu(0,0);
@@ -765,6 +745,7 @@
 		{
 
 			chick_type = "熱門佈置";
+			chick_type_class = "star";
 			say_array = post_2;
 			say_on = 0;
 			set_menu(0,0);
@@ -772,8 +753,8 @@
 		}
 		if(tmp_on == 3)
 		{
-
 			chick_type = "熱門書籍";
+			chick_type_class ="books";
 			say_array = post_3;
 			say_on = 0;
 			set_menu(0,0);
@@ -784,7 +765,6 @@
 		document.getElementById("ininin").src ="";
 		window.document.getElementById("set_ramger_1").innerHTML = '<option id="dasdasdasd" disabled="disabled" >[請選擇範圍]</option>';
 		window.document.getElementById("set_ramger_2").innerHTML = '<option id="ffsfsfsf" disabled="disabled" ></option>';
-		window.document.getElementById("set_ramger_3").style.display = "none";
 		for(key in tmp_array)
 		{
 			if('所有玩家'==key)window.document.getElementById("set_ramger_1").innerHTML = window.document.getElementById("set_ramger_1").innerHTML+'<option value="'+key+'"  style="color:#000;" selected="selected">'+key+'</option>';
@@ -792,7 +772,7 @@
 			else window.document.getElementById("set_ramger_1").innerHTML = window.document.getElementById("set_ramger_1").innerHTML+'<option value="'+key+'"  style="color:#000;">'+key+'</option>';
 
 		}
-		set_ramger_1('這周的排行');//設定預設條件
+		set_ramger_1('這周的排行',chick_type_class);//設定預設條件
 
 		window.document.getElementById("dasdasdasd").style.color="#c11";
 	}

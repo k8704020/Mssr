@@ -141,12 +141,14 @@
     //---------------------------------------------------
     //user_id       使用者主索引(被評論人)
     //book_sid      書籍識別碼
-    //anchor        錨點
 
         $get_chk=array(
-            'user_id ',
+            'user_id',
             'book_sid',
-            'anchor  '
+            'get_date_filter',
+            'get_semester_start',
+            'get_semester_end',
+            'scrolltop'
         );
         $get_chk=array_map("trim",$get_chk);
         foreach($get_chk as $get){
@@ -160,12 +162,12 @@
     //---------------------------------------------------
     //user_id       使用者主索引(被評論人)
     //book_sid      書籍識別碼
-    //anchor        錨點
 
         //GET
         $user_id    =trim($_GET[trim('user_id ')]);
         $book_sid   =trim($_GET[trim('book_sid')]);
-        $anchor     =trim($_GET[trim('anchor  ')]);
+		$anchor     =trim($_GET[trim('anchor')]);
+        $scrolltop     =trim($_GET[trim('scrolltop')]);
 
         //SESSION
         $sess_user_id    =(int)$sess_login_info['uid'];
@@ -180,13 +182,19 @@
         $pinx =(isset($_GET['pinx']))?(int)$_GET['pinx']:1;
         $psize=($psize===0)?10:$psize;
         $pinx =($pinx===0)?1:$pinx;
+		
+		$date_filter =trim($_GET[trim('get_date_filter')]);
+		$semester_start =trim($_GET[trim('get_semester_start')]);
+		$semester_end =trim($_GET[trim('get_semester_end')]);
+		
+
 
     //---------------------------------------------------
     //檢驗參數
     //---------------------------------------------------
     //user_id       使用者主索引(被評論人)
     //book_sid      書籍識別碼
-    //anchor        錨點
+    //scrolltop        錨點高
 
         $arry_err=array();
 
@@ -211,6 +219,7 @@
             die();
         }
 
+
     //---------------------------------------------------
     //資料庫
     //---------------------------------------------------
@@ -227,7 +236,7 @@
         //-----------------------------------------------
         //user_id       使用者主索引(被評論人)
         //book_sid      書籍識別碼
-        //anchor        錨點
+        //scrolltop        錨點高
 
             $sess_user_id   =(int)$sess_user_id;
             $sess_grade     =(int)$sess_grade;
@@ -347,10 +356,10 @@
             $sess_classroom  =(int)$sess_classroom;
 
             $user_id         =(int)$user_id;
-//echo "<Pre>";
-//print_r($arrys_rec_sid);
-//echo "</Pre>";
+
             foreach($arrys_rec_sid as $inx=>$arry_rec_sid){
+            	//echo "<pre>";print_r($arry_rec_sid);echo "</pre>";
+            
             //-------------------------------------------
             //mssr_rec_comment_log 部分
             //-------------------------------------------
@@ -944,29 +953,31 @@
                         }
                     }
                 }
+			 
             }
 
     //---------------------------------------------------
     //重導頁面
     //---------------------------------------------------
-
+    
         $url ="";
         $page=str_repeat("../",0)."content.php";
         $arg =array(
             'user_id'=>$user_id,
             'psize'=>$psize,
-            'pinx' =>$pinx
+            'pinx' =>$pinx,
+            'date_filter'=>$date_filter,
+            'semester_start'=>$semester_start,
+            'semester_end'=>$semester_end,
+            'scrolltop'=>$scrolltop
         );
         $arg =http_build_query($arg);
 
         if(!empty($arg)){
             $url="{$page}?{$arg}";
-
-            //建立錨點
-            $url="{$url}#{$anchor}";
         }else{
             $url="{$page}";
         }
-
+		//echo "<pre>";print_r($url);echo "</pre>";
         header("Location: {$url}");
 ?>

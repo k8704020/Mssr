@@ -63,66 +63,9 @@
 		$class_code   =(isset($_GET['class_code']))?mysql_prep($_GET['class_code']):die("嗯?");
 		$school_code  =(isset($_GET['school_code']))?mysql_prep($_GET['school_code']):die("嗯?");
 		$grade_code   =(isset($_GET['grade_code']))?mysql_prep($_GET['grade_code']):die("嗯?");
-		echo "<pre>";print_r($_GET);echo '</pre>';
-		$star_time = array();
-		//============周============
-		$first_day = 0;
-		$getdate = date("Y-m-d");
-		//取得一周的第幾天,星期天開始0-6
-		$weekday = date("w", strtotime($getdate));
-		//要減去的天數
-		$del_day = $weekday - $first_day;
-		//本週開始日期
-		$week_s = date("Y-m-d", strtotime("$getdate -".$del_day." days"));
-		//上週開始日期
-		$star_time["week"] = date('Y-m-d',strtotime("$week_s - 7 days"));
-
-
-		//============月============
-		//本月開始日期
-		$month_s = date('Y-m-01');
-		//上月開始日期
-		$_tmptime = strtotime($month_s);
-		$_tmptime = strtotime('-1 month', $_tmptime);
-		$star_time["month"] = date("Y-m-d", $_tmptime);
-
-
-
-		//============年============
-		$month = (int)date('m');
-
-		$year = date('Y');
-		if($month < 2)
-		{
-			$flag = 2;
-			$year_s = date('Y-08-01',strtotime("-1 year"));
-		}
-		else if($month<8)
-		{
-			$flag = 1;
-			$year_s = date('Y-02-01');
-		}
-		else
-		{
-			$flag = 2;
-			$year_s = date('Y-08-01');
-		}
-
-
-		if($flag == 2)
-		{
-			$flag = 1;
-			$_tmptime = strtotime($year_s);
-			$_tmptime = strtotime('-6 month', $_tmptime);
-			$star_time["semester"] = date("Y-m-d", $_tmptime);
-		}
-		else
-		{
-			$flag = 1;
-			$_tmptime = strtotime($year_s);
-			$_tmptime = strtotime('-6 month', $_tmptime);
-			$star_time["semester"] = date("Y-m-d", $_tmptime);
-		}
+		//echo "<pre>";print_r($_GET);echo '</pre>';
+		//外掛時間參數檔 $star_time array
+		include_once("../../inc/date.php");
 
     //---------------------------------------------------
     //檢驗參數
@@ -132,64 +75,96 @@
 	//SQL
 	//---------------------------------------------------
 
-
-	if($ramge == "all")
-	{
-		$ch = "";
-	}else if($ramge == "all_school_grade")
-	{
-		$ch = "AND `mssr`.`mssr_score_books_".$time."`.`grade_code` = '".$grade_code."'";
-	}else if($ramge == "school_grade")
-	{
-		$ch = "AND `mssr`.`mssr_score_books_".$time."`.`school_code` = '".$school_code."' AND `mssr`.`mssr_score_books_".$time."`.`grade_code` = '".$grade_code."'";
-	}else if($ramge == "school_class")
-	{
-		$ch = "AND `mssr`.`mssr_score_books_".$time."`.`class_code` = '".$class_code."'";
+		//條件
+	$where_text = '';
+	switch ($ramge) {//自己學校
+		case 'all':
+			$where_text = "";
+		break;
+		case 'school_all'://同校
+			$where_text = 
+			" AND ( 
+				SELECT count(usc.school_code) 
+			    FROM `user`.`school` usc,user.class uc
+			    WHERE 1=1
+			    AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = take_to ORDER BY end DESC LIMIT 1 )
+			    AND usc.`school_code` = SUBSTRING_INDEX(uc.class_code, '_', 1 )
+			    AND usc.`school_code` = '".$school_code."'
+			 ) > 0 ";
+			 //".$school_code."
+		break;
+		case 'school_grade'://同校同年級
+			$where_text = 
+			" AND ( 
+				SELECT 
+				count(uc.grade)
+				FROM `user`.`school` usc, user.class uc
+				WHERE 1 = 1  
+				AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = take_to ORDER BY end DESC LIMIT 1 )
+				AND usc.`school_code` = SUBSTRING_INDEX(uc.class_code, '_', 1 )
+			    AND usc.`school_code` = '".$school_code."'
+			    AND uc.grade = SUBSTRING_INDEX(SUBSTRING_INDEX(uc.class_code, '_', 4), '_', -1)
+			 ) > 0 ";
+			 //".$grade_code." js_2017_2_4_3_2
+		break;
+		case 'school_class'://同校班
+			$where_text = 
+			" AND ( 
+				SELECT 
+				count(uc.grade)
+				FROM user.class uc
+				WHERE 1 = 1  
+				AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = '".$user_id."' ORDER BY end DESC LIMIT 1 )
+				AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = take_to ORDER BY end DESC LIMIT 1 )
+			 ) > 0 ";
+			 //".$grade_code." js_2017_2_4_3_2
+		break;
 	}
-	$sql = "";
-	if($time == 'total')
-	{
-		$sql = "SELECT SUM(`score`) AS `book_score`,`book_sid`
-				FROM `mssr`.`mssr_score_books_".$time."`
-				WHERE 1 = 1
-				".$ch."
-				GROUP BY `book_sid`
-				ORDER BY `book_score` DESC";
-	}else
-	{
-		$sql = "SELECT SUM(`score`) AS `book_score`,`book_sid`
-				FROM `mssr`.`mssr_score_books_".$time."`
-				WHERE 1 = 1
-				AND `start_date` = '".$star_time[$time]."'
-				".$ch."
-				GROUP BY `book_sid`
-				ORDER BY `book_score` DESC";
+	
+	//時間判斷
+	$where_time = "";
+	switch ($time) {
+		case 'now_week':
+			$where_time = "AND borrow_edate >= '".$star_time['now_week']."'";
+		break;
+		case 'last_week':
+			$where_time = "AND borrow_edate >= '".$star_time['last_week']."' AND borrow_edate < '".$star_time['now_week']."'";
+		break;
+		case 'now_month':
+			$where_time = "AND borrow_edate >= '".$star_time['now_month']."'";
+		break;
+		case 'last_month':
+			$where_time = "AND borrow_edate >= '".$star_time['last_month']."' AND borrow_edate < '".$star_time['now_month']."'";
+		break;
+		case 'now_semester':
+			$where_time = "AND borrow_edate >= '".$star_time['now_semester']."'";
+		break;
+		case 'last_semester':
+			$where_time = "AND borrow_edate >= '".$star_time['last_semester']."' AND borrow_edate < '".$star_time['now_semester']."'";
+		break;
+		default:
+			$where_time = "AND borrow_edate >= '".$star_time['now_week']."'";
+		break;
+		
 	}
+	
+	
+	$sql = "SELECT book_sid, count(book_sid) book_sid_count
+			FROM mssr.mssr_book_borrow_log 
+			where 1=1
+			AND grade_id != 0
+			AND classroom_id != 0
+			AND borrow_sdate != '0000-00-00 00:00:00'
+			AND borrow_edate != '0000-00-00 00:00:00'
+			".$where_text."
+			".$where_time."
+			group by book_sid
+			order by book_sid_count desc";
+	
 
-    $arrys_book_info=[];
-	$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,100),$arry_conn_mssr);
-	foreach($result as $key => $val)
-	{
-		$array_select = array("book_name","book_author","book_publisher","book_note");
-		$get_book_info=get_book_info($conn='',$val['book_sid'],$array_select,$arry_conn_mssr);
-        if(!empty($get_book_info)){
-            $result[$key]["book_sid"]       = $val['book_sid'];
-            $result[$key]["book_name"]      = htmlspecialchars(trim($get_book_info[0]['book_name']));
-            $result[$key]["book_author"]    = htmlspecialchars(trim($get_book_info[0]['book_author']));
-            $result[$key]["book_publisher"] = htmlspecialchars(trim($get_book_info[0]['book_publisher']));
-            $result[$key]["book_note"]      = htmlspecialchars(trim($get_book_info[0]['book_note']));
+	
 
-            $arrys_book_info[$val['book_sid']]['book_name']     =htmlspecialchars(trim($get_book_info[0]['book_name']));
-            $arrys_book_info[$val['book_sid']]['book_author']   =htmlspecialchars(trim($get_book_info[0]['book_author']));
-            $arrys_book_info[$val['book_sid']]['book_publisher']=htmlspecialchars(trim($get_book_info[0]['book_publisher']));
-            $arrys_book_info[$val['book_sid']]['book_note']     =htmlspecialchars(trim($get_book_info[0]['book_note']));
-        }
-	}
-	echo "<pre>";
-	print_r($sql);
-	echo "</pre>";
-
-//echo "<Pre>";print_r($arrys_book_info);echo "</Pre>";
+echo "<Pre>";print_r($sql);echo "</Pre>";
 ?>
 <!DOCTYPE HTML>
 <Html >

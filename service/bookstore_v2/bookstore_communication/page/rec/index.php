@@ -65,67 +65,11 @@
 		$class_code   =(isset($_GET['class_code']))?mysql_prep($_GET['class_code']):die("嗯?");
 		$school_code  =(isset($_GET['school_code']))?mysql_prep($_GET['school_code']):die("嗯?");
 		$grade_code   =(isset($_GET['grade_code']))?mysql_prep($_GET['grade_code']):die("嗯?");
-		$star_time = array();
-		echo "<pre>";print_r($_GET);echo '</pre>';
-		//============周============
-		$first_day = 0;
-		$getdate = date("Y-m-d");
-		//取得一周的第幾天,星期天開始0-6
-		$weekday = date("w", strtotime($getdate));
-		//要減去的天數
-		$del_day = $weekday - $first_day;
-		//本週開始日期
-		$week_s = date("Y-m-d", strtotime("$getdate -".$del_day." days"));
-		$star_time["now_week"] = $week_s;
-		//上週開始日期
-		$star_time["week"] = date('Y-m-d',strtotime("$week_s - 7 days"));
 		
-		echo "<pre>";print_r($week_s);echo '</pre>';
-		//============月============	
-		//本月開始日期
-		$month_s = date('Y-m-01');  
-		//上月開始日期
-		$_tmptime = strtotime($month_s);
-		$_tmptime = strtotime('-1 month', $_tmptime); 
-		$star_time["month"] = date("Y-m-d", $_tmptime);  
-	
+		//echo "<pre>";print_r($_GET);echo '</pre>';
+		//外掛時間參數檔 $star_time array
+		include_once("../../inc/date.php");
 		
-		
-		//============年============
-		$month = (int)date('m');
-		
-		$year = date('Y'); 
-		if($month < 2)
-		{
-			$flag = 2;	
-			$year_s = date('Y-08-01',strtotime("-1 year"));
-		}
-		else if($month<8)
-		{
-			$flag = 1;	
-			$year_s = date('Y-02-01');
-		}
-		else
-		{
-			$flag = 2;	
-			$year_s = date('Y-08-01');
-		}
-		
-		
-		if($flag == 2)
-		{
-			$flag = 1;
-			$_tmptime = strtotime($year_s);
-			$_tmptime = strtotime('-6 month', $_tmptime); 
-			$star_time["semester"] = date("Y-m-d", $_tmptime);  
-		}
-		else
-		{
-			$flag = 1;
-			$_tmptime = strtotime($year_s);
-			$_tmptime = strtotime('-6 month', $_tmptime); 
-			$star_time["semester"] = date("Y-m-d", $_tmptime);
-		}
 		
     //---------------------------------------------------
     //檢驗參數
@@ -134,74 +78,239 @@
 	//---------------------------------------------------
 	//SQL
 	//---------------------------------------------------
-	
-	
-	if($ramge == "all")
-	{
-		$ch = "";
-	}else if($ramge == "school_all")
-	{
-		$ch = "AND `mssr`.`mssr_score_rec_total`.`school_code` = '".$school_code."'";
-	}else if($ramge == "school_grade")
-	{
-		$ch = "AND `mssr`.`mssr_score_rec_total`.`school_code` = '".$school_code."' AND `mssr`.`mssr_score_rec_total`.`grade_code` = '".$grade_code."'";
-	}else if($ramge == "school_class")
-	{
-		$ch = "AND `mssr`.`mssr_score_rec_total`.`class_code` = '".$class_code."'";
+	//條件
+	$where_text = '';
+	switch ($ramge) {//自己學校
+		case 'all':
+			$where_text = "";
+		break;
+		case 'school_all'://同校
+			$where_text = 
+			" AND ( 
+				SELECT count(usc.school_code) 
+			    FROM `user`.`school` usc,user.class uc
+			    WHERE 1=1
+			    AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = take_to ORDER BY end DESC LIMIT 1 )
+			    AND usc.`school_code` = SUBSTRING_INDEX(uc.class_code, '_', 1 )
+			    AND usc.`school_code` = '".$school_code."'
+			 ) > 0 ";
+			 //".$school_code."
+		break;
+		case 'school_grade'://同校同年級
+			$where_text = 
+			" AND ( 
+				SELECT 
+				count(uc.grade)
+				FROM `user`.`school` usc, user.class uc
+				WHERE 1 = 1  
+				AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = take_to ORDER BY end DESC LIMIT 1 )
+				AND usc.`school_code` = SUBSTRING_INDEX(uc.class_code, '_', 1 )
+			    AND usc.`school_code` = '".$school_code."'
+			    AND uc.grade = SUBSTRING_INDEX(SUBSTRING_INDEX(uc.class_code, '_', 4), '_', -1)
+			 ) > 0 ";
+			 //".$grade_code." js_2017_2_4_3_2
+		break;
+		case 'school_class'://同校班
+			$where_text = 
+			" AND ( 
+				SELECT 
+				count(uc.grade)
+				FROM user.class uc
+				WHERE 1 = 1  
+				AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = '".$user_id."' ORDER BY end DESC LIMIT 1 )
+				AND uc.class_code = ( SELECT class_code FROM user.student WHERE uid = take_to ORDER BY end DESC LIMIT 1 )
+			 ) > 0 ";
+			 //".$grade_code." js_2017_2_4_3_2
+		break;
 	}
-	echo "<pre>CH:";print_r($ramge);echo "</pre>";
-	$sql = "";
 	
-	if($time == 'total')
-	{
-		$sql = "SELECT `user_id`,`name`,`class_name`,`grade_code`,`book_sid`,`school_name`,SUM(`score`) as `score`
-			FROM `mssr`.`mssr_score_rec_total`
-			LEFT JOIN `user`.`member`
-			ON `mssr`.`mssr_score_rec_total`.`user_id` = `user`.`member`.`uid`
-			LEFT JOIN `user`.`class`
-			ON `user`.`class`.`class_code` = `mssr`.`mssr_score_rec_total`.`class_code`
-			LEFT JOIN `user`.`class_name`
-			ON `user`.`class_name`.`classroom` = `user`.`class`.`classroom`
-			AND `user`.`class_name`.`class_category` = `user`.`class`.`class_category`
-			LEFT JOIN `user`.`school`
-			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_total`.`school_code`
-			WHERE 1 = 1
-			".$ch."
-			GROUP BY `user_id`,`book_sid`
-			ORDER BY `score` DESC";	
-	}else
-	{
-		$sql = "SELECT `user_id`,`name`,`class_name`,`grade_code`,`book_sid`,`school_name`,SUM(`score`) as `score`
-			FROM `mssr`.`mssr_score_rec_total`
-			LEFT JOIN `user`.`member`
-			ON `mssr`.`mssr_score_rec_total`.`user_id` = `user`.`member`.`uid`
-			LEFT JOIN `user`.`class`
-			ON `user`.`class`.`class_code` = `mssr`.`mssr_score_rec_total`.`class_code`
-			LEFT JOIN `user`.`class_name`
-			ON `user`.`class_name`.`classroom` = `user`.`class`.`classroom`
-			AND `user`.`class_name`.`class_category` = `user`.`class`.`class_category`
-			LEFT JOIN `user`.`school`
-			ON `user`.`school`.`school_code` = `mssr`.`mssr_score_rec_total`.`school_code`
-			WHERE 1 = 1
-			AND `start_date` >= '".$star_time[$time]."'
-			".$ch."
-			GROUP BY `user_id`,`book_sid`
-			ORDER BY `score` DESC";		
+	//時間判斷
+	$where_time = "";
+	switch ($time) {
+		case 'now_week':
+			$where_time = "AND keyin_mdate >= '".$star_time['now_week']."'";
+		break;
+		case 'last_week':
+			$where_time = "AND keyin_mdate >= '".$star_time['last_week']."' AND keyin_mdate < '".$star_time['now_week']."'";
+		break;
+		case 'now_month':
+			$where_time = "AND keyin_mdate >= '".$star_time['now_month']."'";
+		break;
+		case 'last_month':
+			$where_time = "AND keyin_mdate >= '".$star_time['last_month']."' AND keyin_mdate < '".$star_time['now_month']."'";
+		break;
+		case 'now_semester':
+			$where_time = "AND keyin_mdate >= '".$star_time['now_semester']."'";
+		break;
+		case 'last_semester':
+			$where_time = "AND keyin_mdate >= '".$star_time['last_semester']."' AND keyin_mdate < '".$star_time['now_semester']."'";
+		break;
+		default:
+			$where_time = "AND keyin_mdate >= '".$star_time['now_week']."'";
+		break;
+		
 	}
-	echo "<pre>CH:";print_r($star_time);echo "</pre>";
+	
+	$sql = "SELECT take_to AS user_id,book_sid, count(book_sid) AS book_sid_count 
+			FROM mssr.mssr_score_rec_log 
+			WHERE 1=1
+			AND rec_score = 1 
+			AND rec_type != 4 
+			".$where_time."
+			".$where_text."
+			AND ( SELECT count( school_code ) 
+				FROM user.personnel u_p
+				WHERE u_p.uid = take_to ) = 0
+			GROUP BY book_sid,take_to
+			ORDER BY book_sid_count DESC,keyin_cdate DESC
+			";
+	//echo "<pre>";print_r($sql);echo '</pre>';
+	//抓前100就好
 	$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,100),$arry_conn_mssr);
-
+	//	echo "<pre>";print_r($result);echo '</pre>';
+	$data_array = array();
 	foreach($result as $key => $val)
 	{
-		//echo "<pre>";print_r($val);echo "</pre>";
-		$array_select = array("book_name","book_author","book_publisher");
-		$get_book_info=get_book_info($conn='',$val['book_sid'],$array_select,$arry_conn_mssr);
-		$result[$key]["book_name"] = $get_book_info[0]['book_name'];
-		$result[$key]["book_author"] = $get_book_info[0]['book_author'];
-		$result[$key]["book_publisher"] = $get_book_info[0]['book_publisher'];
+		//找學生&老師資訊 Start (找學生最後的學期學校年級班級)
+		//姓名
+		$sql_name = "SELECT name FROM user.member WHERE uid = '".$val['user_id']."'";
+		$result_name = db_result($conn_type='pdo',$conn_mssr,$sql_name,$arry_limit1s=array(),$arry_conn_mssr);
+		
+		//echo "<pre>";print_r($result_name);echo '</pre>';
+		
+		
+		
+		//學期代碼 (學生和老師表都找)
+		//type = 身分
+		//0.學生
+		//1.校長
+		//2.主任
+		//3.老師
+		
+		//先找學生
+		$sql_u_s = "SELECT class_code, end FROM user.student u_s WHERE u_s.uid = '".$val['user_id']."' ORDER BY end DESC LIMIT 1";
+		$result_u_s = db_result($conn_type='pdo',$conn_mssr,$sql_u_s,$arry_limit1s=array(),$arry_conn_mssr);
+		
+		
+		$type = null;
+		$class_code_num = '';
+		if(count($result_u_s) > 0){//是學生
+			$type = 0;
+			$class_code_num = $result_u_s[0]['class_code'];
+		}else if(count($result_u_s) <= 0){//若不是學生 找老師
+			$sql_u_t = "
+				SELECT class_code, end 
+				FROM user.teacher u_t 
+				WHERE u_t.uid = '".$val['user_id']."' 
+				ORDER BY end DESC 
+				LIMIT 1";
+			$result_u_t = db_result($conn_type='pdo',$conn_mssr,$sql_u_t,$arry_limit1s=array(),$arry_conn_mssr);
+			$type = 3;
+			$class_code_num = $result_u_t[0]['class_code'];
+			if(count($result_u_t) <= 0){//若不是老師應該就是主任或校長或志工
+			$sql_u_p = "
+				SELECT school_code as class_code, end, responsibilities 
+				FROM user.personnel u_p
+				WHERE u_p.uid = '".$val['user_id']."' 
+				ORDER BY end DESC 
+				LIMIT 1";
+			$result_u_p = db_result($conn_type='pdo',$conn_mssr,$sql_u_p,$arry_limit1s=array(),$arry_conn_mssr);
+			
+			$type = $result_u_p[0]['responsibilities'];
+			$class_code_num = $result_u_p[0]['class_code'];
+			}
+		}
+		
+		//echo "<pre>";print_r($sql_school_code);echo '</pre>';
+
+		
+		
+		//學校名稱
+		$school_code_array = array();
+		$school_code_array = explode('_',$class_code_num);
+		$school_code_num = $school_code_array[0];//學校代號
+		$sql_school_name = "SELECT school_code, school_name, region_name, country_code FROM user.school WHERE school_code = '".$school_code_num."';";
+		$result_school_name = db_result($conn_type='pdo',$conn_mssr,$sql_school_name,$arry_limit1s=array(),$arry_conn_mssr);
+		
+		
+		
+		
+		if($data_array[$key]['type'] == 0 || $data_array[$key]['type'] ==3){
+			//年級班級
+			$sql_grade_code = "
+			SELECT 
+			uc.grade as grade_code,
+			ucn.class_name
+			FROM user.class uc,`user`.`class_name` ucn
+			WHERE 1 = 1  
+			AND uc.class_code = '".$class_code_num."'
+			AND ucn.`classroom` = uc.`classroom` 
+			AND ucn.`class_category` = uc.`class_category`
+			";
+			$result_grade_code = db_result($conn_type='pdo',$conn_mssr,$sql_grade_code,$arry_limit1s=array(),$arry_conn_mssr);
+			
+			//echo "<pre>";print_r($result_grade_code);echo '</pre>';
+			
+		}
+		
+		
+		//找學生資訊 End
+		
+		//找書本資訊Start
+		//mbc = mssr_book_class
+		//mbg = mssr_book_global
+		//mbl = mssr_book_library
+		//mbu = mssr_book_unverified
+		$ch = '';
+		switch (substr($val['book_sid'],0,3)) {
+			case 'mbc':
+				$ch = 'mssr_book_class';
+			break;
+			case 'mbg':
+				$ch = 'mssr_book_global';
+			break;
+			case 'mbl':
+				$ch = 'mssr_book_library';
+			break;
+			case 'mbu':
+				$ch = 'mssr_book_unverified';
+			break;
+			
+		}
+		$sql_book_sid = "SELECT book_name FROM mssr.".$ch." where book_sid = '".$val['book_sid']."' limit 1;";
+		//echo "<pre>";print_r($sql2s);echo "</pre>";
+		$result_book_name = db_result($conn_type='pdo',$conn_mssr,$sql_book_sid,$arry_limit=array(),$arry_conn_mssr);
+		
+		if($type ==0){//暫時不包含老師
+			//玩家ID
+			$data_array[$key]['user_id'] = $val["user_id"];
+			//書本UID
+			$data_array[$key]['book_sid'] = $val["book_sid"];
+			//按讚數
+			$data_array[$key]['book_sid_count'] = $val["book_sid_count"];
+			//姓名
+			$data_array[$key]['name'] = $result_name[0]['name'];
+			//身分
+			$data_array[$key]['type'] = $type;
+			//學期代碼
+			$data_array[$key]['class_code'] = $class_code_num;
+			//學校名稱及代碼
+			$data_array[$key]['school_code'] = $result_school_name[0]['school_code'];
+			$data_array[$key]['school_name'] = $result_school_name[0]['school_name'];
+			//年級_班級
+			$data_array[$key]['grade_code'] = $result_grade_code[0]['grade_code'];
+			$data_array[$key]['class_name'] = $result_grade_code[0]['class_name'];
+			//書名
+			$data_array[$key]['book_name'] = $result_book_name[0]["book_name"];
+		}
+		
+		
+		//找書本資訊End
+		
+		
 	}
 	
-	echo "<pre>";print_r($sql);echo "</pre>";
+	//echo "<pre>";print_r($data_array);echo '</pre>';
 	
 ?>
 <!DOCTYPE HTML>
@@ -267,13 +376,13 @@ word-break: break-all;
         </table></div>
     <div style="background-color:#FFF; height:300px; width:720px;overflow-x:hidden;overflow-y:auto;" class="text_1">
     	<table>
-        	<?php foreach($result as $key => $val){?>
+        	<?php foreach($data_array as $key => $val){?>
         	<tr>
             	<td width="50" style=" text-align:left;">
                 	<?php echo $key+1;?>
                 </td>
             	<td width="110" style=" text-align:left;">
-                	<?php echo $val["score"];?>
+                	<?php echo $val["book_sid_count"];?>
                 </td>
                 
                 <td   valign="top" style=" width:200px;  text-align:left; overflow:hidden; table-layout:fixed;word-wrap:break-word;">
@@ -285,12 +394,28 @@ word-break: break-all;
                 <td width="80" style=" text-align:left;">
                 	<?php echo $val["school_name"];?>
                 </td>
-                <td width="50" style=" text-align:left;">
-                	<?php echo $val["grade_code"]."年";?>
-                </td>
-                <td width="50" style=" text-align:left;">
-                	<?php echo $val["class_name"]."班";?>
-                </td>
+                <?php if($val['type'] == 0 || strlen($val["grade_code"]) > 0): ?>
+                	<td width="50" style=" text-align:right;">
+	                	<?php echo $val["grade_code"]."年";?>
+	                </td>
+	                <td width="50" style=" text-align:right;">
+	                	<?php echo $val["class_name"]."班";?>
+	                </td>
+	            <?php else:?>
+	            	<td width="100" colspan="2" style=" text-align:right;">
+	                	<?php switch ($val['type']) {
+							case '1':
+								echo "校長";
+							break;
+							case '2':
+								echo "主任";
+							break;
+							case '3':
+								echo "老師";
+							break;
+						};?>
+	                </td>
+	            <?php endif;?>
             </tr>
             <?php }?>
         </table>
@@ -304,7 +429,6 @@ word-break: break-all;
 	//---------------------------------------------------
 	//初始化
 	//---------------------------------------------------
-	
 	//---------------------------------------------------
 	//FUNCTION
 	//---------------------------------------------------
@@ -324,12 +448,6 @@ word-break: break-all;
 			delayExecute(proc);
 		}
 	}
-	/*cover 啟用器的用法
-	 cover("這嘎");
-	 cover("這嘎",1);
-	 cover("這嘎",2,function(){echo("哈哈");});
-	*/
-	//cover 點選器
 	function delayExecute(proc) {
 		var x = 100;
 		var hnd = window.setInterval(function () {
