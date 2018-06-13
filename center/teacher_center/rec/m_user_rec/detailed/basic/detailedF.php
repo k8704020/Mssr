@@ -66,7 +66,7 @@
                 }
             }
         }
-
+	//echo "<pre>";print_r($_COOKIE);echo "</pre>";
     //---------------------------------------------------
     //SESSION
     //---------------------------------------------------
@@ -177,6 +177,12 @@
         $user_id =trim($_GET[trim('user_id ')]);
         $book_sid=trim($_GET[trim('book_sid')]);
         $anchor  =trim($_GET[trim('anchor  ')]);
+		
+		$comment_public = 1;
+		if($_COOKIE['uid'] == $_SESSION['uid']){
+			$comment_public = $_COOKIE['comment_public'];
+		}
+		
 
         //date_filter   時間條件
         if(isset($_GET[trim('date_filter')])){
@@ -530,8 +536,8 @@
                     <div style="width:590px;height:105px;position:relative;top:40px;right:25px;">
                         教師留言&nbsp;
                         <select id="comment_public" name="comment_public" style="height:25px;" class="form_select">
-                            <option value="1" selected>不公開
-                            <option value="2">公開&nbsp;(班上學生都可看到此留言)
+                            <option value="1" <?php echo ($comment_public == 1)?'selected':''?>>不公開
+                            <option value="2" <?php echo ($comment_public == 2)?'selected':''?>>公開&nbsp;(班上學生都可看到此留言)
                         </select><br/><br/>
                         <textarea id="comment_content" name="comment_content" cols="70" rows="2"
                         wrap="hard" class="form_textarea" style="width:580px"></textarea>

@@ -1974,10 +1974,9 @@
         }
 
         all_control(1);
-        setTimeout(function(){
-            $(window.parent).scrollTop(get_scrolltop);
-            //console.log(get_scrolltop);
-        }, 500);
+        //處理後捲回去原本位置
+        $(window.parent).scrollTop(get_scrolltop);
+        //console.log(get_scrolltop);
     }
 </script>
 

@@ -66,12 +66,15 @@
             }
         }
 
+		
     //---------------------------------------------------
     //SESSION
     //---------------------------------------------------
 
         $sess_login_info=(isset($_SESSION['tc']['t|dt']))?$_SESSION['tc']['t|dt']:array();
 
+		
+		
     //---------------------------------------------------
     //權限,與判斷
     //---------------------------------------------------
@@ -385,6 +388,7 @@
         global $arry_ftp1_info;
         global $sess_user_id;
         global $q_best_id;
+		
 
     //---------------------------------------------------
     //內部變數
@@ -491,11 +495,11 @@
                         </table>
                     </div>
                 <?php endif;?>
-
                 <!-- 資料表格 開始 -->
                 <div class="mod_data_tbl_outline" style="margin-top:35px;">
                     <?php foreach($arrys_result as $arrys_inx=>$arry_result) :?>
                     <?php
+                    
                     //---------------------------------------------------
                     //接收欄位
                     //---------------------------------------------------
@@ -736,6 +740,7 @@
                             onclick="parent.$.unblockUI();"><b>關閉視窗</b></div>
                         </h1>
                     <?php endif;?>
+                    
                     <table id="tbl_<?php echo $arrys_inx;?>" width="93%" align="center" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px;"
                     class="mod_data_tbl_outline tbl_<?php echo $rs_user_id;?>_<?php echo $rs_book_sid;?>"
                     arrys_inx='<?php echo $arrys_inx;?>'
@@ -744,6 +749,9 @@
                             <td align='left' valign="middle" bgcolor='#87CDDC' colspan="2">
                                 <?php if($q_best_id===0):?>
                                     <input type="button" value="刪除推薦" style="margin:5px 5px;" onclick="del(<?php echo $rs_best_id;?>);">
+                                    <img title="下載PDF" id="img_pdf_<?php echo $arrys_inx;?>" src="../../img/user/user_rec/pdf.png" width="30" height="30" border="0" alt="pdf"
+                                    style="position:relative;left:15px;top:5px;cursor: pointer;" onclick="view_pdf('<?php echo $rs_user_id ?>','<?php echo $rs_book_sid ?>')"/>
+                                    
                                 <?php endif;?>
                             </td>
                         </tr>
@@ -1061,7 +1069,21 @@
             }
         });
     }
-
+    function view_pdf(user_id,book_sid){
+        var opdf_lists=document.getElementsByName('pdf_list');
+        var url="content_pdf.php?user_id="+ user_id +"&book_sid="+book_sid;
+        for(var i=0;i<opdf_lists.length;i++){
+            var opdf_list=opdf_lists[i];
+            var book_sid =trim(opdf_list.value);
+            if(opdf_list.checked===false){
+                url+='&book_sid[]=';
+                url+=book_sid;
+            }
+        }
+        //console.log(url);
+        window.open(url,'pdf');
+    }
+	
     function change_rec_img(obj,inx){
         var o_src    =obj.src;
         var $goal_img=$('.goal_img_'+inx);

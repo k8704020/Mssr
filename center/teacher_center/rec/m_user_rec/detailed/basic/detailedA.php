@@ -205,7 +205,12 @@
         $area           =trim($_POST[trim('area             ')]);
         $anchor         =trim($_POST[trim('anchor           ')]);
         $comment_public =(isset($_POST['comment_public']))?(int)$_POST['comment_public']:1;
-
+		
+		//暫存老師的選項
+		setcookie("uid",$_SESSION['uid'],time()+3600*24,"/");
+		setcookie("comment_public",$comment_public,time()+3600*24,"/");
+		
+		
         $arry_rec_content   =(isset($_POST['rec_content']))?$_POST['rec_content']:array();
         if(!empty($arry_rec_content)){
             $arry_rec_content=array_map("trim",$arry_rec_content);
