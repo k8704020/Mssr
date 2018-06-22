@@ -51,24 +51,24 @@
                 ),
                 trim('熱門書籍')  =>array(
                     trim('所有學校同年級')=>array(
-                        trim('全部時間的排行')=>array("books","all_school_grade","total"),
-                        trim('上學期')=>array("books","all_school_grade","semester"),
-						trim('上個月的排行')=>array("books","all_school_grade","month"),
-						trim('上一周的排行')=>array("books","all_school_grade","week"),
-						trim('這周的排行')=>array("books","school_class","now_week")
+                        trim('這學期的排行')=>array("books","all_grade","now_semester"),
+                        trim('上個月的排行')=>array("books","all_grade","last_month"),
+						trim('這個月的排行')=>array("books","all_grade","now_month"),
+						trim('上一周的排行')=>array("books","all_grade","last_week"),
+						trim('這周的排行')=>array("books","all_grade","now_week")
                     ),
                     trim('自己學校同年級')=>array(
-                        trim('全部時間的排行')=>array("books","school_grade","total"),
-                        trim('上學期')=>array("books","school_grade","semester"),
-						trim('上個月的排行')=>array("books","school_grade","month"),
-						trim('上一周的排行')=>array("books","school_grade","week"),
-						trim('這周的排行')=>array("books","school_class","now_week")
+                    	trim('這學期的排行')=>array("books","school_grade","now_semester"),
+                        trim('上個月的排行')=>array("books","school_grade","last_month"),
+						trim('這個月的排行')=>array("books","school_grade","now_month"),
+						trim('上一周的排行')=>array("books","school_grade","last_week"),
+						trim('這周的排行')=>array("books","school_grade","now_week")
                     ),
 					trim('自己學校同班級')=>array(
-                        trim('全部時間的排行')=>array("books","school_class","total"),
-                        trim('上學期')=>array("books","school_class","semester"),
-						trim('上個的排行月')=>array("books","school_class","month"),
-						trim('上一周的排行')=>array("books","school_class","week"),
+						trim('這學期的排行')=>array("books","school_class","now_semester"),
+                        trim('上個月的排行')=>array("books","school_class","last_month"),
+						trim('這個月的排行')=>array("books","school_class","now_month"),
+						trim('上一周的排行')=>array("books","school_class","last_week"),
 						trim('這周的排行')=>array("books","school_class","now_week")
                     )
                 ),trim('熱門佈置')  =>array(

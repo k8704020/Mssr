@@ -38,8 +38,8 @@
     //---------------------------------------------------
     //SESSION
     //---------------------------------------------------
-    // if(isset($_SESSION['user_id'])&&isset($_SESSION['permission'])&&isset($_SESSION['name'])){
-    //         echo '<span class="user_btn">',$_SESSION['name'],',您好</span>' ,'<span><a href="#" class="user_btn" onclick="logout()" >登出</a></span>';
+    // if(isset($_SESSION['book_level_user_id'])&&isset($_SESSION['book_level_permission'])&&isset($_SESSION['book_level_name'])){
+    //         echo '<span class="user_btn">',$_SESSION['book_level_name'],',您好</span>' ,'<span><a href="#" class="user_btn" onclick="logout()" >登出</a></span>';
                 
     // }else{
     //                  echo '<a href="#" class="user_btn" >會員登入/註冊</a>';
@@ -74,7 +74,6 @@
         //---------------------------------------------------
         //SQL 筆數查詢
         //---------------------------------------------------
-
 
 
     //---------------------------------------------------
@@ -213,9 +212,9 @@
     <div class="content" id="user_area">
         <div class="user">
                 <?php
-                if(isset($_SESSION['user_id'])&&isset($_SESSION['permission'])&&isset($_SESSION['name'])){
+                if(isset($_SESSION['book_level_user_id'])&&isset($_SESSION['book_level_permission'])&&isset($_SESSION['book_level_name'])){
               
-                      echo '<span class="user_btn">',$_SESSION['name'],',您好</span>' ,'<span><a href="#" class="user_btn" onclick="logout()" >登出</a></span>';
+                      echo '<span class="user_btn">',$_SESSION['book_level_name'],',您好</span>' ,'<span><a href="#" class="user_btn" onclick="logout()" >登出</a></span>';
               
                 
                 }else{
@@ -291,29 +290,24 @@ function check(){
                         alert("帳號或密碼有輸入錯誤");
                     }else{
 
-                      var user_id=data_array[0]['user_id'];
-                      var permission=data_array[0]['permission'];
-                      var name=data_array[0]['name'];
+                      var user_id=data_array[0]['book_level_user_id'];
+                      var permission=data_array[0]['book_level_permission'];
+                      var name=data_array[0]['book_level_name'];
                         $('.about_login').css('display','none');
                         $('.user_btn').remove();
                         $('.user').append('<span class="user_btn">'+name+',您好</span>' ,'<span><a href="#" onclick="logout()" class="user_btn" >登出</a></span>');
                        
                          if(permission==="1"){
 
-                          console.log("1");
-
                             window.location="http://www.cot.org.tw/mssr/center/teacher_center/book_level/book_log/index.php";
                            
 
                          }else if(permission==="2"){
-
                           
                             window.location="http://www.cot.org.tw/mssr/center/teacher_center/book_level/book_sticker/index.php";
 
 
                          }else{
-
-                          console.log("3");
 
                             window.location="http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/super_use_index.php";
 
@@ -371,7 +365,7 @@ function logout(){
 
 $(document).ready(function(){
 
-   var sess_user_id='<?php if(isset($_SESSION['user_id']))echo $_SESSION['user_id'] ;?>';
+   var sess_user_id='<?php if(isset($_SESSION['book_level_user_id']))echo $_SESSION['book_level_user_id'] ;?>';
 
   if(sess_user_id===''){
 

@@ -33,18 +33,31 @@
 	//權限,與判斷
 	//---------------------------------------------------
 
-		$sess_user_id = $_SESSION['user_id'];
-		$sess_permission = $_SESSION['permission'];
-		$sess_name = $_SESSION['name'];
+		$sess_user_id = $_SESSION['book_level_user_id'];
+		$sess_permission = $_SESSION['book_level_permission'];
+		$sess_name = $_SESSION['book_level_name'];
 
+		//預設
+		//預設
+		$data['type'] = 'error';
+		$data['error_text']= '好像有問題請與系統人員聯絡!!';
+		$data['error_go_to_url'] = '';
+		
+		
 		if (!isset($sess_user_id) && !isset($sess_permission) && !isset($sess_name)) {
-			echo '<span style="font-size:40px; color:red;">請先登入!!</span>';
-			header('Location:http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/index.php');
-			die();		
+			$data['type'] = 'error';
+			$data['error_text']= '請先登入!!';
+			$data['error_go_to_url'] = 'http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/index.php';
+			echo json_encode($data);
+			die();
 		}
-
+	
 		if ($sess_permission != "3") {
-			echo '<span style="font-size:40px; color:red;">你沒有權限進入!!</span>';
+			$data['type'] = 'error';
+			$data['error_text'] = '你沒有權限進入!!';
+			$data['error_go_to_url'] = 'http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/super_use_index.php';
+			
+			echo json_encode($data);
 			die();
 		}
 
@@ -63,7 +76,7 @@
 		//預設值
 		//-----------------------------------------------
 
-			$sess_user_id = (int)$_SESSION['user_id'];
+			$sess_user_id = (int)$_SESSION['book_level_user_id'];
 			$create_by = $sess_user_id;
 			$edit_by = $sess_user_id;
 			$book_sid = $_POST['book_sid'];
@@ -99,6 +112,9 @@
 						";
 
 						$pages_result = db_result($conn_type='pdo', $conn_mssr, $sql, array(), $arry_conn_mssr);
+						$data['type']= 'ok';
+						$data['error_text'] = '';
+						$data['error_go_to_url']= '';
 						break;
 					
 					case 'update_words':
@@ -111,13 +127,20 @@
 						";
 						
 						$words_result = db_result($conn_type='pdo', $conn_mssr, $sql, array(), $arry_conn_mssr);
+						$data['type']= 'ok';
+						$data['error_text'] = '';
+						$data['error_go_to_url']= '';
 						break;
 				}
+			}else{
+				$data['type']= 'error';
+				$data['error_text'] = '資料庫錯誤請聯繫系統人員';
+				$data['error_go_to_url']= '';
 			}
 
 	//---------------------------------------------------
 	//重導頁面
 	//---------------------------------------------------
 
-		return true;
+		echo json_encode($data);
  ?>

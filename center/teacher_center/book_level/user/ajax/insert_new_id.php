@@ -111,9 +111,9 @@
 
               
                     foreach($result as $key=>$arry_result){
-                            $array_output[$key]['user_id']         =trim($arry_result['user_id']);
-                            $array_output[$key]['name']      =trim($arry_result['name']);
-                            $array_output[$key]['permission']       =trim($arry_result['permission']);
+                            $array_output[$key]['book_level_user_id']			=trim($arry_result['user_id']);
+                            $array_output[$key]['book_level_name']				=trim($arry_result['name']);
+                            $array_output[$key]['book_level_permission']		=trim($arry_result['permission']);
                             
                     }
                     

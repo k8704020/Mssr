@@ -63,9 +63,67 @@
 		$class_code   =(isset($_GET['class_code']))?mysql_prep($_GET['class_code']):die("嗯?");
 		$school_code  =(isset($_GET['school_code']))?mysql_prep($_GET['school_code']):die("嗯?");
 		$grade_code   =(isset($_GET['grade_code']))?mysql_prep($_GET['grade_code']):die("嗯?");
-		//外掛時間參數檔 $star_time array
-		include_once("../../inc/date.php");
+		echo "<pre>";print_r($_GET);echo '</pre>';
+		$star_time = array();
+		//============周============
+		$first_day = 0;
+		$getdate = date("Y-m-d");
+		//取得一周的第幾天,星期天開始0-6
+		$weekday = date("w", strtotime($getdate));
+		//要減去的天數
+		$del_day = $weekday - $first_day;
+		//本週開始日期
+		$week_s = date("Y-m-d", strtotime("$getdate -".$del_day." days"));
+		//上週開始日期
+		$star_time["week"] = date('Y-m-d',strtotime("$week_s - 7 days"));
 
+
+		//============月============
+		//本月開始日期
+		$month_s = date('Y-m-01');
+		//上月開始日期
+		$_tmptime = strtotime($month_s);
+		$_tmptime = strtotime('-1 month', $_tmptime);
+		$star_time["month"] = date("Y-m-d", $_tmptime);
+
+
+
+		//============年============
+		$month = (int)date('m');
+
+		$year = date('Y');
+		if($month < 2)
+		{
+			$flag = 2;
+			$year_s = date('Y-08-01',strtotime("-1 year"));
+		}
+		else if($month<8)
+		{
+			$flag = 1;
+			$year_s = date('Y-02-01');
+		}
+		else
+		{
+			$flag = 2;
+			$year_s = date('Y-08-01');
+		}
+
+
+		if($flag == 2)
+		{
+			$flag = 1;
+			$_tmptime = strtotime($year_s);
+			$_tmptime = strtotime('-6 month', $_tmptime);
+			$star_time["semester"] = date("Y-m-d", $_tmptime);
+		}
+		else
+		{
+			$flag = 1;
+			$_tmptime = strtotime($year_s);
+			$_tmptime = strtotime('-6 month', $_tmptime);
+			$star_time["semester"] = date("Y-m-d", $_tmptime);
+		}
+		echo "<pre>";print_r($star_time);echo '</pre>';
     //---------------------------------------------------
     //檢驗參數
     //---------------------------------------------------
@@ -74,130 +132,28 @@
 	//SQL
 	//---------------------------------------------------
 
-		//條件
-	$class_code_array = array();
-	//$user_id = '154912';//新營國小 陳德輪
-	//$class_code   = 'dxi_2017_2_4_8_2';
-	//$class_code_array = explode("_",$class_code);
-	//echo "<Pre>";print_r($class_code_array[4]);echo "</Pre>";
-	//$school_code  = 'dxi';
-	//$grade_code   = '4';
-	$where_text = '';
-	switch ($ramge) {//自己學校
-		case 'all':
-			$where_text = "";
-		break;
-		case 'all_grade'://所有學校同年級
-			$where_text = 
-			" AND grade_id = '".$grade_code."'";
-			 //".$school_code."
-		break;
-		case 'school_grade'://同校同年級
-			$where_text = 
-			" AND grade_id = '".$grade_code."' 
-			  AND school_code = '".$school_code."'";
-			 //".$grade_code." js_2017_2_4_3_2
-		break;
-		case 'school_class'://同班
-			$where_text = 
-			" AND grade_id = '".$grade_code."' 
-			  AND school_code = '".$school_code."'
-			  AND classroom_id = '".$class_code_array[4]."'";
-			 //".$grade_code." js_2017_2_4_3_2
-		break;
-	}
-	
-	//時間判斷
-	$where_time = "";
-	switch ($time) {
-		case 'now_week':
-			$where_time = "AND borrow_edate >= '".$star_time['now_week']."'";
-		break;
-		case 'last_week':
-			$where_time = "AND borrow_edate >= '".$star_time['last_week']."' AND borrow_edate < '".$star_time['now_week']."'";
-		break;
-		case 'now_month':
-			$where_time = "AND borrow_edate >= '".$star_time['now_month']."'";
-		break;
-		case 'last_month':
-			$where_time = "AND borrow_edate >= '".$star_time['last_month']."' AND borrow_edate < '".$star_time['now_month']."'";
-		break;
-		case 'now_semester':
-			$where_time = "AND borrow_edate >= '".$star_time['now_semester']."'";
-		break;
-		case 'last_semester':
-			$where_time = "AND borrow_edate >= '".$star_time['last_semester']."' AND borrow_edate < '".$star_time['now_semester']."'";
-		break;
-		default:
-			$where_time = "AND borrow_edate >= '".$star_time['now_week']."'";
-		break;
-		
-	}
-	
-	
-	$sql = "SELECT book_sid, count(book_sid) book_sid_count
-			FROM mssr.mssr_book_borrow_log 
+	//
+	$sql = "SELECT take_to,book_sid, count(book_sid) book_sid_count 
+			FROM mssr.mssr_score_rec_log 
 			where 1=1
-			AND grade_id != 0
-			AND classroom_id != 0
-			".$where_text."
-			".$where_time."
-			group by book_sid
-			order by book_sid_count desc";
-	
+			and keyin_mdate >= '2018-02-01'
+			group by book_sid,take_to
+			order by book_sid_count desc,keyin_cdate desc
+			";
 
-	
 
-//echo "<Pre>";print_r($sql);echo "</Pre>";
-$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,100),$arry_conn_mssr);
-$data_array = array();
-foreach($result as $key => $val)
-{
-	//找書本資訊Start
-	//mbc = mssr_book_class
-	//mbg = mssr_book_global
-	//mbl = mssr_book_library
-	//mbu = mssr_book_unverified
-	$ch = '';
-	switch (substr($val['book_sid'],0,3)) {
-		case 'mbc':
-			$ch = 'mssr_book_class';
-		break;
-		case 'mbg':
-			$ch = 'mssr_book_global';
-		break;
-		case 'mbl':
-			$ch = 'mssr_book_library';
-		break;
-		case 'mbu':
-			$ch = 'mssr_book_unverified';
-		break;
-		
+
+    $arrys_book_info=[];
+	$result = db_result($conn_type='pdo',$conn_mssr,$sql,$arry_limit=array(0,100),$arry_conn_mssr);
+	foreach($result as $key => $val)
+	{
+		echo "<pre>";
+		print_r($sql);
+		echo "</pre>";
 	}
-	$sql_book_sid = "SELECT book_name,  book_author, book_publisher FROM mssr.".$ch." where book_sid = '".$val['book_sid']."' limit 1;";
-	//echo "<pre>";print_r($sql2s);echo "</pre>";
-	$result_book_name = db_result($conn_type='pdo',$conn_mssr,$sql_book_sid,$arry_limit=array(),$arry_conn_mssr);
 	
-	if($type ==0){//暫時不包含老師
-		//玩家ID
-		$data_array[$key]['user_id'] = $val["user_id"];
-		//書本UID
-		$data_array[$key]['book_sid'] = $val["book_sid"];
-		//按讚數
-		$data_array[$key]['book_sid_count'] = $val["book_sid_count"];
-		//書名
-		$data_array[$key]['book_name'] = $result_book_name[0]["book_name"];
-		//作者
-		$data_array[$key]['book_author'] = $result_book_name[0]["book_author"];
-		//出版社
-		$data_array[$key]['book_publisher'] = $result_book_name[0]["book_publisher"];
-	}
-	//找書本資訊End
-}
 
-echo "<Pre>";print_r($data_array);echo "</Pre>";
-
-
+//echo "<Pre>";print_r($arrys_book_info);echo "</Pre>";
 ?>
 <!DOCTYPE HTML>
 <Html >
@@ -238,7 +194,7 @@ echo "<Pre>";print_r($data_array);echo "</Pre>";
                 	排名
                 </td>
                 <td width="110" style=" text-align: left;">
-                	借閱次數
+                	獲得讚數
                 </td>
                 <td width="300" style=" text-align:left;">
                 	書籍名稱
@@ -253,7 +209,7 @@ echo "<Pre>";print_r($data_array);echo "</Pre>";
         </table></div>
     <div style=" background-color:#FFF; height:300px; width:720px;overflow-x:hidden;overflow-y:auto;" class="text_1">
     	<table width="710" style="table-layout:fixed;word-wrap:break-word;">
-        	<?php foreach($data_array as $key => $val){?>
+        	<?php foreach($result as $key => $val){?>
             <?php
                 //echo "<Pre>";print_r($key);echo "</Pre>";
             ?>
@@ -263,7 +219,7 @@ echo "<Pre>";print_r($data_array);echo "</Pre>";
                 	<?php echo $key+1;?>
                 </td>
             	<td   valign="top" style=" width:110px;  text-align:left;">
-                	<?php echo $val["book_sid_count"];?>
+                	<?php echo $val["book_score"];?>
                 </td>
                 <td   valign="top" style=" width:300px;  text-align:left; overflow:hidden; table-layout:fixed;word-wrap:break-word;">
                 	<?php echo $val["book_name"];?>
@@ -280,6 +236,7 @@ echo "<Pre>";print_r($data_array);echo "</Pre>";
 
     </div>
 
+	<!-- 跳超大的窗窩 -->
     <div id="jump_bar" style="width:0px; height:0px; position:absolute; top:0px; left:0px; display:none;">
 		<div class="border_" style="background-color:#2f1308; opacity:0.85; width:730px; min-height:356px; top:8px; left:13px; position:absolute;"></div>
 		<textarea id="jump_text" readonly

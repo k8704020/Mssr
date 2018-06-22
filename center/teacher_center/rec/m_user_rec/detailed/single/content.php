@@ -856,11 +856,11 @@
                                 <?php endif;?>
 
                                 <?php if($has_leader):?>
-                                    <img id="img_pdf_<?php echo $arrys_inx;?>" src="../../../../img/user/user_rec/pdf.png" width="30" height="30" border="0" alt="pdf"
-                                    style="position:relative;left:15px;bottom:5px;"/>
+                                    <img title="下載PDF" onclick="view_one_pdf('<?php echo $rs_book_sid;?>');" id="img_pdf_<?php echo $arrys_inx;?>" src="../../../../img/user/user_rec/pdf.png" width="30" height="30" border="0" alt="pdf"
+                                    style="position:relative;left:15px;bottom:5px;cursor: pointer;"/>
                                     <input type="checkbox" id="pdf_list" name="pdf_list" value="<?php echo $rs_book_sid;?>" att="pdf_list_<?php echo $arrys_inx;?>"
-                                    style='position:relative;left:15px;bottom:15px;' checked
-                                    onclick="not_print_pdf();">
+                                    style='position:relative;left:15px;bottom:15px;'
+                                    >
                                 <?php endif;?>
                             </td>
                             <td align='right' valign="middle" bgcolor='#87CDDC'>
@@ -1815,17 +1815,6 @@
         }
     }
 
-    function not_print_pdf(){
-        var opdf_lists=document.getElementsByName('pdf_list');
-        for(var i=0;i<opdf_lists.length;i++){
-            var opdf_list=opdf_lists[i];
-            var book_sid =trim(opdf_list.value);
-            if(opdf_list.checked===false){
-                console.log(book_sid);
-            }
-        }
-    }
-
     function view_word(){
         var opdf_lists=document.getElementsByName('pdf_list');
         var url="content_word.php?user_id=<?php echo $user_id;?>&view=<?php echo $view;?>&psize=<?php echo $psize;?>&pinx=<?php echo $pinx;?>";
@@ -1839,21 +1828,50 @@
         }
         window.open(url,'pdf');
     }
-
-    function view_pdf(){
-        var opdf_lists=document.getElementsByName('pdf_list');
+	
+	function view_one_pdf(book_sid){
         var url="content_pdf.php?user_id=<?php echo $user_id;?>&view=<?php echo $view;?>&psize=<?php echo $psize;?>&pinx=<?php echo $pinx;?>";
-        for(var i=0;i<opdf_lists.length;i++){
-            var opdf_list=opdf_lists[i];
-            var book_sid =trim(opdf_list.value);
-            if(opdf_list.checked===false){
-                url+='&book_sid[]=';
-                url+=book_sid;
-            }
+        if(book_sid.length > 0){
+            url+='&book_sid[]=';
+            url+=book_sid;
         }
         window.open(url,'pdf');
     }
+	
+	function view_pdf() {
+	    method = "post"; 
+	    
+	    //模擬Form 表單 以post 送出
+	    var form = document.createElement("form");
+	    var url="content_pdf.php?user_id=<?php echo $user_id;?>&view=<?php echo $view;?>&psize=<?php echo $psize;?>&pinx=<?php echo $pinx;?>";
+        var opdf_lists=document.getElementsByName('pdf_list');
+        
+	    form.setAttribute("method", method);
+	    form.setAttribute("action", url);
+	    form.setAttribute("target", '_blank');
+		
+		for(var i=0;i<opdf_lists.length;i++){
+            var opdf_list=opdf_lists[i];
+            var book_sid =trim(opdf_list.value);
+            if(opdf_list.checked===true){
+                url+='&book_sid[]=';
+                url+=book_sid;
+                
+                var input = document.createElement("input");
+		        input.setAttribute("type", "hidden");
+		        input.setAttribute("name", 'book_sid[]');
+		        input.setAttribute("value", book_sid);
+		        form.appendChild(input);
+            }
+        }
+		
+		document.body.appendChild(form);    // Not entirely sure if this is necessary
+	    form.submit();
+		
+	}
 
+	
+	
     window.onload=function(){
         setTimeout(function(){
             $(window.parent).scrollTop(get_scrolltop);

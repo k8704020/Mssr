@@ -9,7 +9,6 @@
 
         //SESSION
         @session_start();
-
         //啟用BUFFER
         @ob_start();
 
@@ -24,17 +23,21 @@
                     APP_ROOT.'lib/php/db/code',
                     APP_ROOT.'lib/php/plugin/func/tcpdf/tcpdf'
                     );
+					
         func_load($funcs,true);
-
+		
         //清除並停用BUFFER
         @ob_end_clean();
-
+		
+		
+		
+		
     //---------------------------------------------------
     //有無維護
     //---------------------------------------------------
 
         if($config_arrys['is_offline']['center']['teacher_center']){
-            $url=str_repeat("../",7).'index.php';
+            $url=str_repeat("../",5).'index.php';
             header("Location: {$url}");
             die();
         }
@@ -138,12 +141,14 @@
     //---------------------------------------------------
     //user_id   使用者主索引
 
-        $get_chk=array(
-            'user_id'
+    
+    
+        $post_chk=array(
+            'user_id_book_sid'
         );
-        $get_chk=array_map("trim",$get_chk);
-        foreach($get_chk as $get){
-            if(!isset($_GET[$get])){
+        $post_chk=array_map("trim",$post_chk);
+        foreach($post_chk as $post){
+            if(!isset($_POST[$post])){
                 die();
             }
         }
@@ -153,11 +158,24 @@
     //---------------------------------------------------
     //user_id   使用者主索引
 
+    
         //GET
-        $user_id        =trim($_GET[trim('user_id ')]);
         $view           =(isset($_GET[trim('view')]))?$_GET[trim('view')]:'';
-        $book_sid  =(isset($_GET[trim('book_sid')]))?$_GET[trim('book_sid')]:'';
-
+		
+		
+		//POST
+		$user_id_book_sid           =(isset($_POST[trim('user_id_book_sid')]))?$_POST[trim('user_id_book_sid')]:array();
+		
+		foreach ($user_id_book_sid as $key => $value) {
+			$tmp_array = array();
+			$tmp_array = explode('_',$value);
+			$array_data[$key]['user_id'] = $tmp_array[0];
+			$array_data[$key]['book_sid'] = $tmp_array[1];
+		}
+		
+		
+		
+		
         //SESSION
         if(isset($sess_login_info['uid'])){$sess_user_id=(int)$sess_login_info['uid'];}
         if(isset($sess_login_info['permission'])){$sess_permission=trim($sess_login_info['permission']);}
@@ -169,31 +187,6 @@
                 $sess_grade=(int)$sess_login_info['arrys_class_code'][0]['grade'];
                 $sess_classroom=(int)$sess_login_info['arrys_class_code'][0]['classroom'];
             }
-        }
-
-    //---------------------------------------------------
-    //檢驗參數
-    //---------------------------------------------------
-    //user_id   使用者主索引
-
-        $arry_err=array();
-
-        if($user_id===''){
-           $arry_err[]='使用者主索引,未輸入!';
-        }else{
-           $user_id=(int)$user_id;
-           if($user_id===0){
-              $arry_err[]='使用者主索引,不為整數!';
-           }
-        }
-
-        if(count($arry_err)!==0){
-            if(1==2){//除錯用
-                echo "<pre>";
-                print_r($arry_err);
-                echo "</pre>";
-            }
-            die();
         }
 
     //---------------------------------------------------
@@ -219,31 +212,39 @@
         //---------------------------------------------------
         //SQL條件
         //---------------------------------------------------
-
-            $user_id=(int)$user_id;
-
-            $query_sql="
+        $db_results = array();
+		$db_results_cno = 0;
+    	foreach ($array_data as $key => $val) {
+			
+			$query_sql="
                 SELECT
                     *
                 FROM(
                     SELECT
+                    	`user_id`,
                         `book_sid`,
                         `keyin_cdate`,
                         `keyin_mdate`
                     FROM `mssr_rec_book_cno`
                     WHERE 1=1
-                        AND `user_id`={$user_id}
+                        AND `user_id`=".$val['user_id']."
+                        AND `book_sid` = '".$val['book_sid']."'
                         AND `rec_state`=1
-                        AND `book_sid` = '{$book_sid}'
                 ) AS `sqry`
                 WHERE 1=1
                 #GROUP BY `sqry`.`book_sid`
                 ORDER BY `sqry`.`keyin_mdate` DESC
             ";
 			//echo "<pre>";print_r($query_sql);echo "</pre>";
-            $db_results=db_result($conn_type='pdo',$conn_mssr,$query_sql,array(),$arry_conn_mssr);
-            $db_results_cno=count($db_results);
-
+			$db_results_tmp=db_result($conn_type='pdo',$conn_mssr,$query_sql,array(),$arry_conn_mssr);
+        	$db_results_cno_tmp=count($db_results_tmp);
+			if($db_results_cno_tmp > 0){
+				$db_results = array_merge($db_results,$db_results_tmp);
+				$db_results_cno = $db_results_cno +$db_results_cno_tmp;
+			}
+			
+		}
+	
     //---------------------------------------------------
     //分頁處理
     //---------------------------------------------------
@@ -285,7 +286,6 @@
         //網頁標題
         $title="明日星球,教師中心";
 
-        $user_id=(int)$user_id;
 
         //推薦類型陣列
         $arrys_rec_type=array(
@@ -306,8 +306,7 @@
 
         global $arry_ftp1_info;
 
-        $ftp_root="public_html/mssr/info/user/".(int)$user_id."/book";
-        $http_path="http://".$arry_ftp1_info['host']."/mssr/info/user/".(int)$user_id."/book/";
+        
 
         //連接 | 登入 FTP
         $ftp_conn  =ftp_connect($arry_ftp1_info['host'],$arry_ftp1_info['port']);
@@ -369,21 +368,13 @@
                         <!-- 資料表格 開始 -->
                         <div class="mod_data_tbl_outline" style="margin-top:35px;">
         ';
+		
         foreach($arrys_result as $arrys_inx=>$arry_result):
         //---------------------------------------------------
         //接收欄位
         //---------------------------------------------------
 
             extract($arry_result, EXTR_PREFIX_ALL, "rs");
-
-        //---------------------------------------------------
-        //處理欄位
-        //---------------------------------------------------
-
-            $rs_book_sid=trim($rs_book_sid);
-            if(in_array($rs_book_sid,$arry_book_sid)){
-                continue;
-            }
 
         //---------------------------------------------------
         //特殊處理
@@ -396,7 +387,7 @@
             //查找, 使用者資訊
             //-----------------------------------------------
 
-                $get_user_info=get_user_info($conn_user,$user_id,$array_filter=array("name"),$arry_conn_user);
+                $get_user_info=get_user_info($conn_user,$arry_result['user_id'],$array_filter=array("name"),$arry_conn_user);
                 if(!empty($get_user_info)){
                     $rs_user_name=trim($get_user_info[0]['name']);
                 }
@@ -405,7 +396,7 @@
             //查找, 書名
             //-----------------------------------------------
 
-                $get_book_info=get_book_info($conn_mssr,trim($rs_book_sid),$array_filter=array('book_name'),$arry_conn_mssr);
+                $get_book_info=get_book_info($conn_mssr,trim($arry_result['book_sid']),$array_filter=array('book_name'),$arry_conn_mssr);
                 $rs_book_name='查無書名!';
                 if(!empty($get_book_info)){
                     $rs_book_name=trim($get_book_info[0]['book_name']);
@@ -419,7 +410,7 @@
             //-----------------------------------------------
 
                 $has_draw     =false;
-                $rec_draw_info=get_rec_info($conn_mssr,$user_id,trim($rs_book_sid),$rec_type='draw',$array_filter=array("rec_sid"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
+                $rec_draw_info=get_rec_info($conn_mssr,$arry_result['user_id'],trim($arry_result['book_sid']),$rec_type='draw',$array_filter=array("rec_sid"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
                 if(!empty($rec_draw_info)){
                     foreach($rec_draw_info as $inx=>$arry){
                         //匯入推薦識別碼陣列
@@ -428,26 +419,28 @@
                     //圖片識別碼
                     $rs_rec_draw_sid=trim($rec_draw_info[0]['rec_sid']);
 
-                    //$root         =str_repeat("../",6)."info/user/".(int)$user_id."/book";
+                    //$root         =str_repeat("../",6)."info/user/".(int)$arry_result['user_id']."/book";
 
                     //手繪
-                    $draw_path      ="{$ftp_root}/".trim($rs_book_sid)."/draw/bimg/1.jpg";
+                    $ftp_root="public_html/mssr/info/user/".(int)$arry_result['user_id']."/book";
+                    $draw_path      ="{$ftp_root}/".trim($arry_result['book_sid'])."/draw/bimg/1.jpg";
                     //$draw_path_enc  =mb_convert_encoding($draw_path,$fso_enc,$page_enc);
                     $arry_ftp_file_draw_path=ftp_nlist($ftp_conn,$draw_path);
-                    $http_draw_path =$http_path.trim($rs_book_sid)."/draw/bimg/1.jpg";
+					$http_path="http://".$arry_ftp1_info['host']."/mssr/info/user/".(int)$arry_result['user_id']."/book/";
+                    $http_draw_path =$http_path.trim($arry_result['book_sid'])."/draw/bimg/1.jpg";
 
                     //上傳
-                    //$up_load_draw_path_1    ="{$ftp_root}/".trim($rs_book_sid)."/draw/bimg/upload_1.jpg";
+                    //$up_load_draw_path_1    ="{$ftp_root}/".trim($arry_result['book_sid'])."/draw/bimg/upload_1.jpg";
                     //$up_load_draw_path_1_enc=mb_convert_encoding($up_load_draw_path_1,$fso_enc,$page_enc);
-                    //$up_load_draw_path_2    ="{$ftp_root}/".trim($rs_book_sid)."/draw/bimg/upload_2.jpg";
+                    //$up_load_draw_path_2    ="{$ftp_root}/".trim($arry_result['book_sid'])."/draw/bimg/upload_2.jpg";
                     //$up_load_draw_path_2_enc=mb_convert_encoding($up_load_draw_path_2,$fso_enc,$page_enc);
-                    //$up_load_draw_path_3    ="{$ftp_root}/".trim($rs_book_sid)."/draw/bimg/upload_3.jpg";
+                    //$up_load_draw_path_3    ="{$ftp_root}/".trim($arry_result['book_sid'])."/draw/bimg/upload_3.jpg";
                     //$up_load_draw_path_3_enc=mb_convert_encoding($up_load_draw_path_3,$fso_enc,$page_enc);
                     //$arry_ftp_file_up_load_draw_path_1=ftp_nlist($ftp_conn,$up_load_draw_path_1);
                     //$arry_ftp_file_up_load_draw_path_2=ftp_nlist($ftp_conn,$up_load_draw_path_2);
                     //$arry_ftp_file_up_load_draw_path_3=ftp_nlist($ftp_conn,$up_load_draw_path_3);
 
-                    //$draw_path      ="{$root}/".trim($rs_book_sid)."/draw/bimg/1.jpg";
+                    //$draw_path      ="{$root}/".trim($arry_result['book_sid'])."/draw/bimg/1.jpg";
                     //$draw_path_enc  =mb_convert_encoding($draw_path,$fso_enc,$page_enc);
                     if((!empty($arry_ftp_file_draw_path))){
                         $has_draw=true;
@@ -461,7 +454,7 @@
                 $has_star=false;
                 $rs_rec_star_rank='尚未選擇星等 !';
                 $rs_rec_star_reason='尚未選擇評星理由 !';
-                $rec_star_info=get_rec_info($conn_mssr,$user_id,trim($rs_book_sid),$rec_type='star',$array_filter=array("rec_sid","rec_rank","rec_reason"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
+                $rec_star_info=get_rec_info($conn_mssr,$arry_result['user_id'],trim($arry_result['book_sid']),$rec_type='star',$array_filter=array("rec_sid","rec_rank","rec_reason"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
                 if(!empty($rec_star_info)){
                     foreach($rec_star_info as $inx=>$arry){
                         //匯入推薦識別碼陣列
@@ -494,7 +487,7 @@
                 $has_text   =false;
                 $rs_rec_text_state='';
                 $arrys_rs_rec_text_content=array('','','');
-                $rec_text_info=get_rec_info($conn_mssr,$user_id,trim($rs_book_sid),$rec_type='text',$array_filter=array("rec_sid","rec_content","rec_state"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
+                $rec_text_info=get_rec_info($conn_mssr,$arry_result['user_id'],trim($arry_result['book_sid']),$rec_type='text',$array_filter=array("rec_sid","rec_content","rec_state"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
                 if(!empty($rec_text_info)){
                     foreach($rec_text_info as $inx=>$arry){
                         //匯入推薦識別碼陣列
@@ -522,7 +515,7 @@
             //-----------------------------------------------
 
                 $has_record     =false;
-                $rec_record_info=get_rec_info($conn_mssr,$user_id,trim($rs_book_sid),$rec_type='record',$array_filter=array("rec_sid"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
+                $rec_record_info=get_rec_info($conn_mssr,$arry_result['user_id'],trim($arry_result['book_sid']),$rec_type='record',$array_filter=array("rec_sid"),$order_by_filter='',$arry_limit=array(),$arry_conn_mssr);
                 if(!empty($rec_record_info)){
                     foreach($rec_record_info as $inx=>$arry){
                         //匯入推薦識別碼陣列
@@ -531,17 +524,17 @@
                     //錄音識別碼
                     $rs_rec_record_sid=trim($rec_record_info[0]['rec_sid']);
 
-                    $root               =str_repeat("../",6)."info/user/".(int)$user_id."/book";
+                    $root               =str_repeat("../",6)."info/user/".(int)$arry_result['user_id']."/book";
 
-                    $record_path_mp3    ="{$root}/".trim($rs_book_sid)."/record/1.mp3";
+                    $record_path_mp3    ="{$root}/".trim($arry_result['book_sid'])."/record/1.mp3";
                     $record_path_mp3_enc=mb_convert_encoding($record_path_mp3,$fso_enc,$page_enc);
 
-                    $record_path_wav    ="{$root}/".trim($rs_book_sid)."/record/1.wav";
+                    $record_path_wav    ="{$root}/".trim($arry_result['book_sid'])."/record/1.wav";
                     $record_path_wav_enc=mb_convert_encoding($record_path_wav,$fso_enc,$page_enc);
 
                     if((file_exists($record_path_mp3_enc))||(file_exists($record_path_wav_enc))){
                         $has_record =true;
-                        $arry_record_info[$rs_book_sid]=$user_id;
+                        $arry_record_info[$arry_result['book_sid']]=$arry_result['user_id'];
                     }
                 }
 
@@ -549,7 +542,7 @@
             //查找, 書本推薦內容總調查計數表資訊
             //-----------------------------------------------
 
-                $get_rec_book_cno_info=get_rec_book_cno_info($conn_mssr,$user_id,trim($rs_book_sid),$array_filter=array('has_publish'),$arry_conn_mssr);
+                $get_rec_book_cno_info=get_rec_book_cno_info($conn_mssr,$arry_result['user_id'],trim($arry_result['book_sid']),$array_filter=array('has_publish'),$arry_conn_mssr);
                 $has_publish=trim($get_rec_book_cno_info[0]['has_publish']);
 
             //-----------------------------------------------
@@ -716,6 +709,7 @@
         ';
 
         //呼叫pdf
+        //echo "<pre>";print_r($body);echo "</pre>";
         pdf_set();
 ?>
 

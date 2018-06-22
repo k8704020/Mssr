@@ -99,12 +99,12 @@
     
             if(!empty($result)){
                     foreach($result as $key=>$arry_result){
-                            $array_output[$key]['user_id']          =trim($arry_result['user_id']);
-                            $array_output[$key]['name']             =trim($arry_result['name']);
-                            $array_output[$key]['permission']       =trim($arry_result['permission']);
-                            $_SESSION["user_id"]                    = trim($arry_result['user_id']);
-                            $_SESSION["name"]                       = trim($arry_result['name']);
-                            $_SESSION["permission"]                 = trim($arry_result['permission']);
+                            $array_output[$key]['book_level_user_id']			=trim($arry_result['user_id']);
+                            $array_output[$key]['book_level_name']				=trim($arry_result['name']);
+                            $array_output[$key]['book_level_permission']		=trim($arry_result['permission']);
+                            $_SESSION["book_level_user_id"]         			= trim($arry_result['user_id']);
+                            $_SESSION["book_level_name"]            			= trim($arry_result['name']);
+                            $_SESSION["book_level_permission"]      			= trim($arry_result['permission']);
                             
                     }
                     $array_output['msg'] ="";

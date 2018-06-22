@@ -156,7 +156,8 @@
         //GET
         $user_id        =trim($_GET[trim('user_id ')]);
         $view           =(isset($_GET[trim('view')]))?$_GET[trim('view')]:'';
-        $arry_book_sid  =(isset($_GET[trim('book_sid')]))?$_GET[trim('book_sid')]:array();
+		//單筆用GET傳值 多筆用POST
+        $arry_book_sid  =(isset($_GET[trim('book_sid')]))?$_GET[trim('book_sid')]:$_POST[trim('book_sid')];
 
         //SESSION
         if(isset($sess_login_info['uid'])){$sess_user_id=(int)$sess_login_info['uid'];}
@@ -379,7 +380,7 @@
         //---------------------------------------------------
 
             $rs_book_sid=trim($rs_book_sid);
-            if(in_array($rs_book_sid,$arry_book_sid)){
+            if(!in_array($rs_book_sid,$arry_book_sid)){
                 continue;
             }
 

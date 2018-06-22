@@ -42,9 +42,9 @@
     //---------------------------------------------------
     //有無登入
     //---------------------------------------------------
-    $sess_user_id=$_SESSION['user_id'];
-    $sess_permission=$_SESSION['permission'];
-    $sess_name=$_SESSION['name'];
+    $sess_user_id=$_SESSION['book_level_user_id'];
+    $sess_permission=$_SESSION['book_level_permission'];
+    $sess_name=$_SESSION['book_level_name'];
     
 
     if(!isset($sess_user_id)&&!isset($sess_permission)&&!isset($sess_name)){
@@ -155,7 +155,7 @@
         //-----------------------------------------------
 
 
-            $sess_user_id=$_SESSION['user_id'];
+            $sess_user_id=$_SESSION['book_level_user_id'];
 
             $sess_user_id=(int)$sess_user_id;
             $create_by   =(int)$sess_user_id;

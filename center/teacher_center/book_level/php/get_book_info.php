@@ -128,7 +128,7 @@
         //-----------------------------------------------
         //預設值
         //-----------------------------------------------
-            $sess_user_id=$_SESSION['user_id'];
+            $sess_user_id=$_SESSION['book_level_user_id'];
 
             $sess_user_id=(int)$sess_user_id;
 

@@ -496,6 +496,22 @@
                     </div>
                 <?php endif;?>
                 <!-- 資料表格 開始 -->
+                <!-- 統計資料表格 開始 -->
+                <div class="mod_data_tbl_outline" style="margin-top:35px;">
+                    <table id="mod_data_tbl" border="0" width="95%" height="40px" cellpadding="5" cellspacing="0" style="" class="font-weight1 font-family1 fc_green0">
+                        <tr align="center" valign="middle" class="fsize_16">
+                            <td align="center" width="470px">
+                                <span class="fsize_16">
+                                    <input type="button" value="請按我重新整理" class="ibtn_gr12030" onclick="location.reload();" onmouseover="this.style.cursor='pointer'">
+                                    <input type="button" value="PDF檢視" class="ibtn_gr9030" onmouseover="this.style.cursor='pointer'"
+                                    onclick="view_pdf();"
+                                    >
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 統計資料表格 結束 -->
                 <div class="mod_data_tbl_outline" style="margin-top:35px;">
                     <?php foreach($arrys_result as $arrys_inx=>$arry_result) :?>
                     <?php
@@ -750,8 +766,9 @@
                                 <?php if($q_best_id===0):?>
                                     <input type="button" value="刪除推薦" style="margin:5px 5px;" onclick="del(<?php echo $rs_best_id;?>);">
                                     <img title="下載PDF" id="img_pdf_<?php echo $arrys_inx;?>" src="../../img/user/user_rec/pdf.png" width="30" height="30" border="0" alt="pdf"
-                                    style="position:relative;left:15px;top:5px;cursor: pointer;" onclick="view_pdf('<?php echo $rs_user_id ?>','<?php echo $rs_book_sid ?>')"/>
-                                    
+                                    style="position:relative;left:15px;top:5px;cursor: pointer;" onclick="view_one_pdf('<?php echo $rs_user_id ?>_<?php echo $rs_book_sid ?>')"/>
+                                    <input type="checkbox" id="pdf_list" name="pdf_list" value="<?php echo $rs_user_id;?>_<?php echo $rs_book_sid;?>" att="pdf_list_<?php echo $arrys_inx;?>"
+                                    style='position:relative;left:15px;bottom:5px;' checked>
                                 <?php endif;?>
                             </td>
                         </tr>
@@ -815,26 +832,26 @@
                                             <span class="fsize_18 font-weight1 <?php echo $tbl_fc_color;?>" style="position:relative;padding:5px;display:block;">
                                                 <textarea cols="40" rows="10" wrap="hard" class="form_textarea fsize_18 font-weight1 <?php echo $tbl_fc_color;?> <?php echo $tbl_bg_color;?>"
                                                 style="width:460px;height:508px;display:block;border:0;">
-<?php if(trim($arrys_rs_rec_text_content[0])!==''):?>
-【最喜歡的一句話】
-<?php echo htmlspecialchars(gzuncompress(base64_decode($arrys_rs_rec_text_content[0])));?>
-<?php endif;?>
-
-
-<?php if(trim($arrys_rs_rec_text_content[1])!==''):?>
-【書本內容介紹】
-<?php echo htmlspecialchars(gzuncompress(base64_decode($arrys_rs_rec_text_content[1])));?>
-<?php endif;?>
-
-
-<?php if(trim($arrys_rs_rec_text_content[2])!==''):?>
-【書中所學到的事】
-<?php echo htmlspecialchars(gzuncompress(base64_decode($arrys_rs_rec_text_content[2])));?>
-<?php endif;?>
-
-<?php if(trim($arrys_rs_rec_text_content[0])===''&&trim($arrys_rs_rec_text_content[1])===''&&trim($arrys_rs_rec_text_content[2])===''):?>
-             尚未填寫文字推薦！
-<?php endif;?>
+												<?php if(trim($arrys_rs_rec_text_content[0])!==''):?>
+												【最喜歡的一句話】
+												<?php echo htmlspecialchars(gzuncompress(base64_decode($arrys_rs_rec_text_content[0])));?>
+												<?php endif;?>
+												
+												
+												<?php if(trim($arrys_rs_rec_text_content[1])!==''):?>
+												【書本內容介紹】
+												<?php echo htmlspecialchars(gzuncompress(base64_decode($arrys_rs_rec_text_content[1])));?>
+												<?php endif;?>
+												
+												
+												<?php if(trim($arrys_rs_rec_text_content[2])!==''):?>
+												【書中所學到的事】
+												<?php echo htmlspecialchars(gzuncompress(base64_decode($arrys_rs_rec_text_content[2])));?>
+												<?php endif;?>
+												
+												<?php if(trim($arrys_rs_rec_text_content[0])===''&&trim($arrys_rs_rec_text_content[1])===''&&trim($arrys_rs_rec_text_content[2])===''):?>
+												             尚未填寫文字推薦！
+												<?php endif;?>
                                                 </textarea>
                                             </span>
                                         </td>
@@ -942,23 +959,6 @@
                                             </table>
                                         </td>
                                     </tr>
-                                    <!-- 畫圖指導 -->
-                                    <?php //if(in_array($auth_sys_check_lv,array(5,14,22))):?>
-                                        <?php //if(($has_draw)&&($sess_user_id!==$rs_user_id)&&($has_leader)):?>
-                                        <!-- <tr align="center" valign="top" class="<?php echo $tbl_bg_color;?>">
-                                            <td>
-                                                <?php if(in_array('draw',$arry_has_rec_comment)):?>
-                                                    <input type="button" style="display:none;" id="btn_draw_<?php echo $arrys_inx;?>" value="✔老師指導(畫圖已指導)" class="" onclick="detailed('date_between','draw','<?php echo addslashes($rs_rec_draw_sid);?>',<?php echo addslashes($rs_user_id);?>,'<?php echo addslashes($rs_book_sid);?>','tbl_<?php echo $arrys_inx;?>')" onmouseover="this.style.cursor='pointer'">
-                                                <?php else:?>
-                                                    <input type="button" style="display:none;" id="btn_draw_<?php echo $arrys_inx;?>" value="老師指導(畫圖)" class="" onclick="detailed('date_between','draw','<?php echo addslashes($rs_rec_draw_sid);?>',<?php echo addslashes($rs_user_id);?>,'<?php echo addslashes($rs_book_sid);?>','tbl_<?php echo $arrys_inx;?>')" onmouseover="this.style.cursor='pointer'">
-                                                <?php endif;?>
-                                                <input type="button" style="display:none;" id="btn_del_draw_<?php echo $arrys_inx;?>" value="直接刪除推薦" class=""
-                                                onclick="del('date_between','draw','<?php echo addslashes($rs_rec_draw_sid);?>',<?php echo addslashes($rs_user_id);?>,'<?php echo addslashes($rs_book_sid);?>','tbl_<?php echo $arrys_inx;?>')"
-                                                onmouseover="this.style.cursor='pointer'">
-                                            </td>
-                                        </tr> -->
-                                        <?php //endif;?>
-                                    <?php //endif;?>
                                 </table>
 
                                 <!-- 錄音資訊 -->
@@ -1069,20 +1069,57 @@
             }
         });
     }
-    function view_pdf(user_id,book_sid){
+    
+    function view_one_pdf(user_id_book_sid){
+        method = "post"; 
+	    
+	    //模擬Form 表單 以post 送出
+	    var form = document.createElement("form");
+	    var url="content_pdf.php?psize=<?php echo $psize;?>&pinx=<?php echo $pinx;?>";
+        
+	    form.setAttribute("method", method);
+	    form.setAttribute("action", url);
+	    form.setAttribute("target", '_blank');
+		
+		var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", 'user_id_book_sid[]');
+        input.setAttribute("value", user_id_book_sid);
+        form.appendChild(input);
+		
+		document.body.appendChild(form);    // Not entirely sure if this is necessary
+	    form.submit();
+    }
+	
+	function view_pdf() {
+	    method = "post"; 
+	    
+	    //模擬Form 表單 以post 送出
+	    var form = document.createElement("form");
+	    var url="content_pdf.php?psize=<?php echo $psize;?>&pinx=<?php echo $pinx;?>";
         var opdf_lists=document.getElementsByName('pdf_list');
-        var url="content_pdf.php?user_id="+ user_id +"&book_sid="+book_sid;
-        for(var i=0;i<opdf_lists.length;i++){
+        
+	    form.setAttribute("method", method);
+	    form.setAttribute("action", url);
+	    form.setAttribute("target", '_blank');
+		
+		for(var i=0;i<opdf_lists.length;i++){
             var opdf_list=opdf_lists[i];
-            var book_sid =trim(opdf_list.value);
-            if(opdf_list.checked===false){
-                url+='&book_sid[]=';
-                url+=book_sid;
+            var user_id_book_sid =trim(opdf_list.value);
+            if(opdf_list.checked===true){
+                
+                var input = document.createElement("input");
+		        input.setAttribute("type", "hidden");
+		        input.setAttribute("name", 'user_id_book_sid[]');
+		        input.setAttribute("value", user_id_book_sid);
+		        form.appendChild(input);
             }
         }
-        //console.log(url);
-        window.open(url,'pdf');
-    }
+		
+		document.body.appendChild(form);    // Not entirely sure if this is necessary
+	    form.submit();
+		
+	}
 	
     function change_rec_img(obj,inx){
         var o_src    =obj.src;

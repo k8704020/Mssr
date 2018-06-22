@@ -38,9 +38,9 @@
     //---------------------------------------------------
     //SESSION
     //---------------------------------------------------
-    $sess_user_id=$_SESSION['user_id'];
-    $sess_permission=$_SESSION['permission'];
-    $sess_name=$_SESSION['name'];
+    $sess_user_id=$_SESSION['book_level_user_id'];
+    $sess_permission=$_SESSION['book_level_permission'];
+    $sess_name=$_SESSION['book_level_name'];
     
 
     if(!isset($sess_user_id)&&!isset($sess_permission)&&!isset($sess_name)){
@@ -382,7 +382,7 @@ function newId(){
 
 $(document).ready(function(){
 
-   var sess_user_id='<?php if(isset($_SESSION['user_id']))echo $_SESSION['user_id'] ;?>';
+   var sess_user_id='<?php if(isset($_SESSION['book_level_user_id']))echo $_SESSION['book_level_user_id'] ;?>';
        $('.footer').on('click', function() {
      
       $('.about_sign').css("display","block");

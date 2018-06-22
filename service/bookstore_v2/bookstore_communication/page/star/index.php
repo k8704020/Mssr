@@ -172,6 +172,7 @@
 		
 		
 		
+		
 		//學期代碼 (學生和老師表都找)
 		//type = 身分
 		//0.學生
@@ -180,8 +181,24 @@
 		//3.老師
 		
 		//先找學生
-		$sql_u_s = "SELECT class_code, end FROM user.student u_s WHERE u_s.uid = '".$val['user_id']."' ORDER BY end DESC LIMIT 1";
+		
+		
+		
+		if(strpos( $result_name[0]['name'], '家長')){//uid若是小朋友的家長則找小朋友uid
+			
+			$sql_name = "SELECT uid FROM user.member WHERE name = '".preg_replace("/家長/i","",$result_name[0]['name'])."' LIMIT 1";
+			$result_tmp_uid = db_result($conn_type='pdo',$conn_mssr,$sql_name,$arry_limit1s=array(),$arry_conn_mssr);
+			
+			$sql_u_s = "SELECT class_code, end FROM user.student u_s WHERE u_s.uid = '".$result_tmp_uid[0]['uid']."' ORDER BY end DESC LIMIT 1";
+		
+		}else{
+			$sql_u_s = "SELECT class_code, end FROM user.student u_s WHERE u_s.uid = '".$val['user_id']."' ORDER BY end DESC LIMIT 1";
+			
+		}
+		
 		$result_u_s = db_result($conn_type='pdo',$conn_mssr,$sql_u_s,$arry_limit1s=array(),$arry_conn_mssr);
+		
+		
 		
 		
 		$type = null;
@@ -317,7 +334,7 @@
                 <td width="110" style=" text-align: left;">
                 	給讚次數
                 </td>
-                <td width="80" style=" text-align:left;">
+                <td width="100" style=" text-align:left;">
                 	姓名
                 </td>
                 <td width="80" style=" text-align:left;">
@@ -341,8 +358,8 @@
             	<td width="110" style=" text-align:left;">
                 	<?php echo $val["star_score_count"];?>
                 </td>
-                <td width="80" style=" text-align:left;">
-                	<a href="#" onClick="gogo('<?php echo $val["user_id"];?>','<?php echo $val["name"];?>')" ><?php echo $val["name"];?></a>
+                <td width="100" style=" text-align:left;">
+                	<a style="text-decoration:none" href="javascript: void(0)" onClick="gogo('<?php echo $val["user_id"];?>','<?php echo $val["name"];?>')" ><?php echo $val["name"];?></a>
                 </td>
                 <td width="80" style=" text-align:left;">
                 	<?php echo $val["school_name"];?>
@@ -397,11 +414,6 @@
 			delayExecute(proc);
 		}
 	}
-	/*cover 啟用器的用法
-	 cover("這嘎");
-	 cover("這嘎",1);
-	 cover("這嘎",2,function(){echo("哈哈");});
-	*/
 	//cover 點選器
 	function delayExecute(proc) {
 		var x = 100;

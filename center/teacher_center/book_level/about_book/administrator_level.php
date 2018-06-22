@@ -47,11 +47,10 @@
 	//---------------------------------------------------
 	//SESSION
 	//---------------------------------------------------
-	$sess_user_id=$_SESSION['user_id'];
-	$sess_permission=$_SESSION['permission'];
-	$sess_name=$_SESSION['name'];
+	$sess_user_id=$_SESSION['book_level_user_id'];
+	$sess_permission=$_SESSION['book_level_permission'];
+	$sess_name=$_SESSION['book_level_name'];
 	
-
 	if(!isset($sess_user_id)&&!isset($sess_permission)&&!isset($sess_name)){
 
 
@@ -350,7 +349,33 @@
 
 					
 				";
-
+				
+				$rows=db_result($conn_type='pdo',$conn_mssr,$sql,array(),$arry_conn_mssr);
+				
+				//---- Pager ---------------------
+	
+			    $pagesize = 30;
+			    //總筆數
+				$total = count($rows);
+				
+				//是否要顯示分頁
+				if($pagesize < $total) $page_open = TRUE;
+				
+				//總頁数
+				$totalpage = ceil($total/$pagesize);
+				//echo "<pre>";print_r($total);echo "</pre>";
+				//目前頁數
+				$page = $_GET["page"];
+				if ($page == "" || $page == "0") $page = 1;  
+				//目前頁面起始序號
+				
+				if($page==1) $go_to_one = 1;
+				if($page!=1) $go_to_one = $page*$pagesize-$pagesize+1;
+				
+				//語句
+				$sql .= " LIMIT ".($pagesize * ($page-1)).", ".$pagesize;   // LIMIT 21,40
+				
+				//---- Pager ---------------------    
 
 				$result=db_result($conn_type='pdo',$conn_mssr,$sql,array(),$arry_conn_mssr);
 
@@ -557,10 +582,27 @@ function get_sticker_color($color_number, $color_result) {
 		.input_text {
 			display: none;
 			width: 50px;
-		}
-		.show_pages, .show_words, .show_language, .show_sticker_color, .show_sticker_number {
-			letter-spacing: 0px;
-		}
+	}
+	.show_pages, .show_words, .show_language, .show_sticker_color, .show_sticker_number {
+		letter-spacing: 0px;
+	}
+	
+	.botton1{
+		border: 1px solid;
+	    text-decoration: none;
+	    border-radius: 5px;
+	    background-color: #3399CC;
+	    color: #ffffff;
+	    padding: 5px;
+	}
+	.botton2{
+	    border: 1px solid;
+	    text-decoration: none;
+	    border-radius: 5px;
+	    background-color: #CD0A0A;
+	    color: #ffffff;
+	    padding: 5px;
+	}
 
 </style>
 </Head>
@@ -587,7 +629,72 @@ function get_sticker_color($color_number, $color_result) {
 				 <a href="topic.php"><input type="button" id="topic" value="書本主題標籤表"></a>
 				<!--  <a href="more_six.php"><input type="button" id="level_6" value="等級大於6書表"></a>
 				 <a href="less_six.php"><input type="button" id="level_0" value="等級小於6書表"></a> -->
-
+				<br>
+				<!--page -->
+				<p style="text-align: center;margin-top: 10px">
+					<b>共有:<?php echo $total?>本書</b>
+					<span>當前顯示:
+						<?php 
+						echo $go_to_one;
+						if( $total < ($page*$pagesize)){
+							echo "~".$total;
+						}
+						else {
+							echo "~".($page*$pagesize);
+							
+						}
+						
+						?>
+					</span>
+					<br>
+				</p>
+				<p style="text-align: center;margin-top: 10px">
+				<?php 
+					$url = '';
+					$php_url = 'administrator_level.php';
+					$z = 0;
+					foreach ($_GET as $key => $value) {
+						if($key != 'page'){
+							if($z!=0) $url.= "&"; 
+							$url .= $key.'='.$value;
+							$z++;
+						}
+						
+					}
+					if($z != 0) $url .="&";
+					
+					if($page != 1 ){
+						echo '<a class="botton1" href="'.$php_url.'?'.$url.'page=1">|&lt;&nbsp;</a> ';
+						echo '<a class="botton1" href="'.$php_url.'?'.$url.'page='.($page-1).'">&nbsp;&lt;&nbsp;</a> ';
+					}
+					if($page <= 5){
+						for ($i = 1; $i <= $totalpage; $i++) {
+							if ($page == $i) {
+						    	echo "&nbsp;<span class='botton2'>".$i."</span>&nbsp;";	
+							} else {
+							 	 	if($i <= 10){
+							 	 		echo "&nbsp;<a class='botton1' href='".$php_url."?".$url."page=".$i."'>".$i."</a>&nbsp;";
+							 	 	}
+							}
+						
+						}
+					}else{
+						//$post = $pos + 10;
+						for ($i = $page -5; $i <= $totalpage; $i++) {
+							if ($page == $i) {
+						    	echo "&nbsp;<span class=\"botton2\">".$i."</span>&nbsp;";	
+							} elseif($i <= $page + 5) {
+							 	 	echo "&nbsp;<a class=\"botton1\" href='".$php_url."?".$url."page=".$i."'>".$i."</a>&nbsp;";
+							}
+						
+						}
+					}
+					if ( $page != $totalpage && $totalpage!=0) echo "<a class=\"botton1\" href='".$php_url."?".$url."page=".($page+1)."'> &gt;</a>";
+					if ( $page != $totalpage )echo "<a class=\"botton1\" href='".$php_url."?".$url."page=".$totalpage."'> &gt;|</a>";
+				?>
+				
+				</p>
+				<!--page end-->
 			</div>
 			
 			<div id="level_table_over6">
@@ -622,7 +729,7 @@ function get_sticker_color($color_number, $color_result) {
 											<input type="checkbox" id="read_checkbox_<?php echo $key?>">
 										</td> -->
 										<td rowspan="2" class="number" style="height:40px;">
-											<?php echo $key+1?>
+											<?php echo ($key+$go_to_one)?>
 										</td>
 										<td rowspan="2" id="book_name" style="height: 40px;" title="<?php echo trim($value['book_name']) ?> ">            
 											<?php echo $value['book_name']?>
@@ -643,10 +750,10 @@ function get_sticker_color($color_number, $color_result) {
 										</td>
 										<td  rowspan="2" id="isbn_10" style="height: 40px;"><?php echo $value['book_isbn_10']?></td>
 										<td  rowspan="2" id="isbn_13" style="height: 40px;"><?php echo $value['book_isbn_13']?></td>
-										<td  rowspan="2" id="book_library_code" style="height: 40px;"><?php echo $value['book_library_code']?></td>
+										<td  rowspan="2" id="book_library_code" style="height: 40px;"><?php echo ($value['book_library_code']!='0'?$value['book_library_code']:'' )?></td>
 										<td rowspan="2" id="language" style="height: 40px;">
 											<div class="language_area">
-												<span class="show_language" id="language_<?php echo $key ?>">
+												<span class="show_language" id="language_<?php echo ($key+$go_to_one-1) ?>">
 													<?php 
 														if ($value['language'] == 0) {
 															echo "";
@@ -660,42 +767,42 @@ function get_sticker_color($color_number, $color_result) {
 													 ?>
 												</span>
 												<br>
-												<select class="input_select" id="change_language_text_<?php echo $key ?>">
+												<select class="input_select" id="change_language_text_<?php echo ($key+$go_to_one-1) ?>">
 													<option value="1" <?php if ($value['language'] == 1) echo "selected"; ?>>中文</option>
 													<option value="2" <?php if ($value['language'] == 2) echo "selected"; ?>>英文</option>
 													<option value="3" <?php if ($value['language'] == 3) echo "selected"; ?>>中英混和</option>
 												</select>
-												<input type="button" value="修改" id="change_btn_<?php echo $key ?>">
+												<input type="button" value="修改" id="change_btn_<?php echo ($key+$go_to_one-1) ?>">
 											</div>
 										</td>
 										<td rowspan="2" id="sticker_color" style="height: 40px;">
 											<div class="sticker_color_area">
-												<span class="show_sticker_color" id="sticker_color_<?php echo $key?>" style="letter-spacing:0px;">
+												<span class="show_sticker_color" id="sticker_color_<?php echo ($key+$go_to_one-1)?>" style="letter-spacing:0px;">
 													<?php echo get_sticker_color($value['sticker_color'], $color_result); ?>
 												</span>
 												<br>
-												<select class="input_select" id="change_sticker_color_<?php echo $key?>">
+												<select class="input_select" id="change_sticker_color_<?php echo ($key+$go_to_one-1)?>">
 													<?php foreach ($color_result as $color_value) { ?>
 														<option value="<?php echo $color_value['color_id']; ?>" <?php if ($value['sticker_color'] == $color_value['color_id']) echo "selected"; ?>><?php echo $color_value['color']; ?></option>
 													<?php } ?>
 												</select>
-												<input type="button" value="修改"  id="change_btn_<?php echo $key?>">
+												<input type="button" value="修改"  id="change_btn_<?php echo ($key+$go_to_one-1)?>">
 											</div>
 										</td>
 										<td rowspan="2" id="sticker_number" style="height:40px;">
 											<div class="sticker_number_area">
-												<span class="show_sticker_number" id="sticker_number_<?php echo $key ?>">
+												<span class="show_sticker_number" id="sticker_number_<?php echo ($key+$go_to_one-1) ?>">
 													<?php if (!empty($value['sticker_number'])) echo $value['sticker_number']; ?>
 												</span>
 												<br>
-												<input type="text" value="<?php echo $value['sticker_number']; ?>" class="input_text" id="change_sticker_number_<?php echo $key ?>" maxlength="6">
-												<input type="button" value="修改" id="change_btn_<?php echo $key ?>">
+												<input type="text" value="<?php echo $value['sticker_number']; ?>" class="input_text" id="change_sticker_number_<?php echo ($key+$go_to_one-1) ?>" maxlength="6">
+												<input type="button" value="修改" id="change_btn_<?php echo ($key+$go_to_one-1) ?>">
 											</div>
 										</td>
-										<td rowspan="2" id="change_<?php echo $key?>" style="height: 40px;">    
+										<td rowspan="2" id="change_<?php echo ($key+$go_to_one-1)?>" style="height: 40px;">    
 											
 											<div class="avg">
-												<span class="avg_level" id="avg_level_<?php echo $key?>" style="letter-spacing:0px;">
+												<span class="avg_level" id="avg_level_<?php echo ($key+$go_to_one-1)?>" style="letter-spacing:0px;">
 													<?php
 														if(!empty($value['administrator_level'])){
 															if ($value['administrator_level'] == 1) {
@@ -713,36 +820,36 @@ function get_sticker_color($color_number, $color_result) {
 													 ?>
 												</span>
 												<br>
-												<select class="input_select" id="change_level_select_<?php echo $key?>">
+												<select class="input_select" id="change_level_select_<?php echo ($key+$go_to_one-1)?>">
 													<option value="1" <?php if ($value['administrator_level'] == 1) echo "selected"; ?>>繪本∕初階</option>
 													<option value="2" <?php if ($value['administrator_level'] == 2) echo "selected"; ?>>繪本∕進階</option>
 													<option value="3" <?php if ($value['administrator_level'] == 3) echo "selected"; ?>>橋梁書∕初階</option>
 													<option value="4" <?php if ($value['administrator_level'] == 4) echo "selected"; ?>>橋梁書∕進階</option>
 													<option value="5" <?php if ($value['administrator_level'] == 5) echo "selected"; ?>>文字書</option>
 												</select>
-												<!-- <input type="text" value="<?php echo $value['administrator_level'];?>" class="input_text" id="change_text_<?php echo $key?>" style="display: none;width: 30px;" size="3" maxlength="3"  > -->
-												<input type="button" value="修改"  id="change_btn_<?php echo $key?>">
+												<!-- <input type="text" value="<?php echo $value['administrator_level'];?>" class="input_text" id="change_text_<?php echo ($key+$go_to_one-1)?>" style="display: none;width: 30px;" size="3" maxlength="3"  > -->
+												<input type="button" value="修改"  id="change_btn_<?php echo ($key+$go_to_one-1)?>">
 											</div>
 
 										</td>
 										<td rowspan="2" style="height:20px;">
 											<div class="pages_area">
-												<span class="show_pages" id="pages_<?php echo $key ?>">
+												<span class="show_pages" id="pages_<?php echo ($key+$go_to_one-1) ?>">
 													<?php if (!empty($value['pages'])) echo $value['pages']; ?>
 												</span>
 												<br>
-												<input type="text" value="<?php echo $value['pages']; ?>" class="input_text" id="change_pages_text_<?php echo $key ?>" maxlength="6">
-												<input type="button" value="修改" id="change_btn_<?php echo $key ?>">
+												<input type="text" value="<?php echo $value['pages']; ?>" class="input_text" id="change_pages_text_<?php echo ($key+$go_to_one-1) ?>" maxlength="6">
+												<input type="button" value="修改" id="change_btn_<?php echo ($key+$go_to_one-1) ?>">
 											</div>
 										</td>
 										<td  rowspan="2" style="height:20px;">
 											<div class="words_area">
-												<span class="show_words" id="words_<?php echo $key ?>">
+												<span class="show_words" id="words_<?php echo ($key+$go_to_one-1) ?>">
 													<?php if (!empty($value['words'])) echo $value['words']; ?>
 												</span>
 												<br>
-												<input type="text" value="<?php echo $value['words']; ?>" class="input_text" id="change_words_text_<?php echo $key ?>" maxlength="6">
-												<input type="button" value="修改" id="change_btn_<?php echo $key ?>">
+												<input type="text" value="<?php echo $value['words']; ?>" class="input_text" id="change_words_text_<?php echo ($key+$go_to_one-1) ?>" maxlength="6">
+												<input type="button" value="修改" id="change_btn_<?php echo ($key+$go_to_one-1) ?>">
 											</div>
 										</td>
 										<td style="height: 20px;"> 
@@ -765,7 +872,7 @@ function get_sticker_color($color_number, $color_result) {
 									 <!--    <td class="read_again_checkbox"  style="height: 40px;">  <input type="checkbox" id="read_again_checkbox_<?php echo $key?>"></td> -->
 								
 							</tr>
-							 <tr class="data_content" id="data_two_<?php echo $key?>">
+							 <tr class="data_content" id="data_two_<?php echo ($key+$go_to_one-1)?>">
 									<td style="height: 20px;"> 
 										   
 											
@@ -792,7 +899,75 @@ function get_sticker_color($color_number, $color_result) {
 				</table>
 			
 			</div>
-
+<!--page -->
+				
+				<p style="text-align: center;margin-top: 10px">
+					
+				<?php 
+					$url = '';
+					$php_url = 'administrator_level.php';
+					$z = 0;
+					foreach ($_GET as $key => $value) {
+						if($key != 'page'){
+							if($z!=0) $url.= "&"; 
+							$url .= $key.'='.$value;
+							$z++;
+						}
+						
+					}
+					if($z != 0) $url .="&";
+					
+					if($page != 1 ){
+						echo '<a class="botton1" href="'.$php_url.'?'.$url.'page=1">|&lt;&nbsp;</a> ';
+						echo '<a class="botton1" href="'.$php_url.'?'.$url.'page='.($page-1).'">&nbsp;&lt;&nbsp;</a> ';
+					}
+					if($page <= 5){
+						for ($i = 1; $i <= $totalpage; $i++) {
+							if ($page == $i) {
+						    	echo "&nbsp;<span class='botton2'>".$i."</span>&nbsp;";	
+							} else {
+							 	 	if($i <= 10){
+							 	 		echo "&nbsp;<a class='botton1' href='".$php_url."?".$url."page=".$i."'>".$i."</a>&nbsp;";
+							 	 	}
+							}
+						
+						}
+					}else{
+						//$post = $pos + 10;
+						for ($i = $page -5; $i <= $totalpage; $i++) {
+							if ($page == $i) {
+						    	echo "&nbsp;<span class=\"botton2\">".$i."</span>&nbsp;";	
+							} elseif($i <= $page + 5) {
+							 	 	echo "&nbsp;<a class=\"botton1\" href='".$php_url."?".$url."page=".$i."'>".$i."</a>&nbsp;";
+							}
+						
+						}
+					}
+					if ( $page != $totalpage && $totalpage!=0) echo "<a class=\"botton1\" href='".$php_url."?".$url."page=".($page+1)."'> &gt;</a>";
+					if ( $page != $totalpage )echo "<a class=\"botton1\" href='".$php_url."?".$url."page=".$totalpage."'> &gt;|</a>";
+				?>
+				</p>
+				<p style="text-align: center;margin-top: 10px">
+					<b>共有:<?php echo $total?>本書</b>
+					<span>當前顯示:
+						<?php 
+						echo $go_to_one;
+						if( $total < ($page*$pagesize)){
+							echo "~".$total;
+						}
+						else {
+							echo "~".($page*$pagesize);
+							
+						}
+						
+						?>
+					</span>
+					<br>
+				</p>
+				<!--page end-->
+				<br>
+				<br>
+				<br>
    
 </div>
 </Body>
@@ -805,17 +980,13 @@ function get_sticker_color($color_number, $color_result) {
 
 $(".avg input:button").click(function(){
 
-	console.log("5");
+
 
 		var $this = $(this);
 		var btn_id=$this.attr("id");
 		var val=$this.val();
 		var td_id=$(this).parent().attr("id");
 
-		console.log(btn_id);
-		console.log(val);
-		
-		console.log(val);
 		if(val=="修改"){
 			$this.attr("value", "儲存");
 			$(this).siblings('.input_select').css("display","block");
@@ -863,18 +1034,24 @@ function change_level(input_text_val,book_sid){
 		};
 
 		$.ajax({
-				   url: url,
-				   type: "POST",
-				   datatype: "json",
-				   data: dataVal,
-				   // contentType: "application/json; charset=utf-8",
-				   async: false,
-				   success: function(data) {
-
-				   },
-				   error: function(jqXHR) {
-					alert("發生錯誤: " + jqXHR.status);
-				  }
+		   url: url,
+		   type: "POST",
+		   datatype: "json",
+		   data: dataVal,
+		   // contentType: "application/json; charset=utf-8",
+		   async: false,
+		   success: function(respones) {
+			//成功處理
+			var data = JSON.parse(respones);
+			if(data['type'] == 'error'){
+				alert(data['error_text']);
+				if(data['error_go_to_url'] != '') document.location.href=data['error_go_to_url']; 
+				
+			}
+		   },
+		   error: function(jqXHR) {
+			alert("發生錯誤: " + jqXHR.status);
+		  }
 
 		});
 
@@ -919,7 +1096,12 @@ function change_pages(book_sid, pages) {
 		},
 		success: function(respones) {
 			//成功處理
-			return true;
+			var data = JSON.parse(respones);
+			if(data['type'] == 'error'){
+				alert(data['error_text']);
+				if(data['error_go_to_url'] != '') document.location.href=data['error_go_to_url']; 
+				
+			}
 		},
 		error: function(xhr, ajaxoptions, thrownerror) {
 			//失敗處理
@@ -968,7 +1150,12 @@ function change_words(book_sid, words) {
 		},
 		success: function(respones) {
 			//成功處理
-			return true;
+			var data = JSON.parse(respones);
+			if(data['type'] == 'error'){
+				alert(data['error_text']);
+				if(data['error_go_to_url'] != '') document.location.href=data['error_go_to_url']; 
+				
+			}
 		},
 		error: function(xhr, ajaxoptions, thrownerror) {
 			//失敗處理
@@ -1025,7 +1212,12 @@ function change_language(book_sid, language) {
 		},
 		success: function(respones) {
 			//成功處理
-			return true;
+			var data = JSON.parse(respones);
+			if(data['type'] == 'error'){
+				alert(data['error_text']);
+				if(data['error_go_to_url'] != '') document.location.href=data['error_go_to_url']; 
+				
+			}
 		},
 		error: function(xhr, ajaxoptions, thrownerror) {
 			//失敗處理
@@ -1075,7 +1267,12 @@ function change_sticker_color(book_sid, sticker_color) {
 		},
 		success: function(respones) {
 			//成功處理
-			return true;
+			var data = JSON.parse(respones);
+			if(data['type'] == 'error'){
+				alert(data['error_text']);
+				if(data['error_go_to_url'] != '') document.location.href=data['error_go_to_url']; 
+				
+			}
 		},
 		error: function(xhr, ajaxoptions, thrownerror) {
 			//失敗處理
@@ -1124,7 +1321,12 @@ function change_sticker_number(book_sid, sticker_number) {
 		},
 		success: function(respones) {
 			//成功處理
-			return true;
+			var data = JSON.parse(respones);
+			if(data['type'] == 'error'){
+				alert(data['error_text']);
+				if(data['error_go_to_url'] != '') document.location.href=data['error_go_to_url']; 
+				
+			}
 		},
 		error: function(xhr, ajaxoptions, thrownerror) {
 			//失敗處理

@@ -59,33 +59,33 @@
     //權限,與判斷
     //---------------------------------------------------
 
-    $sess_user_id=$_SESSION['user_id'];
-    $sess_permission=$_SESSION['permission'];
-    $sess_name=$_SESSION['name'];
+    $sess_user_id=$_SESSION['book_level_user_id'];
+    $sess_permission=$_SESSION['book_level_permission'];
+    $sess_name=$_SESSION['book_level_name'];
     
 
-    if(!isset($sess_user_id)&&!isset($sess_permission)&&!isset($sess_name)){
+    //預設
+	$data['type'] = 'error';
+	$data['error_text']= '好像有問題請與系統人員聯絡!!';
+	$data['error_go_to_url'] = '';
+	
+	
+	if (!isset($sess_user_id) && !isset($sess_permission) && !isset($sess_name)) {
+		$data['type'] = 'error';
+		$data['error_text']= '請先登入!!';
+		$data['error_go_to_url'] = 'http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/index.php';
+		echo json_encode($data);
+		die();
+	}
 
-
-        echo '<span style="font-size:40px; color:red;">請先登入!!</span>';
-
-        header('Location:http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/index.php');
-
-
-        die();
-
-
-        
-     }
-
-
-
-     if($sess_permission!="3"){
-
-            echo '<span style="font-size:40px; color:red;">你沒有權限進入!!</span>';
-
-            die();
-    }
+	if ($sess_permission != "3") {
+		$data['type'] = 'error';
+		$data['error_text'] = '你沒有權限進入!!';
+		$data['error_go_to_url'] = 'http://www.cot.org.tw/mssr/center/teacher_center/book_level/user/super_use_index.php';
+		
+		echo json_encode($data);
+		die();
+	}
 
 
     // //---------------------------------------------------
@@ -160,7 +160,7 @@
         //-----------------------------------------------
         //預設值
         //-----------------------------------------------
-            $sess_user_id=$_SESSION['user_id'];
+            $sess_user_id=$_SESSION['book_level_user_id'];
             $sess_user_id=(int)$sess_user_id;
 
             $create_by   =(int)$sess_user_id;
@@ -194,7 +194,10 @@
                                           
                     ";
                     $book_sticker_result=db_result($conn_type='pdo',$conn_mssr,$book_sticker_sql,array(),$arry_conn_mssr);
-
+					$data['type']= 'ok';
+					$data['error_text'] = '';
+					$data['error_go_to_url']= '';
+					
 
                 }else{
 
@@ -225,7 +228,9 @@
                                 
                     ";
                     $book_sticker_result=db_result($conn_type='pdo',$conn_mssr,$book_sticker_sql,array(),$arry_conn_mssr);
-
+					$data['type']= 'ok';
+					$data['error_text'] = '';
+					$data['error_go_to_url']= '';
 
                 }
 
@@ -237,5 +242,5 @@
     //重導頁面
     //---------------------------------------------------
 
-        echo json_encode($array_output,1);
+        echo json_encode($data);
 ?>
